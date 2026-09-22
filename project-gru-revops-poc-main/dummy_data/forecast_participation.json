@@ -1,0 +1,44 @@
+[
+  {
+    "account": "7-Eleven",
+    "on_verbal_call": true,
+    "last_forecast_call": "2026-08-28",
+    "missing_from_call": false
+  },
+  {
+    "account": "Acme Corp",
+    "on_verbal_call": true,
+    "last_forecast_call": "2026-08-21",
+    "missing_from_call": false
+  },
+  {
+    "account": "GlobalTech",
+    "on_verbal_call": true,
+    "last_forecast_call": "2026-08-29",
+    "missing_from_call": false
+  },
+  {
+    "account": "NovaPay",
+    "on_verbal_call": false,
+    "last_forecast_call": "",
+    "missing_from_call": true
+  },
+  {
+    "account": "Meridian Health",
+    "on_verbal_call": true,
+    "last_forecast_call": "2026-08-30",
+    "missing_from_call": false
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "on_verbal_call": false,
+    "last_forecast_call": "2026-08-18",
+    "missing_from_call": true
+  },
+  {
+    "account": "Helix Robotics",
+    "on_verbal_call": false,
+    "last_forecast_call": "2026-08-26",
+    "missing_from_call": true
+  }
+]

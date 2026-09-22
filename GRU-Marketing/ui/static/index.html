@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>James</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/static/assets/logo.png" type="image/png" />
+    <script>
+      document.documentElement.dataset.theme = "light";
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css?v=204" />
+    <link rel="stylesheet" href="/static/transitions.css?v=204" />
+  </head>
+  <body>
+    <div id="landing" class="landing">
+      <div class="landing-bg" aria-hidden="true">
+        <div class="landing-bg-mesh"></div>
+      </div>
+      <header class="landing-nav">
+        <div class="landing-nav-inner">
+          <nav class="landing-links" aria-label="Landing sections">
+            <a href="#landing-capabilities">Capabilities</a>
+            <a href="#landing-features-heading">How it works</a>
+            <a href="#landing-faq">FAQ</a>
+          </nav>
+          <div class="landing-nav-end">
+            <a href="/dashboard" class="btn-landing btn-landing-nav">Get started</a>
+          </div>
+        </div>
+      </header>
+      <main class="landing-main" id="landing-top">
+        <section class="landing-hero">
+          <div class="landing-hero-copy t-stagger">
+            <h1 class="t-stagger-line t-stagger-line--1">James</h1>
+            <p class="landing-sub t-stagger-line t-stagger-line--2">
+              See which programs miss target, then ask James to fix, write, or load the list.
+              Open your book, filter by spend, type, and time, then send the next job.
+            </p>
+            <div class="landing-actions">
+              <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+            </div>
+          </div>
+          <div class="landing-hero-art" id="landing-hero-art" aria-hidden="true">
+            <img class="landing-bob" src="/static/james.png?v=2" alt="" width="320" height="280" />
+          </div>
+        </section>
+        <section class="landing-section" id="landing-capabilities" aria-labelledby="landing-capabilities-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">What James covers</p>
+            <h2 id="landing-capabilities-heading" class="landing-section-title">Marketing jobs in one place</h2>
+          </div>
+          <div class="landing-cap-grid t-avatar-group">
+            <article class="landing-cap t-avatar">
+              <h3>On target</h3>
+              <p>Pipeline and MQL gap versus plan for your region, with days left this quarter.</p>
+            </article>
+            <article class="landing-cap t-avatar">
+              <h3>Live programs</h3>
+              <p>Spend, health, and which campaigns to scale or cut before they end.</p>
+            </article>
+            <article class="landing-cap t-avatar">
+              <h3>Launch</h3>
+              <p>Briefs, assets, Salesforce campaigns, 6sense segments, and Marketo deploys.</p>
+            </article>
+            <article class="landing-cap t-avatar">
+              <h3>Events</h3>
+              <p>Where to run, who to invite, pipeline in the room, and the list load.</p>
+            </article>
+            <article class="landing-cap t-avatar">
+              <h3>Named accounts</h3>
+              <p>Prioritize, brief, and package ABM plays for sales without a new tool.</p>
+            </article>
+            <article class="landing-cap t-avatar">
+              <h3>Brand watch</h3>
+              <p>Sentiment and share of voice, with a same-day response only when it matters.</p>
+            </article>
+          </div>
+        </section>
+        <section class="landing-section" aria-labelledby="landing-features-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">How it works</p>
+            <h2 id="landing-features-heading" class="landing-section-title">Three steps to an answer</h2>
+          </div>
+          <div class="landing-features-shell">
+            <div class="landing-features" aria-label="What James covers">
+              <article class="landing-card">
+                <span class="landing-card-step">1</span>
+                <h3>Task menu</h3>
+                <p>Start from a marketing job — performance, a brief, an invite list — not a blank prompt.</p>
+              </article>
+              <article class="landing-card">
+                <span class="landing-card-step">2</span>
+                <h3>Filters</h3>
+                <p>On the dashboard, set geo, type, spend, and time. In chat, pick the campaign, type, assets, and content.</p>
+              </article>
+              <article class="landing-card">
+                <span class="landing-card-step">3</span>
+                <h3>One answer</h3>
+                <p>The specialist writes the reply in the shape that fits the job — checklist, numbers, draft, or note.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="landing-section" id="landing-faq" aria-labelledby="landing-faq-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">FAQ</p>
+            <h2 id="landing-faq-heading" class="landing-section-title">Common questions</h2>
+          </div>
+          <div class="landing-faq-list">
+            <div class="landing-faq t-acc" data-open="false">
+              <button type="button" class="landing-faq-trigger t-acc-head" aria-expanded="false" aria-controls="faq-prompts" id="faq-prompts-btn">
+                <span>Do I need to write prompts from scratch?</span>
+                <span class="landing-faq-chevron t-acc-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="M4 6.5L8 10.5L12 6.5"/></svg>
+                </span>
+              </button>
+              <div class="landing-faq-panel t-acc-panel" id="faq-prompts" role="region" aria-labelledby="faq-prompts-btn">
+                <div class="landing-faq-panel-inner t-acc-panel-inner">
+                  <p>Start from the task menu — James pre-fills a draft scoped to your filters.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq t-acc" data-open="false">
+              <button type="button" class="landing-faq-trigger t-acc-head" aria-expanded="false" aria-controls="faq-filters" id="faq-filters-btn">
+                <span>Where do filters apply?</span>
+                <span class="landing-faq-chevron t-acc-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="M4 6.5L8 10.5L12 6.5"/></svg>
+                </span>
+              </button>
+              <div class="landing-faq-panel t-acc-panel" id="faq-filters" role="region" aria-labelledby="faq-filters-btn">
+                <div class="landing-faq-panel-inner t-acc-panel-inner">
+                  <p>Dashboard filters (geo, type, spend, time) and chat picks (campaigns, types, assets, content) ride with every message.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq t-acc" data-open="false">
+              <button type="button" class="landing-faq-trigger t-acc-head" aria-expanded="false" aria-controls="faq-briefing" id="faq-briefing-btn">
+                <span>What does a reply look like?</span>
+                <span class="landing-faq-chevron t-acc-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="M4 6.5L8 10.5L12 6.5"/></svg>
+                </span>
+              </button>
+              <div class="landing-faq-panel t-acc-panel" id="faq-briefing" role="region" aria-labelledby="faq-briefing-btn">
+                <div class="landing-faq-panel-inner t-acc-panel-inner">
+                  <p>A briefing you can scan: summary, insights, one next action, and a paste-ready note or receipt.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq t-acc" data-open="false">
+              <button type="button" class="landing-faq-trigger t-acc-head" aria-expanded="false" aria-controls="faq-salesforce" id="faq-salesforce-btn">
+                <span>Is this connected to live Salesforce?</span>
+                <span class="landing-faq-chevron t-acc-chevron" aria-hidden="true">
+                  <svg viewBox="0 0 16 16"><path d="M4 6.5L8 10.5L12 6.5"/></svg>
+                </span>
+              </button>
+              <div class="landing-faq-panel t-acc-panel" id="faq-salesforce" role="region" aria-labelledby="faq-salesforce-btn">
+                <div class="landing-faq-panel-inner t-acc-panel-inner">
+                  <p>Salesforce and Slack feed this workspace. The copilot uses that book to write the briefing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="landing-cta-band">
+          <h2>Ready to put James to work?</h2>
+          <p>Open your book, click what is off-track, and send.</p>
+          <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+        </section>
+      </main>
+    </div>
+    <script src="/static/transitions.js?v=204"></script>
+  </body>
+</html>

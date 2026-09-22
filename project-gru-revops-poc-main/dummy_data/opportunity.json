@@ -1,0 +1,110 @@
+[
+  {
+    "opp_id": "OPP-711",
+    "account": "7-Eleven",
+    "crm_health_score": 74,
+    "is_backup_deal": false,
+    "backup_opp_id": "OPP-712",
+    "stage_name": "SS50",
+    "stage_required_fields_complete_pct": 85.0,
+    "next_step": "Send Priya the 50-store tabletop for Labor Day.",
+    "next_step_last_modified_date": "2026-08-28T16:40:00Z",
+    "manager_notes": "Co-sell partner introduced; keep POS in commit. Phoenix stays upside."
+  },
+  {
+    "opp_id": "OPP-712",
+    "account": "7-Eleven",
+    "crm_health_score": 61,
+    "is_backup_deal": true,
+    "backup_opp_id": "",
+    "stage_name": "SS20",
+    "stage_required_fields_complete_pct": 62.0,
+    "next_step": "Confirm EV-store systems scope after the POS tabletop.",
+    "next_step_last_modified_date": "2026-08-20T11:00:00Z",
+    "manager_notes": "Backup only. Do not pull Phoenix into the call."
+  },
+  {
+    "opp_id": "OPP-241",
+    "account": "Acme Corp",
+    "crm_health_score": 58,
+    "is_backup_deal": false,
+    "backup_opp_id": "OPP-242",
+    "stage_name": "SS20",
+    "stage_required_fields_complete_pct": 70.0,
+    "next_step": "Get Helen Cho a Dayton sandbox date.",
+    "next_step_last_modified_date": "2026-08-21T15:10:00Z",
+    "manager_notes": "Do not commit until close date is re-dated."
+  },
+  {
+    "opp_id": "OPP-242",
+    "account": "Acme Corp",
+    "crm_health_score": 44,
+    "is_backup_deal": true,
+    "backup_opp_id": "",
+    "stage_name": "SS20",
+    "stage_required_fields_complete_pct": 40.0,
+    "next_step": "Qualify plant telemetry after Dayton quoting lands.",
+    "next_step_last_modified_date": "2026-08-12T09:00:00Z",
+    "manager_notes": "Backup telemetry. Not in the call."
+  },
+  {
+    "opp_id": "OPP-318",
+    "account": "GlobalTech",
+    "crm_health_score": 81,
+    "is_backup_deal": false,
+    "backup_opp_id": "",
+    "stage_name": "SS60",
+    "stage_required_fields_complete_pct": 96.0,
+    "next_step": "Return Nina Park's rewritten security packet before Ignite.",
+    "next_step_last_modified_date": "2026-08-29T18:02:00Z",
+    "manager_notes": "Commit holds if Ignite date holds."
+  },
+  {
+    "opp_id": "OPP-402",
+    "account": "NovaPay",
+    "crm_health_score": 22,
+    "is_backup_deal": false,
+    "backup_opp_id": "",
+    "stage_name": "SS20",
+    "stage_required_fields_complete_pct": 28.0,
+    "next_step": "None logged since 2025-09-12.",
+    "next_step_last_modified_date": "2025-09-12T16:00:00Z",
+    "manager_notes": "Omit. Do not put $180k in the number."
+  },
+  {
+    "opp_id": "OPP-570",
+    "account": "Meridian Health",
+    "crm_health_score": 79,
+    "is_backup_deal": false,
+    "backup_opp_id": "",
+    "stage_name": "SS40",
+    "stage_required_fields_complete_pct": 88.0,
+    "next_step": "Confirm BAA-covered nursing walkthrough with Alicia.",
+    "next_step_last_modified_date": "2026-08-30T14:30:00Z",
+    "manager_notes": "Commit is the RFP. Privacy is the slip, not the close date."
+  },
+  {
+    "opp_id": "OPP-611",
+    "account": "BrightLeaf Foods",
+    "crm_health_score": 61,
+    "is_backup_deal": false,
+    "backup_opp_id": "",
+    "stage_name": "SS40",
+    "stage_required_fields_complete_pct": 72.0,
+    "next_step": "Load last-quarter promo file before the bake-off.",
+    "next_step_last_modified_date": "2026-08-18T13:20:00Z",
+    "manager_notes": "Upside only until a bake-off winner is named."
+  },
+  {
+    "opp_id": "OPP-788",
+    "account": "Helix Robotics",
+    "crm_health_score": 49,
+    "is_backup_deal": false,
+    "backup_opp_id": "",
+    "stage_name": "SS20",
+    "stage_required_fields_complete_pct": 55.0,
+    "next_step": "Merge Lena Vogt duplicates and send the EUR list.",
+    "next_step_last_modified_date": "2026-08-26T10:15:00Z",
+    "manager_notes": "Qualification. Keep out of commit."
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "account": "7-Eleven",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 360000
+  },
+  {
+    "account": "7-Eleven",
+    "aging_category": "30_DAYS",
+    "outstanding_balance": 50000
+  },
+  {
+    "account": "Acme Corp",
+    "aging_category": "60_DAYS",
+    "outstanding_balance": 40000
+  },
+  {
+    "account": "Acme Corp",
+    "aging_category": "90_PLUS_DAYS",
+    "outstanding_balance": 55000
+  },
+  {
+    "account": "GlobalTech",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 180000
+  },
+  {
+    "account": "Meridian Health",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 480000
+  },
+  {
+    "account": "Meridian Health",
+    "aging_category": "30_DAYS",
+    "outstanding_balance": 140000
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 40000
+  },
+  {
+    "account": "NovaPay",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 0
+  },
+  {
+    "account": "Helix Robotics",
+    "aging_category": "CURRENT",
+    "outstanding_balance": 0
+  }
+]

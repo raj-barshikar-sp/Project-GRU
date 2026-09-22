@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "orchestrator_routing_score": 1.0,
+    "synthesis_format_score": 1.0
+  },
+  "custom_metrics": {
+    "orchestrator_routing_score": {
+      "code_config": {
+        "name": "evals.metrics.orchestrator_routing_score"
+      },
+      "description": "Exact specialist-name set with one final synthesis child."
+    },
+    "synthesis_format_score": {
+      "code_config": {
+        "name": "evals.metrics.synthesis_format_score"
+      },
+      "description": "Four ordered sections, no preamble, placeholders, leaks, or hollow copy."
+    }
+  }
+}

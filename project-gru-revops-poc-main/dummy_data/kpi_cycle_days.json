@@ -1,0 +1,30 @@
+[
+  {
+    "account": "7-Eleven",
+    "avg_sales_cycle_days": 88
+  },
+  {
+    "account": "Acme Corp",
+    "avg_sales_cycle_days": 110
+  },
+  {
+    "account": "GlobalTech",
+    "avg_sales_cycle_days": 92
+  },
+  {
+    "account": "NovaPay",
+    "avg_sales_cycle_days": 330
+  },
+  {
+    "account": "Meridian Health",
+    "avg_sales_cycle_days": 95
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "avg_sales_cycle_days": 70
+  },
+  {
+    "account": "Helix Robotics",
+    "avg_sales_cycle_days": 40
+  }
+]

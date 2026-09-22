@@ -1,0 +1,68 @@
+[
+  {
+    "name": "CyberArk",
+    "category": "PAM-led identity security",
+    "strengths": [
+      "Market-leading privileged access vaulting",
+      "Strong brand in security buying centers"
+    ],
+    "weaknesses": [
+      "Shallow identity governance and certifications",
+      "Weaker cloud entitlement governance",
+      "Not a provisioning/lifecycle platform"
+    ],
+    "sailpoint_advantages": [
+      "Deep IGA and continuous certification",
+      "Unified governance across cloud and on-prem",
+      "Lifecycle automation PAM cannot provide"
+    ],
+    "displacement_angle": "PAM secures the few privileged accounts; SailPoint governs access for everyone. You need both, and governance is the gap.",
+    "common_objections": [
+      "We standardized on CyberArk for privileged access"
+    ]
+  },
+  {
+    "name": "Saviynt",
+    "category": "Converged identity governance",
+    "strengths": [
+      "Broad governance ambition",
+      "Cloud-native positioning"
+    ],
+    "weaknesses": [
+      "Long, complex deployments",
+      "Higher tuning and admin burden",
+      "Inconsistent connector reliability"
+    ],
+    "sailpoint_advantages": [
+      "Faster time-to-value",
+      "Proven at enterprise scale",
+      "Lower operational overhead"
+    ],
+    "displacement_angle": "Similar vision, but SailPoint gets you to value in weeks with far less operational drag.",
+    "common_objections": [
+      "Saviynt quoted us a lower list price"
+    ]
+  },
+  {
+    "name": "One Identity",
+    "category": "Legacy IGA",
+    "strengths": [
+      "Installed base",
+      "Bundled with broader Quest portfolio"
+    ],
+    "weaknesses": [
+      "Aging architecture",
+      "Limited SaaS-native automation",
+      "Thin third-party/non-employee coverage"
+    ],
+    "sailpoint_advantages": [
+      "Modern SaaS platform",
+      "AI-driven access modeling",
+      "Non-employee risk management"
+    ],
+    "displacement_angle": "Modernize off an end-of-life architecture before it becomes an audit liability.",
+    "common_objections": [
+      "We're already invested in the Quest stack"
+    ]
+  }
+]

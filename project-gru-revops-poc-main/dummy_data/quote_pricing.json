@@ -1,0 +1,84 @@
+[
+  {
+    "quote_id": "Q-711",
+    "opp_id": "OPP-711",
+    "account": "7-Eleven",
+    "list_price": 2800000,
+    "quoted_price": 2400000,
+    "floor_price": 2464000,
+    "bundle_id": "B-STOREOPS",
+    "errors": [
+      "Quoted $64k below the 12% floor"
+    ]
+  },
+  {
+    "quote_id": "Q-241",
+    "opp_id": "OPP-241",
+    "account": "Acme Corp",
+    "list_price": 700000,
+    "quoted_price": 640000,
+    "floor_price": 644000,
+    "bundle_id": "B-QTC",
+    "errors": [
+      "Site license missing Dayton plant code"
+    ]
+  },
+  {
+    "quote_id": "Q-318",
+    "opp_id": "OPP-318",
+    "account": "GlobalTech",
+    "list_price": 1400000,
+    "quoted_price": 1250000,
+    "floor_price": 1260000,
+    "bundle_id": "B-PORTAL",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-402",
+    "opp_id": "OPP-402",
+    "account": "NovaPay",
+    "list_price": 220000,
+    "quoted_price": 180000,
+    "floor_price": 220000,
+    "bundle_id": "B-DIAG",
+    "errors": [
+      "SKU not on approved price list",
+      "Credit check expired",
+      "Quoted below a 0% floor"
+    ]
+  },
+  {
+    "quote_id": "Q-570",
+    "opp_id": "OPP-570",
+    "account": "Meridian Health",
+    "list_price": 3650000,
+    "quoted_price": 3100000,
+    "floor_price": 3102500,
+    "bundle_id": "B-CARE",
+    "errors": [
+      "GPO Vizient modifier missing on two lines"
+    ]
+  },
+  {
+    "quote_id": "Q-611",
+    "opp_id": "OPP-611",
+    "account": "BrightLeaf Foods",
+    "list_price": 460000,
+    "quoted_price": 410000,
+    "floor_price": 414000,
+    "bundle_id": "B-TPI",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-788",
+    "opp_id": "OPP-788",
+    "account": "Helix Robotics",
+    "list_price": 290000,
+    "quoted_price": 275000,
+    "floor_price": 275500,
+    "bundle_id": "B-GTM",
+    "errors": [
+      "Currency is USD; contract requires EUR"
+    ]
+  }
+]

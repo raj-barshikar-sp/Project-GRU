@@ -1,0 +1,552 @@
+[
+  {
+    "domain": "apexfinancial.com",
+    "installed_technologies": [
+      "Legacy CA",
+      "CyberArk",
+      "Microsoft Entra ID",
+      "AWS"
+    ],
+    "it_security_headcount": 185,
+    "key_contacts": [
+      {
+        "name": "Priya Nair",
+        "title": "Chief Information Security Officer",
+        "department": "Information Security",
+        "seniority": "C-Level",
+        "email": "priya.nair@apexfinancial.com",
+        "linkedin_url": "https://www.linkedin.com/in/priyanair",
+        "location": "Charlotte, NC"
+      },
+      {
+        "name": "Daniel Brooks",
+        "title": "VP, Identity and Access Management",
+        "department": "Identity Security",
+        "seniority": "Vice President",
+        "email": "daniel.brooks@apexfinancial.com",
+        "linkedin_url": "https://www.linkedin.com/in/danielbrooks",
+        "location": "New York, NY"
+      }
+    ],
+    "last_verified_at": "2026-08-29",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "meridianhealth.org",
+    "installed_technologies": [
+      "Okta",
+      "Saviynt",
+      "Microsoft Entra ID",
+      "Epic"
+    ],
+    "it_security_headcount": 142,
+    "key_contacts": [
+      {
+        "name": "Elena Vasquez",
+        "title": "Chief Information Security Officer",
+        "department": "Information Security",
+        "seniority": "C-Level",
+        "email": "elena.vasquez@meridianhealth.org",
+        "linkedin_url": "https://www.linkedin.com/in/elenavasquez",
+        "location": "Chicago, IL"
+      },
+      {
+        "name": "Marcus Lee",
+        "title": "Director, Identity and Access Management",
+        "department": "Identity Security",
+        "seniority": "Vice President",
+        "email": "marcus.lee@meridianhealth.org",
+        "linkedin_url": "https://www.linkedin.com/in/marcuslee",
+        "location": "Chicago, IL"
+      }
+    ],
+    "last_verified_at": "2026-09-01",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "harborpine.com",
+    "installed_technologies": [
+      "Ping Identity",
+      "Google Cloud",
+      "Workday"
+    ],
+    "it_security_headcount": 74,
+    "key_contacts": [
+      {
+        "name": "Sophie Kim",
+        "title": "Chief Information Security Officer",
+        "department": "Information Security",
+        "seniority": "C-Level",
+        "email": "sophie.kim@harborpine.com",
+        "linkedin_url": "https://www.linkedin.com/in/sophiekim",
+        "location": "Seattle, WA"
+      },
+      {
+        "name": "Noah Williams",
+        "title": "Director, Security Operations",
+        "department": "Security Operations",
+        "seniority": "Director",
+        "email": "noah.williams@harborpine.com",
+        "linkedin_url": "https://www.linkedin.com/in/noahwilliams",
+        "location": "Portland, OR"
+      }
+    ],
+    "last_verified_at": "2026-08-26",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "northridgesystems.com",
+    "installed_technologies": [
+      "Microsoft Entra ID",
+      "One Identity",
+      "AWS",
+      "ServiceNow"
+    ],
+    "it_security_headcount": 210,
+    "key_contacts": [
+      {
+        "name": "Maya Chen",
+        "title": "Chief Information Security Officer",
+        "email": "maya.chen@northridgesystems.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/mayachen",
+        "location": "Boston, MA"
+      },
+      {
+        "name": "Ethan Cole",
+        "title": "VP, Identity Security",
+        "email": "ethan.cole@northridgesystems.com",
+        "seniority": "Vice President",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/ethancole",
+        "location": "New York, NY"
+      },
+      {
+        "name": "Lena Ortiz",
+        "title": "Director, Cloud Security",
+        "email": "lena.ortiz@northridgesystems.com",
+        "seniority": "Director",
+        "department": "Cloud Security",
+        "linkedin_url": "https://www.linkedin.com/in/lenaortiz",
+        "location": "Raleigh, NC"
+      }
+    ],
+    "last_verified_at": "2026-09-06",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "ironcladindustrial.com",
+    "installed_technologies": [
+      "Oracle Identity Governance",
+      "Active Directory",
+      "SAP",
+      "CyberArk"
+    ],
+    "it_security_headcount": 96,
+    "key_contacts": [
+      {
+        "name": "Robert Gaines",
+        "title": "Chief Information Security Officer",
+        "email": "robert.gaines@ironcladindustrial.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/robertgaines",
+        "location": "Detroit, MI"
+      },
+      {
+        "name": "Aisha Patel",
+        "title": "Director, Identity and Access Management",
+        "email": "aisha.patel@ironcladindustrial.com",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/aishapatel",
+        "location": "Cleveland, OH"
+      }
+    ],
+    "last_verified_at": "2026-08-31",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "solsticeenergy.com",
+    "installed_technologies": [
+      "CyberArk",
+      "Microsoft Entra ID",
+      "SAP",
+      "AWS"
+    ],
+    "it_security_headcount": 265,
+    "key_contacts": [
+      {
+        "name": "Amelia Hart",
+        "title": "Group Chief Information Security Officer",
+        "email": "amelia.hart@solsticeenergy.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/ameliahart",
+        "location": "London, UK"
+      },
+      {
+        "name": "Lars Petersen",
+        "title": "VP, Identity and Privileged Access",
+        "email": "lars.petersen@solsticeenergy.com",
+        "seniority": "Vice President",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/larspetersen",
+        "location": "Copenhagen, Denmark"
+      },
+      {
+        "name": "Nadia El-Sayed",
+        "title": "Director, OT Security",
+        "email": "nadia.elsayed@solsticeenergy.com",
+        "seniority": "Director",
+        "department": "Operational Technology Security",
+        "linkedin_url": "https://www.linkedin.com/in/nadiaelsayed",
+        "location": "Dubai, UAE"
+      },
+      {
+        "name": "Jonas Weber",
+        "title": "Head of Access Governance",
+        "email": "jonas.weber@solsticeenergy.com",
+        "seniority": "Director",
+        "department": "Identity Governance",
+        "linkedin_url": "https://www.linkedin.com/in/jonasweber",
+        "location": "Berlin, Germany"
+      }
+    ],
+    "last_verified_at": "2026-09-07",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "guardianmutual.com",
+    "installed_technologies": [
+      "IBM Security Verify",
+      "CyberArk",
+      "Microsoft Entra ID",
+      "ServiceNow"
+    ],
+    "it_security_headcount": 188,
+    "key_contacts": [
+      {
+        "name": "Olivia Bennett",
+        "title": "Chief Information Security Officer",
+        "email": "olivia.bennett@guardianmutual.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/oliviabennett",
+        "location": "Hartford, CT"
+      },
+      {
+        "name": "Caleb Wright",
+        "title": "VP, Enterprise Identity",
+        "email": "caleb.wright@guardianmutual.com",
+        "seniority": "Vice President",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/calebwright",
+        "location": "Boston, MA"
+      },
+      {
+        "name": "Renee Foster",
+        "title": "Director, Governance Risk and Compliance",
+        "email": "renee.foster@guardianmutual.com",
+        "seniority": "Director",
+        "department": "Risk and Compliance",
+        "linkedin_url": "https://www.linkedin.com/in/reneefoster",
+        "location": "Newark, NJ"
+      }
+    ],
+    "last_verified_at": "2026-09-08",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "civicbridge.gov",
+    "installed_technologies": [
+      "Legacy CA",
+      "Active Directory",
+      "Microsoft 365"
+    ],
+    "it_security_headcount": 82,
+    "key_contacts": [
+      {
+        "name": "Theresa Nguyen",
+        "title": "Chief Information Security Officer",
+        "email": "theresa.nguyen@civicbridge.gov",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/theresanguyen",
+        "location": "Washington, DC"
+      },
+      {
+        "name": "Malcolm Reed",
+        "title": "Director, Identity Services",
+        "email": "malcolm.reed@civicbridge.gov",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/malcolmreed",
+        "location": "Arlington, VA"
+      }
+    ],
+    "last_verified_at": "2026-08-28",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "pacificatel.com",
+    "installed_technologies": [
+      "Ping Identity",
+      "SailPoint",
+      "Google Cloud",
+      "Kubernetes"
+    ],
+    "it_security_headcount": 240,
+    "key_contacts": [
+      {
+        "name": "Wei Ming Tan",
+        "title": "Chief Information Security Officer",
+        "email": "weiming.tan@pacificatel.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/weimingtan",
+        "location": "Singapore"
+      },
+      {
+        "name": "Anika Rao",
+        "title": "VP, Digital Identity",
+        "email": "anika.rao@pacificatel.com",
+        "seniority": "Vice President",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/anikarao",
+        "location": "Mumbai, India"
+      },
+      {
+        "name": "Kenji Sato",
+        "title": "Director, Workforce Access",
+        "email": "kenji.sato@pacificatel.com",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/kenjisato",
+        "location": "Tokyo, Japan"
+      }
+    ],
+    "last_verified_at": "2026-09-05",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "alpinecontinental.com",
+    "installed_technologies": [
+      "Omada",
+      "Microsoft Entra ID",
+      "CyberArk",
+      "Temenos"
+    ],
+    "it_security_headcount": 175,
+    "key_contacts": [
+      {
+        "name": "Clara Hoffmann",
+        "title": "Chief Information Security Officer",
+        "email": "clara.hoffmann@alpinecontinental.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/clarahoffmann",
+        "location": "Zurich, Switzerland"
+      },
+      {
+        "name": "Matteo Ricci",
+        "title": "Head of Identity Governance",
+        "email": "matteo.ricci@alpinecontinental.com",
+        "seniority": "Director",
+        "department": "Identity Governance",
+        "linkedin_url": "https://www.linkedin.com/in/matteoricci",
+        "location": "Milan, Italy"
+      }
+    ],
+    "last_verified_at": "2026-09-02",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "sakurahealth.co.jp",
+    "installed_technologies": [
+      "Okta",
+      "Oracle Identity Governance",
+      "ServiceNow",
+      "Epic"
+    ],
+    "it_security_headcount": 154,
+    "key_contacts": [
+      {
+        "name": "Yuki Nakamura",
+        "title": "Chief Information Security Officer",
+        "email": "yuki.nakamura@sakurahealth.co.jp",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/yukinakamura",
+        "location": "Tokyo, Japan"
+      },
+      {
+        "name": "Haruto Watanabe",
+        "title": "Director, Identity and Access Management",
+        "email": "haruto.watanabe@sakurahealth.co.jp",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/harutowatanabe",
+        "location": "Osaka, Japan"
+      },
+      {
+        "name": "Mei Kobayashi",
+        "title": "Head of Clinical Systems Security",
+        "email": "mei.kobayashi@sakurahealth.co.jp",
+        "seniority": "Director",
+        "department": "Healthcare Security",
+        "linkedin_url": "https://www.linkedin.com/in/meikobayashi",
+        "location": "Tokyo, Japan"
+      }
+    ],
+    "last_verified_at": "2026-09-06",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "redwoodcommerce.com",
+    "installed_technologies": [
+      "Okta",
+      "Google Workspace",
+      "AWS",
+      "Workday"
+    ],
+    "it_security_headcount": 68,
+    "key_contacts": [
+      {
+        "name": "Grace Park",
+        "title": "Chief Information Security Officer",
+        "email": "grace.park@redwoodcommerce.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/gracepark",
+        "location": "San Francisco, CA"
+      },
+      {
+        "name": "Julian Price",
+        "title": "Director, Workforce Identity",
+        "email": "julian.price@redwoodcommerce.com",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/julianprice",
+        "location": "Sacramento, CA"
+      }
+    ],
+    "last_verified_at": "2026-08-27",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "novagridutilities.com",
+    "installed_technologies": [
+      "One Identity",
+      "CyberArk",
+      "Microsoft Entra ID",
+      "SAP"
+    ],
+    "it_security_headcount": 132,
+    "key_contacts": [
+      {
+        "name": "Monica Alvarez",
+        "title": "Chief Information Security Officer",
+        "email": "monica.alvarez@novagridutilities.com",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/monicaalvarez",
+        "location": "Phoenix, AZ"
+      },
+      {
+        "name": "Derek Shaw",
+        "title": "VP, Cybersecurity Engineering",
+        "email": "derek.shaw@novagridutilities.com",
+        "seniority": "Vice President",
+        "department": "Security Engineering",
+        "linkedin_url": "https://www.linkedin.com/in/derekshaw",
+        "location": "Denver, CO"
+      },
+      {
+        "name": "Fatima Hassan",
+        "title": "Director, Privileged Access",
+        "email": "fatima.hassan@novagridutilities.com",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/fatimahassan",
+        "location": "Salt Lake City, UT"
+      }
+    ],
+    "last_verified_at": "2026-09-04",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "euroforge.eu",
+    "installed_technologies": [
+      "SAP Identity Management",
+      "Microsoft Entra ID",
+      "CyberArk",
+      "ServiceNow"
+    ],
+    "it_security_headcount": 228,
+    "key_contacts": [
+      {
+        "name": "Sofia Lindberg",
+        "title": "Chief Information Security Officer",
+        "email": "sofia.lindberg@euroforge.eu",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/sofialindberg",
+        "location": "Gothenburg, Sweden"
+      },
+      {
+        "name": "Thomas Mueller",
+        "title": "VP, Identity and Digital Trust",
+        "email": "thomas.mueller@euroforge.eu",
+        "seniority": "Vice President",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/thomasmueller",
+        "location": "Munich, Germany"
+      },
+      {
+        "name": "Camille Dubois",
+        "title": "Director, SAP Security",
+        "email": "camille.dubois@euroforge.eu",
+        "seniority": "Director",
+        "department": "Enterprise Applications Security",
+        "linkedin_url": "https://www.linkedin.com/in/camilledubois",
+        "location": "Paris, France"
+      }
+    ],
+    "last_verified_at": "2026-09-07",
+    "source": "ZoomInfo"
+  },
+  {
+    "domain": "southerncrossassurance.com.au",
+    "installed_technologies": [
+      "Saviynt",
+      "Microsoft Entra ID",
+      "AWS",
+      "Guidewire"
+    ],
+    "it_security_headcount": 109,
+    "key_contacts": [
+      {
+        "name": "Isla Thompson",
+        "title": "Chief Information Security Officer",
+        "email": "isla.thompson@southerncrossassurance.com.au",
+        "seniority": "C-Level",
+        "department": "Information Security",
+        "linkedin_url": "https://www.linkedin.com/in/islathompson",
+        "location": "Sydney, Australia"
+      },
+      {
+        "name": "Arjun Mehta",
+        "title": "Head of Identity Security",
+        "email": "arjun.mehta@southerncrossassurance.com.au",
+        "seniority": "Director",
+        "department": "Identity Security",
+        "linkedin_url": "https://www.linkedin.com/in/arjunmehta",
+        "location": "Melbourne, Australia"
+      }
+    ],
+    "last_verified_at": "2026-09-03",
+    "source": "ZoomInfo"
+  }
+]

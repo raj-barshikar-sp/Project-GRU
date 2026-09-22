@@ -1,0 +1,20 @@
+---
+description: GRU Marketing UI is the RevOps main-branch workspace, not a custom marketing shell.
+alwaysApply: true
+---
+
+# RevOps UI is the source of truth
+
+Take browser UI from `https://github.com/samihan-narayankeri-sp/project-gru-revops-poc` **`main`**.
+
+Do not keep or revive the older Marketing Minion shell: dual rails, workbench, projects, compare, starters, motion.js, composer task chips, or marketing-only dialogs.
+
+Allowed changes on copied files:
+
+- Bob → James
+- `/static/assets/bob.png` → `/static/james.png`
+- `/api/chat` still hits the marketing orchestrator
+
+Filter chrome stays the RevOps shape: geo, boat, opp, report, size, stage, time. Map those onto marketing data in Python, not in a new UI.
+
+Pages: `/` landing, `/dashboard` (and `/app`) dashboard, `/chat` workspace.

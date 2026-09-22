@@ -1,0 +1,8 @@
+{
+  "coverage_target_multiple": 2.0,
+  "quarterly_pipeline_target_usd": {
+    "AMER": 16300000.0,
+    "EMEA": 5900000.0,
+    "APJ": 2700000.0
+  }
+}

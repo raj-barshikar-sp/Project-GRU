@@ -1,0 +1,66 @@
+[
+  {
+    "account": "7-Eleven",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "7-Eleven",
+    "role_name": "Champion"
+  },
+  {
+    "account": "7-Eleven",
+    "role_name": "Procurement"
+  },
+  {
+    "account": "Acme Corp",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "Acme Corp",
+    "role_name": "Champion"
+  },
+  {
+    "account": "GlobalTech",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "GlobalTech",
+    "role_name": "Champion"
+  },
+  {
+    "account": "GlobalTech",
+    "role_name": "Procurement"
+  },
+  {
+    "account": "NovaPay",
+    "role_name": "Champion"
+  },
+  {
+    "account": "Meridian Health",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "Meridian Health",
+    "role_name": "Champion"
+  },
+  {
+    "account": "Meridian Health",
+    "role_name": "Procurement"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "role_name": "Champion"
+  },
+  {
+    "account": "Helix Robotics",
+    "role_name": "Economic Buyer"
+  },
+  {
+    "account": "Helix Robotics",
+    "role_name": "Champion"
+  }
+]

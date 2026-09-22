@@ -1,0 +1,42 @@
+# Secrets / local env
+.env
+.env.*
+!.env.example
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Python / packaging
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Generated agent output (decks, markdown, CSV)
+output/
+
+*.potx
+*.pptx
+!SailPoint-PowerPointTemplate-202600707.potx
+!packages/mktg_core/rendering/templates/*.potx
+
+# Local clone of the RevOps minion, not part of this repo.
+.revops_src/
+
+# ADK local state
+.adk/
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp

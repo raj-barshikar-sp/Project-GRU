@@ -1,0 +1,2387 @@
+[
+  {
+    "contact_id": "CON-0002",
+    "account_id": "ACC-001",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0001",
+    "account_id": "ACC-001",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0003",
+    "account_id": "ACC-002",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-05-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0004",
+    "account_id": "ACC-002",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0006",
+    "account_id": "ACC-003",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0007",
+    "account_id": "ACC-003",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0010",
+    "account_id": "ACC-004",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0010",
+    "account_id": "ACC-004",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0009",
+    "account_id": "ACC-004",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0011",
+    "account_id": "ACC-004",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0010",
+    "account_id": "ACC-004",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0013",
+    "account_id": "ACC-005",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0013",
+    "account_id": "ACC-005",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0012",
+    "account_id": "ACC-005",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0013",
+    "account_id": "ACC-005",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0015",
+    "account_id": "ACC-006",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0015",
+    "account_id": "ACC-006",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0014",
+    "account_id": "ACC-006",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0015",
+    "account_id": "ACC-006",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-06-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0019",
+    "account_id": "ACC-007",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-04-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0018",
+    "account_id": "ACC-007",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0019",
+    "account_id": "ACC-007",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0019",
+    "account_id": "ACC-007",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0018",
+    "account_id": "ACC-007",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0022",
+    "account_id": "ACC-008",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-08-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0022",
+    "account_id": "ACC-008",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0025",
+    "account_id": "ACC-009",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0025",
+    "account_id": "ACC-009",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0023",
+    "account_id": "ACC-009",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0026",
+    "account_id": "ACC-010",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0027",
+    "account_id": "ACC-010",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0027",
+    "account_id": "ACC-010",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0026",
+    "account_id": "ACC-010",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-06",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0027",
+    "account_id": "ACC-010",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-04-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0029",
+    "account_id": "ACC-011",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0028",
+    "account_id": "ACC-011",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0029",
+    "account_id": "ACC-011",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0031",
+    "account_id": "ACC-012",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0033",
+    "account_id": "ACC-013",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0033",
+    "account_id": "ACC-013",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0033",
+    "account_id": "ACC-013",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0036",
+    "account_id": "ACC-014",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0036",
+    "account_id": "ACC-014",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-04-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0035",
+    "account_id": "ACC-014",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-08-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0037",
+    "account_id": "ACC-015",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0037",
+    "account_id": "ACC-015",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0038",
+    "account_id": "ACC-015",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0039",
+    "account_id": "ACC-015",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0037",
+    "account_id": "ACC-015",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0038",
+    "account_id": "ACC-015",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0040",
+    "account_id": "ACC-015",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0037",
+    "account_id": "ACC-015",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0039",
+    "account_id": "ACC-015",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0042",
+    "account_id": "ACC-016",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0041",
+    "account_id": "ACC-016",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0041",
+    "account_id": "ACC-016",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0044",
+    "account_id": "ACC-017",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0043",
+    "account_id": "ACC-017",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0044",
+    "account_id": "ACC-017",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0045",
+    "account_id": "ACC-017",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0043",
+    "account_id": "ACC-017",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0049",
+    "account_id": "ACC-018",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0047",
+    "account_id": "ACC-018",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0049",
+    "account_id": "ACC-018",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0048",
+    "account_id": "ACC-018",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0049",
+    "account_id": "ACC-018",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0047",
+    "account_id": "ACC-018",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0052",
+    "account_id": "ACC-019",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0050",
+    "account_id": "ACC-019",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0054",
+    "account_id": "ACC-020",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0055",
+    "account_id": "ACC-020",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-04-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0054",
+    "account_id": "ACC-020",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0053",
+    "account_id": "ACC-020",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-05-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0055",
+    "account_id": "ACC-020",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0055",
+    "account_id": "ACC-020",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0054",
+    "account_id": "ACC-020",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0057",
+    "account_id": "ACC-021",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0057",
+    "account_id": "ACC-021",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0058",
+    "account_id": "ACC-021",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0060",
+    "account_id": "ACC-022",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-08-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0061",
+    "account_id": "ACC-022",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-08-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0061",
+    "account_id": "ACC-022",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0060",
+    "account_id": "ACC-022",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0062",
+    "account_id": "ACC-023",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-05-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0065",
+    "account_id": "ACC-023",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0064",
+    "account_id": "ACC-023",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0064",
+    "account_id": "ACC-023",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0065",
+    "account_id": "ACC-023",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0063",
+    "account_id": "ACC-023",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-04-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0068",
+    "account_id": "ACC-024",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0066",
+    "account_id": "ACC-024",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0066",
+    "account_id": "ACC-024",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0072",
+    "account_id": "ACC-025",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0071",
+    "account_id": "ACC-025",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0072",
+    "account_id": "ACC-025",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0075",
+    "account_id": "ACC-026",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0073",
+    "account_id": "ACC-026",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0075",
+    "account_id": "ACC-026",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0075",
+    "account_id": "ACC-026",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0074",
+    "account_id": "ACC-026",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0075",
+    "account_id": "ACC-026",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-08-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0077",
+    "account_id": "ACC-027",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-05-24",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0077",
+    "account_id": "ACC-027",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0076",
+    "account_id": "ACC-027",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0078",
+    "account_id": "ACC-027",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0076",
+    "account_id": "ACC-027",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0077",
+    "account_id": "ACC-027",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-06",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0081",
+    "account_id": "ACC-028",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-07-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0081",
+    "account_id": "ACC-028",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0079",
+    "account_id": "ACC-028",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0079",
+    "account_id": "ACC-028",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0084",
+    "account_id": "ACC-029",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-06",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0082",
+    "account_id": "ACC-029",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0082",
+    "account_id": "ACC-029",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-05-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0085",
+    "account_id": "ACC-029",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0083",
+    "account_id": "ACC-029",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0085",
+    "account_id": "ACC-029",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0084",
+    "account_id": "ACC-029",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0082",
+    "account_id": "ACC-029",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-11",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0085",
+    "account_id": "ACC-029",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0087",
+    "account_id": "ACC-030",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0089",
+    "account_id": "ACC-030",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0087",
+    "account_id": "ACC-030",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0090",
+    "account_id": "ACC-031",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0091",
+    "account_id": "ACC-031",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0092",
+    "account_id": "ACC-032",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0093",
+    "account_id": "ACC-032",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0092",
+    "account_id": "ACC-032",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0093",
+    "account_id": "ACC-032",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0092",
+    "account_id": "ACC-032",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0096",
+    "account_id": "ACC-033",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0100",
+    "account_id": "ACC-034",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0097",
+    "account_id": "ACC-034",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0097",
+    "account_id": "ACC-034",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-06-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0098",
+    "account_id": "ACC-034",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0098",
+    "account_id": "ACC-034",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0103",
+    "account_id": "ACC-035",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-11",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0106",
+    "account_id": "ACC-036",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-08-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0105",
+    "account_id": "ACC-036",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0106",
+    "account_id": "ACC-036",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0106",
+    "account_id": "ACC-036",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0105",
+    "account_id": "ACC-036",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0106",
+    "account_id": "ACC-036",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-05-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0107",
+    "account_id": "ACC-037",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0111",
+    "account_id": "ACC-038",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0113",
+    "account_id": "ACC-039",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-05-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0113",
+    "account_id": "ACC-039",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0112",
+    "account_id": "ACC-039",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0112",
+    "account_id": "ACC-039",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0113",
+    "account_id": "ACC-039",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0112",
+    "account_id": "ACC-039",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0114",
+    "account_id": "ACC-040",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0115",
+    "account_id": "ACC-040",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0114",
+    "account_id": "ACC-040",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0115",
+    "account_id": "ACC-040",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0115",
+    "account_id": "ACC-040",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0115",
+    "account_id": "ACC-040",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-02",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0116",
+    "account_id": "ACC-040",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0117",
+    "account_id": "ACC-041",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0117",
+    "account_id": "ACC-041",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0120",
+    "account_id": "ACC-041",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-11",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0119",
+    "account_id": "ACC-041",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0117",
+    "account_id": "ACC-041",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0121",
+    "account_id": "ACC-042",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0121",
+    "account_id": "ACC-042",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0123",
+    "account_id": "ACC-042",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0121",
+    "account_id": "ACC-042",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0122",
+    "account_id": "ACC-042",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-07-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0125",
+    "account_id": "ACC-043",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0124",
+    "account_id": "ACC-043",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0125",
+    "account_id": "ACC-043",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-06",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0124",
+    "account_id": "ACC-043",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-04-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0124",
+    "account_id": "ACC-043",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0125",
+    "account_id": "ACC-043",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0124",
+    "account_id": "ACC-043",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0125",
+    "account_id": "ACC-043",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0125",
+    "account_id": "ACC-043",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0124",
+    "account_id": "ACC-043",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0126",
+    "account_id": "ACC-044",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0128",
+    "account_id": "ACC-044",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-05",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0127",
+    "account_id": "ACC-044",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0129",
+    "account_id": "ACC-044",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0127",
+    "account_id": "ACC-044",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0129",
+    "account_id": "ACC-044",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0129",
+    "account_id": "ACC-044",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0132",
+    "account_id": "ACC-045",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0133",
+    "account_id": "ACC-045",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0134",
+    "account_id": "ACC-046",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0135",
+    "account_id": "ACC-046",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-07-24",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0134",
+    "account_id": "ACC-046",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-05-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0135",
+    "account_id": "ACC-046",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0135",
+    "account_id": "ACC-046",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0134",
+    "account_id": "ACC-046",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0134",
+    "account_id": "ACC-046",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-13",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0138",
+    "account_id": "ACC-047",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0136",
+    "account_id": "ACC-047",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0138",
+    "account_id": "ACC-047",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-04-21",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0136",
+    "account_id": "ACC-047",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-08-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0140",
+    "account_id": "ACC-048",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0139",
+    "account_id": "ACC-048",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-08",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0141",
+    "account_id": "ACC-048",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0140",
+    "account_id": "ACC-048",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0139",
+    "account_id": "ACC-048",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0140",
+    "account_id": "ACC-048",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0143",
+    "account_id": "ACC-049",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0142",
+    "account_id": "ACC-049",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0143",
+    "account_id": "ACC-049",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0142",
+    "account_id": "ACC-049",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0143",
+    "account_id": "ACC-049",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-08-22",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0142",
+    "account_id": "ACC-049",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-06-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0145",
+    "account_id": "ACC-050",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0144",
+    "account_id": "ACC-050",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0144",
+    "account_id": "ACC-050",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-07-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0145",
+    "account_id": "ACC-050",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-06-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0144",
+    "account_id": "ACC-050",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0147",
+    "account_id": "ACC-051",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-24",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0146",
+    "account_id": "ACC-051",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-15",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0149",
+    "account_id": "ACC-052",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0150",
+    "account_id": "ACC-052",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-17",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0149",
+    "account_id": "ACC-052",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0150",
+    "account_id": "ACC-052",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0152",
+    "account_id": "ACC-053",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-07-03",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0153",
+    "account_id": "ACC-053",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0156",
+    "account_id": "ACC-054",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0154",
+    "account_id": "ACC-054",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-06",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0156",
+    "account_id": "ACC-054",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-07-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0159",
+    "account_id": "ACC-055",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-07-01",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0159",
+    "account_id": "ACC-055",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-05-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0158",
+    "account_id": "ACC-055",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-04-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0159",
+    "account_id": "ACC-055",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0159",
+    "account_id": "ACC-055",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0160",
+    "account_id": "ACC-055",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-24",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0159",
+    "account_id": "ACC-055",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-07-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0164",
+    "account_id": "ACC-056",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0162",
+    "account_id": "ACC-056",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-14",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0163",
+    "account_id": "ACC-056",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-04-11",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0162",
+    "account_id": "ACC-056",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-04",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0161",
+    "account_id": "ACC-056",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-07-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0164",
+    "account_id": "ACC-056",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-05-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0167",
+    "account_id": "ACC-057",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-25",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0165",
+    "account_id": "ACC-057",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-08-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0170",
+    "account_id": "ACC-058",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-24",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0168",
+    "account_id": "ACC-058",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-18",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0171",
+    "account_id": "ACC-058",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-08-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0170",
+    "account_id": "ACC-058",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-07-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0171",
+    "account_id": "ACC-058",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-08-29",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0168",
+    "account_id": "ACC-058",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-06-09",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0170",
+    "account_id": "ACC-058",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0168",
+    "account_id": "ACC-058",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-04-28",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0173",
+    "account_id": "ACC-059",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-08-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0173",
+    "account_id": "ACC-059",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-05-20",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0172",
+    "account_id": "ACC-059",
+    "asset_id": "AS-02",
+    "asset_name": "Zero Trust Architecture Webinar",
+    "asset_type": "Webinar",
+    "occurred_on": "2026-06-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0173",
+    "account_id": "ACC-059",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-08-16",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0173",
+    "account_id": "ACC-059",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0172",
+    "account_id": "ACC-059",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-26",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0172",
+    "account_id": "ACC-059",
+    "asset_id": "AS-07",
+    "asset_name": "SASE Buyers Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-05-31",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0178",
+    "account_id": "ACC-061",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-06-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0177",
+    "account_id": "ACC-061",
+    "asset_id": "AS-01",
+    "asset_name": "Zero Trust Maturity Guide",
+    "asset_type": "Whitepaper",
+    "occurred_on": "2026-04-12",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0178",
+    "account_id": "ACC-061",
+    "asset_id": "AS-03",
+    "asset_name": "Microsegmentation Technical Demo",
+    "asset_type": "Demo",
+    "occurred_on": "2026-04-19",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0177",
+    "account_id": "ACC-061",
+    "asset_id": "AS-04",
+    "asset_name": "Financial Services Security Case Study",
+    "asset_type": "Case Study",
+    "occurred_on": "2026-06-27",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0177",
+    "account_id": "ACC-061",
+    "asset_id": "AS-05",
+    "asset_name": "Company Overview Brochure",
+    "asset_type": "Brochure",
+    "occurred_on": "2026-05-30",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0177",
+    "account_id": "ACC-061",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-07",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0178",
+    "account_id": "ACC-061",
+    "asset_id": "AS-06",
+    "asset_name": "Security Trends Blog Digest",
+    "asset_type": "Blog",
+    "occurred_on": "2026-08-23",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0179",
+    "account_id": "ACC-061",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-04-10",
+    "campaign_id": null
+  },
+  {
+    "contact_id": "CON-0177",
+    "account_id": "ACC-061",
+    "asset_id": "AS-08",
+    "asset_name": "Ransomware Readiness Checklist",
+    "asset_type": "Checklist",
+    "occurred_on": "2026-07-15",
+    "campaign_id": null
+  }
+]

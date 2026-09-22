@@ -1,0 +1,36 @@
+{
+  "campaign_brief": [
+    "Goal",
+    "Target Audience",
+    "Key Messages",
+    "Channels",
+    "Budget",
+    "Timeline",
+    "Success KPIs",
+    "Dependencies"
+  ],
+  "battlecard": [
+    "Positioning Statement",
+    "Why We Win",
+    "Their Strengths",
+    "Competitive Landmines",
+    "Objection Handlers",
+    "Displacement CTA"
+  ],
+  "sales_playbook": [
+    "Account Summary",
+    "Key Stakeholders",
+    "Pain Points",
+    "Recommended Talk Tracks",
+    "Competitive Landmines",
+    "Suggested Assets"
+  ],
+  "anchor_asset": [
+    "Executive Summary",
+    "The Problem",
+    "Why Now",
+    "The SailPoint Approach",
+    "Proof and Outcomes",
+    "Getting Started"
+  ]
+}

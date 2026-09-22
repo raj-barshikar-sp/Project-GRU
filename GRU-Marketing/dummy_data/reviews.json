@@ -1,0 +1,34 @@
+[
+  {
+    "source": "G2",
+    "product": "SailPoint",
+    "rating": 4.5,
+    "reviewer_role": "IAM Director",
+    "pros": "Deep governance, strong certifications, scales well.",
+    "cons": "Initial connector setup takes planning."
+  },
+  {
+    "source": "G2",
+    "product": "CyberArk",
+    "rating": 4.4,
+    "reviewer_role": "Security Engineer",
+    "pros": "Best-in-market privileged vaulting.",
+    "cons": "Governance and certification features are thin."
+  },
+  {
+    "source": "Gartner Peer Insights",
+    "product": "Saviynt",
+    "rating": 4.2,
+    "reviewer_role": "Enterprise Architect",
+    "pros": "Broad feature set, cloud-native.",
+    "cons": "Deployment was long and required heavy tuning."
+  },
+  {
+    "source": "Gartner Peer Insights",
+    "product": "One Identity",
+    "rating": 3.8,
+    "reviewer_role": "IT Risk Manager",
+    "pros": "Stable for on-prem use cases.",
+    "cons": "Architecture feels dated; limited SaaS automation."
+  }
+]

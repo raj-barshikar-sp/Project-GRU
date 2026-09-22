@@ -1,0 +1,905 @@
+[
+  {
+    "account_id": "ACC-001",
+    "keyword": "Zero Trust",
+    "intent_score": 87,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-001",
+    "keyword": "Least Privilege Access",
+    "intent_score": 82,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-001",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 97,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-002",
+    "keyword": "Zero Trust",
+    "intent_score": 88,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-002",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 88,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-002",
+    "keyword": "Microsegmentation",
+    "intent_score": 85,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-003",
+    "keyword": "Zero Trust",
+    "intent_score": 97,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-003",
+    "keyword": "Microsegmentation",
+    "intent_score": 93,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-003",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 95,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-004",
+    "keyword": "Zero Trust",
+    "intent_score": 87,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-004",
+    "keyword": "Microsegmentation",
+    "intent_score": 85,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-004",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 83,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-005",
+    "keyword": "Zero Trust",
+    "intent_score": 94,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-005",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 82,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-005",
+    "keyword": "Microsegmentation",
+    "intent_score": 95,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-006",
+    "keyword": "Zero Trust",
+    "intent_score": 90,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-006",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 89,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-006",
+    "keyword": "Least Privilege Access",
+    "intent_score": 94,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-007",
+    "keyword": "Zero Trust",
+    "intent_score": 88,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-007",
+    "keyword": "Least Privilege Access",
+    "intent_score": 86,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-007",
+    "keyword": "Microsegmentation",
+    "intent_score": 88,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-008",
+    "keyword": "Zero Trust",
+    "intent_score": 93,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-008",
+    "keyword": "Microsegmentation",
+    "intent_score": 96,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-008",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 86,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-009",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 76,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-009",
+    "keyword": "SASE",
+    "intent_score": 76,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-010",
+    "keyword": "SD-WAN Security",
+    "intent_score": 83,
+    "buying_stage": "Awareness",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-010",
+    "keyword": "SASE",
+    "intent_score": 76,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-011",
+    "keyword": "SASE",
+    "intent_score": 78,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-011",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 83,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-012",
+    "keyword": "SD-WAN Security",
+    "intent_score": 79,
+    "buying_stage": "Awareness",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-012",
+    "keyword": "SASE",
+    "intent_score": 77,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-013",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 61,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-014",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 65,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-014",
+    "keyword": "SASE",
+    "intent_score": 38,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-015",
+    "keyword": "SIEM Replacement",
+    "intent_score": 62,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-015",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 36,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-016",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 59,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-016",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 69,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-017",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 69,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-017",
+    "keyword": "SD-WAN Security",
+    "intent_score": 72,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-018",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 32,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-019",
+    "keyword": "SD-WAN Security",
+    "intent_score": 60,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-019",
+    "keyword": "Compliance Automation",
+    "intent_score": 34,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-020",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 72,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-020",
+    "keyword": "SIEM Replacement",
+    "intent_score": 45,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-021",
+    "keyword": "MDR Services",
+    "intent_score": 48,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-021",
+    "keyword": "Least Privilege Access",
+    "intent_score": 68,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-021",
+    "keyword": "SD-WAN Security",
+    "intent_score": 48,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-022",
+    "keyword": "MDR Services",
+    "intent_score": 72,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-023",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 55,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-024",
+    "keyword": "Zero Trust",
+    "intent_score": 70,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-024",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 46,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-025",
+    "keyword": "SASE",
+    "intent_score": 74,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-025",
+    "keyword": "SD-WAN Security",
+    "intent_score": 46,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-026",
+    "keyword": "Compliance Automation",
+    "intent_score": 43,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-027",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 42,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-027",
+    "keyword": "SASE",
+    "intent_score": 66,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-027",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 46,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-028",
+    "keyword": "Microsegmentation",
+    "intent_score": 65,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-028",
+    "keyword": "SIEM Replacement",
+    "intent_score": 27,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-029",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 50,
+    "buying_stage": "Awareness",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-029",
+    "keyword": "SIEM Replacement",
+    "intent_score": 27,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-029",
+    "keyword": "Zero Trust",
+    "intent_score": 55,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-030",
+    "keyword": "SIEM Replacement",
+    "intent_score": 68,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-030",
+    "keyword": "Microsegmentation",
+    "intent_score": 67,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-030",
+    "keyword": "MDR Services",
+    "intent_score": 36,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-031",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 74,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-032",
+    "keyword": "SASE",
+    "intent_score": 33,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-033",
+    "keyword": "Compliance Automation",
+    "intent_score": 36,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-033",
+    "keyword": "Least Privilege Access",
+    "intent_score": 26,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-034",
+    "keyword": "SD-WAN Security",
+    "intent_score": 61,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-035",
+    "keyword": "SIEM Replacement",
+    "intent_score": 53,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-035",
+    "keyword": "Data Loss Prevention",
+    "intent_score": 49,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-035",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 51,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-036",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 25,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-036",
+    "keyword": "Microsegmentation",
+    "intent_score": 68,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-036",
+    "keyword": "MDR Services",
+    "intent_score": 30,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-037",
+    "keyword": "SD-WAN Security",
+    "intent_score": 42,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-037",
+    "keyword": "Zero Trust",
+    "intent_score": 72,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-038",
+    "keyword": "Endpoint Detection",
+    "intent_score": 70,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-038",
+    "keyword": "Data Loss Prevention",
+    "intent_score": 30,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-039",
+    "keyword": "SD-WAN Security",
+    "intent_score": 28,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-039",
+    "keyword": "MDR Services",
+    "intent_score": 25,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-039",
+    "keyword": "Least Privilege Access",
+    "intent_score": 44,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-040",
+    "keyword": "SIEM Replacement",
+    "intent_score": 48,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-040",
+    "keyword": "Zero Trust",
+    "intent_score": 35,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-040",
+    "keyword": "SASE",
+    "intent_score": 32,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-041",
+    "keyword": "MDR Services",
+    "intent_score": 51,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-041",
+    "keyword": "Endpoint Detection",
+    "intent_score": 53,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-042",
+    "keyword": "Zero Trust",
+    "intent_score": 90,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-042",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 92,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-042",
+    "keyword": "Microsegmentation",
+    "intent_score": 86,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-043",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 68,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-043",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 39,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-043",
+    "keyword": "Endpoint Detection",
+    "intent_score": 25,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-044",
+    "keyword": "Microsegmentation",
+    "intent_score": 43,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-044",
+    "keyword": "SIEM Replacement",
+    "intent_score": 61,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-044",
+    "keyword": "Zero Trust",
+    "intent_score": 60,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-045",
+    "keyword": "Cloud Workload Protection",
+    "intent_score": 60,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-046",
+    "keyword": "Endpoint Detection",
+    "intent_score": 71,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-046",
+    "keyword": "Compliance Automation",
+    "intent_score": 28,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-047",
+    "keyword": "Zero Trust",
+    "intent_score": 82,
+    "buying_stage": "Decision",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-047",
+    "keyword": "Microsegmentation",
+    "intent_score": 96,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-047",
+    "keyword": "Least Privilege Access",
+    "intent_score": 93,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-048",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 58,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-048",
+    "keyword": "SIEM Replacement",
+    "intent_score": 58,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-049",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 37,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-049",
+    "keyword": "Compliance Automation",
+    "intent_score": 69,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-050",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 58,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-050",
+    "keyword": "Endpoint Detection",
+    "intent_score": 56,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-051",
+    "keyword": "MDR Services",
+    "intent_score": 30,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-051",
+    "keyword": "SD-WAN Security",
+    "intent_score": 26,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-052",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 27,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-053",
+    "keyword": "SIEM Replacement",
+    "intent_score": 41,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-053",
+    "keyword": "Compliance Automation",
+    "intent_score": 53,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-053",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 27,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-054",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 26,
+    "buying_stage": "None",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-054",
+    "keyword": "Zero Trust Architecture",
+    "intent_score": 48,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-055",
+    "keyword": "Compliance Automation",
+    "intent_score": 63,
+    "buying_stage": "Consideration",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-056",
+    "keyword": "Least Privilege Access",
+    "intent_score": 45,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-057",
+    "keyword": "SD-WAN Security",
+    "intent_score": 73,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-057",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 73,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-058",
+    "keyword": "Data Loss Prevention",
+    "intent_score": 36,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-058",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 47,
+    "buying_stage": "None",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-059",
+    "keyword": "Compliance Automation",
+    "intent_score": 28,
+    "buying_stage": "Awareness",
+    "trending": false
+  },
+  {
+    "account_id": "ACC-060",
+    "keyword": "SD-WAN Security",
+    "intent_score": 69,
+    "buying_stage": "Awareness",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-060",
+    "keyword": "Secure Web Gateway",
+    "intent_score": 72,
+    "buying_stage": "Consideration",
+    "trending": true
+  },
+  {
+    "account_id": "ACC-061",
+    "keyword": "Identity Aware Proxy",
+    "intent_score": 68,
+    "buying_stage": "Awareness",
+    "trending": false
+  }
+]

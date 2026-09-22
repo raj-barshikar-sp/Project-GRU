@@ -1,0 +1,57 @@
+[
+  {
+    "id": "NEWS-01",
+    "date": "2026-09-02",
+    "source": "Dark Reading",
+    "headline": "Saviynt discloses breach exposing customer configuration data",
+    "summary": "A competitor in identity governance confirmed a security incident affecting a subset of cloud customers.",
+    "topic": "Competitor breach",
+    "sentiment": "negative",
+    "competitor_mentioned": "Saviynt",
+    "is_trigger": true
+  },
+  {
+    "id": "NEWS-02",
+    "date": "2026-08-28",
+    "source": "SC Magazine",
+    "headline": "EU NIS2 enforcement begins; access governance in scope",
+    "summary": "Regulators signal active enforcement of NIS2, raising the bar on identity and access accountability.",
+    "topic": "Regulation",
+    "sentiment": "neutral",
+    "competitor_mentioned": null,
+    "is_trigger": true
+  },
+  {
+    "id": "NEWS-03",
+    "date": "2026-08-20",
+    "source": "Gartner",
+    "headline": "Gartner: identity-first security remains top 2026 priority",
+    "summary": "Analyst commentary reinforces identity as the primary control plane for modern security programs.",
+    "topic": "Analyst view",
+    "sentiment": "positive",
+    "competitor_mentioned": null,
+    "is_trigger": false
+  },
+  {
+    "id": "NEWS-04",
+    "date": "2026-08-15",
+    "source": "CyberScoop",
+    "headline": "CyberArk expands into cloud entitlement management",
+    "summary": "CyberArk announced new CIEM capabilities, moving further into governance-adjacent territory.",
+    "topic": "Competitor move",
+    "sentiment": "neutral",
+    "competitor_mentioned": "CyberArk",
+    "is_trigger": false
+  },
+  {
+    "id": "NEWS-05",
+    "date": "2026-08-10",
+    "source": "CRN",
+    "headline": "SailPoint named a leader in identity governance",
+    "summary": "SailPoint recognized for governance depth and enterprise scale.",
+    "topic": "SailPoint win",
+    "sentiment": "positive",
+    "competitor_mentioned": null,
+    "is_trigger": false
+  }
+]

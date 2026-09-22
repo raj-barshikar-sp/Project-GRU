@@ -1,0 +1,37 @@
+{
+  "min_employee_count": 2000,
+  "max_employee_count": 60000,
+  "target_industries": [
+    "Financial Services",
+    "Healthcare",
+    "Manufacturing",
+    "Technology",
+    "Public Sector"
+  ],
+  "industry_weights": {
+    "Financial Services": 100,
+    "Healthcare": 90,
+    "Public Sector": 85,
+    "Manufacturing": 75,
+    "Technology": 70,
+    "Retail": 55
+  },
+  "priority_keywords": [
+    "Zero Trust",
+    "Zero Trust Architecture",
+    "Least Privilege Access",
+    "Microsegmentation",
+    "Identity Aware Proxy",
+    "Compliance Automation"
+  ],
+  "weights": {
+    "firmographic": 0.35,
+    "intent": 0.35,
+    "engagement": 0.15,
+    "pipeline": 0.15
+  },
+  "tier_thresholds": {
+    "Tier 1": 72,
+    "Tier 2": 52
+  }
+}

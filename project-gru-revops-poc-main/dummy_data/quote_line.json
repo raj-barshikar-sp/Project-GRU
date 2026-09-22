@@ -1,0 +1,72 @@
+[
+  {
+    "quote_id": "Q-711",
+    "sku_name": "StoreOps Analytics",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-711",
+    "sku_name": "Inventory Sync",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-711",
+    "sku_name": "Franchisee rollout kit",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-241",
+    "sku_name": "Quote-to-Cash",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-241",
+    "sku_name": "Oracle connector",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-318",
+    "sku_name": "Partner Portal",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-318",
+    "sku_name": "Agentic AI Add-on Module",
+    "is_agentic_attached": true
+  },
+  {
+    "quote_id": "Q-402",
+    "sku_name": "Paid diagnostic — one payout rail",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-570",
+    "sku_name": "Care analytics",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-570",
+    "sku_name": "Agentic AI Add-on Module",
+    "is_agentic_attached": true
+  },
+  {
+    "quote_id": "Q-570",
+    "sku_name": "BAA addendum",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-611",
+    "sku_name": "Trade Promotion Intelligence",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-788",
+    "sku_name": "Americas GTM system",
+    "is_agentic_attached": false
+  },
+  {
+    "quote_id": "Q-788",
+    "sku_name": "Frankfurt residency exhibit",
+    "is_agentic_attached": false
+  }
+]

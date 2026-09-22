@@ -1,0 +1,30 @@
+[
+  {
+    "account": "7-Eleven",
+    "last_content_view_date": "2026-08-27"
+  },
+  {
+    "account": "Acme Corp",
+    "last_content_view_date": "2026-08-10"
+  },
+  {
+    "account": "GlobalTech",
+    "last_content_view_date": "2026-08-29"
+  },
+  {
+    "account": "NovaPay",
+    "last_content_view_date": ""
+  },
+  {
+    "account": "Meridian Health",
+    "last_content_view_date": "2026-08-30"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "last_content_view_date": "2026-08-16"
+  },
+  {
+    "account": "Helix Robotics",
+    "last_content_view_date": "2026-08-20"
+  }
+]

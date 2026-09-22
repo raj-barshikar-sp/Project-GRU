@@ -1,0 +1,62 @@
+[
+  {
+    "id": "SOC-01",
+    "platform": "LinkedIn",
+    "author": "iam_architect",
+    "date": "2026-09-03",
+    "text": "SailPoint's access modeling saved our team weeks on the last certification cycle. Genuinely impressed.",
+    "url": "https://linkedin.com/posts/soc-01",
+    "is_question": false,
+    "seed_sentiment": "positive"
+  },
+  {
+    "id": "SOC-02",
+    "platform": "X",
+    "author": "@ciso_notes",
+    "date": "2026-09-03",
+    "text": "Frustrated with how long our SailPoint connectors took to configure. Support has been slow to respond.",
+    "url": "https://x.com/soc-02",
+    "is_question": false,
+    "seed_sentiment": "negative"
+  },
+  {
+    "id": "SOC-03",
+    "platform": "Reddit",
+    "author": "u/sysadmin_throwaway",
+    "date": "2026-09-02",
+    "text": "Anyone compared SailPoint vs Saviynt for a healthcare org? Trying to shortlist.",
+    "url": "https://reddit.com/r/cybersecurity/soc-03",
+    "is_question": true,
+    "seed_sentiment": "neutral"
+  },
+  {
+    "id": "SOC-04",
+    "platform": "YouTube",
+    "author": "SecurityWeekly",
+    "date": "2026-09-01",
+    "text": "Great walkthrough of identity governance trends featuring SailPoint. Worth a watch.",
+    "url": "https://youtube.com/watch?v=soc-04",
+    "is_question": false,
+    "seed_sentiment": "positive"
+  },
+  {
+    "id": "SOC-05",
+    "platform": "X",
+    "author": "@identitygeek",
+    "date": "2026-08-31",
+    "text": "Is SailPoint's non-employee risk module GA yet? Docs are unclear.",
+    "url": "https://x.com/soc-05",
+    "is_question": true,
+    "seed_sentiment": "neutral"
+  },
+  {
+    "id": "SOC-06",
+    "platform": "LinkedIn",
+    "author": "grc_lead",
+    "date": "2026-08-30",
+    "text": "Switched off One Identity to SailPoint and audit prep is night and day. Should have done it sooner.",
+    "url": "https://linkedin.com/posts/soc-06",
+    "is_question": false,
+    "seed_sentiment": "positive"
+  }
+]

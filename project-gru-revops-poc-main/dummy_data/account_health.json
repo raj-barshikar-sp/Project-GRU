@@ -1,0 +1,44 @@
+[
+  {
+    "account": "7-Eleven",
+    "health_score": 86,
+    "churn_risk_arr": 0,
+    "csm_name": "Priya Shah"
+  },
+  {
+    "account": "Acme Corp",
+    "health_score": 68,
+    "churn_risk_arr": 0,
+    "csm_name": "Helen Cho"
+  },
+  {
+    "account": "GlobalTech",
+    "health_score": 42,
+    "churn_risk_arr": 240000,
+    "csm_name": "Nina Park"
+  },
+  {
+    "account": "NovaPay",
+    "health_score": 12,
+    "churn_risk_arr": 0,
+    "csm_name": ""
+  },
+  {
+    "account": "Meridian Health",
+    "health_score": 81,
+    "churn_risk_arr": 0,
+    "csm_name": "Alicia Chen"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "health_score": 57,
+    "churn_risk_arr": 40000,
+    "csm_name": "Diego Alvarez"
+  },
+  {
+    "account": "Helix Robotics",
+    "health_score": 50,
+    "churn_risk_arr": 0,
+    "csm_name": "Lena Vogt"
+  }
+]

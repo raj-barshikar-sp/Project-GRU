@@ -1,0 +1,150 @@
+{
+  "space": "GTM-OPS",
+  "synced_at": "2026-09-20T14:30:00Z",
+  "version": "2.0-enriched",
+  "documents": [
+    {
+      "id": "CONF-DOC-005",
+      "title": "Deal Desk & GTM Stage Gate Governance: Required Evidence & Exit Criteria",
+      "space": "GTM-OPS",
+      "last_updated": "2026-08-15",
+      "author": "RevOps & Global Deal Desk",
+      "content": {
+        "summary": "Mandatory stage progression requirements, exit criteria, and stagnation thresholds for SailPoint enterprise opportunities.",
+        "stage_definitions_and_exit_gates": [
+          {
+            "stage": "SS20 - Discovery & Scoping",
+            "probability": "20-30%",
+            "max_stagnation_threshold_days": 45,
+            "required_evidence_fields": [
+              "Boat__c (Assigned Territory)",
+              "Primary_Contact_Role (Champion or Sponsor)",
+              "Initial_Pain_Points__c (Documented business drivers)",
+              "Lead_SE_Requested__c (Boolean flag)"
+            ],
+            "exit_criteria": "Customer confirms active evaluation, initial technical requirements defined, and Lead SE assigned for POV scoping."
+          },
+          {
+            "stage": "SS40 - Technical Validation & POV",
+            "probability": "40-60%",
+            "max_stagnation_threshold_days": 60,
+            "required_evidence_fields": [
+              "Lead_SE__c (Mandatory assignment)",
+              "POV_Success_Criteria_Doc__c (Link to mutual test plan)",
+              "Competitor_Identified__c",
+              "Tech_Win_Loss__c (Must be 'Pending POV' or 'Technical Win')"
+            ],
+            "exit_criteria": "Formal Technical Win declared by Lead SE and acknowledged by customer technical evaluators."
+          },
+          {
+            "stage": "SS50 - Scoping & Sizing",
+            "probability": "60-70%",
+            "max_stagnation_threshold_days": 30,
+            "required_evidence_fields": [
+              "Identity_Volume_Count__c (Target user count)",
+              "Connector_Pack_Count__c (Target applications)",
+              "Professional_Services_Scope__c (SOW tier)"
+            ],
+            "exit_criteria": "Architecture sizing complete and confirmed by Solution Engineering."
+          },
+          {
+            "stage": "SS60 - Economic Buyer Validation",
+            "probability": "70-80%",
+            "max_stagnation_threshold_days": 30,
+            "required_evidence_fields": [
+              "Economic_Buyer_Contact_Id",
+              "Budget_Confirmed_Date__c",
+              "Mutual_Close_Plan_URL__c"
+            ],
+            "exit_criteria": "Economic Buyer directly validates business case, budget authorization, and procurement schedule."
+          },
+          {
+            "stage": "SS70 - Proposal & Business Case",
+            "probability": "80-89%",
+            "max_stagnation_threshold_days": 30,
+            "required_evidence_fields": [
+              "CPQ_Quote_Approved__c (Active approved CPQ quote)",
+              "Tech_Win_Loss__c == 'Technical Win' (Strict prerequisite)",
+              "Proposal_Delivered_Date__c",
+              "Manager_Notes__c (Updated within 7 days)"
+            ],
+            "exit_criteria": "Commercial proposal delivered, pricing terms agreed in principle, and quote moved to final contracting."
+          },
+          {
+            "stage": "SS90 - Legal & Security Review",
+            "probability": "90-99%",
+            "max_stagnation_threshold_days": 21,
+            "required_evidence_fields": [
+              "Security_Review_Approved__c",
+              "MSA_Redlines_Complete__c",
+              "Order_Form_Status__c (Out for Signature)"
+            ],
+            "exit_criteria": "All contracts countersigned by customer CFO/General Counsel."
+          }
+        ],
+        "stagnation_policy": "Any opportunity exceeding the max stagnation threshold days in a single stage without an updated NextStep within 14 days will be automatically downgraded in Early Guidance Tiers and flagged for Sales Manager escalation."
+      }
+    },
+    {
+      "id": "CONF-DOC-001",
+      "title": "FY26 Global Rules of Engagement (ROE) - Americas",
+      "space": "GTM-OPS",
+      "last_updated": "2026-02-01",
+      "author": "RevOps & Sales Strategy",
+      "content": {
+        "summary": "Defines account ownership, split commission policies, and territory boundaries for Commercial, Enterprise, and Strategic boats.",
+        "key_rules": [
+          "Account Ownership: Determined by corporate parent HQ location and annual revenue band.",
+          "Split Policy: 50/50 commission split required on multi-region deals where >40% of deployed identities reside in a secondary AE's territory.",
+          "Deal Registration Grace Period: 30 days of exclusive protection post-qualification in SS20 stage."
+        ]
+      }
+    },
+    {
+      "id": "CONF-DOC-002",
+      "title": "CPQ Discount Approval Matrix & Deal Desk Thresholds",
+      "space": "GTM-OPS",
+      "last_updated": "2026-05-15",
+      "author": "Global Deal Desk",
+      "content": {
+        "summary": "Mandatory approval authority for software discounting across Identity Security Cloud (ISC), NERM, and ARM.",
+        "approval_tiers": [
+          {"tier": "Level 1 (Standard)", "discount_range": "0% - 15%", "approver": "First-line Sales Manager (Auto-approved if standard terms)"},
+          {"tier": "Level 2 (RVP Approval)", "discount_range": "15.1% - 25%", "approver": "Regional Vice President of Sales"},
+          {"tier": "Level 3 (Deal Desk & Finance)", "discount_range": "25.1% - 35%", "approver": "Head of Deal Desk & VP of Finance"},
+          {"tier": "Level 4 (CRO & CFO)", "discount_range": "> 35%", "approver": "Chief Revenue Officer & Chief Financial Officer"}
+        ]
+      }
+    },
+    {
+      "id": "CONF-DOC-003",
+      "title": "FY26 Sales Compensation Plan & Q3 SPIF Guidelines",
+      "space": "GTM-OPS",
+      "last_updated": "2026-07-01",
+      "author": "Sales Compensation Team",
+      "content": {
+        "summary": "Commission rates, accelerators, and special quarterly incentives for Q3 FY26.",
+        "accelerators_and_spifs": [
+          {"spif_name": "Q3 NERM Attach Multiplier", "details": "1.5x commission multiplier on all Non-Employee Risk Management ACV closed in Q3."},
+          {"spif_name": "IIQ-to-ISC Cloud Modernization Bounty", "details": "Additional $5,000 flat bonus per on-prem IIQ customer migrated to Cloud ISC with >= 3-year term commitment."},
+          {"accelerator": "Presidents Club Pacing", "details": "120% attainment at end of Q3 unlocks Tier 1 President's Club eligibility."}
+        ]
+      }
+    },
+    {
+      "id": "CONF-DOC-004",
+      "title": "Product Positioning & Competitive Battlecard: Identity Security Suite",
+      "space": "GTM-OPS",
+      "last_updated": "2026-08-10",
+      "author": "Product Marketing (PMM)",
+      "content": {
+        "summary": "Competitive battlecard and differentiation for ISC vs Okta, Saviynt, and Microsoft Entra ID Governance.",
+        "key_differentiators": [
+          "Non-Employee Governance (NERM): Native management of contractors, vendors, and AI agents.",
+          "Access Risk Management (ARM): Deep SOD (Segregation of Duties) analysis in SAP, Salesforce, and Workday.",
+          "AI-driven Insights: Autonomous role mining and outlier identity detection with verifiable audit trails."
+        ]
+      }
+    }
+  ]
+}

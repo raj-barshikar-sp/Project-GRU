@@ -1,0 +1,22 @@
+{
+  "tone": [
+    "Confident",
+    "Clear",
+    "Credible",
+    "Non-hyperbolic"
+  ],
+  "style_rules": [
+    "Lead with the customer outcome, not the product feature.",
+    "Prefer plain language over jargon; explain acronyms on first use.",
+    "Quantify claims wherever the data supports it.",
+    "Never disparage a competitor by name in public-facing copy."
+  ],
+  "banned_phrases": [
+    "revolutionary",
+    "game-changer",
+    "silver bullet",
+    "best-in-class",
+    "synergy"
+  ],
+  "boilerplate": "SailPoint is the leader in identity security for the modern enterprise, helping organizations see, control and govern access across every identity, application and data source."
+}

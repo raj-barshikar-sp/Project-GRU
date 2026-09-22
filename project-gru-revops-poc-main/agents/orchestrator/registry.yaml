@@ -1,0 +1,98 @@
+agents:
+  - id: revops_forecast
+    name: revops_forecast
+    description: Regional forecast rollups, missing number fields, and commit risk.
+    capabilities:
+      - commit_total
+      - upside_total
+      - missing_data
+      - risks
+    trigger_phrases:
+      - regional forecast
+      - forecast rollup
+      - missing forecast
+      - validate forecast risks
+      - verbal call
+      - Rev Intel
+      - pipeline cover
+
+  - id: revops_quoting
+    name: revops_quoting
+    description: Quote pricing deviations, quote errors, and product bundles.
+    capabilities:
+      - deviations
+      - quote_errors
+      - bundles
+    trigger_phrases:
+      - quote pricing deviations
+      - errors in quotes
+      - product bundles
+      - SS20
+      - SS40
+      - deal desk
+
+  - id: revops_reporting
+    name: revops_reporting
+    description: QBR decks, forecast reviews, pipeline reviews, and KPI packs.
+    capabilities:
+      - slides
+      - report_type
+      - kpis
+    trigger_phrases:
+      - QBR deck
+      - forecast review
+      - pipeline review
+      - KPI decks
+      - key KPIs
+      - weekly, monthly, and quarterly
+
+  - id: revops_hygiene
+    name: revops_hygiene
+    description: Inspect expected fields, participation, deal hygiene, and notes.
+    capabilities:
+      - gaps
+      - findings
+    trigger_phrases:
+      - inspect what we expect
+      - participation
+      - deal hygiene
+      - updated notes
+
+  - id: revops_otc
+    name: revops_otc
+    description: Credit exposure and ARR calculator.
+    capabilities:
+      - arr
+      - headroom
+      - hold
+    trigger_phrases:
+      - credit and ARR
+      - ARR calculator
+      - credit exposure
+      - aging receivables
+
+  - id: revops_pricing
+    name: revops_pricing
+    description: Pricing waterfall versus floor and peer discount bands.
+    capabilities:
+      - waterfall
+      - below_floor
+      - peer_band
+    trigger_phrases:
+      - pricing analytics
+      - price waterfall
+      - deal score
+      - revenue levers
+
+  - id: synthesis
+    name: synthesis
+    description: Merges specialist findings into one AE-facing answer.
+    capabilities:
+      - summary
+      - insights
+      - actions
+      - artifacts
+    trigger_phrases:
+      - put it together
+      - final answer
+      - merge findings

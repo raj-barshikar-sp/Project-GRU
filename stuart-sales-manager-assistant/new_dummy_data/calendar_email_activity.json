@@ -1,0 +1,80 @@
+{
+  "system": "Google Calendar & Email Workspace",
+  "synced_at": "2026-09-20T14:30:00Z",
+  "version": "2.0-enriched",
+  "calendar_events": [
+    {
+      "event_id": "cal_evt_0019283",
+      "deal_id": "0068b00001Deal001",
+      "deal_name": "Global Logistics Corp - IIQ Modernization",
+      "organizer_email": "sarah.jenkins@sailpoint.com",
+      "title": "Global Logistics & SailPoint: Executive Business Case Review",
+      "start_time": "2026-09-24T14:00:00Z",
+      "end_time": "2026-09-24T15:00:00Z",
+      "status": "confirmed",
+      "executive_present": true,
+      "attendees": [
+        {"email": "sarah.jenkins@sailpoint.com", "role": "Organizer / AE"},
+        {"email": "alex.morgan@sailpoint.com", "role": "Lead SE"},
+        {"email": "cfo@globallogistics.com", "role": "Economic Buyer"},
+        {"email": "ciso@globallogistics.com", "role": "Technical Champion"}
+      ]
+    },
+    {
+      "event_id": "cal_evt_0019284",
+      "deal_id": "0068b00001Deal006",
+      "deal_name": "Meridian Bank - Full Platform & NERM",
+      "organizer_email": "elena.rodriguez@sailpoint.com",
+      "title": "Meridian Bank Steering Committee & Final Sign-off Prep",
+      "start_time": "2026-09-24T10:00:00Z",
+      "end_time": "2026-09-24T11:00:00Z",
+      "status": "confirmed",
+      "executive_present": true,
+      "attendees": [
+        {"email": "elena.rodriguez@sailpoint.com", "role": "Organizer / AE"},
+        {"email": "chris.vance@sailpoint.com", "role": "Lead SE"},
+        {"email": "cio@meridianbank.com", "role": "Executive Sponsor"},
+        {"email": "head_of_procurement@meridianbank.com", "role": "Procurement"}
+      ]
+    },
+    {
+      "event_id": "cal_evt_0019285",
+      "deal_id": "0068b00001Deal007",
+      "deal_name": "Horizon BioPharma - Identity Security Cloud",
+      "organizer_email": "marcus.brody@sailpoint.com",
+      "title": "Horizon BioPharma / SailPoint Catch-up",
+      "start_time": "2026-09-15T15:00:00Z",
+      "end_time": "2026-09-15T15:30:00Z",
+      "status": "cancelled",
+      "executive_present": false,
+      "attendees": [
+        {"email": "marcus.brody@sailpoint.com", "role": "Organizer / AE"},
+        {"email": "iam_manager@horizonbio.com", "role": "Champion (On Leave)"}
+      ]
+    }
+  ],
+  "email_threads": [
+    {
+      "thread_id": "em_thr_8812739",
+      "deal_id": "0068b00001Deal001",
+      "subject": "Re: SailPoint Order Form & Pricing Schedule - Global Logistics",
+      "total_messages": 14,
+      "inbound_count": 6,
+      "outbound_count": 8,
+      "last_message_date": "2026-09-19T13:45:00Z",
+      "sentiment": "positive",
+      "last_inbound_snippet": "Legal has signed off on the cloud schedule addendum. We will have the PO ready post CFO meeting on Thursday."
+    },
+    {
+      "thread_id": "em_thr_8812740",
+      "deal_id": "0068b00001Deal002",
+      "subject": "SailPoint POV Success Criteria Follow-up",
+      "total_messages": 4,
+      "inbound_count": 1,
+      "outbound_count": 3,
+      "last_message_date": "2026-08-28T09:12:00Z",
+      "sentiment": "unresponsive",
+      "last_inbound_snippet": "We are reviewing priorities internally and will get back to you if we decide to proceed with the POV."
+    }
+  ]
+}

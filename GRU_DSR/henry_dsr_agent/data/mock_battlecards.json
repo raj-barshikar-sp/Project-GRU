@@ -1,0 +1,142 @@
+[
+  {
+    "competitor_name": "CyberArk",
+    "weaknesses": [
+      "PAM-centric architecture",
+      "Complex governance integrations",
+      "High administrative overhead"
+    ],
+    "kill_points": "Unify identity governance, access intelligence, and privileged controls with one identity-security foundation.",
+    "trap_questions": [
+      "How are access certifications connected to privileged-account risk?",
+      "How many consoles are required to investigate one identity?"
+    ],
+    "value_hook": "Reduce identity risk without stitching together separate governance and privileged-access processes."
+  },
+  {
+    "competitor_name": "Saviynt",
+    "weaknesses": [
+      "Implementation complexity",
+      "Heavy customization",
+      "Inconsistent upgrade experience"
+    ],
+    "kill_points": "Lead with predictable deployment, mature governance workflows, and explainable access intelligence.",
+    "trap_questions": [
+      "How much custom code must be retested during upgrades?",
+      "How quickly can application owners complete a certification?"
+    ],
+    "value_hook": "Get durable governance outcomes with less operational burden."
+  },
+  {
+    "competitor_name": "Legacy CA",
+    "weaknesses": [
+      "Legacy user experience",
+      "Slow connector maintenance",
+      "Limited cloud-native analytics"
+    ],
+    "kill_points": "Modernize governance while preserving phased coexistence and audit continuity.",
+    "trap_questions": [
+      "Which manual processes compensate for missing cloud connectors?",
+      "How long does an audit evidence request take today?"
+    ],
+    "value_hook": "Replace brittle legacy governance with cloud-scale identity security."
+  },
+  {
+    "competitor_name": "Ping Identity",
+    "weaknesses": [
+      "Access-management focus",
+      "Limited native identity governance depth",
+      "Separate governance tooling required"
+    ],
+    "kill_points": "Expand from authentication into complete identity governance and risk-based lifecycle controls.",
+    "trap_questions": [
+      "How are joiner-mover-leaver controls governed beyond authentication?",
+      "Where do access reviews happen today?"
+    ],
+    "value_hook": "Connect workforce access to continuous identity governance."
+  },
+  {
+    "competitor_name": "Okta",
+    "weaknesses": [
+      "Authentication-led platform",
+      "Governance depth varies by use case",
+      "Multiple products needed for full identity security"
+    ],
+    "kill_points": "Show unified governance, access intelligence, and lifecycle controls beyond authentication-first workflows.",
+    "trap_questions": [
+      "How are complex access certifications handled across non-Okta applications?",
+      "Which team correlates authentication events with governance risk?"
+    ],
+    "value_hook": "Turn workforce authentication into complete, risk-aware identity governance."
+  },
+  {
+    "competitor_name": "Microsoft Entra ID",
+    "weaknesses": [
+      "Best fit within Microsoft ecosystem",
+      "Complex licensing tiers",
+      "Limited heterogeneous application governance depth"
+    ],
+    "kill_points": "Lead with vendor-neutral governance across hybrid estates and clearer identity-risk operations.",
+    "trap_questions": [
+      "How are non-Microsoft entitlements governed consistently?",
+      "What premium licenses are required for the complete control set?"
+    ],
+    "value_hook": "Govern every identity and application without ecosystem lock-in."
+  },
+  {
+    "competitor_name": "One Identity",
+    "weaknesses": [
+      "Complex product portfolio",
+      "Specialized administration skills",
+      "Lengthy customization cycles"
+    ],
+    "kill_points": "Emphasize faster time to value, cohesive cloud operations, and accessible governance workflows.",
+    "trap_questions": [
+      "How many specialized administrators maintain the current deployment?",
+      "How long does a new application onboarding take?"
+    ],
+    "value_hook": "Simplify enterprise identity governance while accelerating application coverage."
+  },
+  {
+    "competitor_name": "Omada",
+    "weaknesses": [
+      "Governance-centric scope",
+      "Limited identity threat intelligence",
+      "Partner-dependent implementations"
+    ],
+    "kill_points": "Connect mature governance with identity-risk analytics and broader security outcomes.",
+    "trap_questions": [
+      "How are identity threats prioritized outside scheduled reviews?",
+      "Which capabilities require implementation-partner customization?"
+    ],
+    "value_hook": "Move from periodic governance to continuous identity security."
+  },
+  {
+    "competitor_name": "IBM Security Verify",
+    "weaknesses": [
+      "Broad portfolio complexity",
+      "Inconsistent experience across acquired capabilities",
+      "Services-heavy deployments"
+    ],
+    "kill_points": "Offer a coherent identity-security experience with predictable deployment and administration.",
+    "trap_questions": [
+      "How many IBM components support one end-to-end identity process?",
+      "What services effort is required after each major change?"
+    ],
+    "value_hook": "Consolidate fragmented identity controls into one operational model."
+  },
+  {
+    "competitor_name": "Oracle Identity Governance",
+    "weaknesses": [
+      "Legacy architecture",
+      "High customization burden",
+      "Costly upgrades and maintenance"
+    ],
+    "kill_points": "Modernize to cloud-scale governance with rapid connectors and reduced custom-code dependency.",
+    "trap_questions": [
+      "How much custom code blocks upgrades today?",
+      "How quickly can cloud applications be brought under governance?"
+    ],
+    "value_hook": "Retire expensive legacy governance without sacrificing audit continuity."
+  }
+]

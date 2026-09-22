@@ -1,0 +1,16 @@
+agents:
+  - id: crm_intelligence_specialist
+    description: CRM scores, stage evidence, roll-up, coverage, and deal backup.
+    capabilities: [crm_score, stage_validation, rollup, coverage, backup]
+  - id: activity_engagement_specialist
+    description: Gong verbal calls plus calendar, email, and weekly engagement.
+    capabilities: [verbal_calls, calendar, email, engagement, weekly_updates]
+  - id: rep_performance_specialist
+    description: Workday productivity minima, actuals, Gong coaching, and manager oversight.
+    capabilities: [productivity, expectations, coaching, oversight]
+  - id: forecast_modeling_specialist
+    description: Quotas, pacing, conversion, Q+1/Q+2 forecasts, stagnation, and risk.
+    capabilities: [quota, pacing, conversion, forecast, stagnation, risk]
+  - id: knowledge_base_rag
+    description: Approved Confluence policy, product, compensation, and competitive knowledge.
+    capabilities: [policy, product, compensation, competitive, commercial_rules]

@@ -1,0 +1,26 @@
+[
+  {
+    "rep_name": "Avery Cole",
+    "rep_id": "REP-1042",
+    "fiscal_week": "2026-Q3-W09",
+    "verbal_call_acv": 2400000
+  },
+  {
+    "rep_name": "Jordan Patel",
+    "rep_id": "REP-1188",
+    "fiscal_week": "2026-Q3-W09",
+    "verbal_call_acv": 400000
+  },
+  {
+    "rep_name": "Sam Rivera",
+    "rep_id": "REP-2210",
+    "fiscal_week": "2026-Q3-W09",
+    "verbal_call_acv": 1250000
+  },
+  {
+    "rep_name": "Casey Nguyen",
+    "rep_id": "REP-3301",
+    "fiscal_week": "2026-Q3-W09",
+    "verbal_call_acv": 3100000
+  }
+]

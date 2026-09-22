@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="in-workspace dash-html">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>James — dashboard</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/static/assets/logo.png" type="image/png" />
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem("gru-theme");
+          const theme =
+            saved === "light" || saved === "dark"
+              ? saved
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css?v=204" />
+    <link rel="stylesheet" href="/static/transitions.css?v=204" />
+  </head>
+  <body class="in-workspace dash-body">
+    <div class="shell dash-shell" id="dashboard">
+      <aside class="sidebar" id="sidebar" aria-label="Workspace">
+        <div class="sidebar-inner">
+        <nav class="sidebar-nav">
+          <a class="sidebar-nav-item" href="/chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+            </svg>
+            Chat
+          </a>
+          <a class="sidebar-nav-item is-active" href="/dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z" />
+            </svg>
+            Dashboard
+          </a>
+          <a class="sidebar-nav-item" id="nav-artifacts" href="/chat?view=artifacts">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6" />
+            </svg>
+            Artifacts
+          </a>
+        </nav>
+        </div>
+      </aside>
+
+      <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+      <header class="workspace-bar">
+        <div class="bar-cluster bar-start">
+          <button
+            type="button"
+            class="bar-logo"
+            id="toggle-sidebar"
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Hide sidebar"
+          >
+            <img class="bar-sp-logo bar-sp-logo-light" src="/static/assets/sailpoint-logo.png" alt="SailPoint" height="22" />
+            <img class="bar-sp-logo bar-sp-logo-dark" src="/static/assets/sailpoint-logo-inverse.png" alt="" height="22" />
+          </button>
+        </div>
+        <div class="bar-brand">
+          <img class="bar-bob" src="/static/james.png?v=2" alt="" width="19" height="34" />
+          <div class="bar-brand-copy">
+            <span class="bar-fullname">James the Marketing Minion</span>
+          </div>
+        </div>
+        <div class="bar-cluster bar-end">
+          <button type="button" class="bar-btn bar-btn-icon theme-toggle t-icon-swap" data-theme-toggle data-state="a" aria-label="Switch to dark mode">
+            <svg class="theme-icon theme-icon-moon t-icon" data-icon="a" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-sun t-icon" data-icon="b" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M6.3 17.7l1.4-1.4M16.3 7.7l1.4-1.4"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="dash-stage">
+      <div class="dash-main">
+        <section class="dash-toolbar">
+          <div class="dash-toolbar-copy">
+            <p class="dash-kicker">SailPoint · Marketing</p>
+            <h1>Campaigns</h1>
+          </div>
+          <form class="dash-filters" aria-label="Campaign filters">
+            <label class="dash-field">
+              <span>Spend</span>
+              <select id="filter-sizes" name="size"></select>
+            </label>
+            <label class="dash-field">
+              <span>Type</span>
+              <select id="filter-stages" name="stage"></select>
+            </label>
+            <label class="dash-field">
+              <span>Time</span>
+              <select id="filter-windows" name="time"></select>
+            </label>
+            <label class="dash-field">
+              <span>Geo</span>
+              <select id="filter-geos" name="geo"></select>
+            </label>
+            <button type="button" class="dash-clear" id="dash-clear">Clear</button>
+          </form>
+        </section>
+
+        <div class="dash-layout">
+          <div class="t-skel" id="dash-skel">
+          <div class="t-skel-skeleton is-pulsing">
+            <div class="dash-skel-block"></div>
+            <div class="dash-skel-block"></div>
+            <div class="dash-skel-block"></div>
+          </div>
+          <div class="t-skel-content">
+          <div class="dash-primary dash-live" id="dash-live">
+            <section class="dash-kpis" id="dash-kpis" aria-label="Campaign snapshot"></section>
+            <section class="dash-grid">
+              <article class="dash-card">
+                <div class="dash-card-head">
+                  <h2>Spend by type</h2>
+                  <p class="dash-muted">Click a bar to filter</p>
+                </div>
+                <div class="dash-chart" id="chart-stage"></div>
+              </article>
+              <article class="dash-card">
+                <div class="dash-card-head">
+                  <h2>Mix by spend</h2>
+                  <p class="dash-muted">Click a slice to filter</p>
+                </div>
+                <div class="dash-chart dash-chart-size" id="chart-size"></div>
+              </article>
+            </section>
+            <section class="dash-card dash-table-card">
+              <div class="dash-card-head">
+                <h2>Campaigns</h2>
+                <p class="dash-muted"><span class="t-text-swap" id="opp-count"></span></p>
+              </div>
+              <div class="dash-table-wrap">
+                <table class="dash-table" id="opp-table">
+                  <thead>
+                    <tr>
+                      <th>Campaign</th>
+                      <th>Geo</th>
+                      <th>Type</th>
+                      <th><button type="button" class="dash-sort" data-sort="amount">Spend</button></th>
+                      <th><button type="button" class="dash-sort" data-sort="mqls">MQLs</button></th>
+                      <th><button type="button" class="dash-sort" data-sort="close_date">End</button></th>
+                      <th><button type="button" class="dash-sort" data-sort="health">Health</button></th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+          </div>
+          </div>
+
+          <aside class="dash-aside">
+            <section class="dash-card dash-rail">
+              <div class="dash-rail-tabs t-tabs" role="tablist" aria-label="Work feed">
+                <span class="t-tabs-pill" aria-hidden="true"></span>
+                <button type="button" class="dash-rail-tab t-tab is-on" data-rail="tasks" role="tab" aria-selected="true">Tasks</button>
+                <button type="button" class="dash-rail-tab t-tab" data-rail="notes" data-label="Alerts" role="tab" aria-selected="false">Alerts</button>
+                <button type="button" class="dash-rail-tab t-tab" data-rail="slack" data-label="Slack" role="tab" aria-selected="false">Slack</button>
+              </div>
+              <div class="dash-rail-pane is-on" data-pane="tasks" role="tabpanel">
+                <div class="dash-tasks" id="dash-tasks"></div>
+              </div>
+              <div class="dash-rail-pane" data-pane="notes" role="tabpanel" hidden>
+                <ul class="dash-feed" id="dash-notes"></ul>
+              </div>
+              <div class="dash-rail-pane" data-pane="slack" role="tabpanel" hidden>
+                <div class="dash-slack" id="dash-slack"></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="dash-tip t-tt" id="dash-tip" data-show="false" hidden>
+      <span class="t-tt-text" id="dash-tip-text"></span>
+    </div>
+    <script src="/static/transitions.js?v=204"></script>
+    <script src="/static/theme.js?v=204"></script>
+    <script src="/static/dashboard.js?v=204"></script>
+  </body>
+</html>

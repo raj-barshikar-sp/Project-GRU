@@ -1,0 +1,66 @@
+[
+  {
+    "bundle_id": "B-STOREOPS",
+    "sku_name": "StoreOps Analytics"
+  },
+  {
+    "bundle_id": "B-STOREOPS",
+    "sku_name": "Inventory Sync"
+  },
+  {
+    "bundle_id": "B-STOREOPS",
+    "sku_name": "Franchisee rollout kit"
+  },
+  {
+    "bundle_id": "B-QTC",
+    "sku_name": "Quote-to-Cash"
+  },
+  {
+    "bundle_id": "B-QTC",
+    "sku_name": "Oracle connector"
+  },
+  {
+    "bundle_id": "B-QTC",
+    "sku_name": "Capped PS"
+  },
+  {
+    "bundle_id": "B-PORTAL",
+    "sku_name": "Partner Portal"
+  },
+  {
+    "bundle_id": "B-PORTAL",
+    "sku_name": "Singapore region pack"
+  },
+  {
+    "bundle_id": "B-DIAG",
+    "sku_name": "Paid diagnostic — one payout rail"
+  },
+  {
+    "bundle_id": "B-CARE",
+    "sku_name": "Care analytics"
+  },
+  {
+    "bundle_id": "B-CARE",
+    "sku_name": "BAA addendum"
+  },
+  {
+    "bundle_id": "B-CARE",
+    "sku_name": "Nursing informatics pack"
+  },
+  {
+    "bundle_id": "B-TPI",
+    "sku_name": "Trade Promotion Intelligence"
+  },
+  {
+    "bundle_id": "B-TPI",
+    "sku_name": "Usage collar"
+  },
+  {
+    "bundle_id": "B-GTM",
+    "sku_name": "Americas GTM system"
+  },
+  {
+    "bundle_id": "B-GTM",
+    "sku_name": "Frankfurt residency exhibit"
+  }
+]

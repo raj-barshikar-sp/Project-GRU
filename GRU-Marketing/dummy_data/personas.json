@@ -1,0 +1,89 @@
+[
+  {
+    "key": "CISO",
+    "title": "Chief Information Security Officer",
+    "priorities": [
+      "Reduce breach risk",
+      "Zero Trust program maturity",
+      "Board-level risk reporting"
+    ],
+    "pains": [
+      "Standing privilege and access sprawl",
+      "No unified view of who has access to what",
+      "Audit findings on access controls"
+    ],
+    "messaging_angle": "Identity is the control plane for Zero Trust; govern access to shrink the attack surface.",
+    "proof_points": [
+      "30% reduction in identity-related breach exposure",
+      "Continuous certification instead of point-in-time"
+    ],
+    "common_objections": [
+      "We already have PAM",
+      "This looks like a multi-year program"
+    ]
+  },
+  {
+    "key": "CIO",
+    "title": "Chief Information Officer",
+    "priorities": [
+      "Operational efficiency",
+      "Cloud migration",
+      "IT cost control"
+    ],
+    "pains": [
+      "Manual provisioning drains the service desk",
+      "M&A integration of identity is slow"
+    ],
+    "messaging_angle": "Automate the identity lifecycle to free IT capacity and accelerate cloud and M&A.",
+    "proof_points": [
+      "70% less manual effort on access reviews",
+      "Faster onboarding of new hires and contractors"
+    ],
+    "common_objections": [
+      "We have budget pressure this year"
+    ]
+  },
+  {
+    "key": "IAM_Director",
+    "title": "Director of Identity & Access Management",
+    "priorities": [
+      "Consolidate identity tooling",
+      "Reduce orphaned accounts",
+      "Prove control coverage"
+    ],
+    "pains": [
+      "Legacy IGA is end-of-life and brittle",
+      "Certifications are a quarterly fire drill"
+    ],
+    "messaging_angle": "Replace brittle legacy IGA with SaaS-native automation your team can actually operate.",
+    "proof_points": [
+      "Deploys in weeks, not quarters",
+      "Out-of-the-box connectors for the app estate"
+    ],
+    "common_objections": [
+      "Rip-and-replace is risky",
+      "My team is already stretched"
+    ]
+  },
+  {
+    "key": "Compliance_Officer",
+    "title": "Head of IT Risk & Compliance",
+    "priorities": [
+      "Audit readiness",
+      "Regulatory evidence",
+      "Segregation of duties"
+    ],
+    "pains": [
+      "Evidence collection is manual and error-prone",
+      "SoD violations surface only at audit time"
+    ],
+    "messaging_angle": "Turn access governance into always-on, audit-ready evidence.",
+    "proof_points": [
+      "Continuous SoD monitoring",
+      "One-click audit evidence packs"
+    ],
+    "common_objections": [
+      "Our auditors accept our current process"
+    ]
+  }
+]

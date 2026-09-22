@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Executive Spokesperson",
+    "title": "Chief Product Officer",
+    "themes": [
+      "Identity as the Zero Trust control plane",
+      "AI in access governance"
+    ],
+    "sample_quote": "Every breach eventually traces back to access that should not have existed. Governing identity is how you shrink that surface."
+  },
+  {
+    "name": "Field CISO",
+    "title": "Field CISO",
+    "themes": [
+      "Audit readiness",
+      "Third-party risk"
+    ],
+    "sample_quote": "Continuous certification turns audit season from a fire drill into a report you can already produce."
+  }
+]

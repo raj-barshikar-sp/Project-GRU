@@ -1,0 +1,37 @@
+[
+  {
+    "account": "7-Eleven",
+    "last_inbound_email_date": "2026-08-26",
+    "outbound_count_since_inbound": 1
+  },
+  {
+    "account": "Acme Corp",
+    "last_inbound_email_date": "2026-08-12",
+    "outbound_count_since_inbound": 4
+  },
+  {
+    "account": "GlobalTech",
+    "last_inbound_email_date": "2026-08-28",
+    "outbound_count_since_inbound": 0
+  },
+  {
+    "account": "NovaPay",
+    "last_inbound_email_date": "2025-09-10",
+    "outbound_count_since_inbound": 7
+  },
+  {
+    "account": "Meridian Health",
+    "last_inbound_email_date": "2026-08-29",
+    "outbound_count_since_inbound": 1
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "last_inbound_email_date": "2026-08-15",
+    "outbound_count_since_inbound": 3
+  },
+  {
+    "account": "Helix Robotics",
+    "last_inbound_email_date": "2026-08-22",
+    "outbound_count_since_inbound": 2
+  }
+]

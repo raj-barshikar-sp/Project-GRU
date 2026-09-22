@@ -1,0 +1,77 @@
+{
+  "eval_set_id": "stuart_routing",
+  "name": "Stuart Sales Manager routing",
+  "description": "Expected direct specialist and hidden-writer names.",
+  "eval_cases": [
+    {
+      "eval_id": "greeting_no_tools",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "greeting",
+        "user_content": {"role": "user", "parts": [{"text": "hello"}]},
+        "final_response": {"role": "model", "parts": [{"text": "Hi — what should we review?"}]},
+        "intermediate_data": {"tool_uses": [], "intermediate_responses": []}
+      }]
+    },
+    {
+      "eval_id": "crm_intelligence",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "crm",
+        "user_content": {"role": "user", "parts": [{"text": "Run the stage validator and show weak CRM scores."}]},
+        "final_response": {"role": "model", "parts": [{"text": "Here are the CRM and stage findings that matter."}]},
+        "intermediate_data": {"tool_uses": [{"name": "crm_intelligence_specialist", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    },
+    {
+      "eval_id": "activity_engagement",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "activity",
+        "user_content": {"role": "user", "parts": [{"text": "Review the weekly verbal call and customer activity."}]},
+        "final_response": {"role": "model", "parts": [{"text": "Here is what customer engagement shows."}]},
+        "intermediate_data": {"tool_uses": [{"name": "activity_engagement_specialist", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    },
+    {
+      "eval_id": "rep_performance",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "rep",
+        "user_content": {"role": "user", "parts": [{"text": "Which reps need coaching?"}]},
+        "final_response": {"role": "model", "parts": [{"text": "Here is where the team needs support."}]},
+        "intermediate_data": {"tool_uses": [{"name": "rep_performance_specialist", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    },
+    {
+      "eval_id": "forecast_modeling",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "forecast",
+        "user_content": {"role": "user", "parts": [{"text": "Model Q+1 and Q+2 and show stagnated deals."}]},
+        "final_response": {"role": "model", "parts": [{"text": "Here is how the forecast is shaping up."}]},
+        "intermediate_data": {"tool_uses": [{"name": "forecast_modeling_specialist", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    },
+    {
+      "eval_id": "knowledge_base",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "knowledge",
+        "user_content": {"role": "user", "parts": [{"text": "What are the rules of engagement?"}]},
+        "final_response": {"role": "model", "parts": [{"text": "The approved policy explains the rules."}]},
+        "intermediate_data": {"tool_uses": [{"name": "knowledge_base_rag", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    },
+    {
+      "eval_id": "multi_specialist",
+      "session_input": {"app_name": "orchestrator", "user_id": "eval_user", "state": {}},
+      "conversation": [{
+        "invocation_id": "multi",
+        "user_content": {"role": "user", "parts": [{"text": "Compare the verbal call to the CRM deal roll-up."}]},
+        "final_response": {"role": "model", "parts": [{"text": "The call and CRM roll-up point to the same risks."}]},
+        "intermediate_data": {"tool_uses": [{"name": "crm_intelligence_specialist", "args": {}}, {"name": "activity_engagement_specialist", "args": {}}, {"name": "synthesis", "args": {}}]}
+      }]
+    }
+  ]
+}

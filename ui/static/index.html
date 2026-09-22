@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bob the Back Office Minion</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/static/assets/bob.png?v=2" type="image/png" />
+    <script>
+      document.documentElement.dataset.theme = "light";
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css?v=121" />
+  </head>
+  <body>
+    <div id="landing" class="landing">
+      <div class="landing-bg" aria-hidden="true">
+        <div class="landing-bg-mesh"></div>
+      </div>
+      <header class="landing-nav">
+        <div class="landing-nav-inner">
+          <nav class="landing-links" aria-label="Landing sections">
+            <a href="#landing-capabilities">Capabilities</a>
+            <a href="#landing-features-heading">How it works</a>
+            <a href="#landing-faq">FAQ</a>
+          </nav>
+          <div class="landing-nav-end">
+            <a href="/dashboard" class="btn-landing btn-landing-nav">Get started</a>
+          </div>
+        </div>
+      </header>
+      <main class="landing-main" id="landing-top">
+        <section class="landing-hero">
+          <div class="landing-hero-copy">
+            <h1>Bob the Back Office Minion</h1>
+            <p class="landing-sub">
+              One workspace for forecast, quote, hygiene, OTC, pricing, and reporting.
+              Open your book, filter by size, stage, and time, then send Bob a task.
+            </p>
+            <div class="landing-actions">
+              <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+            </div>
+          </div>
+          <div class="landing-hero-art" id="landing-hero-art" aria-hidden="true">
+            <img class="landing-bob" src="/static/assets/bob.png?v=2" alt="" width="320" height="368" />
+          </div>
+        </section>
+        <section class="landing-section" id="landing-capabilities" aria-labelledby="landing-capabilities-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">What Bob covers</p>
+            <h2 id="landing-capabilities-heading" class="landing-section-title">RevOps jobs in one place</h2>
+          </div>
+          <div class="landing-cap-grid">
+            <article class="landing-cap">
+              <h3>Forecast</h3>
+              <p>Regional roll-ups, verbal vs landing, and coverage against plan.</p>
+            </article>
+            <article class="landing-cap">
+              <h3>Quoting</h3>
+              <p>Deviation checks, deal-desk style answers, and paste-ready notes.</p>
+            </article>
+            <article class="landing-cap">
+              <h3>Hygiene</h3>
+              <p>Stale opps, missing fields, and book cleanup priorities.</p>
+            </article>
+            <article class="landing-cap">
+              <h3>OTC &amp; pricing</h3>
+              <p>Order-to-cash friction and price exception context.</p>
+            </article>
+            <article class="landing-cap">
+              <h3>Reporting</h3>
+              <p>QBR packs and leadership summaries from the same filters.</p>
+            </article>
+            <article class="landing-cap">
+              <h3>Specialists</h3>
+              <p>Domain agents behind one briefing — you stay in the seller seat.</p>
+            </article>
+          </div>
+        </section>
+        <section class="landing-section" aria-labelledby="landing-features-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">How it works</p>
+            <h2 id="landing-features-heading" class="landing-section-title">Three steps to an answer</h2>
+          </div>
+          <div class="landing-features-shell">
+            <div class="landing-features" aria-label="What Bob covers">
+              <article class="landing-card">
+                <span class="landing-card-step">1</span>
+                <h3>Task menu</h3>
+                <p>Start from a RevOps job — regional forecast, quote deviations, QBR pack — not a blank prompt.</p>
+              </article>
+              <article class="landing-card">
+                <span class="landing-card-step">2</span>
+                <h3>Filters</h3>
+                <p>Opp size, SS stage, close window, geo, and boat ride along so Bob scopes the book correctly.</p>
+              </article>
+              <article class="landing-card">
+                <span class="landing-card-step">3</span>
+                <h3>One answer</h3>
+                <p>The specialist writes the reply in the shape that fits the job — checklist, numbers, draft, or note.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+        <section class="landing-section" id="landing-faq" aria-labelledby="landing-faq-heading">
+          <div class="landing-section-head">
+            <p class="landing-section-kicker">FAQ</p>
+            <h2 id="landing-faq-heading" class="landing-section-title">Common questions</h2>
+          </div>
+          <div class="landing-faq-list">
+            <div class="landing-faq">
+              <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-prompts" id="faq-prompts-btn">
+                <span>Do I need to write prompts from scratch?</span>
+                <span class="landing-faq-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="landing-faq-panel" id="faq-prompts" role="region" aria-labelledby="faq-prompts-btn">
+                <div class="landing-faq-panel-inner">
+                  <p>Start from the task menu — Bob pre-fills a draft scoped to your filters.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq">
+              <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-filters" id="faq-filters-btn">
+                <span>Where do filters apply?</span>
+                <span class="landing-faq-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="landing-faq-panel" id="faq-filters" role="region" aria-labelledby="faq-filters-btn">
+                <div class="landing-faq-panel-inner">
+                  <p>Geo, boat, opp, and report selections ride with every message in the workspace.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq">
+              <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-briefing" id="faq-briefing-btn">
+                <span>What does a reply look like?</span>
+                <span class="landing-faq-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="landing-faq-panel" id="faq-briefing" role="region" aria-labelledby="faq-briefing-btn">
+                <div class="landing-faq-panel-inner">
+                  <p>Whatever the specialist needs — a field checklist, forecast numbers, quote gaps, or a paste-ready note.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq">
+              <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-salesforce" id="faq-salesforce-btn">
+                <span>Is this connected to live Salesforce?</span>
+                <span class="landing-faq-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="landing-faq-panel" id="faq-salesforce" role="region" aria-labelledby="faq-salesforce-btn">
+                <div class="landing-faq-panel-inner">
+                  <p>Salesforce and Slack feed this workspace. The copilot uses that book to write the briefing.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="landing-cta-band">
+          <h2>Ready to run your book through Bob?</h2>
+          <p>Open the dashboard, pick a task, and send.</p>
+          <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+        </section>
+      </main>
+    </div>
+    <script>
+      (() => {
+        const faqs = document.querySelectorAll(".landing-faq");
+        faqs.forEach((item) => {
+          const trigger = item.querySelector(".landing-faq-trigger");
+          if (!trigger) return;
+          trigger.addEventListener("click", () => {
+            const open = item.classList.toggle("is-open");
+            trigger.setAttribute("aria-expanded", open ? "true" : "false");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+[
+  {
+    "bundle_id": "B-STOREOPS",
+    "name": "StoreOps + Inventory Sync",
+    "list_price": 2800000,
+    "attach": [
+      "50-store pilot tabletop"
+    ]
+  },
+  {
+    "bundle_id": "B-QTC",
+    "name": "Quote-to-Cash Dayton",
+    "list_price": 700000,
+    "attach": [
+      "Dayton plant sandbox"
+    ]
+  },
+  {
+    "bundle_id": "B-PORTAL",
+    "name": "Partner Portal APAC",
+    "list_price": 1400000,
+    "attach": [
+      "Pre-filled security packet"
+    ]
+  },
+  {
+    "bundle_id": "B-DIAG",
+    "name": "Payout diagnostic",
+    "list_price": 220000,
+    "attach": []
+  },
+  {
+    "bundle_id": "B-CARE",
+    "name": "Care analytics + BAA",
+    "list_price": 3650000,
+    "attach": [
+      "Vizient GPO modifier"
+    ]
+  },
+  {
+    "bundle_id": "B-TPI",
+    "name": "Trade promotion intelligence",
+    "list_price": 460000,
+    "attach": [
+      "12-month opt-out"
+    ]
+  },
+  {
+    "bundle_id": "B-GTM",
+    "name": "Americas GTM land",
+    "list_price": 290000,
+    "attach": [
+      "EUR list"
+    ]
+  }
+]

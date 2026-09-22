@@ -1,0 +1,35 @@
+{
+  "period": "Last 30 days",
+  "mentions": {
+    "CyberArk": 4200,
+    "SailPoint": 3100,
+    "Saviynt": 1600,
+    "One Identity": 900
+  },
+  "by_channel": {
+    "LinkedIn": {
+      "CyberArk": 1500,
+      "SailPoint": 1400,
+      "Saviynt": 520,
+      "One Identity": 300
+    },
+    "X": {
+      "CyberArk": 1200,
+      "SailPoint": 700,
+      "Saviynt": 480,
+      "One Identity": 240
+    },
+    "Reddit": {
+      "CyberArk": 900,
+      "SailPoint": 600,
+      "Saviynt": 360,
+      "One Identity": 200
+    },
+    "YouTube": {
+      "CyberArk": 600,
+      "SailPoint": 400,
+      "Saviynt": 240,
+      "One Identity": 160
+    }
+  }
+}

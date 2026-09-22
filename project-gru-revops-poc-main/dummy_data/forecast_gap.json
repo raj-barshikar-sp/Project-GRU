@@ -1,0 +1,34 @@
+[
+  {
+    "account": "7-Eleven",
+    "gap": "Two live opps share one forecast split"
+  },
+  {
+    "account": "Acme Corp",
+    "gap": "Close date slipped; no revised commit date"
+  },
+  {
+    "account": "GlobalTech",
+    "gap": "Ignite date is the only close control"
+  },
+  {
+    "account": "NovaPay",
+    "gap": "No economic buyer"
+  },
+  {
+    "account": "NovaPay",
+    "gap": "Close date is 330 days stale"
+  },
+  {
+    "account": "Meridian Health",
+    "gap": "RFP date not copied onto the opportunity"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "gap": "Bake-off winner field blank"
+  },
+  {
+    "account": "Helix Robotics",
+    "gap": "Amount is placeholder; no stage-exit criteria"
+  }
+]

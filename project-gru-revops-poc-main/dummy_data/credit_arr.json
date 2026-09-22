@@ -1,0 +1,58 @@
+[
+  {
+    "account": "7-Eleven",
+    "arr": 1120000,
+    "credit_limit": 6000000,
+    "open_ar": 410000,
+    "proposed_bookings": 2400000,
+    "terms": "Net 45"
+  },
+  {
+    "account": "Acme Corp",
+    "arr": 380000,
+    "credit_limit": 700000,
+    "open_ar": 95000,
+    "proposed_bookings": 640000,
+    "terms": "Net 30"
+  },
+  {
+    "account": "GlobalTech",
+    "arr": 2400000,
+    "credit_limit": 5000000,
+    "open_ar": 180000,
+    "proposed_bookings": 1250000,
+    "terms": "Net 30"
+  },
+  {
+    "account": "NovaPay",
+    "arr": 0,
+    "credit_limit": 250000,
+    "open_ar": 0,
+    "proposed_bookings": 180000,
+    "terms": "Prepaid diagnostic"
+  },
+  {
+    "account": "Meridian Health",
+    "arr": 4100000,
+    "credit_limit": 8000000,
+    "open_ar": 620000,
+    "proposed_bookings": 3100000,
+    "terms": "GPO / Net 60"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "arr": 290000,
+    "credit_limit": 800000,
+    "open_ar": 40000,
+    "proposed_bookings": 410000,
+    "terms": "Net 30"
+  },
+  {
+    "account": "Helix Robotics",
+    "arr": 0,
+    "credit_limit": 400000,
+    "open_ar": 0,
+    "proposed_bookings": 275000,
+    "terms": "EUR, Net 30"
+  }
+]

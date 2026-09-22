@@ -1,0 +1,51 @@
+[
+  {
+    "account": "7-Eleven",
+    "arr_amount": 1120000,
+    "order_hygiene_status": "HOLD_MISSING_PO",
+    "po_number": "",
+    "hold_reason": "Pilot PO not loaded for the 50-store tabletop."
+  },
+  {
+    "account": "Acme Corp",
+    "arr_amount": 380000,
+    "order_hygiene_status": "HOLD_CREDIT",
+    "po_number": "PO-2041",
+    "hold_reason": "Credit hold until Dayton AR is current."
+  },
+  {
+    "account": "GlobalTech",
+    "arr_amount": 2400000,
+    "order_hygiene_status": "PASSED",
+    "po_number": "PO-3318",
+    "hold_reason": ""
+  },
+  {
+    "account": "NovaPay",
+    "arr_amount": 0,
+    "order_hygiene_status": "HOLD_MISSING_PO",
+    "po_number": "",
+    "hold_reason": "No order. Do not book until credit is re-opened."
+  },
+  {
+    "account": "Meridian Health",
+    "arr_amount": 4100000,
+    "order_hygiene_status": "HOLD_MISSING_PO",
+    "po_number": "",
+    "hold_reason": "BAA-covered walkthrough PO still with legal."
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "arr_amount": 290000,
+    "order_hygiene_status": "PASSED",
+    "po_number": "PO-6611",
+    "hold_reason": ""
+  },
+  {
+    "account": "Helix Robotics",
+    "arr_amount": 0,
+    "order_hygiene_status": "HOLD_MISSING_PO",
+    "po_number": "",
+    "hold_reason": "EUR list and residency exhibit must land before PO."
+  }
+]

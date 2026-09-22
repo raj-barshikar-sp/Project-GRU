@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-theme-pref="system" data-left="open" data-right="open">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#0033a1">
+    <title>Henry · DSR Copilot</title>
+    <script>
+      // Resolve theme + rail state before first paint so there is no flash.
+      (function () {
+        var root = document.documentElement;
+        root.classList.add("boot");
+        var pref = "system";
+        var left = null;
+        var right = null;
+        try {
+          pref = window.localStorage.getItem("henry.theme") || "system";
+          left = window.localStorage.getItem("henry.sidebar.left");
+          right = window.localStorage.getItem("henry.sidebar.right");
+        } catch (error) {
+          pref = "system";
+        }
+        if (pref !== "light" && pref !== "dark" && pref !== "system") pref = "system";
+        var prefersDark = false;
+        try {
+          prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        } catch (error) {
+          prefersDark = false;
+        }
+        // The sidebar keeps its desktop preference; account controls are a
+        // popover and always start closed.
+        var wide = window.innerWidth > 860;
+        root.dataset.themePref = pref;
+        root.dataset.theme = pref === "system" ? (prefersDark ? "dark" : "light") : pref;
+        root.dataset.left = wide && left !== "closed" ? "open" : "closed";
+        root.dataset.right = "closed";
+        root.dataset.tasks = "closed";
+      })();
+    </script>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="shell" id="workspace">
+      <aside id="left-panel" class="sidebar" aria-label="Chats and controls">
+        <div class="sidebar-inner">
+          <nav class="sidebar-nav">
+            <button id="new-chat" class="sidebar-nav-item" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+              New chat
+            </button>
+          </nav>
+          <nav class="sidebar-nav sidebar-tools">
+            <button id="open-tasks" class="sidebar-nav-item" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"></path></svg>
+              Task menu
+            </button>
+            <button id="toggle-right" class="sidebar-nav-item" type="button" aria-controls="right-panel" aria-expanded="false">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>
+              Accounts &amp; tasks
+            </button>
+          </nav>
+          <div class="sidebar-body">
+            <section id="selected-account" class="sidebar-selected" hidden>
+              <div class="sidebar-selected-head">
+                <h2>Selected</h2>
+                <button id="clear-account" type="button">Clear</button>
+              </div>
+              <div id="selected-account-chip"></div>
+            </section>
+            <section class="sidebar-history">
+              <h2>Chats</h2>
+              <nav id="chat-history" class="chat-history" aria-label="Past chats"></nav>
+            </section>
+          </div>
+        </div>
+      </aside>
+
+      <header class="workspace-bar">
+        <div class="bar-cluster">
+          <button id="toggle-left" class="bar-logo" type="button" aria-controls="left-panel" aria-expanded="true" aria-label="Hide sidebar">
+            <img class="brand-logo" src="/static/assets/sailpoint-logo.svg" alt="SailPoint" width="122" height="27">
+          </button>
+        </div>
+        <div class="bar-brand">
+          <img class="bar-henry" src="/static/assets/henry.png" alt="" aria-hidden="true" width="34" height="34">
+          <span>Henry the DSR Minion</span>
+        </div>
+        <div class="bar-cluster bar-end">
+          <button id="theme-switch" class="bar-btn theme-toggle" type="button" aria-label="Switch color theme" title="Theme: match system">
+            <svg class="ico ico-sun" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="3.6"></circle><line x1="10" y1="1.6" x2="10" y2="3.4"></line><line x1="10" y1="16.6" x2="10" y2="18.4"></line><line x1="1.6" y1="10" x2="3.4" y2="10"></line><line x1="16.6" y1="10" x2="18.4" y2="10"></line></svg>
+            <svg class="ico ico-moon" viewBox="0 0 20 20" aria-hidden="true"><path d="M16.2 12.6A7 7 0 0 1 7.4 3.8a7 7 0 1 0 8.8 8.8z"></path></svg>
+            <svg class="ico ico-auto" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="6.6"></circle><path d="M10 3.4a6.6 6.6 0 0 1 0 13.2z" fill="currentColor" stroke="none"></path></svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="stage">
+        <main class="canvas" role="log" aria-live="polite">
+          <div id="conversation" class="conversation">
+            <div id="welcome" class="welcome">
+              <img src="/static/assets/henry.png" alt="" aria-hidden="true" width="88" height="88">
+              <h1>Let’s get some work done!</h1>
+              <p>Type below, or choose a DSR task and account.</p>
+              <div id="quick-actions" class="welcome-actions">
+                <button id="open-tasks-empty" type="button">
+                  <small>Start here</small><strong>Choose a task</strong><span>Open the DSR task menu</span>
+                </button>
+                <button id="open-accounts-empty" type="button">
+                  <small>Optional</small><strong>Select an account</strong><span>Add account context and tasks</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <div class="composer-dock">
+          <div id="active-ask" class="active-ask" hidden></div>
+          <form id="chat-form" class="composer">
+            <div class="composer-card">
+              <label class="sr-only" for="message">Ask Henry</label>
+              <textarea id="message" rows="1" maxlength="20000" placeholder="Ask Henry…" required></textarea>
+              <div class="composer-footer">
+                <button id="attach-account" class="composer-attach" type="button" aria-label="Select account" title="Select account">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM19 8v6M16 11h6"></path></svg>
+                </button>
+                <span id="selected-context">No account selected</span>
+                <button id="send" class="composer-send" type="submit" aria-label="Send message">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"></path></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+
+    <div id="scrim" class="dialog-scrim" hidden></div>
+
+    <section id="tasks-dialog" class="app-dialog" hidden role="dialog" aria-labelledby="tasks-title">
+      <header><h2 id="tasks-title">Task menu</h2><button id="close-tasks" type="button" aria-label="Close">×</button></header>
+      <div class="dialog-body">
+        <label class="dialog-search"><input id="ask-search" type="search" placeholder="Search DSR tasks" aria-label="Search DSR tasks"></label>
+        <nav id="task-menu" class="task-menu" aria-label="Sales tasks"></nav>
+      </div>
+    </section>
+
+    <section id="right-panel" class="app-dialog account-dialog" hidden role="dialog" aria-labelledby="accounts-title">
+      <header>
+        <h2 id="accounts-title">Accounts &amp; tasks</h2>
+        <button id="close-right" type="button" aria-label="Close">×</button>
+      </header>
+      <div class="dialog-body">
+        <section class="dialog-section">
+          <div class="dialog-label"><span>My accounts</span><button id="refresh" type="button" title="Refresh accounts" aria-label="Refresh accounts">↻</button></div>
+          <label class="dialog-search"><input id="account-search" type="search" placeholder="Search accounts" aria-label="Search accounts"></label>
+          <div id="accounts" class="filter-list"><div class="skeleton"></div><div class="skeleton"></div></div>
+        </section>
+        <section class="dialog-section">
+          <h3>Account quick view</h3>
+          <div id="account-details" class="detail-list"></div>
+        </section>
+        <section class="dialog-section">
+          <div class="dialog-label">
+            <span>Account tasks</span>
+            <button id="add-task" type="button" title="Create task" aria-label="Create task" disabled>＋</button>
+          </div>
+          <form id="task-form" class="task-form" hidden>
+            <label class="sr-only" for="task-input">New account task</label>
+            <input id="task-input" type="text" maxlength="180" autocomplete="off" placeholder="Add a task…" required>
+            <button type="submit" aria-label="Save task" title="Save task">✓</button>
+            <button id="cancel-task" type="button" aria-label="Cancel" title="Cancel">×</button>
+          </form>
+          <div id="account-tasks" class="account-tasks"></div>
+        </section>
+      </div>
+    </section>
+
+    <div id="toast" role="status"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>

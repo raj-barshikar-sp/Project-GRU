@@ -1,0 +1,122 @@
+[
+  {
+    "geo": "west",
+    "period": "weekly",
+    "verbal_call_acv": 2400000,
+    "pipeline_coverage_ratio": 0.08,
+    "commit_acv": 0,
+    "upside_acv": 180000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 7
+  },
+  {
+    "geo": "west",
+    "period": "monthly",
+    "verbal_call_acv": 2400000,
+    "pipeline_coverage_ratio": 0.08,
+    "commit_acv": 0,
+    "upside_acv": 180000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 30
+  },
+  {
+    "geo": "west",
+    "period": "quarterly",
+    "verbal_call_acv": 2400000,
+    "pipeline_coverage_ratio": 0.08,
+    "commit_acv": 0,
+    "upside_acv": 180000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 330
+  },
+  {
+    "geo": "central",
+    "period": "weekly",
+    "verbal_call_acv": 5900000,
+    "pipeline_coverage_ratio": 1.26,
+    "commit_acv": 5500000,
+    "upside_acv": 1940000,
+    "landing_projected": 5500000,
+    "avg_sales_cycle_days": 7
+  },
+  {
+    "geo": "central",
+    "period": "monthly",
+    "verbal_call_acv": 5900000,
+    "pipeline_coverage_ratio": 1.26,
+    "commit_acv": 5500000,
+    "upside_acv": 1940000,
+    "landing_projected": 5500000,
+    "avg_sales_cycle_days": 30
+  },
+  {
+    "geo": "central",
+    "period": "quarterly",
+    "verbal_call_acv": 5900000,
+    "pipeline_coverage_ratio": 1.26,
+    "commit_acv": 5500000,
+    "upside_acv": 1940000,
+    "landing_projected": 5500000,
+    "avg_sales_cycle_days": 91
+  },
+  {
+    "geo": "south",
+    "period": "weekly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 1.0,
+    "commit_acv": 1250000,
+    "upside_acv": 0,
+    "landing_projected": 1250000,
+    "avg_sales_cycle_days": 7
+  },
+  {
+    "geo": "south",
+    "period": "monthly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 1.0,
+    "commit_acv": 1250000,
+    "upside_acv": 0,
+    "landing_projected": 1250000,
+    "avg_sales_cycle_days": 30
+  },
+  {
+    "geo": "south",
+    "period": "quarterly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 1.0,
+    "commit_acv": 1250000,
+    "upside_acv": 0,
+    "landing_projected": 1250000,
+    "avg_sales_cycle_days": 92
+  },
+  {
+    "geo": "east",
+    "period": "weekly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 0.22,
+    "commit_acv": 0,
+    "upside_acv": 275000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 7
+  },
+  {
+    "geo": "east",
+    "period": "monthly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 0.22,
+    "commit_acv": 0,
+    "upside_acv": 275000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 30
+  },
+  {
+    "geo": "east",
+    "period": "quarterly",
+    "verbal_call_acv": 1250000,
+    "pipeline_coverage_ratio": 0.22,
+    "commit_acv": 0,
+    "upside_acv": 275000,
+    "landing_projected": 0,
+    "avg_sales_cycle_days": 40
+  }
+]

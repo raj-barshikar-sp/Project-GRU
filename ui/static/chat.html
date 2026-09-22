@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="in-workspace">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bob — workspace</title>
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/static/assets/bob.png?v=2" type="image/png" />
+    <script>
+      (() => {
+        try {
+          const saved = localStorage.getItem("gru-theme");
+          const theme =
+            saved === "light" || saved === "dark"
+              ? saved
+              : matchMedia("(prefers-color-scheme: dark)").matches
+                ? "dark"
+                : "light";
+          document.documentElement.dataset.theme = theme;
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css?v=126" />
+  </head>
+  <body class="in-workspace">
+    <div class="shell" id="workspace">
+      <aside class="sidebar" id="sidebar" aria-label="Workspace">
+        <nav class="sidebar-nav">
+          <button type="button" class="sidebar-nav-item sidebar-new-chat" id="new-chat">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+            </svg>
+            New chat
+          </button>
+          <a class="sidebar-nav-item" href="/dashboard" id="nav-dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z" />
+            </svg>
+            Dashboard
+          </a>
+          <button type="button" class="sidebar-nav-item" id="open-library">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            </svg>
+            Artifacts
+          </button>
+        </nav>
+        <nav class="sidebar-nav">
+          <button type="button" class="sidebar-nav-item" id="open-tasks" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01" />
+            </svg>
+            Task menu
+          </button>
+          <button type="button" class="sidebar-nav-item" id="open-filters" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M7 12h10M10 18h4" />
+            </svg>
+            Filters
+          </button>
+        </nav>
+        <div class="sidebar-body">
+          <section class="sidebar-section sidebar-selected" id="sidebar-selected" hidden>
+            <div class="sidebar-selected-head">
+              <h3 class="sidebar-chats-label">Selected</h3>
+              <button type="button" class="sidebar-clear-all" id="clear-selections">Clear all</button>
+            </div>
+            <div id="selected-chips" class="selected-chips"></div>
+          </section>
+          <section class="sidebar-section sidebar-pinned" id="sidebar-pinned" hidden>
+            <h3 class="sidebar-chats-label">Pinned</h3>
+            <nav id="pinned-history" class="history" aria-label="Pinned chats"></nav>
+          </section>
+          <section class="sidebar-section sidebar-chats" id="sidebar-chats">
+            <div class="sidebar-chats-head">
+              <button type="button" class="sidebar-chats-toggle" id="toggle-chats" aria-expanded="true">
+                Chats
+              </button>
+              <button type="button" class="sidebar-icon-btn" id="open-recents" aria-label="View all chats" title="View all chats">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3-3" />
+                </svg>
+              </button>
+              <button type="button" class="sidebar-icon-btn" id="open-chats-sort" aria-haspopup="dialog" aria-label="Group and sort chats" title="Group and sort">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 7h16M7 12h10M10 17h4" />
+                </svg>
+              </button>
+            </div>
+            <nav id="chat-history" class="history" aria-label="Past chats"></nav>
+          </section>
+        </div>
+      </aside>
+
+      <div class="sidebar-scrim" id="sidebar-scrim" hidden></div>
+
+      <header class="workspace-bar">
+        <div class="bar-cluster bar-start">
+          <button
+            type="button"
+            class="bar-logo"
+            id="toggle-sidebar"
+            aria-controls="sidebar"
+            aria-expanded="true"
+            aria-label="Hide sidebar"
+          >
+            <img class="bar-sp-logo" src="/static/assets/logo.png" alt="" width="22" height="22" />
+          </button>
+        </div>
+        <div class="bar-brand">
+          <img id="assistant-avatar" class="bar-bob" src="/static/assets/bob.png?v=2" alt="" width="40" height="46" />
+          <div class="bar-brand-copy">
+            <span id="assistant-title" class="bar-fullname">Bob the Back Office Minion</span>
+          </div>
+        </div>
+        <div class="bar-cluster bar-end">
+          <label class="role-picker">
+            <span class="sr-only">Active role</span>
+            <select id="role-select" aria-label="Active role">
+              <option value="bob">RevOps · Bob</option>
+              <option value="james">Marketing · James</option>
+              <option value="stuart">Sales Manager · Stuart</option>
+              <option value="henry">DSR · Henry</option>
+            </select>
+          </label>
+          <button type="button" class="bar-btn bar-btn-icon theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M6.3 17.7l1.4-1.4M16.3 7.7l1.4-1.4"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <section class="stage">
+        <main class="canvas chat-root" id="canvas" role="log" aria-live="polite">
+          <div class="chat-content" id="chat-content">
+            <div class="placeholder" id="placeholder">
+              <img class="placeholder-bob" src="/static/assets/bob.png?v=2" alt="" />
+              <h2>What should Bob work on?</h2>
+              <p>Pick a task, adjust filters, edit the draft, then send.</p>
+            </div>
+          </div>
+          <div class="chat-anchor" id="chat-anchor" aria-hidden="true"></div>
+        </main>
+        <section class="library" id="library" hidden>
+          <header class="library-head">
+            <div>
+              <p class="library-kicker">Library</p>
+              <h1>Artifacts</h1>
+            </div>
+            <div class="library-tabs" role="tablist">
+              <button type="button" class="library-tab is-on" data-lib-tab="all" role="tab" aria-selected="true">All</button>
+              <button type="button" class="library-tab" data-lib-tab="yours" role="tab" aria-selected="false">Yours</button>
+              <button type="button" class="library-tab" data-lib-tab="shared" role="tab" aria-selected="false">Shared with you</button>
+            </div>
+            <div class="library-tools">
+              <input type="search" id="library-search" placeholder="Search artifacts" aria-label="Search artifacts" />
+              <select id="library-kind" aria-label="Filter by type">
+                <option value="">All types</option>
+                <option value="email">Email</option>
+                <option value="talking_points">Talking points</option>
+                <option value="merge_instruction">Merge</option>
+                <option value="ask">Ask</option>
+                <option value="work_order">Work order</option>
+                <option value="other">Note</option>
+              </select>
+              <button type="button" class="bar-btn" id="library-layout" aria-label="Switch layout">Grid</button>
+            </div>
+          </header>
+          <div class="library-body" id="library-body"></div>
+        </section>
+        <aside class="artifact-panel" id="artifact-panel" hidden>
+          <button type="button" class="artifact-panel-resize" id="artifact-panel-resize" aria-label="Resize panel"></button>
+          <div class="artifact-panel-head">
+            <h2 id="artifact-panel-title">Artifact</h2>
+            <button type="button" class="app-dialog-close" id="close-artifact-panel" aria-label="Close">×</button>
+          </div>
+          <div class="artifact-panel-tabs">
+            <button type="button" class="library-tab is-on" data-panel-tab="preview">Preview</button>
+            <button type="button" class="library-tab" data-panel-tab="source">Source</button>
+          </div>
+          <pre class="artifact-panel-body" id="artifact-panel-body"></pre>
+          <div class="artifact-panel-actions">
+            <button type="button" class="bar-btn" id="artifact-copy">Copy</button>
+            <button type="button" class="bar-btn" id="artifact-expand">Expand</button>
+          </div>
+          <section class="artifact-versions" id="artifact-versions" hidden>
+            <h3>Older versions</h3>
+            <div id="artifact-version-list"></div>
+          </section>
+        </aside>
+        <button type="button" class="chat-scroll-btn" id="scroll-bottom" aria-label="Scroll to latest">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </button>
+        <nav class="query-nav" id="query-nav" hidden aria-label="Jump to queries"></nav>
+
+        <form class="composer" id="composer">
+          <div class="composer-card" id="composer-drop">
+            <p class="composer-drop-overlay" id="composer-drop-overlay" hidden>Drop files to attach</p>
+            <div class="attach-chips" id="attach-chips" hidden></div>
+            <label class="sr-only" for="prompt">Ask Bob</label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              rows="1"
+              placeholder="Type a message or drop files…"
+            ></textarea>
+            <div class="composer-footer">
+              <input
+                id="attach"
+                type="file"
+                hidden
+                multiple
+                accept=".pdf,.csv,.txt,.xlsx,.xls,.docx,.doc,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              />
+              <button
+                type="button"
+                class="composer-attach"
+                id="attach-btn"
+                aria-label="Attach files"
+                title="PDF, CSV, Excel, Word, text · up to 8 MB"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                </svg>
+              </button>
+              <div class="composer-send-group">
+                <button type="button" class="icon-btn icon-btn-stop" id="stop" hidden aria-label="Stop generating">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="7" y="7" width="10" height="10" rx="1.5" />
+                  </svg>
+                </button>
+                <button type="submit" class="icon-btn icon-btn-send" id="send" aria-label="Send">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 19V5M5 12l7-7 7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="dialog-scrim" id="dialog-scrim" hidden></div>
+    <div class="app-dialog app-popover" id="tasks-dialog" hidden role="dialog" aria-labelledby="tasks-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="tasks-dialog-title">Task menu</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="tasks-dialog" aria-label="Close task menu">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <nav id="task-menu" class="task-menu"></nav>
+      </div>
+    </div>
+    <div class="app-dialog app-popover" id="task-items-dialog" hidden role="dialog" aria-labelledby="task-items-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="task-items-dialog-title">Tasks</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="task-items-dialog" aria-label="Close tasks">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <nav id="task-items" class="task-items"></nav>
+      </div>
+    </div>
+    <div class="app-dialog app-popover" id="filters-dialog" hidden role="dialog" aria-labelledby="filters-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="filters-dialog-title">Filters</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="filters-dialog" aria-label="Close filters">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <section class="filter-block" data-filter-block="org">
+          <h3>Geo / GVP / AVP / Boats</h3>
+          <div id="filter-org" class="checks"></div>
+        </section>
+        <section class="filter-block" data-filter-block="opps">
+          <h3>Rep opps</h3>
+          <div id="filter-opps" class="checks"></div>
+        </section>
+        <section class="filter-block" data-filter-block="reports">
+          <h3>Reporting types</h3>
+          <div id="filter-reports" class="checks"></div>
+        </section>
+        <section class="filter-block" data-filter-block="size">
+          <h3>Opp size</h3>
+          <select id="filter-sizes" name="size" class="filter-select">
+            <option value="">All sizes</option>
+          </select>
+        </section>
+        <section class="filter-block" data-filter-block="stage">
+          <h3>SS stage</h3>
+          <select id="filter-stages" name="stage" class="filter-select">
+            <option value="">All stages</option>
+          </select>
+        </section>
+        <section class="filter-block" data-filter-block="time">
+          <h3>Time</h3>
+          <select id="filter-windows" name="time" class="filter-select">
+            <option value="">All windows</option>
+          </select>
+        </section>
+      </div>
+    </div>
+    <div class="app-dialog app-dialog-confirm" id="delete-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="delete-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="delete-dialog-title">Delete chat</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="delete-dialog" aria-label="Close">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <p id="delete-dialog-copy">Delete this chat? This cannot be undone.</p>
+        <div class="app-dialog-actions">
+          <button type="button" class="app-dialog-btn" data-close-dialog="delete-dialog">Cancel</button>
+          <button type="button" class="app-dialog-btn app-dialog-btn-danger" id="confirm-delete-chat">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="app-dialog app-popover" id="chats-sort-dialog" hidden role="dialog" aria-labelledby="chats-sort-title">
+      <div class="app-dialog-head">
+        <h2 id="chats-sort-title">Group and sort</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="chats-sort-dialog" aria-label="Close">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <label class="recents-field">
+          Sort
+          <select id="chats-sort" aria-label="Sort chats">
+            <option value="recent">Newest</option>
+            <option value="title">Title</option>
+          </select>
+        </label>
+        <p class="history-empty">Pinned chats stay in their own block above this list.</p>
+      </div>
+    </div>
+    <div class="app-dialog app-dialog-confirm" id="rename-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="rename-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="rename-dialog-title">Rename chat</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="rename-dialog" aria-label="Close">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <label class="recents-field">
+          Title
+          <input type="text" id="rename-chat-input" maxlength="80" />
+        </label>
+        <div class="app-dialog-actions">
+          <button type="button" class="app-dialog-btn" data-close-dialog="rename-dialog">Cancel</button>
+          <button type="button" class="app-dialog-btn" id="confirm-rename-chat">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="app-dialog app-dialog-wide" id="recents-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="recents-dialog-title">
+      <div class="app-dialog-head">
+        <h2 id="recents-dialog-title">All chats</h2>
+        <button type="button" class="app-dialog-close" data-close-dialog="recents-dialog" aria-label="Close">×</button>
+      </div>
+      <div class="app-dialog-body">
+        <div class="recents-tools">
+          <input type="search" id="recents-search" placeholder="Search chats" aria-label="Search chats" />
+          <select id="recents-sort" aria-label="Sort chats">
+            <option value="recent">Newest</option>
+            <option value="title">Title</option>
+            <option value="pinned">Pinned first</option>
+          </select>
+          <button type="button" class="app-dialog-btn app-dialog-btn-danger" id="recents-delete" hidden>Delete selected</button>
+        </div>
+        <div id="recents-list" class="recents-list"></div>
+      </div>
+    </div>
+
+    <script src="/static/theme.js?v=123"></script>
+    <script src="/static/artifacts.js?v=123"></script>
+    <script src="/static/app.js?v=123"></script>
+  </body>
+</html>

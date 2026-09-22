@@ -1,0 +1,67 @@
+[
+  {
+    "account": "7-Eleven",
+    "deal_score": 62,
+    "left_on_table_acv": 64000,
+    "suggested_upsell_skus": [
+      "Franchisee rollout kit",
+      "Identity Governance Add-on"
+    ],
+    "payment_structure_type": "MULTI_YEAR_RAMP"
+  },
+  {
+    "account": "Acme Corp",
+    "deal_score": 55,
+    "left_on_table_acv": 4000,
+    "suggested_upsell_skus": [
+      "Oracle connector",
+      "Capped PS"
+    ],
+    "payment_structure_type": "ANNUAL_UPFRONT"
+  },
+  {
+    "account": "GlobalTech",
+    "deal_score": 71,
+    "left_on_table_acv": 10000,
+    "suggested_upsell_skus": [
+      "Singapore region pack",
+      "PAM Extension"
+    ],
+    "payment_structure_type": "ANNUAL_UPFRONT"
+  },
+  {
+    "account": "NovaPay",
+    "deal_score": 28,
+    "left_on_table_acv": 40000,
+    "suggested_upsell_skus": [],
+    "payment_structure_type": "QUARTERLY"
+  },
+  {
+    "account": "Meridian Health",
+    "deal_score": 48,
+    "left_on_table_acv": 2500,
+    "suggested_upsell_skus": [
+      "Nursing informatics pack",
+      "Identity Governance Add-on"
+    ],
+    "payment_structure_type": "ANNUAL_UPFRONT"
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "deal_score": 66,
+    "left_on_table_acv": 4000,
+    "suggested_upsell_skus": [
+      "Usage collar"
+    ],
+    "payment_structure_type": "MULTI_YEAR_RAMP"
+  },
+  {
+    "account": "Helix Robotics",
+    "deal_score": 44,
+    "left_on_table_acv": 500,
+    "suggested_upsell_skus": [
+      "Frankfurt residency exhibit"
+    ],
+    "payment_structure_type": "QUARTERLY"
+  }
+]

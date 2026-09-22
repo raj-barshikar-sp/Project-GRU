@@ -1,0 +1,49 @@
+[
+  {
+    "id": "PF-01",
+    "name": "Identity Security Cloud - Access Modeling",
+    "category": "IGA",
+    "summary": "AI-driven role discovery and automated access certifications.",
+    "addresses_gap": "Manual, spreadsheet-driven access reviews on legacy or homegrown IGA.",
+    "value_lever": "access_review_automation",
+    "competitor_gap": {
+      "CyberArk": "PAM-led; shallow identity governance and certifications.",
+      "Saviynt": "Governance depth exists but heavy to deploy and tune.",
+      "One Identity": "Aging architecture, limited SaaS-native automation."
+    }
+  },
+  {
+    "id": "PF-02",
+    "name": "Cloud Infrastructure Entitlement Management",
+    "category": "Cloud Governance",
+    "summary": "Visibility and least-privilege enforcement across multi-cloud.",
+    "addresses_gap": "Ungoverned cloud entitlements and standing privilege.",
+    "value_lever": "breach_risk_reduction",
+    "competitor_gap": {
+      "CyberArk": "Strong vaulting, weaker on cloud entitlement governance.",
+      "Saviynt": "Comparable ambition, slower time-to-value."
+    }
+  },
+  {
+    "id": "PF-03",
+    "name": "Non-Employee Risk Management",
+    "category": "IGA",
+    "summary": "Lifecycle governance for contractors, partners and third parties.",
+    "addresses_gap": "No system of record for third-party identity risk.",
+    "value_lever": "audit_readiness",
+    "competitor_gap": {
+      "One Identity": "Limited native third-party lifecycle coverage."
+    }
+  },
+  {
+    "id": "PF-04",
+    "name": "Automated Provisioning & Lifecycle",
+    "category": "IGA",
+    "summary": "Joiner-mover-leaver automation across the application estate.",
+    "addresses_gap": "Slow, ticket-driven provisioning and orphaned accounts.",
+    "value_lever": "provisioning_efficiency",
+    "competitor_gap": {
+      "CyberArk": "Not a lifecycle/provisioning platform."
+    }
+  }
+]

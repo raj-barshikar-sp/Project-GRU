@@ -1,0 +1,48 @@
+{
+  "levers": {
+    "access_review_automation": {
+      "metric": "annual hours saved on access certifications",
+      "description": "Legacy access reviews consume large analyst effort; automation removes most of it.",
+      "params": {
+        "hours_per_1k_employees_per_year": 240,
+        "reduction_pct": 0.7,
+        "loaded_hourly_cost": 85
+      }
+    },
+    "breach_risk_reduction": {
+      "metric": "expected annual breach cost avoided",
+      "description": "Reducing standing privilege lowers expected breach impact.",
+      "params": {
+        "avg_breach_cost_usd": 4880000,
+        "annual_probability": 0.28,
+        "reduction_pct": 0.3
+      }
+    },
+    "audit_readiness": {
+      "metric": "annual audit and evidence effort saved",
+      "description": "Always-on evidence removes manual audit preparation.",
+      "params": {
+        "hours_per_1k_employees_per_year": 90,
+        "reduction_pct": 0.6,
+        "loaded_hourly_cost": 95
+      }
+    },
+    "provisioning_efficiency": {
+      "metric": "annual service-desk effort saved on provisioning",
+      "description": "Automated joiner-mover-leaver cuts ticket volume.",
+      "params": {
+        "hours_per_1k_employees_per_year": 320,
+        "reduction_pct": 0.65,
+        "loaded_hourly_cost": 60
+      }
+    }
+  },
+  "industry_multipliers": {
+    "Financial Services": 1.3,
+    "Healthcare": 1.25,
+    "Public Sector": 1.15,
+    "Manufacturing": 1.05,
+    "Technology": 1.1,
+    "Retail": 1.0
+  }
+}

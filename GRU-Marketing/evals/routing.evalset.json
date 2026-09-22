@@ -1,0 +1,359 @@
+{
+  "name": "marketing_routing",
+  "description": "Checks that a plain-English request reaches the right specialist. Descriptions are the routing logic, so re-run this whenever one changes. expect_agent may be null where only the orchestrator matters.",
+  "cases": [
+    {
+      "id": "an-01",
+      "prompt": "How did our campaigns perform last week?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_campaign_performance"
+    },
+    {
+      "id": "an-02",
+      "prompt": "Which channel is giving us the cheapest opportunities?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_campaign_performance"
+    },
+    {
+      "id": "an-03",
+      "prompt": "What should we do to improve marketing performance this quarter?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_improvement_recommender"
+    },
+    {
+      "id": "an-04",
+      "prompt": "Where should we move budget to get more pipeline?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_improvement_recommender"
+    },
+    {
+      "id": "an-05",
+      "prompt": "How is our pipeline looking?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_pipeline_health"
+    },
+    {
+      "id": "an-06",
+      "prompt": "Are we going to hit our number in EMEA?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_pipeline_health"
+    },
+    {
+      "id": "an-07",
+      "prompt": "Which deals are stuck and not moving?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_pipeline_health"
+    },
+    {
+      "id": "an-08",
+      "prompt": "What assets are moving the needle on moving accounts forward?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_asset_influence"
+    },
+    {
+      "id": "an-09",
+      "prompt": "Build me the pipeline deck for this week",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_pipeline_deck"
+    },
+    {
+      "id": "an-10",
+      "prompt": "I need the demand council deck and analysis for the monthly review",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_demand_council_deck"
+    },
+    {
+      "id": "ev-01",
+      "prompt": "Analyse accounts with no opportunity and suggest where we should run events",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_location_topic"
+    },
+    {
+      "id": "ev-02",
+      "prompt": "Which city should our next field event be in, and what topic?",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_location_topic"
+    },
+    {
+      "id": "ev-03",
+      "prompt": "Build me a list of targeted contacts at the Munich accounts for the event",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_attendee_targeting"
+    },
+    {
+      "id": "ev-04",
+      "prompt": "Who should we invite from ACC-001 and ACC-002?",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_attendee_targeting"
+    },
+    {
+      "id": "ev-05",
+      "prompt": "Give me a brief on each account attending the Munich roundtable",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_account_briefs"
+    },
+    {
+      "id": "ev-06",
+      "prompt": "I need background one-pagers on the accounts coming to EVT-001",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_account_briefs"
+    },
+    {
+      "id": "ev-07",
+      "prompt": "Summarise the pipeline in the room for the Munich event",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_pipeline_in_room"
+    },
+    {
+      "id": "ev-08",
+      "prompt": "What is the Singapore breakfast event actually worth to us?",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_pipeline_in_room"
+    },
+    {
+      "id": "mo-01",
+      "prompt": "Create a Salesforce campaign for the EMEA Zero Trust webinar in Q4",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "mo-02",
+      "prompt": "Build me a segment in 6sense of financial services accounts in EMEA surging on Zero Trust",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "mo-03",
+      "prompt": "Deploy that segment to Marketo",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "mo-04",
+      "prompt": "Load event_leads_munich.csv into Marketo",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": "mops_list_load"
+    },
+    {
+      "id": "mo-05",
+      "prompt": "I have a list of event leads that needs uploading",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": "mops_list_load"
+    },
+    {
+      "id": "mo-06",
+      "prompt": "Set up a segment of manufacturing accounts over 5000 employees",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-01",
+      "prompt": "Give me some campaign ideas for the new product launch",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-02",
+      "prompt": "Build me a campaign brief for Q4 demand gen",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-03",
+      "prompt": "Build competitive messaging against our main rival",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-04",
+      "prompt": "What are my top accounts?",
+      "expect_orchestrator": "abm_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-05",
+      "prompt": "Run intel analysis and gap and value mapping on my named accounts",
+      "expect_orchestrator": "abm_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-06",
+      "prompt": "Write me an anchor asset on Zero Trust",
+      "expect_orchestrator": "content_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-07",
+      "prompt": "Translate this asset into German",
+      "expect_orchestrator": "content_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-08",
+      "prompt": "Build me an asset grid for the regional campaign",
+      "expect_orchestrator": "content_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-09",
+      "prompt": "What is our share of voice looking like this month?",
+      "expect_orchestrator": "brand_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "tm-10",
+      "prompt": "Monitor social sentiment and draft a response to the negative posts",
+      "expect_orchestrator": "brand_orchestrator",
+      "expect_agent": null
+    },
+    {
+      "id": "amb-01",
+      "prompt": "Build me a campaign brief",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null,
+      "note": "Near neighbour of campaign performance. 'Brief' plus 'build' means design, not analysis."
+    },
+    {
+      "id": "tm-11",
+      "prompt": "Generate a PPT for the upcoming selected campaign",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": "campaign_brief_deck",
+      "note": "A campaign PowerPoint is design, not the pipeline review deck."
+    },
+    {
+      "id": "amb-02",
+      "prompt": "Build me a campaign performance analysis",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_campaign_performance",
+      "note": "The mirror of amb-01. Same verb, opposite destination."
+    },
+    {
+      "id": "amb-03",
+      "prompt": "Create a campaign for the Munich event",
+      "expect_orchestrator": "mops_orchestrator",
+      "expect_agent": null,
+      "note": "'Create a campaign' means the Salesforce record, not designing a campaign."
+    },
+    {
+      "id": "amb-04",
+      "prompt": "How is paid social doing?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_campaign_performance",
+      "note": "Paid social is a demand channel, so analysis. Contrast with amb-05."
+    },
+    {
+      "id": "amb-05",
+      "prompt": "How are people talking about us on social?",
+      "expect_orchestrator": "brand_orchestrator",
+      "expect_agent": null,
+      "note": "Social sentiment is brand, not the paid social channel."
+    },
+    {
+      "id": "amb-06",
+      "prompt": "Which content should we be promoting more?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": "analysis_asset_influence",
+      "note": "About existing content performance, not writing new content."
+    },
+    {
+      "id": "amb-07",
+      "prompt": "We need better content for the EMEA campaign",
+      "expect_orchestrator": "content_orchestrator",
+      "expect_agent": null,
+      "note": "The mirror of amb-06. This one is a request to create."
+    },
+    {
+      "id": "amb-08",
+      "prompt": "Tell me about the accounts coming to the Munich event",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_account_briefs",
+      "note": "Qualitative background, so briefs rather than pipeline in the room."
+    },
+    {
+      "id": "amb-09",
+      "prompt": "How much pipeline is attached to the Munich event accounts?",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_pipeline_in_room",
+      "note": "The mirror of amb-08. Commercial total, not background."
+    },
+    {
+      "id": "amb-10",
+      "prompt": "How are we doing this quarter?",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": null,
+      "note": "Deliberately vague. Analysis is the right default; either pipeline health or campaign performance is acceptable."
+    },
+    {
+      "id": "amb-11",
+      "prompt": "Give me the deck",
+      "expect_orchestrator": "analysis_orchestrator",
+      "expect_agent": null,
+      "note": "Ambiguous between the two decks. Asking a clarifying question is a correct outcome; landing in analysis is what matters."
+    },
+    {
+      "id": "amb-12",
+      "prompt": "Which accounts should we be going after in Germany?",
+      "expect_orchestrator": "events_orchestrator",
+      "expect_agent": "events_location_topic",
+      "note": "Geographic and unworked-account framing points at events over ABM. A defensible ABM answer would not be a hard failure."
+    },
+    {
+      "id": "abm-01",
+      "prompt": "Run account intel and then gap and value mapping for ACC-001.",
+      "expect_agents": [
+        "marketing_orchestrator",
+        "abm_orchestrator",
+        "abm_account_intel",
+        "abm_gap_value"
+      ],
+      "note": "ABM must return to its coordinator and execute both dependent steps."
+    },
+    {
+      "id": "cross-01",
+      "prompt": "Find my top ABM accounts, then write an anchor asset for the highest-priority account.",
+      "expect_agents": [
+        "marketing_orchestrator",
+        "abm_orchestrator",
+        "content_orchestrator"
+      ],
+      "note": "The root must continue to Content after ABM returns its selection."
+    },
+    {
+      "id": "cross-02",
+      "prompt": "Build an ABM email sequence for ACC-001 and deploy its audience to Marketo.",
+      "expect_agents": [
+        "marketing_orchestrator",
+        "abm_orchestrator",
+        "mops_orchestrator"
+      ],
+      "note": "Creative ABM work precedes the Marketing Ops deployment task."
+    },
+    {
+      "id": "amb-abm-01",
+      "prompt": "Summarise the pipeline attached to accounts attending the Munich event.",
+      "expect_agents": [
+        "marketing_orchestrator",
+        "events_orchestrator"
+      ],
+      "note": "Event attendance and pipeline-in-room framing must not be absorbed by ABM."
+    },
+    {
+      "id": "session-01",
+      "turns": [
+        "What are my top ABM accounts?",
+        "How did our campaigns perform last week?"
+      ],
+      "expect_agents_by_turn": [
+        [
+          "marketing_orchestrator",
+          "abm_orchestrator"
+        ],
+        [
+          "marketing_orchestrator",
+          "analysis_orchestrator"
+        ]
+      ],
+      "note": "A new turn in the same session must restart at root rather than remain in ABM."
+    }
+  ]
+}

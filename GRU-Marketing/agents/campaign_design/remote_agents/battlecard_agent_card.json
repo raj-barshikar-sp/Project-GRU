@@ -1,0 +1,27 @@
+{
+  "name": "campaign_battlecard",
+  "description": "Generates comprehensive competitive battlecards for SailPoint against a named competitor: positioning, why-we-win proof points, objection handling and displacement / why-we-win messaging. Use for \"battlecard\", \"position against CyberArk\", \"how do we beat Okta\", or competitive displacement asks. NOT for brainstorming campaign themes, writing a full campaign brief, or analysing how past campaigns performed.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "SailPoint",
+    "url": "https://www.sailpoint.com"
+  },
+  "capabilities": {
+    "streaming": false
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "skills": [
+    {
+      "id": "generate_battlecard",
+      "name": "Competitive Battlecard",
+      "description": "Produces a full competitive battlecard for SailPoint versus a specified competitor, covering competitor overview, SailPoint strengths, weaknesses to exploit, objection handling, landmines and displacement messaging.",
+      "tags": ["competitive", "battlecard", "positioning", "sales-enablement"],
+      "examples": [
+        "Build a battlecard for SailPoint against CyberArk",
+        "Position us against Okta for a mid-market identity governance deal",
+        "How do we win against Saviynt?"
+      ]
+    }
+  ]
+}

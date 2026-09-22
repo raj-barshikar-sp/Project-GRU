@@ -1,0 +1,108 @@
+[
+  {
+    "quote_id": "Q-711",
+    "is_primary": true,
+    "forecast_value": 2400000,
+    "discount_percentage": 14.3,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "BELOW_FLOOR"
+    ],
+    "modernization_carve_acv": 45000,
+    "carve_notes": "IIQ to Identity Security Cloud migration carve applied; 50-store pilot only.",
+    "has_special_terms": false,
+    "special_terms_notes": ""
+  },
+  {
+    "quote_id": "Q-241",
+    "is_primary": false,
+    "forecast_value": 640000,
+    "discount_percentage": 8.6,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "MISSING_SITE_CODE",
+      "NO_PRIMARY_AT_SS40"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": false,
+    "special_terms_notes": ""
+  },
+  {
+    "quote_id": "Q-318",
+    "is_primary": true,
+    "forecast_value": 1250000,
+    "discount_percentage": 10.7,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "BELOW_FLOOR"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": true,
+    "special_terms_notes": "Ignite ship-date commitment on the APAC addendum."
+  },
+  {
+    "quote_id": "Q-402",
+    "is_primary": false,
+    "forecast_value": 0,
+    "discount_percentage": 18.2,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "SKU_NOT_ON_PRICE_LIST",
+      "CREDIT_CHECK_EXPIRED",
+      "BELOW_FLOOR",
+      "MISSING_FORECAST_VALUE"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": true,
+    "special_terms_notes": "Prepaid diagnostic; no platform terms."
+  },
+  {
+    "quote_id": "Q-570",
+    "is_primary": true,
+    "forecast_value": 3100000,
+    "discount_percentage": 15.1,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "MISSING_GPO_MODIFIER",
+      "MISSING_COSELL_CHECKBOX"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": true,
+    "special_terms_notes": "BAA-covered demo only; Vizient GPO language required."
+  },
+  {
+    "quote_id": "Q-611",
+    "is_primary": false,
+    "forecast_value": 410000,
+    "discount_percentage": 10.9,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "NO_PRIMARY_AT_SS40"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": true,
+    "special_terms_notes": "Custom net-60 payment terms with opt-out clause; 3-year lock request."
+  },
+  {
+    "quote_id": "Q-788",
+    "is_primary": false,
+    "forecast_value": 0,
+    "discount_percentage": 5.2,
+    "has_deal_desk_validation_errors": true,
+    "validation_error_codes": [
+      "UNAPPROVED_PAYMENT_TERMS",
+      "UNAPPROVED_CURRENCY",
+      "MISSING_FORECAST_VALUE",
+      "NO_PRIMARY_AT_SS40"
+    ],
+    "modernization_carve_acv": 0,
+    "carve_notes": "",
+    "has_special_terms": true,
+    "special_terms_notes": "Frankfurt residency exhibit; EUR list required."
+  }
+]

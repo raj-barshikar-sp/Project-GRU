@@ -1,0 +1,193 @@
+[
+  {
+    "domain": "apexfinancial.com",
+    "buying_stage": "Decision",
+    "intent_score": 94,
+    "intent_topics": [
+      "Identity governance",
+      "Privileged access modernization",
+      "CyberArk alternative"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-05T13:00:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "meridianhealth.org",
+    "buying_stage": "Consideration",
+    "intent_score": 87,
+    "intent_topics": [
+      "Access certifications",
+      "Saviynt alternative",
+      "Healthcare identity compliance"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-04T14:40:00Z",
+    "source": "TechTarget"
+  },
+  {
+    "domain": "harborpine.com",
+    "buying_stage": "Awareness",
+    "intent_score": 73,
+    "intent_topics": [
+      "Identity security",
+      "Retail workforce access"
+    ],
+    "profile_fit": "Moderate",
+    "observed_at": "2026-09-03T19:15:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "northridgesystems.com",
+    "buying_stage": "Decision",
+    "intent_score": 92,
+    "intent_topics": [
+      "Identity threat detection",
+      "Cloud identity governance",
+      "One Identity alternative"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-08T15:20:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "ironcladindustrial.com",
+    "buying_stage": "Awareness",
+    "intent_score": 61,
+    "intent_topics": [
+      "Manufacturing identity lifecycle",
+      "Oracle governance modernization"
+    ],
+    "profile_fit": "Moderate",
+    "observed_at": "2026-09-01T10:15:00Z",
+    "source": "TechTarget"
+  },
+  {
+    "domain": "solsticeenergy.com",
+    "buying_stage": "Decision",
+    "intent_score": 96,
+    "intent_topics": [
+      "Privileged access governance",
+      "Energy infrastructure identity security",
+      "CyberArk consolidation"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-08T08:40:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "guardianmutual.com",
+    "buying_stage": "Decision",
+    "intent_score": 98,
+    "intent_topics": [
+      "Insurance access certification",
+      "IBM Security Verify alternative",
+      "Identity risk analytics"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-09T04:30:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "civicbridge.gov",
+    "buying_stage": "Awareness",
+    "intent_score": 55,
+    "intent_topics": [
+      "Zero trust identity",
+      "Public sector access governance"
+    ],
+    "profile_fit": "Moderate",
+    "observed_at": "2026-08-29T16:00:00Z",
+    "source": "TechTarget"
+  },
+  {
+    "domain": "pacificatel.com",
+    "buying_stage": "Consideration",
+    "intent_score": 84,
+    "intent_topics": [
+      "Telecom workforce identity",
+      "Ping Identity governance",
+      "Non-employee access"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-06T02:25:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "alpinecontinental.com",
+    "buying_stage": "Consideration",
+    "intent_score": 79,
+    "intent_topics": [
+      "Banking identity compliance",
+      "Omada alternative",
+      "Access certification automation"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-03T11:35:00Z",
+    "source": "TechTarget"
+  },
+  {
+    "domain": "sakurahealth.co.jp",
+    "buying_stage": "Decision",
+    "intent_score": 91,
+    "intent_topics": [
+      "Healthcare identity governance",
+      "Oracle IGA replacement",
+      "Clinical access risk"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-07T23:10:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "redwoodcommerce.com",
+    "buying_stage": "Awareness",
+    "intent_score": 48,
+    "intent_topics": [
+      "Retail identity security",
+      "Seasonal workforce provisioning"
+    ],
+    "profile_fit": "Weak",
+    "observed_at": "2026-08-28T18:45:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "novagridutilities.com",
+    "buying_stage": "Consideration",
+    "intent_score": 86,
+    "intent_topics": [
+      "Utility privileged access",
+      "One Identity migration",
+      "Operational technology identity"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-05T17:05:00Z",
+    "source": "TechTarget"
+  },
+  {
+    "domain": "euroforge.eu",
+    "buying_stage": "Decision",
+    "intent_score": 95,
+    "intent_topics": [
+      "SAP identity modernization",
+      "Manufacturing access governance",
+      "Machine identity security"
+    ],
+    "profile_fit": "Strong",
+    "observed_at": "2026-09-08T07:50:00Z",
+    "source": "6sense"
+  },
+  {
+    "domain": "southerncrossassurance.com.au",
+    "buying_stage": "Consideration",
+    "intent_score": 76,
+    "intent_topics": [
+      "Insurance identity governance",
+      "Saviynt alternative",
+      "Cloud entitlement management"
+    ],
+    "profile_fit": "Moderate",
+    "observed_at": "2026-09-04T01:20:00Z",
+    "source": "TechTarget"
+  }
+]

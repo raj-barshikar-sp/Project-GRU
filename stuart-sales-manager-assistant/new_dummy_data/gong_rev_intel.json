@@ -1,0 +1,500 @@
+{
+  "dataset_metadata": {
+    "system": "Gong / Salesforce Revenue Intelligence",
+    "synced_at": "2026-09-20T14:30:00Z",
+    "version": "2.0-enriched",
+    "fiscal_quarter": "Q3-FY26",
+    "current_fiscal_week": "FW12"
+  },
+  "weekly_verbal_forecast_calls": [
+    {
+      "rep_id": "0058b00000GvRep01",
+      "rep_name": "Sarah Jenkins",
+      "boat": "Enterprise East",
+      "weekly_submissions": [
+        {
+          "fiscal_week": "FW09",
+          "week_ending_date": "2026-08-30",
+          "is_submitted": true,
+          "submitted_at": "2026-08-28T16:30:00Z",
+          "verbal_call_acv": 580000,
+          "crm_commit_acv": 350000,
+          "crm_upside_acv": 700000,
+          "crm_best_case_acv": 1050000,
+          "pipeline_coverage_to_call": 1.81,
+          "variance_verbal_vs_commit": 230000,
+          "manager_call_acv": 580000,
+          "notes": "Banking on Vanguard Energy commit and partial close of Global Logistics."
+        },
+        {
+          "fiscal_week": "FW10",
+          "week_ending_date": "2026-09-06",
+          "is_submitted": true,
+          "submitted_at": "2026-09-04T17:10:00Z",
+          "verbal_call_acv": 630000,
+          "crm_commit_acv": 350000,
+          "crm_upside_acv": 700000,
+          "crm_best_case_acv": 1050000,
+          "pipeline_coverage_to_call": 1.67,
+          "variance_verbal_vs_commit": 280000,
+          "manager_call_acv": 630000,
+          "notes": "Global Logistics POV completed, moved to SS70 proposal stage."
+        },
+        {
+          "fiscal_week": "FW11",
+          "week_ending_date": "2026-09-13",
+          "is_submitted": true,
+          "submitted_at": "2026-09-11T16:55:00Z",
+          "verbal_call_acv": 630000,
+          "crm_commit_acv": 630000,
+          "crm_upside_acv": 420000,
+          "crm_best_case_acv": 1050000,
+          "pipeline_coverage_to_call": 1.67,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 630000,
+          "notes": "Global Logistics now officially in Commit (SS70). Verbal call matches CRM commit 1:1."
+        },
+        {
+          "fiscal_week": "FW12",
+          "week_ending_date": "2026-09-20",
+          "is_submitted": true,
+          "submitted_at": "2026-09-18T16:15:00Z",
+          "verbal_call_acv": 630000,
+          "crm_commit_acv": 630000,
+          "crm_upside_acv": 420000,
+          "crm_best_case_acv": 1050000,
+          "pipeline_coverage_to_call": 1.67,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 630000,
+          "notes": "Holding solid at $630k. Omni Telecom ($420k) is upside for Q4 if procurement delays."
+        }
+      ]
+    },
+    {
+      "rep_id": "0058b00000GvRep02",
+      "rep_name": "David Chen",
+      "boat": "Tech & Digital Media",
+      "weekly_submissions": [
+        {
+          "fiscal_week": "FW09",
+          "week_ending_date": "2026-08-30",
+          "is_submitted": true,
+          "submitted_at": "2026-08-28T17:05:00Z",
+          "verbal_call_acv": 335000,
+          "crm_commit_acv": 195000,
+          "crm_upside_acv": 255000,
+          "crm_best_case_acv": 450000,
+          "pipeline_coverage_to_call": 1.34,
+          "variance_verbal_vs_commit": 140000,
+          "manager_call_acv": 195000,
+          "notes": "Calling Apex Tech ($195k) plus Nexus Retail ($140k). Manager discounted Nexus."
+        },
+        {
+          "fiscal_week": "FW10",
+          "week_ending_date": "2026-09-06",
+          "is_submitted": true,
+          "submitted_at": "2026-09-05T09:20:00Z",
+          "verbal_call_acv": 335000,
+          "crm_commit_acv": 195000,
+          "crm_upside_acv": 255000,
+          "crm_best_case_acv": 450000,
+          "pipeline_coverage_to_call": 1.34,
+          "variance_verbal_vs_commit": 140000,
+          "manager_call_acv": 195000,
+          "notes": "Nexus Retail security questionnaire taking longer than planned."
+        },
+        {
+          "fiscal_week": "FW11",
+          "week_ending_date": "2026-09-13",
+          "is_submitted": true,
+          "submitted_at": "2026-09-11T18:00:00Z",
+          "verbal_call_acv": 195000,
+          "crm_commit_acv": 195000,
+          "crm_upside_acv": 255000,
+          "crm_best_case_acv": 450000,
+          "pipeline_coverage_to_call": 2.31,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 195000,
+          "notes": "De-risked verbal call down to $195k (Apex Tech only). Pushing Nexus to Q4."
+        },
+        {
+          "fiscal_week": "FW12",
+          "week_ending_date": "2026-09-20",
+          "is_submitted": true,
+          "submitted_at": "2026-09-18T17:45:00Z",
+          "verbal_call_acv": 195000,
+          "crm_commit_acv": 195000,
+          "crm_upside_acv": 255000,
+          "crm_best_case_acv": 450000,
+          "pipeline_coverage_to_call": 2.31,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 195000,
+          "notes": "Apex Tech ($195k) contracts in final redlines. Expected sign by Sept 28."
+        }
+      ]
+    },
+    {
+      "rep_id": "0058b00000GvRep03",
+      "rep_name": "Elena Rodriguez",
+      "boat": "Financial Services",
+      "weekly_submissions": [
+        {
+          "fiscal_week": "FW09",
+          "week_ending_date": "2026-08-30",
+          "is_submitted": true,
+          "submitted_at": "2026-08-28T15:45:00Z",
+          "verbal_call_acv": 900000,
+          "crm_commit_acv": 900000,
+          "crm_upside_acv": 260000,
+          "crm_best_case_acv": 1160000,
+          "pipeline_coverage_to_call": 1.29,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 900000,
+          "notes": "Meridian Bank ($580k) + Acme Financial ($320k) in Commit. Crestview Capital ($260k) as backup."
+        },
+        {
+          "fiscal_week": "FW10",
+          "week_ending_date": "2026-09-06",
+          "is_submitted": true,
+          "submitted_at": "2026-09-04T16:00:00Z",
+          "verbal_call_acv": 900000,
+          "crm_commit_acv": 900000,
+          "crm_upside_acv": 260000,
+          "crm_best_case_acv": 1160000,
+          "pipeline_coverage_to_call": 1.29,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 900000,
+          "notes": "CISO approval received on Meridian Bank. Board sign-off scheduled."
+        },
+        {
+          "fiscal_week": "FW11",
+          "week_ending_date": "2026-09-13",
+          "is_submitted": true,
+          "submitted_at": "2026-09-11T16:20:00Z",
+          "verbal_call_acv": 900000,
+          "crm_commit_acv": 900000,
+          "crm_upside_acv": 260000,
+          "crm_best_case_acv": 1160000,
+          "pipeline_coverage_to_call": 1.29,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 900000,
+          "notes": "Both deals on track. Acme Financial in mutual close plan execution."
+        },
+        {
+          "fiscal_week": "FW12",
+          "week_ending_date": "2026-09-20",
+          "is_submitted": true,
+          "submitted_at": "2026-09-18T15:30:00Z",
+          "verbal_call_acv": 900000,
+          "crm_commit_acv": 900000,
+          "crm_upside_acv": 260000,
+          "crm_best_case_acv": 1160000,
+          "pipeline_coverage_to_call": 1.29,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 900000,
+          "notes": "Solid $900k commit. If Meridian Bank slips 2 days into Q4, Crestview will bridge."
+        }
+      ]
+    },
+    {
+      "rep_id": "0058b00000GvRep04",
+      "rep_name": "Marcus Brody",
+      "boat": "Healthcare",
+      "weekly_submissions": [
+        {
+          "fiscal_week": "FW09",
+          "week_ending_date": "2026-08-30",
+          "is_submitted": true,
+          "submitted_at": "2026-08-29T11:00:00Z",
+          "verbal_call_acv": 210000,
+          "crm_commit_acv": 0,
+          "crm_upside_acv": 660000,
+          "crm_best_case_acv": 660000,
+          "pipeline_coverage_to_call": 3.14,
+          "variance_verbal_vs_commit": 210000,
+          "manager_call_acv": 0,
+          "notes": "Calling Horizon BioPharma ($210k). Manager marked as $0 due to early stage."
+        },
+        {
+          "fiscal_week": "FW10",
+          "week_ending_date": "2026-09-06",
+          "is_submitted": true,
+          "submitted_at": "2026-09-05T14:30:00Z",
+          "verbal_call_acv": 210000,
+          "crm_commit_acv": 0,
+          "crm_upside_acv": 660000,
+          "crm_best_case_acv": 660000,
+          "pipeline_coverage_to_call": 3.14,
+          "variance_verbal_vs_commit": 210000,
+          "manager_call_acv": 0,
+          "notes": "Horizon champion out on leave. Rep still calling $210k."
+        },
+        {
+          "fiscal_week": "FW11",
+          "week_ending_date": "2026-09-13",
+          "is_submitted": false,
+          "submitted_at": null,
+          "verbal_call_acv": 0,
+          "crm_commit_acv": 0,
+          "crm_upside_acv": 660000,
+          "crm_best_case_acv": 660000,
+          "pipeline_coverage_to_call": 0.0,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 0,
+          "notes": "⚠️ Missed forecast submission deadline. Flagged by RevOps."
+        },
+        {
+          "fiscal_week": "FW12",
+          "week_ending_date": "2026-09-20",
+          "is_submitted": false,
+          "submitted_at": null,
+          "verbal_call_acv": 0,
+          "crm_commit_acv": 0,
+          "crm_upside_acv": 660000,
+          "crm_best_case_acv": 660000,
+          "pipeline_coverage_to_call": 0.0,
+          "variance_verbal_vs_commit": 0,
+          "manager_call_acv": 0,
+          "notes": "⚠️ Unsubmitted for current week. Active coaching intervention required."
+        }
+      ]
+    }
+  ],
+  "deal_intelligence": [
+    {
+      "deal_id": "0068b00001Deal001",
+      "deal_name": "Global Logistics Corp - IIQ Modernization",
+      "deal_health_score": 88,
+      "health_trend": "improving",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-17T15:00:00Z",
+      "call_recording_id": "gong_call_9812739",
+      "buyer_sentiment": "positive",
+      "risk_signals": [],
+      "multithreading_score": 85,
+      "key_stakeholders_engaged": [
+        "ciso@globallogistics.com",
+        "vp_it@globallogistics.com",
+        "iam_lead@globallogistics.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal002",
+      "deal_name": "Zenith Health - Enterprise Cloud Suite",
+      "deal_health_score": 38,
+      "health_trend": "declining",
+      "weekly_verbal_call_completed": false,
+      "last_verbal_call_date": "2026-08-28T14:00:00Z",
+      "call_recording_id": "gong_call_8723910",
+      "buyer_sentiment": "neutral_to_negative",
+      "risk_signals": [
+        "No verbal call logged in >21 days",
+        "Competitor Saviynt mentioned in 3 previous calls",
+        "Missing Lead SE assignment for SS40 POV stage"
+      ],
+      "multithreading_score": 25,
+      "key_stakeholders_engaged": [
+        "security_architect@zenithhealth.org"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal003",
+      "deal_name": "Apex Tech - Access Risk Management (ARM)",
+      "deal_health_score": 92,
+      "health_trend": "stable_high",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-18T11:00:00Z",
+      "call_recording_id": "gong_call_9934120",
+      "buyer_sentiment": "very_positive",
+      "risk_signals": [],
+      "multithreading_score": 90,
+      "key_stakeholders_engaged": [
+        "cio@apextech.io",
+        "grc_director@apextech.io"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal004",
+      "deal_name": "Nexus Retail - Non-Employee Risk (NERM)",
+      "deal_health_score": 62,
+      "health_trend": "stagnant",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-16T10:30:00Z",
+      "call_recording_id": "gong_call_9876231",
+      "buyer_sentiment": "neutral",
+      "risk_signals": [
+        "Security review SLA delayed by prospect Infosec team",
+        "Budget approval sign-off pending CFO review"
+      ],
+      "multithreading_score": 50,
+      "key_stakeholders_engaged": [
+        "hr_systems_director@nexusretail.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal005",
+      "deal_name": "Vanguard Energy - Data Access Security (DAS)",
+      "deal_health_score": 95,
+      "health_trend": "improving",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-19T09:30:00Z",
+      "call_recording_id": "gong_call_9955122",
+      "buyer_sentiment": "very_positive",
+      "risk_signals": [],
+      "multithreading_score": 92,
+      "key_stakeholders_engaged": [
+        "ciso@vanguardenergy.com",
+        "legal_counsel@vanguardenergy.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal006",
+      "deal_name": "Meridian Bank - Full Platform & NERM (Whale)",
+      "deal_health_score": 91,
+      "health_trend": "stable_high",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-18T14:00:00Z",
+      "call_recording_id": "gong_call_9948210",
+      "buyer_sentiment": "very_positive",
+      "risk_signals": [
+        "Complex procurement legal review (MSA addendum)"
+      ],
+      "multithreading_score": 95,
+      "key_stakeholders_engaged": [
+        "cio@meridianbank.com",
+        "ciso@meridianbank.com",
+        "head_of_procurement@meridianbank.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal007",
+      "deal_name": "Horizon BioPharma - Identity Security Cloud",
+      "deal_health_score": 42,
+      "health_trend": "declining",
+      "weekly_verbal_call_completed": false,
+      "last_verbal_call_date": "2026-09-04T16:00:00Z",
+      "call_recording_id": "gong_call_9765210",
+      "buyer_sentiment": "negative",
+      "risk_signals": [
+        "Champion (Director of IAM) out on medical leave",
+        "Single-threaded deal with zero executive engagement",
+        "Missed last 2 scheduled touchpoints"
+      ],
+      "multithreading_score": 15,
+      "key_stakeholders_engaged": [
+        "iam_manager@horizonbio.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal008",
+      "deal_name": "Acme Financial - ISC Business Plus",
+      "deal_health_score": 94,
+      "health_trend": "improving",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-18T10:00:00Z",
+      "call_recording_id": "gong_call_9940129",
+      "buyer_sentiment": "very_positive",
+      "risk_signals": [],
+      "multithreading_score": 88,
+      "key_stakeholders_engaged": [
+        "vp_security@acmefinancial.com",
+        "procurement_lead@acmefinancial.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal009",
+      "deal_name": "Omni Telecom - NERM & Connectivity",
+      "deal_health_score": 76,
+      "health_trend": "stable",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-17T11:30:00Z",
+      "call_recording_id": "gong_call_9918230",
+      "buyer_sentiment": "positive",
+      "risk_signals": [
+        "POV technical win confirmed; finalizing formal pricing review"
+      ],
+      "multithreading_score": 75,
+      "key_stakeholders_engaged": [
+        "it_director@omnitelecom.com",
+        "iam_architect@omnitelecom.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal010",
+      "deal_name": "Beacon Media - Cloud Governance",
+      "deal_health_score": 58,
+      "health_trend": "stagnant",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-15T14:00:00Z",
+      "call_recording_id": "gong_call_9861920",
+      "buyer_sentiment": "neutral",
+      "risk_signals": [
+        "Budget constrained; prospect requesting payment term concessions"
+      ],
+      "multithreading_score": 40,
+      "key_stakeholders_engaged": [
+        "director_infrastructure@beaconmedia.com"
+      ]
+    },
+    {
+      "deal_id": "0068b00001Deal011",
+      "deal_name": "Crestview Capital - ARM & File Access",
+      "deal_health_score": 86,
+      "health_trend": "improving",
+      "weekly_verbal_call_completed": true,
+      "last_verbal_call_date": "2026-09-19T11:00:00Z",
+      "call_recording_id": "gong_call_9951829",
+      "buyer_sentiment": "positive",
+      "risk_signals": [
+        "Fast-track procurement possible if Meridian Bank closes early"
+      ],
+      "multithreading_score": 80,
+      "key_stakeholders_engaged": [
+        "ciso@crestviewcap.com",
+        "vp_compliance@crestviewcap.com"
+      ]
+    }
+  ],
+  "rep_scorecards": [
+    {
+      "rep_id": "0058b00000GvRep01",
+      "rep_name": "Sarah Jenkins",
+      "talk_to_listen_ratio": 42.1,
+      "question_rate_per_hour": 14.2,
+      "filler_words_per_minute": 2.1,
+      "competitor_interception_rate": 88.0,
+      "executive_engagement_rate": 78.5,
+      "coaching_recommendation": "Strong consultative selling skills. Encourage sharing IIQ migration talk tracks with ramping peers."
+    },
+    {
+      "rep_id": "0058b00000GvRep02",
+      "rep_name": "David Chen",
+      "talk_to_listen_ratio": 51.3,
+      "question_rate_per_hour": 10.8,
+      "filler_words_per_minute": 4.5,
+      "competitor_interception_rate": 65.0,
+      "executive_engagement_rate": 55.0,
+      "coaching_recommendation": "Work on discovery depth in early stage (SS20) calls. Multithreading needs improvement on commercial tier accounts."
+    },
+    {
+      "rep_id": "0058b00000GvRep03",
+      "rep_name": "Elena Rodriguez",
+      "talk_to_listen_ratio": 38.5,
+      "question_rate_per_hour": 16.5,
+      "filler_words_per_minute": 1.4,
+      "competitor_interception_rate": 95.0,
+      "executive_engagement_rate": 92.0,
+      "coaching_recommendation": "Master-level enterprise execution. Ideal peer mentor for complex negotiation and multi-stakeholder consensus."
+    },
+    {
+      "rep_id": "0058b00000GvRep04",
+      "rep_name": "Marcus Brody",
+      "talk_to_listen_ratio": 68.4,
+      "question_rate_per_hour": 6.1,
+      "filler_words_per_minute": 8.7,
+      "competitor_interception_rate": 30.0,
+      "executive_engagement_rate": 18.0,
+      "coaching_recommendation": "High risk of pitch-slapping prospects (68% talk ratio). Needs intensive coaching on asking open discovery questions and scheduling regular verbal cadence."
+    }
+  ]
+}

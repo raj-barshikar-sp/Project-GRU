@@ -1,0 +1,649 @@
+[
+  {
+    "account_id": "ACC-001",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-002",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-003",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-004",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-005",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-006",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-007",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-008",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-009",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cloud migration",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-010",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cost control",
+      "Cloud migration",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-011",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-012",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Operational efficiency",
+      "Audit readiness",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-013",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cloud migration",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-014",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Operational efficiency",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-015",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "M&A integration",
+      "Cloud migration",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-016",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cost control",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-017",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cost control",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-018",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "M&A integration",
+      "Audit readiness",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-019",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cloud migration",
+      "Audit readiness",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-020",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Audit readiness",
+      "Cost control",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-021",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "M&A integration",
+      "Operational efficiency",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-022",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cost control",
+      "M&A integration",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-023",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cloud migration",
+      "Operational efficiency",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-024",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "M&A integration",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-025",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "M&A integration",
+      "Operational efficiency",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-026",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cloud migration",
+      "Operational efficiency",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-027",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Operational efficiency",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-028",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-029",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cost control",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-030",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "M&A integration",
+      "Operational efficiency",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-031",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "M&A integration",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-032",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Audit readiness",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-033",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "M&A integration",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-034",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Cloud migration",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-035",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "M&A integration",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-036",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cloud migration",
+      "Cost control",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-037",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Audit readiness",
+      "Cloud migration",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-038",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Audit readiness",
+      "Cloud migration",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-039",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Operational efficiency",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-040",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-041",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Audit readiness",
+      "M&A integration",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-042",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-043",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cost control",
+      "Cloud migration",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-044",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-045",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Operational efficiency",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-046",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Cloud migration",
+      "Audit readiness",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-047",
+    "recent_news": "Publicly committed to a Zero Trust program following a regional regulatory push.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Security budget increased year over year.",
+    "priorities": [
+      "Zero Trust",
+      "Audit readiness",
+      "Access governance modernization"
+    ]
+  },
+  {
+    "account_id": "ACC-048",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Audit readiness",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-049",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cloud migration",
+      "Operational efficiency",
+      "M&A integration"
+    ]
+  },
+  {
+    "account_id": "ACC-050",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Operational efficiency",
+      "Cloud migration",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-051",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Operational efficiency",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-052",
+    "recent_news": "Disclosed an audit finding on access controls in its annual report.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Cost-optimization program under way.",
+    "priorities": [
+      "Operational efficiency",
+      "Cost control",
+      "Cloud migration"
+    ]
+  },
+  {
+    "account_id": "ACC-053",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cloud migration",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-054",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cloud migration",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-055",
+    "recent_news": "Reported strong quarterly results and flagged security investment.",
+    "leadership_change": "Hired a Head of IT Risk from a regulated peer.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "M&A integration",
+      "Cloud migration",
+      "Cost control"
+    ]
+  },
+  {
+    "account_id": "ACC-056",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-057",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Operational efficiency",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-058",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "New CISO appointed this quarter.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Audit readiness",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-059",
+    "recent_news": "Announced a multi-year cloud migration to consolidate data centers.",
+    "leadership_change": "",
+    "fiscal_note": "Investing in cloud and security.",
+    "priorities": [
+      "Cloud migration",
+      "Audit readiness"
+    ]
+  },
+  {
+    "account_id": "ACC-060",
+    "recent_news": "Expanding into new regional markets via acquisition.",
+    "leadership_change": "",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency"
+    ]
+  },
+  {
+    "account_id": "ACC-061",
+    "recent_news": "Named to an industry list for digital transformation.",
+    "leadership_change": "Promoted a VP of Infrastructure to lead identity modernization.",
+    "fiscal_note": "Stable revenue.",
+    "priorities": [
+      "Cost control",
+      "Operational efficiency",
+      "Cloud migration"
+    ]
+  }
+]

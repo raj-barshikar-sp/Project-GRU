@@ -1,0 +1,57 @@
+[
+  {
+    "code": "GDPR",
+    "name": "General Data Protection Regulation",
+    "region": "EMEA",
+    "summary": "EU data protection; access controls and least privilege over personal data.",
+    "industries": [
+      "all"
+    ]
+  },
+  {
+    "code": "NIS2",
+    "name": "Network and Information Security Directive 2",
+    "region": "EMEA",
+    "summary": "EU cyber-resilience mandate raising access governance and accountability requirements.",
+    "industries": [
+      "all"
+    ]
+  },
+  {
+    "code": "DORA",
+    "name": "Digital Operational Resilience Act",
+    "region": "EMEA",
+    "summary": "EU financial-sector operational resilience, including ICT and access risk.",
+    "industries": [
+      "Financial Services"
+    ]
+  },
+  {
+    "code": "SOX",
+    "name": "Sarbanes-Oxley Act",
+    "region": "AMER",
+    "summary": "US controls over financial reporting; segregation of duties and access certification.",
+    "industries": [
+      "Financial Services",
+      "all"
+    ]
+  },
+  {
+    "code": "HIPAA",
+    "name": "Health Insurance Portability and Accountability Act",
+    "region": "AMER",
+    "summary": "US healthcare data protection; minimum-necessary access to PHI.",
+    "industries": [
+      "Healthcare"
+    ]
+  },
+  {
+    "code": "LGPD",
+    "name": "Lei Geral de Protecao de Dados",
+    "region": "LATAM",
+    "summary": "Brazil's data protection law, close analogue to GDPR.",
+    "industries": [
+      "all"
+    ]
+  }
+]

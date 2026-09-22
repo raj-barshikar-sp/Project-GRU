@@ -1,0 +1,18 @@
+[
+  {
+    "id": "EVT-001",
+    "name": "CISO Roundtable Munich",
+    "city": "Munich",
+    "region": "EMEA",
+    "event_date": "2026-10-15",
+    "topic": "Zero Trust Architecture"
+  },
+  {
+    "id": "EVT-002",
+    "name": "Security Breakfast Singapore",
+    "city": "Singapore",
+    "region": "APJ",
+    "event_date": "2026-11-05",
+    "topic": "SASE"
+  }
+]

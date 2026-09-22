@@ -1,0 +1,186 @@
+{
+  "system": "Workday HCM & RevOps Enablement",
+  "synced_at": "2026-09-20T14:30:00Z",
+  "version": "2.0-enriched",
+  "productivity_minima_benchmarks": {
+    "policy_name": "FY26 Americas Field Sales Productivity Minima Standards",
+    "owner": "Sales Operations & RevOps Strategy",
+    "tenure_tiers": [
+      {
+        "tier_name": "Ramping AE (0-6 months tenure)",
+        "applicable_reps": ["0058b00000GvRep04"],
+        "weekly_floors": {
+          "customer_meetings_min": 6,
+          "outbound_prospecting_touchpoints_min": 50,
+          "forecast_submitted_weekly": true,
+          "next_step_compliance_pct_min": 85
+        },
+        "quarterly_floors": {
+          "new_opportunities_created_min": 3,
+          "new_pipeline_created_acv_min": 600000,
+          "stage_advances_min": 1,
+          "completed_enablement_certifications": 2
+        }
+      },
+      {
+        "tier_name": "Tenured AE II (7-24 months tenure)",
+        "applicable_reps": ["0058b00000GvRep02"],
+        "weekly_floors": {
+          "customer_meetings_min": 10,
+          "outbound_prospecting_touchpoints_min": 45,
+          "forecast_submitted_weekly": true,
+          "next_step_compliance_pct_min": 90
+        },
+        "quarterly_floors": {
+          "new_opportunities_created_min": 5,
+          "new_pipeline_created_acv_min": 1000000,
+          "stage_advances_min": 3,
+          "completed_enablement_certifications": 1
+        }
+      },
+      {
+        "tier_name": "Senior & Strategic AE (>24 months tenure)",
+        "applicable_reps": ["0058b00000GvRep01", "0058b00000GvRep03"],
+        "weekly_floors": {
+          "customer_meetings_min": 8,
+          "outbound_prospecting_touchpoints_min": 35,
+          "forecast_submitted_weekly": true,
+          "next_step_compliance_pct_min": 90
+        },
+        "quarterly_floors": {
+          "new_opportunities_created_min": 4,
+          "new_pipeline_created_acv_min": 1200000,
+          "stage_advances_min": 3,
+          "completed_enablement_certifications": 1
+        }
+      }
+    ]
+  },
+  "employees": [
+    {
+      "employee_id": "WD-EMP-98211",
+      "sfdc_user_id": "0058b00000GvManager1",
+      "name": "Marcus Vance",
+      "email": "marcus.vance@sailpoint.com",
+      "job_profile": "Director, Regional Sales",
+      "job_family": "Sales Management",
+      "management_level": "Director",
+      "tenure_months": 54,
+      "hire_date": "2022-03-15",
+      "cost_center": "CC-4401-SALES-AMER",
+      "base_salary": 210000,
+      "ote": 420000,
+      "quota_assignment_q3": 3200000,
+      "performance_band": "Top Performer",
+      "direct_reports_count": 4
+    },
+    {
+      "employee_id": "WD-EMP-10492",
+      "sfdc_user_id": "0058b00000GvRep01",
+      "name": "Sarah Jenkins",
+      "email": "sarah.jenkins@sailpoint.com",
+      "job_profile": "Senior Account Executive",
+      "job_family": "Direct Sales",
+      "management_level": "Individual Contributor",
+      "tenure_months": 38,
+      "hire_date": "2023-07-10",
+      "cost_center": "CC-4401-SALES-AMER",
+      "base_salary": 140000,
+      "ote": 280000,
+      "quota_assignment_q3": 850000,
+      "performance_band": "High Performer",
+      "ramp_status": "Fully Ramped",
+      "manager_employee_id": "WD-EMP-98211",
+      "quarterly_actuals_qtd": {
+        "meetings_completed_weekly_avg": 9.2,
+        "outbound_touchpoints_weekly_avg": 38.0,
+        "new_opportunities_created": 4,
+        "new_pipeline_created_acv": 1350000,
+        "stage_advances": 3,
+        "forecast_submission_rate_pct": 100,
+        "next_step_compliance_pct": 100
+      }
+    },
+    {
+      "employee_id": "WD-EMP-11203",
+      "sfdc_user_id": "0058b00000GvRep02",
+      "name": "David Chen",
+      "email": "david.chen@sailpoint.com",
+      "job_profile": "Account Executive II",
+      "job_family": "Direct Sales",
+      "management_level": "Individual Contributor",
+      "tenure_months": 19,
+      "hire_date": "2025-02-01",
+      "cost_center": "CC-4401-SALES-AMER",
+      "base_salary": 120000,
+      "ote": 240000,
+      "quota_assignment_q3": 750000,
+      "performance_band": "Solid Performer",
+      "ramp_status": "Fully Ramped",
+      "manager_employee_id": "WD-EMP-98211",
+      "quarterly_actuals_qtd": {
+        "meetings_completed_weekly_avg": 10.5,
+        "outbound_touchpoints_weekly_avg": 46.0,
+        "new_opportunities_created": 5,
+        "new_pipeline_created_acv": 1100000,
+        "stage_advances": 3,
+        "forecast_submission_rate_pct": 100,
+        "next_step_compliance_pct": 100
+      }
+    },
+    {
+      "employee_id": "WD-EMP-08912",
+      "sfdc_user_id": "0058b00000GvRep03",
+      "name": "Elena Rodriguez",
+      "email": "elena.rodriguez@sailpoint.com",
+      "job_profile": "Strategic Account Executive",
+      "job_family": "Direct Sales",
+      "management_level": "Individual Contributor",
+      "tenure_months": 46,
+      "hire_date": "2022-11-15",
+      "cost_center": "CC-4401-SALES-AMER",
+      "base_salary": 160000,
+      "ote": 320000,
+      "quota_assignment_q3": 1100000,
+      "performance_band": "Top Performer",
+      "ramp_status": "Fully Ramped",
+      "manager_employee_id": "WD-EMP-98211",
+      "quarterly_actuals_qtd": {
+        "meetings_completed_weekly_avg": 11.0,
+        "outbound_touchpoints_weekly_avg": 42.0,
+        "new_opportunities_created": 5,
+        "new_pipeline_created_acv": 1900000,
+        "stage_advances": 4,
+        "forecast_submission_rate_pct": 100,
+        "next_step_compliance_pct": 100
+      }
+    },
+    {
+      "employee_id": "WD-EMP-12844",
+      "sfdc_user_id": "0058b00000GvRep04",
+      "name": "Marcus Brody",
+      "email": "marcus.brody@sailpoint.com",
+      "job_profile": "Account Executive I (Ramping)",
+      "job_family": "Direct Sales",
+      "management_level": "Individual Contributor",
+      "tenure_months": 4,
+      "hire_date": "2026-05-18",
+      "cost_center": "CC-4401-SALES-AMER",
+      "base_salary": 95000,
+      "ote": 190000,
+      "quota_assignment_q3": 500000,
+      "performance_band": "Needs Improvement",
+      "ramp_status": "Ramping (Month 4 of 6)",
+      "manager_employee_id": "WD-EMP-98211",
+      "quarterly_actuals_qtd": {
+        "meetings_completed_weekly_avg": 4.1,
+        "outbound_touchpoints_weekly_avg": 52.0,
+        "new_opportunities_created": 2,
+        "new_pipeline_created_acv": 520000,
+        "stage_advances": 0,
+        "forecast_submission_rate_pct": 50,
+        "next_step_compliance_pct": 50
+      }
+    }
+  ]
+}

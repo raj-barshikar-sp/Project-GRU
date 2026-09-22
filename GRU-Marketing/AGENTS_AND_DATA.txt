@@ -1,0 +1,548 @@
+GRU Marketing Agents — catalogue
+================================
+
+The system is a tree. The root holds no tools. It routes every request to one
+of seven domain orchestrators. Those orchestrators either route again to
+specialists, or (Marketing Ops only) run some writes themselves.
+
+Regions used throughout: AMER, EMEA, APJ (or "all").
+Operating user (defaults for "my region" / campaign owner): dummy_data/me.json.
+
+
+ROOT
+----
+Agent: marketing_orchestrator  (root/agent.py)
+
+What it does
+  Front door. Reads the request, picks one team, transfers. Does not answer
+  marketing questions from its own knowledge.
+
+Data required from the user
+  A marketing request in plain language. If two teams could own it, it asks
+  one clarifying question instead of guessing.
+
+Sub-agents (the seven teams)
+  analysis_orchestrator
+  events_orchestrator
+  mops_orchestrator
+  campaign_design_orchestrator
+  abm_orchestrator
+  content_orchestrator
+  brand_orchestrator
+
+
+1. ANALYSIS  (analysis_orchestrator)
+===================================
+What it does
+  Marketing analysis and reporting. No tools of its own; always hands work
+  to a specialist.
+
+Underlying systems / fixtures
+  Salesforce campaigns and opportunities, engagement events, current user.
+  Files: dummy_data/campaigns.json, opportunities.json, engagement_events.json,
+  accounts.json, me.json.
+
+User input (typical)
+  Optional region; optional "my region" (resolved from me.json).
+
+
+1.1 analysis_campaign_performance
+  What it does
+    How campaigns that already ran performed: spend, leads, MQLs, conversion,
+    cost per opportunity, week-over-week trends. Does not recommend changes.
+
+  Data required
+    From user: optional region (default all).
+    From tools: get_campaign_performance, get_funnel_by_campaign_type,
+    get_week_over_week_movement.
+
+  Writes to session: analysis_campaign_performance
+
+
+1.2 analysis_improvement_recommender
+  What it does
+    Budget shifts, scale/pause calls, funnel fixes. Ranked, specific
+    recommendations with expected impact.
+
+  Data required
+    From user: optional region; optionally a prior performance question in
+    the same session.
+    From session: analysis_campaign_performance (if present, reused).
+    From tools: get_spend_efficiency_outliers (always), plus performance
+    and funnel tools if session is empty.
+
+  Writes to session: analysis_recommendations
+
+
+1.3 analysis_pipeline_health
+  What it does
+    Coverage vs 2x target by region, stage mix, stalled deals, week-over-week
+    stage movement. Whether the quarter is on track.
+
+  Data required
+    From user: optional region, or "my region" / "my pipeline".
+    From tools: get_pipeline_coverage (always), get_stage_distribution,
+    get_stalled_deals, get_stage_movement, get_current_user.
+
+  Writes to session: analysis_pipeline_health
+
+
+1.4 analysis_asset_influence
+  What it does
+    Which content assets correlate with deals progressing, ranked by lift
+    over baseline. Repeats the correlation caveat.
+
+  Data required
+    From user: none beyond the question.
+    From tools: get_asset_influence (engagement + opportunity progression).
+
+  Writes to session: analysis_asset_influence
+
+
+1.5 analysis_pipeline_deck  (SequentialAgent)
+  What it does
+    Weekly pipeline review PowerPoint: coverage, gap, stages, stalled deals,
+    where to focus.
+
+  Nested sub-agents
+    analysis_pipeline_deck_analyst  — same job as pipeline health
+    analysis_pipeline_deck_writer   — slide plan + save_deck
+
+  Data required
+    From user: a request for the weekly pipeline deck.
+    From session: analysis_pipeline_health (reused if already run).
+    From tools: pipeline coverage / stages / stalled deals if session empty;
+    save_deck to write the .pptx.
+
+  Output file: e.g. pipeline-review.pptx
+
+
+1.6 analysis_demand_council_deck  (SequentialAgent)
+  What it does
+    Monthly executive demand council PowerPoint: position, coverage, demand
+    gen performance, conversion leaks, risks, decisions requested.
+
+  Nested sub-agents
+    analysis_demand_council_analyst — same job as pipeline health
+    analysis_demand_council_writer  — slide plan + campaign performance + save_deck
+
+  Data required
+    From user: a request for the demand council / monthly demand review.
+    From session: analysis_pipeline_health.
+    From tools: get_campaign_performance plus pipeline tools if needed;
+    save_deck.
+
+  Output file: e.g. demand-council.pptx
+
+
+2. REGIONAL EVENTS  (events_orchestrator)
+=========================================
+What it does
+  Field events: where to run, who to invite, account briefs, pipeline in
+  the room. Not webinars as a demand channel; not creating the SFDC record.
+
+Underlying systems / fixtures
+  Accounts, contacts, intent, opportunities, engagement, field events,
+  attendees.
+  Files: accounts.json, contacts.json, intent_signals.json, opportunities.json,
+  engagement_events.json, field_events.json, event_attendees.json.
+
+
+2.1 events_location_topic
+  What it does
+    Recommends a city (plus second choice) and session topic from clusters of
+    accounts with no opportunity and their intent themes.
+
+  Data required
+    From user: optional region; this is for events that do not exist yet.
+    From tools: get_unworked_accounts_by_city(region), get_intent_themes
+    (account ids, min intent score), find_accounts_in_city(city).
+
+  Writes to session: events_location_recommendation
+
+
+2.2 events_attendee_targeting
+  What it does
+    Invitation list of contacts at named accounts, ranked by buying-committee
+    fit (~top 15, grouped by account). Flags not-opted-in contacts.
+
+  Data required
+    From user: account ids, OR a city (resolved via find_accounts_in_city).
+    From tools: get_buying_committee(account_ids), find_accounts_in_city(city).
+
+  Writes to session: events_target_list
+
+
+2.3 events_account_briefs  (SequentialAgent)
+  What it does
+    ~80-word briefs per account: pipeline position, intent, recent engagement,
+    opening line for a rep. Written in parallel then merged.
+
+  Nested sub-agents
+    events_brief_preparer     — one fetch; splits accounts into 3 groups
+    events_brief_writers      — ParallelAgent of events_brief_writer_1/2/3
+    events_brief_merger       — one briefing pack
+
+  Data required
+    From user: comma-separated account ids, OR an event_id (e.g. EVT-001)
+    to brief everyone attending.
+    From tools: prepare_account_briefs(account_ids="", event_id="") — snapshots
+    of CRM, intent, engagement, pipeline.
+
+  Writes to session: events_account_briefs
+
+
+2.4 events_pipeline_in_room
+  What it does
+    Open pipeline carried by attendees: total value, largest deals, stalled
+    deals, attending accounts with nothing open.
+
+  Data required
+    From user: event id, or enough context to pick from the event list.
+    From tools: list_field_events, get_event_attendees(event_id),
+    get_pipeline_in_accounts(account_ids from attendees).
+
+  Writes to session: events_pipeline_in_room
+
+
+3. MARKETING OPS  (mops_orchestrator)
+====================================
+What it does
+  The only team that writes. Three one-shot actions are tools on the
+  orchestrator itself. List load is a four-step SequentialAgent.
+  All writes are mocked in this build.
+
+Underlying systems / fixtures
+  Salesforce, 6sense, Marketo (mocked), current user, lead CSVs.
+  Files: accounts.json, contacts.json, campaigns.json, me.json,
+  event_leads_munich.csv (sample).
+
+3.a Tools on the orchestrator (not sub-agents)
+  create_sfdc_campaign
+    Data required from user (or inferred):
+      name (REGION-TYPE-YYYYQN-Description), campaign_type (Webinar, Field
+      Event, Paid Search, Paid Social, Content Syndication, Email Nurture,
+      Tradeshow), region, start_date, end_date (YYYY-MM-DD), budget_usd
+      (asked if missing), owner_email (defaults via get_current_user),
+      description.
+
+  build_6sense_segment
+    Data required from user (translated into filters):
+      segment_name; industries; regions; countries; intent_keywords;
+      min_intent_score (80 = surging/high intent); min_employee_count;
+      target_accounts_only.
+
+  deploy_segment_to_marketo
+    Data required: segment_id and segment_name from a prior segment build.
+
+
+3.1 mops_list_load  (SequentialAgent)
+  What it does
+    Load a CSV of leads into Marketo in fixed order: read, clean, validate,
+    upload. Order is code, not a prompt suggestion.
+
+  Nested sub-agents
+    mops_list_load_reader    — read_lead_file(filename); default
+                               event_leads_munich.csv
+    mops_list_load_cleaner   — clean_lead_rows (whitespace, emails, countries)
+    mops_list_load_validator — validate_lead_rows (required fields, email
+                               shape, duplicates, suppressed internal domains)
+    mops_list_load_loader    — load_cleaned_list(list_name)
+
+  Data required
+    From user: CSV filename (or the default sample); list name for Marketo.
+    CSV must have columns: First Name, Last Name, Email, Company, Country.
+    Working rows live in session state, not in the prompt.
+
+  Writes to session: mops_list_load_result (plus per-step reports)
+
+
+4. CAMPAIGN DESIGN  (campaign_design_orchestrator)
+=================================================
+What it does
+  Design a NEW campaign: ideas, briefs, competitive battlecards.
+  Not past performance; not creating the Salesforce record.
+
+Underlying systems / fixtures
+  Pipeline gaps, campaign performance, product priorities, competitor intel,
+  brief template.
+  Files: opportunities.json, campaigns.json, accounts.json,
+  product_features.json, competitors.json, templates.json.
+
+
+4.1 campaign_ideation
+  What it does
+    Three to five scored campaign themes from pipeline gaps, performance
+    signals and product priorities.
+
+  Data required
+    From user: optional region.
+    From tools: get_pipeline_gaps_for_ideation(region),
+    get_campaign_performance_signals(region), get_product_priorities.
+
+  Writes to session: campaign_ideation
+
+
+4.2 campaign_brief_builder
+  What it does
+    Structured brief: goal, audience, messaging, channels, budget, timeline,
+    KPIs. Saves an artifact.
+
+  Data required
+    From user: campaign intent (or a theme from a prior ideation turn).
+    From session: campaign_ideation (optional).
+    From tools: get_campaign_brief_template, save_campaign_artifact
+    (CampaignBrief JSON).
+
+  Writes to session: campaign_brief
+
+
+4.3 campaign_competitive_messaging
+  What it does
+    Internal battlecard vs Saviynt, CyberArk or One Identity: positioning,
+    why we win, their strengths, landmines, objection handlers, CTA.
+
+  Data required
+    From user: competitor name (or "all" / unclear → tool then pick).
+    From tools: get_competitor_intelligence(competitor),
+    save_campaign_artifact (battlecard JSON).
+
+  Writes to session: campaign_competitive_messaging
+
+
+5. ABM  (abm_orchestrator)
+=========================
+What it does
+  Account-based marketing: tiering, intel, gap/value, persona messaging,
+  multi-channel plays. Not field events; not general pipeline analysis.
+
+Underlying systems / fixtures
+  Accounts, ICP, intent, engagement, opportunities, contacts, company facts,
+  technographics, personas, regulations, value benchmarks, product features.
+  Files: accounts.json, icp.json, intent_signals.json, engagement_events.json,
+  opportunities.json, contacts.json, company_facts.json, technographics.json,
+  personas.json, regulatory_glossary.json, value_benchmarks.json,
+  product_features.json, me.json.
+
+
+5.1 abm_account_selection
+  What it does
+    Rank and tier target accounts by ICP fit, 6sense intent, engagement and
+    pipeline. Names Tier 1 and composite scores.
+
+  Data required
+    From user: optional region, or "my accounts" / "my region".
+    From tools: get_top_accounts(region), get_current_user.
+
+  Writes to session: abm_account_selection
+
+
+5.2 abm_account_intel
+  What it does
+    Deep dive on one account: firmographics, technographics, intent,
+    stakeholders, business context, news.
+
+  Data required
+    From user: account id (e.g. ACC-001), or a name if already in session
+    from selection.
+    From tools: get_account_intel_brief(account_id).
+
+  Writes to session: abm_account_intel
+
+
+5.3 abm_gap_value
+  What it does
+    Map account pain/tech gaps to SailPoint capabilities with quantified
+    annual value. Dollar figures come only from the tool.
+
+  Data required
+    From user: account id (or from prior intel).
+    From session: abm_account_intel (optional).
+    From tools: get_gap_value_map(account_id).
+
+  Writes to session: abm_gap_value
+
+
+5.4 abm_messaging
+  What it does
+    Persona-specific, stage-aware messaging (Awareness / Consideration /
+    Decision) with headline, body, proof point.
+
+  Data required
+    From user: account context; personas (CISO, IAM_Director, CIO,
+    Compliance_Officer, or similar); industry and region for regs.
+    From session: abm_account_intel, abm_gap_value (ROI must come from here).
+    From tools: get_persona_framework(persona_key),
+    get_regulatory_context(industry, region).
+
+  Writes to session: abm_messaging
+
+
+5.5 abm_multichannel_package
+  What it does
+    Full play: 4-touch email cadence, 3-step LinkedIn sequence, Folloze
+    board spec, AE/SDR playbook. Files under output/abm/.
+
+  Data required
+    From user: named account / persona if not already in session.
+    From session: abm_messaging (preferred), else abm_account_intel and
+    abm_gap_value.
+    From tools: save_abm_artifact (email_cadence, linkedin, folloze, playbook).
+
+  Writes to session: abm_multichannel_package
+
+
+6. CONTENT GENERATION  (content_orchestrator)
+============================================
+What it does
+  Write and translate content and asset grids. Not "which content is working"
+  (that is analysis).
+
+Underlying systems / fixtures
+  Brand voice, outlines, regional glossaries, channel specs.
+  Files: brand_voice.json, templates.json, regulatory_glossary.json.
+  Optional session: campaign_brief from campaign design.
+
+
+6.1 content_anchor_asset
+  What it does
+    Long-form whitepaper / e-book / executive guide in brand voice.
+
+  Data required
+    From user: topic, audience, asset type (or a prior campaign brief).
+    From session: campaign_brief (optional).
+    From tools: get_brand_voice_guide, get_anchor_asset_outline,
+    save_content_artifact (anchor_asset JSON).
+
+  Writes to session: content_anchor_asset
+  Output: output/content/
+
+
+6.2 content_localization
+  What it does
+    Adapt (not just translate) an anchor for EMEA, APAC or LATAM: glossary,
+    regulatory refs (GDPR, LGPD, etc.), cultural examples.
+
+  Data required
+    From user: target region / language.
+    From session: content_anchor_asset (source).
+    From tools: get_regional_glossary(region), save_content_artifact.
+
+  Writes to session: content_localization
+
+
+6.3 content_asset_grid
+  What it does
+    Decompose an anchor into Blog, LinkedIn, X, Email, Paid Search, sales
+    one-pager, webinar talking points, respecting channel limits.
+
+  Data required
+    From user: source asset title if session is empty.
+    From session: content_anchor_asset.
+    From tools: get_channel_specs, save_content_artifact (asset_grid JSON).
+
+  Writes to session: content_asset_grid
+
+
+6.4 content_campaign_variant
+  What it does
+    Specialized packages: Product Launch, Global, Regional, Industry, or
+    Competitive displacement.
+
+  Data required
+    From user: variant type; region or industry when relevant.
+    From session: content_anchor_asset (optional).
+    From tools: get_brand_voice_guide, get_regional_glossary (regional/
+    industry), save_content_artifact.
+
+  Writes to session: content_campaign_variant
+
+
+7. BRAND  (brand_orchestrator)
+=============================
+What it does
+  Social sentiment, share of voice, news, rapid-response packages.
+  Paid social as a demand channel is analysis, not brand.
+
+Underlying systems / fixtures
+  Social mentions, SOV, news, brand voice / playbook, trigger events,
+  executive voices.
+  Files: social_mentions.json, share_of_voice.json, news_articles.json,
+  brand_voice.json, executive_voices.json.
+
+
+7.1 brand_social_sentiment
+  What it does
+    Sentiment picture by platform; draft on-brand replies for mentions that
+    need_response. Drafts only; does not post.
+
+  Data required
+    From user: none beyond the question (optional focus on a platform).
+    From tools: get_social_sentiment, get_brand_response_playbook.
+
+  Writes to session: brand_social_sentiment
+
+
+7.2 brand_share_of_voice
+  What it does
+    SailPoint mention share vs CyberArk, Saviynt, One Identity.
+
+  Data required
+    From user: none.
+    From tools: get_share_of_voice.
+
+  Writes to session: brand_share_of_voice
+
+
+7.3 brand_news_trends
+  What it does
+    Industry news and narratives; flags trigger events for rapid response.
+
+  Data required
+    From user: none.
+    From tools: get_news_trends.
+
+  Writes to session: brand_news_trends
+
+
+7.4 brand_rapid_response
+  What it does
+    24–48h reactive package: POV, 3 social posts, blog outline, email alert,
+    ad lines, executive quote.
+
+  Data required
+    From user: optional named trigger; otherwise picks the most urgent.
+    From session: brand_news_trends (optional).
+    From tools: get_trigger_events, get_executive_voices, save_brand_artifact.
+
+  Writes to session: brand_rapid_response
+
+
+SESSION HANDOFFS (data one agent reads from another)
+====================================================
+analysis_campaign_performance  ->  analysis_improvement_recommender
+analysis_pipeline_health       ->  both deck writers
+campaign_ideation              ->  campaign_brief_builder
+campaign_brief                 ->  content_anchor_asset
+content_anchor_asset           ->  localization, asset_grid, campaign_variant
+abm_account_intel              ->  gap_value, messaging, multichannel
+abm_gap_value                  ->  messaging, multichannel
+abm_messaging                  ->  multichannel
+brand_news_trends              ->  brand_rapid_response
+events_brief_data_1/2/3        ->  parallel brief writers
+events_brief_out_1/2/3         ->  brief merger
+mops list-load rows            ->  cleaner -> validator -> loader (state, not LLM)
+
+
+QUICK COUNT
+===========
+1 root + 7 orchestrators
+Specialists the orchestrators expose:
+  Analysis 6, Events 4, MOps 1 (+ 3 write tools on the router),
+  Campaign design 3, ABM 5, Content 4, Brand 4
+  = 27 specialist entry points
+
+Nested internals (not usually routed to directly):
+  2 deck analysts + 2 deck writers
+  1 brief preparer + 3 brief writers + 1 merger
+  4 list-load steps

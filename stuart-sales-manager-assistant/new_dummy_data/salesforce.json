@@ -1,0 +1,785 @@
+{
+  "dataset_metadata": {
+    "system": "Salesforce Sales Cloud (SFDC)",
+    "synced_at": "2026-09-20T14:30:00Z",
+    "version": "2.0-enriched",
+    "current_date": "2026-09-20",
+    "current_fiscal_quarter": "Q3-FY26"
+  },
+  "quarterly_team_quotas": [
+    {
+      "fiscal_quarter": "Q3-FY26",
+      "period": "2026-07-01 to 2026-09-30",
+      "total_team_quota": 3200000,
+      "rep_quotas": {
+        "0058b00000GvRep01": 850000,
+        "0058b00000GvRep02": 750000,
+        "0058b00000GvRep03": 1100000,
+        "0058b00000GvRep04": 500000
+      }
+    },
+    {
+      "fiscal_quarter": "Q4-FY26",
+      "period": "2026-10-01 to 2026-12-31",
+      "total_team_quota": 3450000,
+      "rep_quotas": {
+        "0058b00000GvRep01": 900000,
+        "0058b00000GvRep02": 800000,
+        "0058b00000GvRep03": 1150000,
+        "0058b00000GvRep04": 600000
+      }
+    },
+    {
+      "fiscal_quarter": "Q1-FY27",
+      "period": "2027-01-01 to 2027-03-31",
+      "total_team_quota": 3700000,
+      "rep_quotas": {
+        "0058b00000GvRep01": 950000,
+        "0058b00000GvRep02": 850000,
+        "0058b00000GvRep03": 1200000,
+        "0058b00000GvRep04": 700000
+      }
+    }
+  ],
+  "conversion_and_pacing_history": {
+    "historical_win_rates_by_stage_8_quarters": {
+      "SS20_Discovery_to_Won": 0.24,
+      "SS40_Technical_Validation_to_Won": 0.62,
+      "SS50_Scoping_to_Won": 0.74,
+      "SS60_Economic_Buyer_Validation_to_Won": 0.82,
+      "SS70_Proposal_and_Business_Case_to_Won": 0.88,
+      "SS90_Legal_Security_to_Won": 0.96
+    },
+    "historical_win_rates_by_boat": {
+      "Financial Services": {
+        "SS40_to_Won": 0.71,
+        "overall_win_rate": 0.44,
+        "avg_sales_cycle_days": 112
+      },
+      "Enterprise East": {
+        "SS40_to_Won": 0.64,
+        "overall_win_rate": 0.38,
+        "avg_sales_cycle_days": 95
+      },
+      "Tech & Digital Media": {
+        "SS40_to_Won": 0.58,
+        "overall_win_rate": 0.32,
+        "avg_sales_cycle_days": 78
+      },
+      "Healthcare": {
+        "SS40_to_Won": 0.48,
+        "overall_win_rate": 0.26,
+        "avg_sales_cycle_days": 135
+      }
+    },
+    "q3_current_quarter_pacing_benchmarks": {
+      "team_total_pipeline_acv": 3500000,
+      "team_commit_acv": 1725000,
+      "team_upside_acv": 1775000,
+      "team_verbal_call_acv": 1725000,
+      "team_quota": 3200000,
+      "coverage_ratio_to_quota": 1.09,
+      "coverage_ratio_to_verbal_call": 2.03,
+      "current_closed_won_acv": 1280000,
+      "gap_to_verbal_call": 445000,
+      "implied_win_rate_needed_on_remaining_pipeline": 0.20
+    }
+  },
+  "users": [
+    {
+      "Id": "0058b00000GvManager1",
+      "Name": "Marcus Vance",
+      "Title": "Director of Regional Sales - Americas Commercial & Enterprise",
+      "Email": "marcus.vance@sailpoint.com",
+      "IsActive": true,
+      "UserRoleId": "00E8b000001SalesDirector",
+      "ManagerId": "0058b00000GvVP001"
+    },
+    {
+      "Id": "0058b00000GvRep01",
+      "Name": "Sarah Jenkins",
+      "Title": "Senior Account Executive",
+      "Email": "sarah.jenkins@sailpoint.com",
+      "IsActive": true,
+      "Boat__c": "Enterprise East",
+      "ManagerId": "0058b00000GvManager1"
+    },
+    {
+      "Id": "0058b00000GvRep02",
+      "Name": "David Chen",
+      "Title": "Account Executive II",
+      "Email": "david.chen@sailpoint.com",
+      "IsActive": true,
+      "Boat__c": "Tech & Digital Media",
+      "ManagerId": "0058b00000GvManager1"
+    },
+    {
+      "Id": "0058b00000GvRep03",
+      "Name": "Elena Rodriguez",
+      "Title": "Strategic Account Executive",
+      "Email": "elena.rodriguez@sailpoint.com",
+      "IsActive": true,
+      "Boat__c": "Financial Services",
+      "ManagerId": "0058b00000GvManager1"
+    },
+    {
+      "Id": "0058b00000GvRep04",
+      "Name": "Marcus Brody",
+      "Title": "Account Executive I (Ramping)",
+      "Email": "marcus.brody@sailpoint.com",
+      "IsActive": true,
+      "Boat__c": "Healthcare",
+      "ManagerId": "0058b00000GvManager1"
+    }
+  ],
+  "opportunities": [
+    {
+      "Id": "0068b00001Deal001",
+      "Name": "Global Logistics Corp - IIQ Modernization to ISC",
+      "AccountId": "0018b00002Acct001",
+      "OwnerId": "0058b00000GvRep01",
+      "Amount": 280000.00,
+      "ACV__c": 280000.00,
+      "StageName": "SS70 - Proposal & Business Case",
+      "Stage_Entered_Date__c": "2026-09-02T10:00:00Z",
+      "Days_In_Current_Stage__c": 18,
+      "CloseDate": "2026-09-28",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Commit",
+      "Probability": 80,
+      "Boat__c": "Enterprise East",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 89,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Executive business review and final quote sign-off scheduled with CFO on 9/24.",
+      "LastModifiedDate": "2026-09-19T14:22:10Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-06-12T09:00:00Z", "ExitedDate": "2026-07-08T14:00:00Z", "DurationDays": 26},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-07-08T14:00:00Z", "ExitedDate": "2026-09-02T10:00:00Z", "DurationDays": 56},
+        {"Stage": "SS70 - Proposal & Business Case", "EnteredDate": "2026-09-02T10:00:00Z", "ExitedDate": null, "DurationDays": 18}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal002",
+      "Name": "Zenith Health - Enterprise Cloud Suite",
+      "AccountId": "0018b00002Acct002",
+      "OwnerId": "0058b00000GvRep04",
+      "Amount": 450000.00,
+      "ACV__c": 450000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-07-15T11:30:00Z",
+      "Days_In_Current_Stage__c": 67,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 40,
+      "Boat__c": "Healthcare",
+      "Lead_SE__c": null,
+      "Tech_Win_Loss__c": "Pending POV",
+      "Early_Guidance_Tier__c": "Tier 3 - At Risk",
+      "CRM_Score__c": 35,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Awaiting prospect response on POV success criteria sheet.",
+      "LastModifiedDate": "2026-09-01T08:14:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-05-20T10:00:00Z", "ExitedDate": "2026-07-15T11:30:00Z", "DurationDays": 56},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-07-15T11:30:00Z", "ExitedDate": null, "DurationDays": 67}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal003",
+      "Name": "Apex Tech - Access Risk Management (ARM)",
+      "AccountId": "0018b00002Acct003",
+      "OwnerId": "0058b00000GvRep02",
+      "Amount": 195000.00,
+      "ACV__c": 195000.00,
+      "StageName": "SS70 - Proposal & Business Case",
+      "Stage_Entered_Date__c": "2026-09-08T15:00:00Z",
+      "Days_In_Current_Stage__c": 12,
+      "CloseDate": "2026-09-28",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Commit",
+      "Probability": 85,
+      "Boat__c": "Tech & Digital Media",
+      "Lead_SE__c": "rachel.green@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 92,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Final MSA and Order Form sent via DocuSign to CIO.",
+      "LastModifiedDate": "2026-09-18T16:45:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-06-25T11:00:00Z", "ExitedDate": "2026-07-22T09:00:00Z", "DurationDays": 27},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-07-22T09:00:00Z", "ExitedDate": "2026-09-08T15:00:00Z", "DurationDays": 48},
+        {"Stage": "SS70 - Proposal & Business Case", "EnteredDate": "2026-09-08T15:00:00Z", "ExitedDate": null, "DurationDays": 12}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal004",
+      "Name": "Nexus Retail - Non-Employee Risk Management (NERM)",
+      "AccountId": "0018b00002Acct004",
+      "OwnerId": "0058b00000GvRep02",
+      "Amount": 140000.00,
+      "ACV__c": 140000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-08-10T14:00:00Z",
+      "Days_In_Current_Stage__c": 41,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 50,
+      "Boat__c": "Tech & Digital Media",
+      "Lead_SE__c": "rachel.green@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending POV",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 64,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Follow-up meeting with HR Director on contractor onboarding workflow on 9/22.",
+      "LastModifiedDate": "2026-09-17T11:30:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-07-02T10:00:00Z", "ExitedDate": "2026-08-10T14:00:00Z", "DurationDays": 39},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-08-10T14:00:00Z", "ExitedDate": null, "DurationDays": 41}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal005",
+      "Name": "Vanguard Energy - Data Access Security (DAS)",
+      "AccountId": "0018b00002Acct005",
+      "OwnerId": "0058b00000GvRep01",
+      "Amount": 350000.00,
+      "ACV__c": 350000.00,
+      "StageName": "SS90 - Legal & Security Review",
+      "Stage_Entered_Date__c": "2026-09-12T09:00:00Z",
+      "Days_In_Current_Stage__c": 8,
+      "CloseDate": "2026-09-25",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Commit",
+      "Probability": 90,
+      "Boat__c": "Enterprise East",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 96,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Procurement finalizing purchase order; legal redlines 100% complete.",
+      "LastModifiedDate": "2026-09-19T09:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-05-15T09:00:00Z", "ExitedDate": "2026-06-20T10:00:00Z", "DurationDays": 36},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-06-20T10:00:00Z", "ExitedDate": "2026-08-25T11:00:00Z", "DurationDays": 66},
+        {"Stage": "SS70 - Proposal & Business Case", "EnteredDate": "2026-08-25T11:00:00Z", "ExitedDate": "2026-09-12T09:00:00Z", "DurationDays": 18},
+        {"Stage": "SS90 - Legal & Security Review", "EnteredDate": "2026-09-12T09:00:00Z", "ExitedDate": null, "DurationDays": 8}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal006",
+      "Name": "Meridian Bank - Full Platform & NERM",
+      "AccountId": "0018b00002Acct006",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 580000.00,
+      "ACV__c": 580000.00,
+      "StageName": "SS70 - Proposal & Business Case",
+      "Stage_Entered_Date__c": "2026-08-28T16:00:00Z",
+      "Days_In_Current_Stage__c": 23,
+      "CloseDate": "2026-09-29",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Commit",
+      "Probability": 85,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 91,
+      "Backup_Deal_Id__c": "0068b00001Deal011",
+      "NextStep": "Board approval meeting on 9/24 for final budget release; legal pre-approved.",
+      "LastModifiedDate": "2026-09-18T17:10:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-04-10T10:00:00Z", "ExitedDate": "2026-05-30T14:00:00Z", "DurationDays": 50},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-05-30T14:00:00Z", "ExitedDate": "2026-08-28T16:00:00Z", "DurationDays": 90},
+        {"Stage": "SS70 - Proposal & Business Case", "EnteredDate": "2026-08-28T16:00:00Z", "ExitedDate": null, "DurationDays": 23}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal007",
+      "Name": "Horizon BioPharma - Identity Security Cloud",
+      "AccountId": "0018b00002Acct007",
+      "OwnerId": "0058b00000GvRep04",
+      "Amount": 210000.00,
+      "ACV__c": 210000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-06-18T10:00:00Z",
+      "Days_In_Current_Stage__c": 94,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 20,
+      "Boat__c": "Healthcare",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 3 - At Risk",
+      "CRM_Score__c": 28,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Need to re-engage backup sponsor after Director of IAM went on medical leave.",
+      "LastModifiedDate": "2026-09-04T12:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-06-18T10:00:00Z", "ExitedDate": null, "DurationDays": 94}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal008",
+      "Name": "Acme Financial - ISC Business Plus",
+      "AccountId": "0018b00002Acct008",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 320000.00,
+      "ACV__c": 320000.00,
+      "StageName": "SS70 - Proposal & Business Case",
+      "Stage_Entered_Date__c": "2026-09-05T14:00:00Z",
+      "Days_In_Current_Stage__c": 15,
+      "CloseDate": "2026-09-27",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Commit",
+      "Probability": 80,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 90,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Contract signed by VP of IT; waiting on CFO signature counter-sign.",
+      "LastModifiedDate": "2026-09-18T15:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-06-01T09:00:00Z", "ExitedDate": "2026-07-10T11:00:00Z", "DurationDays": 39},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-07-10T11:00:00Z", "ExitedDate": "2026-09-05T14:00:00Z", "DurationDays": 57},
+        {"Stage": "SS70 - Proposal & Business Case", "EnteredDate": "2026-09-05T14:00:00Z", "ExitedDate": null, "DurationDays": 15}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal009",
+      "Name": "Omni Telecom - NERM & Connectivity",
+      "AccountId": "0018b00002Acct009",
+      "OwnerId": "0058b00000GvRep01",
+      "Amount": 420000.00,
+      "ACV__c": 420000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-08-01T10:00:00Z",
+      "Days_In_Current_Stage__c": 50,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 60,
+      "Boat__c": "Enterprise East",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 72,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Technical POV closed out with win. Preparing pricing presentation for steering committee.",
+      "LastModifiedDate": "2026-09-16T17:30:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-06-15T10:00:00Z", "ExitedDate": "2026-08-01T10:00:00Z", "DurationDays": 47},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-08-01T10:00:00Z", "ExitedDate": null, "DurationDays": 50}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal010",
+      "Name": "Beacon Media - Cloud Governance",
+      "AccountId": "0018b00002Acct010",
+      "OwnerId": "0058b00000GvRep02",
+      "Amount": 115000.00,
+      "ACV__c": 115000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-08-18T10:00:00Z",
+      "Days_In_Current_Stage__c": 33,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 30,
+      "Boat__c": "Tech & Digital Media",
+      "Lead_SE__c": "rachel.green@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 3 - At Risk",
+      "CRM_Score__c": 45,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Scoping call scheduled with Director of Infrastructure on 9/23.",
+      "LastModifiedDate": "2026-09-15T16:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-08-18T10:00:00Z", "ExitedDate": null, "DurationDays": 33}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal011",
+      "Name": "Crestview Capital - ARM & File Access",
+      "AccountId": "0018b00002Acct011",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 260000.00,
+      "ACV__c": 260000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-08-20T14:00:00Z",
+      "Days_In_Current_Stage__c": 31,
+      "CloseDate": "2026-09-30",
+      "Fiscal_Quarter__c": "Q3-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 60,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Technical Win",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 82,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Insurance deal ready to accelerate to close if Meridian Bank contract encounters legal delay.",
+      "LastModifiedDate": "2026-09-19T10:30:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-07-10T10:00:00Z", "ExitedDate": "2026-08-20T14:00:00Z", "DurationDays": 41},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-08-20T14:00:00Z", "ExitedDate": null, "DurationDays": 31}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal101",
+      "Name": "Pinnacle Financial Services - ISC Suite & NERM",
+      "AccountId": "0018b00002Acct101",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 620000.00,
+      "ACV__c": 620000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-09-01T10:00:00Z",
+      "Days_In_Current_Stage__c": 19,
+      "CloseDate": "2026-11-20",
+      "Fiscal_Quarter__c": "Q4-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 50,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending POV",
+      "Early_Guidance_Tier__c": "Tier 1 - Strong",
+      "CRM_Score__c": 75,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "POV kickoff scheduled for October 5 with InfoSec architecture team.",
+      "LastModifiedDate": "2026-09-18T10:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-07-15T09:00:00Z", "ExitedDate": "2026-09-01T10:00:00Z", "DurationDays": 48},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-09-01T10:00:00Z", "ExitedDate": null, "DurationDays": 19}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal102",
+      "Name": "AeroDynamics Manufacturing - IIQ Migration",
+      "AccountId": "0018b00002Acct102",
+      "OwnerId": "0058b00000GvRep01",
+      "Amount": 380000.00,
+      "ACV__c": 380000.00,
+      "StageName": "SS40 - Technical Validation & POV",
+      "Stage_Entered_Date__c": "2026-09-10T14:00:00Z",
+      "Days_In_Current_Stage__c": 10,
+      "CloseDate": "2026-12-15",
+      "Fiscal_Quarter__c": "Q4-FY26",
+      "ForecastCategoryName": "Upside",
+      "Probability": 50,
+      "Boat__c": "Enterprise East",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending POV",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 68,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Architecture review session booked with VP IT Operations for 10/02.",
+      "LastModifiedDate": "2026-09-17T15:30:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-08-01T10:00:00Z", "ExitedDate": "2026-09-10T14:00:00Z", "DurationDays": 40},
+        {"Stage": "SS40 - Technical Validation & POV", "EnteredDate": "2026-09-10T14:00:00Z", "ExitedDate": null, "DurationDays": 10}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal103",
+      "Name": "Nova Media Group - Access Governance & Cloud Suite",
+      "AccountId": "0018b00002Acct103",
+      "OwnerId": "0058b00000GvRep02",
+      "Amount": 290000.00,
+      "ACV__c": 290000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-09-01T11:00:00Z",
+      "Days_In_Current_Stage__c": 19,
+      "CloseDate": "2026-12-18",
+      "Fiscal_Quarter__c": "Q4-FY26",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 25,
+      "Boat__c": "Tech & Digital Media",
+      "Lead_SE__c": "rachel.green@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 55,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Business problem discovery workshop with CISO scheduled for 9/29.",
+      "LastModifiedDate": "2026-09-15T11:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-09-01T11:00:00Z", "ExitedDate": null, "DurationDays": 19}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal104",
+      "Name": "CarePoint Health Systems - Non-Employee Governance",
+      "AccountId": "0018b00002Acct104",
+      "OwnerId": "0058b00000GvRep04",
+      "Amount": 310000.00,
+      "ACV__c": 310000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-08-25T15:00:00Z",
+      "Days_In_Current_Stage__c": 26,
+      "CloseDate": "2026-11-30",
+      "Fiscal_Quarter__c": "Q4-FY26",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 20,
+      "Boat__c": "Healthcare",
+      "Lead_SE__c": null,
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 3 - At Risk",
+      "CRM_Score__c": 40,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Working on business case document for VP Clinical Ops.",
+      "LastModifiedDate": "2026-09-12T14:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-08-25T15:00:00Z", "ExitedDate": null, "DurationDays": 26}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal105",
+      "Name": "Sterling Insurance Group - ISC Enterprise",
+      "AccountId": "0018b00002Acct105",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 450000.00,
+      "ACV__c": 450000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-09-05T09:30:00Z",
+      "Days_In_Current_Stage__c": 15,
+      "CloseDate": "2026-12-20",
+      "Fiscal_Quarter__c": "Q4-FY26",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 30,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 60,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Initial demonstration delivered; defining technical scope with IAM Lead.",
+      "LastModifiedDate": "2026-09-18T14:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-09-05T09:30:00Z", "ExitedDate": null, "DurationDays": 15}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal201",
+      "Name": "First National Trust - Full Cloud Transformation",
+      "AccountId": "0018b00002Acct201",
+      "OwnerId": "0058b00000GvRep03",
+      "Amount": 750000.00,
+      "ACV__c": 750000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-09-10T11:00:00Z",
+      "Days_In_Current_Stage__c": 10,
+      "CloseDate": "2027-02-28",
+      "Fiscal_Quarter__c": "Q1-FY27",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 20,
+      "Boat__c": "Financial Services",
+      "Lead_SE__c": "chris.vance@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 50,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Executive alignment meeting set for mid-October.",
+      "LastModifiedDate": "2026-09-17T16:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-09-10T11:00:00Z", "ExitedDate": null, "DurationDays": 10}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal202",
+      "Name": "Maritime Logistics Global - NERM Expansion",
+      "AccountId": "0018b00002Acct202",
+      "OwnerId": "0058b00000GvRep01",
+      "Amount": 320000.00,
+      "ACV__c": 320000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-09-12T14:00:00Z",
+      "Days_In_Current_Stage__c": 8,
+      "CloseDate": "2027-03-15",
+      "Fiscal_Quarter__c": "Q1-FY27",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 15,
+      "Boat__c": "Enterprise East",
+      "Lead_SE__c": "alex.morgan@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 3 - At Risk",
+      "CRM_Score__c": 42,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "RFP expected to be released in early November.",
+      "LastModifiedDate": "2026-09-15T10:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-09-12T14:00:00Z", "ExitedDate": null, "DurationDays": 8}
+      ]
+    },
+    {
+      "Id": "0068b00001Deal203",
+      "Name": "Synapse Cloud Software - Access Risk Management",
+      "AccountId": "0018b00002Acct203",
+      "OwnerId": "0058b00000GvRep02",
+      "Amount": 210000.00,
+      "ACV__c": 210000.00,
+      "StageName": "SS20 - Discovery & Scoping",
+      "Stage_Entered_Date__c": "2026-09-14T09:00:00Z",
+      "Days_In_Current_Stage__c": 6,
+      "CloseDate": "2027-03-30",
+      "Fiscal_Quarter__c": "Q1-FY27",
+      "ForecastCategoryName": "Pipeline",
+      "Probability": 20,
+      "Boat__c": "Tech & Digital Media",
+      "Lead_SE__c": "rachel.green@sailpoint.com",
+      "Tech_Win_Loss__c": "Pending Evaluation",
+      "Early_Guidance_Tier__c": "Tier 2 - Moderate",
+      "CRM_Score__c": 48,
+      "Backup_Deal_Id__c": null,
+      "NextStep": "Introductory discovery scheduled with Head of GRC.",
+      "LastModifiedDate": "2026-09-16T14:00:00Z",
+      "Stage_History": [
+        {"Stage": "SS20 - Discovery & Scoping", "EnteredDate": "2026-09-14T09:00:00Z", "ExitedDate": null, "DurationDays": 6}
+      ]
+    }
+  ],
+  "opportunity_line_items": [
+    {
+      "Id": "00k8b00001Item001",
+      "OpportunityId": "0068b00001Deal001",
+      "ProductCode": "SP-ISC-ENT",
+      "Name": "Identity Security Cloud - Enterprise Suite",
+      "Quantity": 15000,
+      "UnitPrice": 15.00,
+      "TotalPrice": 225000.00
+    },
+    {
+      "Id": "00k8b00001Item002",
+      "OpportunityId": "0068b00001Deal001",
+      "ProductCode": "SP-MOD-IIQ",
+      "Name": "IIQ to ISC Modernization Accelerator SKU",
+      "Quantity": 1,
+      "UnitPrice": 55000.00,
+      "TotalPrice": 55000.00
+    },
+    {
+      "Id": "00k8b00001Item003",
+      "OpportunityId": "0068b00001Deal002",
+      "ProductCode": "SP-ISC-ENT",
+      "Name": "Identity Security Cloud - Enterprise Suite",
+      "Quantity": 25000,
+      "UnitPrice": 18.00,
+      "TotalPrice": 450000.00
+    },
+    {
+      "Id": "00k8b00001Item004",
+      "OpportunityId": "0068b00001Deal003",
+      "ProductCode": "SP-ARM-CORE",
+      "Name": "Access Risk Management (ARM) Enterprise",
+      "Quantity": 1,
+      "UnitPrice": 195000.00,
+      "TotalPrice": 195000.00
+    },
+    {
+      "Id": "00k8b00001Item005",
+      "OpportunityId": "0068b00001Deal004",
+      "ProductCode": "SP-NERM-CORE",
+      "Name": "Non-Employee Risk Management (NERM)",
+      "Quantity": 7000,
+      "UnitPrice": 20.00,
+      "TotalPrice": 140000.00
+    },
+    {
+      "Id": "00k8b00001Item006",
+      "OpportunityId": "0068b00001Deal005",
+      "ProductCode": "SP-DAS-UNLTD",
+      "Name": "Data Access Security (DAS) - Unlimited",
+      "Quantity": 1,
+      "UnitPrice": 350000.00,
+      "TotalPrice": 350000.00
+    },
+    {
+      "Id": "00k8b00001Item007",
+      "OpportunityId": "0068b00001Deal006",
+      "ProductCode": "SP-ISC-PLAT",
+      "Name": "ISC Platinum Suite & Connectivity",
+      "Quantity": 40000,
+      "UnitPrice": 12.00,
+      "TotalPrice": 480000.00
+    },
+    {
+      "Id": "00k8b00001Item008",
+      "OpportunityId": "0068b00001Deal006",
+      "ProductCode": "SP-NERM-CORE",
+      "Name": "Non-Employee Risk Management (NERM)",
+      "Quantity": 5000,
+      "UnitPrice": 20.00,
+      "TotalPrice": 100000.00
+    },
+    {
+      "Id": "00k8b00001Item009",
+      "OpportunityId": "0068b00001Deal007",
+      "ProductCode": "SP-ISC-BUS",
+      "Name": "Identity Security Cloud - Business",
+      "Quantity": 10000,
+      "UnitPrice": 21.00,
+      "TotalPrice": 210000.00
+    },
+    {
+      "Id": "00k8b00001Item010",
+      "OpportunityId": "0068b00001Deal008",
+      "ProductCode": "SP-ISC-BUSPLUS",
+      "Name": "ISC Business Plus & PAM Integration",
+      "Quantity": 16000,
+      "UnitPrice": 20.00,
+      "TotalPrice": 320000.00
+    },
+    {
+      "Id": "00k8b00001Item011",
+      "OpportunityId": "0068b00001Deal009",
+      "ProductCode": "SP-NERM-CORE",
+      "Name": "Non-Employee Risk Management (NERM)",
+      "Quantity": 15000,
+      "UnitPrice": 20.00,
+      "TotalPrice": 300000.00
+    },
+    {
+      "Id": "00k8b00001Item012",
+      "OpportunityId": "0068b00001Deal009",
+      "ProductCode": "SP-CONN-ADV",
+      "Name": "Advanced Cloud Connectors Pack",
+      "Quantity": 1,
+      "UnitPrice": 120000.00,
+      "TotalPrice": 120000.00
+    },
+    {
+      "Id": "00k8b00001Item013",
+      "OpportunityId": "0068b00001Deal010",
+      "ProductCode": "SP-ISC-GOV",
+      "Name": "Identity Governance Starter",
+      "Quantity": 5000,
+      "UnitPrice": 23.00,
+      "TotalPrice": 115000.00
+    },
+    {
+      "Id": "00k8b00001Item014",
+      "OpportunityId": "0068b00001Deal011",
+      "ProductCode": "SP-ARM-CORE",
+      "Name": "Access Risk Management (ARM)",
+      "Quantity": 1,
+      "UnitPrice": 160000.00,
+      "TotalPrice": 160000.00
+    },
+    {
+      "Id": "00k8b00001Item015",
+      "OpportunityId": "0068b00001Deal011",
+      "ProductCode": "SP-DAS-STD",
+      "Name": "Data Access Security Standard",
+      "Quantity": 1,
+      "UnitPrice": 100000.00,
+      "TotalPrice": 100000.00
+    }
+  ]
+}

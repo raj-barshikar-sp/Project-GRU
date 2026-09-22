@@ -1,0 +1,10 @@
+---
+description: Follow the ponytail skill for every GRU Marketing change.
+alwaysApply: true
+---
+
+# Ponytail
+
+Read and follow `.cursor/skills/ponytail/SKILL.md` on every change in this repository: agents, tools, catalog, FastAPI, tests, and UI.
+
+UI is the RevOps `main` workspace with James branding. Marketing orchestrator stays. Map geo/boat/opp/report in Python. Do not revive the old Marketing Minion shell.

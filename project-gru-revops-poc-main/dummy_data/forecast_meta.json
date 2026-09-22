@@ -1,0 +1,58 @@
+[
+  {
+    "account": "7-Eleven",
+    "category": "commit",
+    "commit": 2400000,
+    "upside": 890000,
+    "slip_days": 0,
+    "note": "POS modernization is commit. Project Phoenix is upside only."
+  },
+  {
+    "account": "Acme Corp",
+    "category": "upside",
+    "commit": 0,
+    "upside": 640000,
+    "slip_days": 21,
+    "note": "Discovery; close date already slipped three weeks."
+  },
+  {
+    "account": "GlobalTech",
+    "category": "commit",
+    "commit": 1250000,
+    "upside": 0,
+    "slip_days": 0,
+    "note": "Negotiation; Ignite is the hard date."
+  },
+  {
+    "account": "NovaPay",
+    "category": "omit",
+    "commit": 0,
+    "upside": 180000,
+    "slip_days": 330,
+    "note": "Do not commit. Closed-lost recovery."
+  },
+  {
+    "account": "Meridian Health",
+    "category": "commit",
+    "commit": 3100000,
+    "upside": 0,
+    "slip_days": 0,
+    "note": "RFP date is the slip risk, not the close date."
+  },
+  {
+    "account": "BrightLeaf Foods",
+    "category": "upside",
+    "commit": 0,
+    "upside": 410000,
+    "slip_days": 14,
+    "note": "Bake-off. Commit only after the promo-file proof."
+  },
+  {
+    "account": "Helix Robotics",
+    "category": "pipeline",
+    "commit": 0,
+    "upside": 275000,
+    "slip_days": 0,
+    "note": "Qualification. Keep out of commit."
+  }
+]
