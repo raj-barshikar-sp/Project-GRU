@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=127" />
+    <link rel="stylesheet" href="/static/styles.css?v=133" />
   </head>
   <body>
     <div id="landing" class="landing">
@@ -24,6 +24,10 @@
       </div>
       <header class="landing-nav">
         <div class="landing-nav-inner">
+          <a class="landing-brand" href="/">
+            <img src="/static/assets/logo.png" alt="" width="28" height="28" />
+            <span>Project GRU</span>
+          </a>
           <nav class="landing-links" aria-label="Landing sections">
             <a href="#landing-capabilities">Capabilities</a>
             <a href="#landing-features-heading">How it works</a>
@@ -39,7 +43,7 @@
                 <option value="henry">DSR · Henry</option>
               </select>
             </label>
-            <a href="/dashboard" class="btn-landing btn-landing-nav" data-start>Get started</a>
+            <a href="/dashboard?role=bob" class="btn-landing btn-landing-nav" data-start>Get started</a>
           </div>
         </div>
       </header>
@@ -51,7 +55,7 @@
               One workspace for your team's daily jobs. Pick a role, set your filters, then send a task.
             </p>
             <div class="landing-actions">
-              <a href="/dashboard" class="btn-landing btn-landing-hero" data-start>Get started</a>
+              <a href="/dashboard?role=bob" class="btn-landing btn-landing-hero" data-start>Get started</a>
             </div>
           </div>
           <div class="landing-hero-art" id="landing-hero-art" aria-hidden="true">
@@ -156,7 +160,7 @@
         <section class="landing-cta-band">
           <h2 id="cta-title">Ready to get started?</h2>
           <p id="cta-sub">Open the workspace, pick a task, and send.</p>
-          <a href="/dashboard" class="btn-landing btn-landing-hero" data-start>Get started</a>
+          <a href="/dashboard?role=bob" class="btn-landing btn-landing-hero" data-start>Get started</a>
         </section>
       </main>
     </div>
@@ -169,7 +173,7 @@
             title: "Bob the Back Office Minion",
             sub: "One workspace for forecast, quote, hygiene, OTC, pricing, and reporting. Open your book, filter by size, stage, and time, then send Bob a task.",
             capsTitle: "RevOps jobs in one place",
-            start: "/dashboard",
+            start: "/dashboard?role=bob",
             art: ["bob.png?v=2", 368, 424],
             caps: [
               ["Forecast", "Regional roll-ups, verbal vs landing, and coverage against plan."],
@@ -185,7 +189,7 @@
             title: "James the Marketing Assistant",
             sub: "One workspace for campaigns, ABM, content, brand, and marketing ops. Filter by region, campaign, and account, then send James a task.",
             capsTitle: "Marketing jobs in one place",
-            start: "/chat",
+            start: "/dashboard?role=james",
             art: ["james.png", 546, 969],
             caps: [
               ["Campaign design", "Ideation, briefs, decks, and competitive messaging."],
@@ -201,8 +205,8 @@
             title: "Stuart the Sales Manager Assistant",
             sub: "One workspace for the team forecast, deal inspection, and rep coverage. Filter by book, rep, and quarter, then send Stuart a task.",
             capsTitle: "Sales manager jobs in one place",
-            start: "/chat",
-            art: ["stuart.png", 360, 338],
+            start: "/dashboard?role=stuart",
+            art: ["stuart.png?v=3", 341, 338],
             caps: [
               ["Forecasting", "Team roll-ups, category splits, and coverage against quota."],
               ["Forecast inspection", "Deal-level checks on what is holding the number up."],
@@ -217,7 +221,7 @@
             title: "Henry the DSR Minion",
             sub: "One workspace to prospect, plan, engage, and progress digital sales rooms. Filter by territory, owner, and account, then send Henry a task.",
             capsTitle: "DSR jobs in one place",
-            start: "/chat",
+            start: "/dashboard?role=henry",
             art: ["henry.png", 256, 256],
             caps: [
               ["Prospect", "Account ranking, intel analysis, messaging, and whitespace."],
@@ -234,19 +238,19 @@
         const grid = document.getElementById("landing-cap-grid");
 
         function apply(id) {
-          const role = ROLES[id] || ROLES.bob;
-          select.value = ROLES[id] ? id : "bob";
-          document.documentElement.dataset.role = select.value;
+          const roleId = ROLES[id] ? id : "bob";
+          const role = ROLES[roleId];
+          select.value = roleId;
+          document.documentElement.dataset.role = roleId;
           document.title = role.title;
           document.getElementById("hero-title").textContent = role.title;
           document.getElementById("hero-sub").textContent = role.sub;
           document.getElementById("cap-kicker").textContent = `What ${role.name} covers`;
           document.getElementById("landing-capabilities-heading").textContent = role.capsTitle;
           document.getElementById("cta-title").textContent = `Ready to run your work through ${role.name}?`;
-          document.getElementById("cta-sub").textContent =
-            role.start === "/dashboard"
-              ? "Open the dashboard, pick a task, and send."
-              : "Open the workspace, pick a task, and send.";
+          document.getElementById("cta-sub").textContent = role.start.startsWith("/dashboard")
+            ? "Open the dashboard, pick a task, and send."
+            : "Open the workspace, pick a task, and send.";
           const art = document.getElementById("hero-art");
           const [file, width, height] = role.art;
           art.src = `/static/assets/${file}`;
@@ -256,9 +260,14 @@
             .map(([head, copy]) => `<article class="landing-cap"><h3>${head}</h3><p>${copy}</p></article>`)
             .join("");
           for (const link of document.querySelectorAll("[data-start]")) link.href = role.start;
+          const url = new URL(location.href);
+          if (url.searchParams.get("role") !== roleId) {
+            url.searchParams.set("role", roleId);
+            history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+          }
         }
 
-        apply(localStorage.getItem(ROLE_KEY) || "bob");
+        apply(new URLSearchParams(location.search).get("role") || localStorage.getItem(ROLE_KEY) || "bob");
         select.addEventListener("change", () => {
           localStorage.setItem(ROLE_KEY, select.value);
           apply(select.value);

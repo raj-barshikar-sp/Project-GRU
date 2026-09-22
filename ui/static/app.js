@@ -57,15 +57,33 @@ let attachments = [];
 let showReasoning = false;
 const ROLE_KEY = "gru-role";
 const VALID_ROLES = new Set(["bob", "james", "stuart", "henry"]);
-let activeRole = localStorage.getItem(ROLE_KEY) || "bob";
-if (!VALID_ROLES.has(activeRole)) activeRole = "bob";
 const ROLE_NAMES = { bob: "Bob", james: "James", stuart: "Stuart", henry: "Henry" };
-let assistantName = ROLE_NAMES[activeRole];
-const CHATS_KEY = `gru-chats-${activeRole}`;
+const ROLE_AVATARS = {
+  bob: "/static/assets/bob.png?v=2",
+  james: "/static/assets/james.png",
+  stuart: "/static/assets/stuart.png?v=3",
+  henry: "/static/assets/henry.png",
+};
 const CHATS_LIMIT = 40;
-if (activeRole === "bob" && !localStorage.getItem(CHATS_KEY)) {
-  const legacyChats = localStorage.getItem("gru-chats");
-  if (legacyChats) localStorage.setItem(CHATS_KEY, legacyChats);
+
+function readRole() {
+  try {
+    const fromUrl = new URLSearchParams(location.search).get("role");
+    if (VALID_ROLES.has(fromUrl)) return fromUrl;
+    const saved = localStorage.getItem(ROLE_KEY);
+    if (VALID_ROLES.has(saved)) return saved;
+  } catch {
+    /* private mode */
+  }
+  return "bob";
+}
+
+let activeRole = readRole();
+let assistantName = ROLE_NAMES[activeRole];
+let roleRequest = 0;
+
+function chatsKey(role = activeRole) {
+  return `gru-chats-${role}`;
 }
 
 function apiUrl(path) {
@@ -74,16 +92,38 @@ function apiUrl(path) {
   return `${url.pathname}${url.search}`;
 }
 
+function syncRoleInUrl() {
+  const url = new URL(location.href);
+  if (url.searchParams.get("role") === activeRole) return;
+  url.searchParams.set("role", activeRole);
+  history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+}
+
+function roleAvatar() {
+  return workspace?.assistant?.avatar || ROLE_AVATARS[activeRole] || ROLE_AVATARS.bob;
+}
+
 function applyAssistant() {
-  assistantName = workspace?.assistant?.name || assistantName;
+  assistantName = workspace?.assistant?.name || ROLE_NAMES[activeRole] || assistantName;
   const title = workspace?.assistant?.title || assistantName;
   const titleEl = document.getElementById("assistant-title");
   if (titleEl) titleEl.textContent = title;
   document.title = `${assistantName} — workspace`;
+  const avatar = roleAvatar();
+  const avatarEl = document.getElementById("assistant-avatar");
+  if (avatarEl) avatarEl.src = avatar;
+  for (const img of document.querySelectorAll(".placeholder-bob")) img.src = avatar;
+  const placeholderTitle = document.querySelector("#placeholder h2");
+  if (placeholderTitle) placeholderTitle.textContent = `What should ${assistantName} work on?`;
+  const pngIcon = document.querySelector('link[rel="icon"][type="image/png"]');
+  if (pngIcon) pngIcon.href = avatar;
   const dashboardLink = document.getElementById("nav-dashboard");
-  if (dashboardLink) dashboardLink.hidden = activeRole !== "bob";
+  if (dashboardLink) {
+    dashboardLink.hidden = false;
+    dashboardLink.href = `/dashboard?role=${activeRole}`;
+  }
   prompt?.setAttribute("aria-label", `Ask ${assistantName}`);
-  roleSelect.value = activeRole;
+  if (roleSelect) roleSelect.value = activeRole;
   document.documentElement.dataset.role = activeRole;
   window.BobArtifacts?.setRole(activeRole);
 }
@@ -117,9 +157,48 @@ function currentFilters() {
 
 function allowedFilterNames(task) {
   const extra = ["size", "stage", "time"];
-  if (!task) return new Set(["geo", "boat", "opp", "report", ...extra]);
-  return new Set(
-    task.filters?.length ? [...task.filters, ...extra] : ["geo", "boat", "opp", "report", ...extra]
+  const defaults = ["geo", "boat", "opp", "report", ...extra];
+  if (!task?.filters?.length) return new Set(defaults);
+  const mapped = task.filters.map(mapFilterName).filter((name) => defaults.includes(name));
+  const names = new Set([...mapped, ...extra]);
+  if (![...names].some((name) => ["geo", "boat", "opp", "report"].includes(name))) {
+    return new Set(defaults);
+  }
+  return names;
+}
+
+function mapFilterName(name) {
+  return (
+    {
+      geo: "geo",
+      geos: "geo",
+      region: "geo",
+      territory: "geo",
+      boat: "boat",
+      boats: "boat",
+      owner: "boat",
+      campaign_type: "boat",
+      campaign_types: "boat",
+      opp: "opp",
+      opps: "opp",
+      account: "opp",
+      accounts: "opp",
+      campaign: "opp",
+      campaigns: "opp",
+      report: "report",
+      report_types: "report",
+      event: "report",
+      events: "report",
+      asset_type: "report",
+      asset_types: "report",
+      content: "report",
+      size: "size",
+      sizes: "size",
+      stage: "stage",
+      stages: "stage",
+      time: "time",
+      windows: "time",
+    }[name] || name
   );
 }
 
@@ -198,10 +277,15 @@ function composeDraft(taskId) {
   }
   territory = territory || (workspace?.filters?.geos || [])[0]?.id || "";
   let text = task.default_prompt || "";
-  if (account && task.scoped_prompt) {
-    text = task.scoped_prompt.replaceAll("{account}", account).replaceAll("{territory}", territory);
-  } else if (filters.geos.length && task.scoped_prompt) {
-    text = task.scoped_prompt.replaceAll("{account}", account || territory).replaceAll("{territory}", territory);
+  if (task.scoped_prompt) {
+    const campaignType = filters.boats[0] || "";
+    const assetType = filters.report_types[0] || "";
+    const filled = task.scoped_prompt
+      .replaceAll("{account}", account || territory)
+      .replaceAll("{territory}", territory)
+      .replaceAll("{campaign_type}", campaignType)
+      .replaceAll("{asset_type}", assetType);
+    if (account || filters.geos.length || campaignType || assetType) text = filled;
   }
   const notes = [];
   if (filters.geos.length) notes.push("Geos: " + filters.geos.join(", "));
@@ -368,7 +452,7 @@ function setReasoningOpen(box, open) {
   window.setTimeout(done, 420);
 }
 
-canvas.addEventListener("click", async (event) => {
+canvas?.addEventListener("click", async (event) => {
   const trigger = event.target.closest(".reasoning-trigger");
   if (trigger && canvas.contains(trigger)) {
     event.preventDefault();
@@ -1070,7 +1154,7 @@ function placeholderNode() {
   const node = el("div", "placeholder");
   node.id = "placeholder";
   const img = document.createElement("img");
-  img.src = "/static/assets/bob.png?v=2";
+  img.src = roleAvatar();
   img.alt = "";
   img.className = "placeholder-bob";
   img.addEventListener("error", () => img.remove(), { once: true });
@@ -1217,31 +1301,49 @@ function persistChats() {
     })),
   };
   try {
-    localStorage.setItem(CHATS_KEY, JSON.stringify(payload));
+    localStorage.setItem(chatsKey(), JSON.stringify(payload));
   } catch {
     payload.chats = payload.chats.map((item, index) =>
       item.pinned || index < 8 ? item : { ...item, html: "" }
     );
     try {
-      localStorage.setItem(CHATS_KEY, JSON.stringify(payload));
+      localStorage.setItem(chatsKey(), JSON.stringify(payload));
     } catch {
       /* quota */
     }
   }
 }
 
-function loadChats() {
-  try {
-    const raw = JSON.parse(localStorage.getItem(CHATS_KEY) || "");
-    if (!raw || !Array.isArray(raw.chats)) return;
-    chats = raw.chats.filter((item) => item && item.id);
-    activeChatId = chats.some((item) => item.id === raw.activeChatId)
+function parseChatStore(raw) {
+  if (!raw) return null;
+  const list = Array.isArray(raw) ? raw : raw.chats;
+  if (!Array.isArray(list)) return null;
+  const records = list.filter((item) => item && item.id);
+  const active = Array.isArray(raw)
+    ? records[0]?.id || ""
+    : records.some((item) => item.id === raw.activeChatId)
       ? raw.activeChatId
-      : chats[0]?.id || "";
-  } catch {
-    chats = [];
-    activeChatId = "";
+      : records[0]?.id || "";
+  return { chats: records, activeChatId: active };
+}
+
+function loadChats() {
+  const keys = [chatsKey()];
+  if (activeRole === "bob") keys.push("gru-chats");
+  for (const key of keys) {
+    try {
+      const parsed = parseChatStore(JSON.parse(localStorage.getItem(key) || "null"));
+      if (!parsed) continue;
+      chats = parsed.chats;
+      activeChatId = parsed.activeChatId;
+      if (key !== chatsKey()) persistChats();
+      return;
+    } catch {
+      /* try the next key */
+    }
   }
+  chats = [];
+  activeChatId = "";
 }
 
 function restoreActiveChat() {
@@ -1349,6 +1451,7 @@ function renderHistory() {
     pinnedWrap.hidden = pinned.length === 0;
     for (const chat of pinned) pinnedRoot.append(historyRow(chat));
   }
+  if (!chatHistory) return;
   chatHistory.replaceChildren();
   chatsWrap?.classList.toggle("is-collapsed", chatsCollapsed);
   const toggle = document.getElementById("toggle-chats");
@@ -2119,6 +2222,7 @@ function showTaskGroup(group, anchor) {
     button.type = "button";
     button.dataset.taskId = item.id;
     if (item.id === activeTask) button.classList.add("active");
+    button.addEventListener("mousedown", (event) => event.stopPropagation());
     button.addEventListener("click", () => selectTask(item.id));
     taskItemsNav.append(button);
   }
@@ -2126,11 +2230,13 @@ function showTaskGroup(group, anchor) {
 }
 
 function renderTasks(groups) {
+  if (!taskMenu) return;
   taskMenu.replaceChildren();
   for (const group of groups) {
     const button = el("button", "task-group", group.label);
     button.type = "button";
     button.dataset.group = group.label;
+    button.addEventListener("mousedown", (event) => event.stopPropagation());
     button.addEventListener("click", (event) => {
       event.stopPropagation();
       const same =
@@ -2156,6 +2262,7 @@ function isNarrowViewport() {
 }
 
 function setSidebar(open) {
+  if (!workspaceEl) return;
   workspaceEl.classList.toggle("sidebar-collapsed", !open);
   sidebarEl?.setAttribute("aria-hidden", open ? "false" : "true");
   toggleSidebarBtn?.setAttribute("aria-expanded", open ? "true" : "false");
@@ -2242,9 +2349,7 @@ function openDialog(dialog, anchor, options = {}) {
   if (isPopover) {
     if (dialogScrim) dialogScrim.hidden = true;
     placePopover(dialog, anchor);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => dialog.classList.add("is-open"));
-    });
+    dialog.classList.add("is-open");
     return;
   }
   dialog.hidden = false;
@@ -2264,6 +2369,9 @@ function bootDialogs() {
   const openFilters = document.getElementById("open-filters");
   const openChatsSort = document.getElementById("open-chats-sort");
   const chatsSortDialog = document.getElementById("chats-sort-dialog");
+  openTasks?.addEventListener("mousedown", (event) => event.stopPropagation());
+  openFilters?.addEventListener("mousedown", (event) => event.stopPropagation());
+  openChatsSort?.addEventListener("mousedown", (event) => event.stopPropagation());
   openTasks?.addEventListener("click", (event) => {
     event.stopPropagation();
     if (!tasksDialog.hidden && tasksDialog.classList.contains("is-open")) {
@@ -2345,7 +2453,7 @@ function bootDialogs() {
     const openPopovers = [...document.querySelectorAll(".app-popover.is-open")];
     if (!openPopovers.length) return;
     if (openPopovers.some((node) => node.contains(event.target))) return;
-    if (event.target.closest("#open-tasks, #open-filters, #open-chats-sort")) return;
+    if (event.target.closest("#open-tasks, #open-filters, #open-chats-sort, #task-menu, #task-items")) return;
     for (const node of openPopovers) closePopover(node);
   });
   window.addEventListener("resize", () => {
@@ -2366,7 +2474,7 @@ function bootSidebar() {
   sidebarScrim?.addEventListener("click", () => setSidebar(false));
 }
 
-form.addEventListener("submit", (event) => {
+form?.addEventListener("submit", (event) => {
   event.preventDefault();
   const text = prompt.value.trim();
   if ((!text && !attachments.length) || send.disabled) return;
@@ -2375,7 +2483,7 @@ form.addEventListener("submit", (event) => {
   askBob({ text: text || "Review the attached files." });
 });
 
-stop.addEventListener("click", () => {
+stop?.addEventListener("click", () => {
   settleIncompleteTurn();
   snapshotActive();
   scrollChat(true);
@@ -2383,13 +2491,13 @@ stop.addEventListener("click", () => {
   setBusy(false);
 });
 
-newChat.addEventListener("click", () => {
+newChat?.addEventListener("click", () => {
   startNewChat();
   closeSidebarOnNarrow();
 });
 
-attachBtn.addEventListener("click", () => attachInput.click());
-attachInput.addEventListener("change", () => addFiles(attachInput.files || []));
+attachBtn?.addEventListener("click", () => attachInput.click());
+attachInput?.addEventListener("change", () => addFiles(attachInput.files || []));
 
 function bootComposerDropzone() {
   if (!composerDrop) return;
@@ -2423,43 +2531,33 @@ function bootComposerDropzone() {
   });
 }
 
-prompt.addEventListener("input", resizePrompt);
+prompt?.addEventListener("input", resizePrompt);
 
 bootChatScroll();
 
-prompt.addEventListener("keydown", (event) => {
+prompt?.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && !event.shiftKey) {
     event.preventDefault();
     form.requestSubmit();
   }
 });
 
-async function boot() {
-  applyAssistant();
-  roleSelect?.addEventListener("change", () => {
-    const next = roleSelect.value;
-    if (!VALID_ROLES.has(next) || next === activeRole) return;
-    abandonInFlight();
-    snapshotActive();
-    localStorage.setItem(ROLE_KEY, next);
-    location.reload();
-  });
-  bootSidebar();
-  bootDialogs();
-  loadChats();
-  const saved = chats.find((item) => item.id === activeChatId);
-  if (saved?.sessionId) sessionId = saved.sessionId;
-  if (!sessionId) await createSession();
-  const workspaceResponse = await fetch(apiUrl("/api/workspace"));
-  if (!workspaceResponse.ok) throw new Error(`${assistantName} workspace is unavailable`);
-  workspace = await workspaceResponse.json();
-  applyAssistant();
-  showReasoning = Boolean(workspace?.ui?.reasoning);
-  renderTasks(workspace.tasks || []);
-  bootComposerDropzone();
-  renderHistory();
-  if (!restoreActiveChat()) showEmptyCanvas();
-  const filters = workspace.filters || {};
+function fillWorkspaceFilters(filters) {
+  const headings = {
+    bob: { org: "Geo / GVP / AVP / Boats", opps: "Rep opps", reports: "Reporting types" },
+    james: { org: "Region / campaign type", opps: "Campaigns", reports: "Events / assets" },
+    stuart: { org: "Geo / reps", opps: "Opportunities", reports: "Reports" },
+    henry: { org: "Territory / owner", opps: "Accounts", reports: "Industries" },
+  }[activeRole] || { org: "Geo / GVP / AVP / Boats", opps: "Opportunities", reports: "Reports" };
+  const orgTitle = document.querySelector('[data-filter-block="org"] h3');
+  const oppsTitle = document.querySelector('[data-filter-block="opps"] h3');
+  const reportsTitle = document.querySelector('[data-filter-block="reports"] h3');
+  if (orgTitle) orgTitle.textContent = headings.org;
+  if (oppsTitle) oppsTitle.textContent = headings.opps;
+  if (reportsTitle) reportsTitle.textContent = headings.reports;
+  filterOrg?.replaceChildren();
+  filterOpps?.replaceChildren();
+  filterReports?.replaceChildren();
   addChecks(filterOrg, filters.geos || [], "geo");
   addChecks(filterOrg, filters.boats || [], "boat");
   addChecks(filterOpps, filters.opps || [], "opp");
@@ -2468,15 +2566,82 @@ async function boot() {
   fillSelect(filterStages, filters.stages || [], "All stages");
   fillSelect(filterWindows, filters.windows || [], "All windows");
   syncFilterAvailability();
+}
+
+async function loadRole(next) {
+  const role = VALID_ROLES.has(next) ? next : "bob";
+  const switching = role !== activeRole;
+  const requestId = ++roleRequest;
+  if (switching) {
+    abandonInFlight();
+    snapshotActive();
+    persistChats();
+  }
+  activeRole = role;
+  assistantName = ROLE_NAMES[activeRole];
+  sessionId = "";
+  activeTask = "";
+  try {
+    localStorage.setItem(ROLE_KEY, activeRole);
+  } catch {
+    /* private mode */
+  }
+  syncRoleInUrl();
+  applyAssistant();
+  loadChats();
+  renderHistory();
+  const saved = chats.find((item) => item.id === activeChatId);
+  if (saved?.sessionId) sessionId = saved.sessionId;
+  if (!restoreActiveChat()) showEmptyCanvas();
+  const sessionPromise = sessionId
+    ? Promise.resolve(sessionId)
+    : createSession().catch((error) => {
+        console.error(error);
+        return "";
+      });
+  try {
+    const workspaceResponse = await fetch(apiUrl("/api/workspace"));
+    if (requestId !== roleRequest) return;
+    if (!workspaceResponse.ok) throw new Error(`${assistantName} workspace is unavailable`);
+    workspace = await workspaceResponse.json();
+  } catch (error) {
+    if (requestId !== roleRequest) return;
+    console.error(error);
+    workspace =
+      workspace && !switching
+        ? workspace
+        : { assistant: { name: assistantName, title: assistantName }, tasks: [], filters: {} };
+  }
+  await sessionPromise;
+  if (requestId !== roleRequest) return;
+  applyAssistant();
+  showReasoning = Boolean(workspace?.ui?.reasoning);
+  renderTasks(workspace.tasks || []);
+  fillWorkspaceFilters(workspace.filters || {});
   applyDashboardLaunch();
   renderSelection();
+}
+
+async function boot() {
+  applyAssistant();
+  roleSelect?.addEventListener("change", () => {
+    const next = roleSelect.value;
+    if (!VALID_ROLES.has(next) || next === activeRole) return;
+    loadRole(next).catch((error) => {
+      console.error(error);
+      if (roleSelect) roleSelect.value = activeRole;
+    });
+  });
+  bootSidebar();
+  bootDialogs();
+  bootComposerDropzone();
   const refreshDraft = () => {
     if (activeTask) fillComposer(activeTask);
     renderSelection();
   };
-  filterOrg.addEventListener("change", refreshDraft);
-  filterOpps.addEventListener("change", refreshDraft);
-  filterReports.addEventListener("change", refreshDraft);
+  filterOrg?.addEventListener("change", refreshDraft);
+  filterOpps?.addEventListener("change", refreshDraft);
+  filterReports?.addEventListener("change", refreshDraft);
   filterSizes?.addEventListener("change", refreshDraft);
   filterStages?.addEventListener("change", refreshDraft);
   filterWindows?.addEventListener("change", refreshDraft);
@@ -2536,6 +2701,13 @@ async function boot() {
     }
     if (!document.getElementById("library")?.hidden) panel?.classList.add("is-wide");
   };
+  try {
+    await loadRole(activeRole);
+  } catch (error) {
+    console.error(error);
+    renderHistory();
+    if (!restoreActiveChat()) showEmptyCanvas();
+  }
   if (new URLSearchParams(location.search).get("view") === "library") setLibrary(true);
 }
 

@@ -7,6 +7,7 @@ import logging
 import os
 import uuid
 from collections.abc import AsyncIterator
+from datetime import date, datetime, time, timedelta
 from typing import Any
 
 from fastapi import FastAPI, HTTPException
@@ -329,6 +330,231 @@ def task_prompt(task_id: str) -> str:
     raise KeyError(task_id)
 
 
+def _close_day(value: str) -> date:
+    return date.fromisoformat(str(value)[:10])
+
+
+def _in_week(day: date, today: date) -> bool:
+    start = today - timedelta(days=today.weekday())
+    return start <= day < start + timedelta(days=7)
+
+
+def dashboard_payload(
+    *,
+    geos: list[str] | None = None,
+    boats: list[str] | None = None,
+    sizes: list[str] | None = None,
+    stages: list[str] | None = None,
+    windows: list[str] | None = None,
+    today: date | None = None,
+) -> dict[str, Any]:
+    """Team forecast book for the shared dashboard chrome."""
+    today = today or date.today()
+    geos = [item for item in (geos or []) if item]
+    boats = [item for item in (boats or []) if item]
+    sizes = [item for item in (sizes or []) if item]
+    stages = [item for item in (stages or []) if item]
+    windows = [item for item in (windows or []) if item]
+    try:
+        from agents.new_data_store import data_ready, normalized_opportunities
+    except ImportError:
+        opportunities: list[dict[str, Any]] = []
+    else:
+        opportunities = normalized_opportunities() if data_ready() else []
+
+    rows: list[dict[str, Any]] = []
+    for item in opportunities:
+        amount = int(item.get("Amount") or 0)
+        stage = _stage_code(str(item.get("StageName") or ""))
+        close = str(item.get("CloseDate") or today.isoformat())
+        rows.append(
+            {
+                "id": str(item.get("Id") or ""),
+                "account": str(item.get("Account_Name") or item.get("Name") or ""),
+                "stage": stage,
+                "amount": amount,
+                "size": _size_id(amount),
+                "geo": str(item.get("Boat__c") or ""),
+                "owner": str(item.get("Owner_Name") or ""),
+                "health": int(item.get("CRM_Score__c") or 0),
+                "close_date": close,
+                "backup": bool(item.get("Backup_Deal_Id__c")),
+                "quarter": str(item.get("Fiscal_Quarter__c") or ""),
+                "category": str(item.get("ForecastCategoryName") or ""),
+            }
+        )
+
+    visible = []
+    for row in rows:
+        if geos and row["geo"] not in geos:
+            continue
+        if boats and row["owner"] not in boats:
+            continue
+        if sizes and row["size"] not in sizes:
+            continue
+        if stages and row["stage"] not in stages:
+            continue
+        if windows and row["quarter"] not in windows:
+            continue
+        visible.append(row)
+
+    catalog = _catalog_filters()
+    by_stage = {
+        item["id"]: {"id": item["id"], "label": item["label"], "count": 0, "amount": 0}
+        for item in catalog.get("stages") or []
+    }
+    by_size = {
+        item["id"]: {"id": item["id"], "label": item["label"], "count": 0, "amount": 0}
+        for item in SIZE_BUCKETS
+    }
+    for row in visible:
+        stage = by_stage.get(row["stage"])
+        if stage:
+            stage["count"] += 1
+            stage["amount"] += row["amount"]
+        size = by_size.get(row["size"])
+        if size:
+            size["count"] += 1
+            size["amount"] += row["amount"]
+
+    closing_week = [
+        row
+        for row in visible
+        if _in_week(_close_day(row["close_date"]), today)
+    ]
+    notifications = [
+        {
+            "id": f"nt-{row['id']}",
+            "kind": "task",
+            "title": f"{row['account']} needs a manager look",
+            "detail": f"{row['stage']} · health {row['health']}",
+            "account": row["account"],
+            "due": "This week" if row in closing_week else "Soon",
+        }
+        for row in visible
+        if row["health"] and row["health"] < 70
+    ][:8]
+    slack = [
+        {
+            "id": "sl-1",
+            "channel": "#forecast-review",
+            "from": "Marcus Vance",
+            "when": "Today 8:40",
+            "text": "Walk the commit stack before Friday. Flag any SS70 without a next step.",
+            "work": True,
+            "account": "",
+        },
+        {
+            "id": "sl-2",
+            "channel": "#west-managers",
+            "from": "Elena Rodriguez",
+            "when": "Today 7:55",
+            "text": "Financial Services coverage is thin for next quarter. Need two new logos.",
+            "work": True,
+            "account": "",
+        },
+        {
+            "id": "sl-3",
+            "channel": "#coaching",
+            "from": "Sarah Jenkins",
+            "when": "Yesterday",
+            "text": "Can we inspect Brody's ramping book this afternoon?",
+            "work": True,
+            "account": "",
+        },
+    ]
+    picks = (
+        ("regional_forecast", 0, time(8, 30), "team"),
+        ("stage_validation", 0, time(10, 0), "commit"),
+        ("rep_performance", 1, time(9, 15), "brody"),
+        ("pipeline_risk", 1, time(14, 0), "west"),
+        ("future_coverage", 3, time(11, 0), "q4"),
+    )
+    by_id = {
+        item["id"]: (group["label"], item)
+        for group in workspace_catalog()["tasks"]
+        for item in group["items"]
+    }
+    tasks = []
+    for item_id, offset, clock, scope in picks:
+        packed = by_id.get(item_id)
+        if not packed:
+            continue
+        group_label, item = packed
+        when = datetime.combine(today + timedelta(days=offset), clock)
+        due = (
+            f"Today {clock.hour}:{clock.minute:02d}"
+            if offset == 0
+            else f"Tomorrow {clock.hour}:{clock.minute:02d}"
+            if offset == 1
+            else f"{when.strftime('%a')} {clock.hour}:{clock.minute:02d}"
+        )
+        tasks.append(
+            {
+                "id": item_id,
+                "group": group_label,
+                "label": item["label"],
+                "due": due,
+                "due_at": when.isoformat(timespec="minutes"),
+                "scope": scope,
+            }
+        )
+    pipeline = sum(row["amount"] for row in visible if not row["backup"])
+    return {
+        "as_of": today.isoformat(),
+        "copy": {
+            "kicker": "SailPoint · Sales manager",
+            "title": "Team forecast",
+            "kpi_pipeline": "Pipeline",
+            "kpi_pipeline_hint": "Click to clear size & stage",
+            "kpi_open": "Open opps",
+            "kpi_open_hint": "Jump to the book",
+            "kpi_week": "Close this week",
+            "kpi_week_hint": "Deals in this week's window",
+            "kpi_slack": "Manager Slack",
+            "kpi_slack_hint": "Open the feed",
+            "empty": "No opportunities match these filters.",
+            "unit": "opps",
+            "table": "Team opportunities",
+            "stage_chart": "Pipeline by stage",
+            "size_chart": "Mix by deal size",
+            "filter_size": "Deal size",
+            "filter_stage": "Stage",
+            "filter_time": "Quarter",
+            "filter_geo": "Book",
+            "col_id": "Opp",
+            "col_name": "Account",
+            "col_stage": "Stage",
+            "col_size": "Size",
+            "col_amount": "Amount",
+            "col_close": "Close",
+            "col_health": "Health",
+        },
+        "filters": {
+            "sizes": [dict(item) for item in SIZE_BUCKETS],
+            "stages": catalog.get("stages") or [],
+            "windows": catalog.get("windows") or [],
+            "geos": catalog.get("geos") or [],
+        },
+        "kpis": {
+            "pipeline": pipeline,
+            "open_opps": len([row for row in visible if not row["backup"]]),
+            "closing_week": len(closing_week),
+            "slack_work": len(slack),
+        },
+        "by_stage": list(by_stage.values()),
+        "by_size": list(by_size.values()),
+        "opps": visible,
+        "tasks": tasks,
+        "notifications": notifications,
+        "slack": slack,
+        "connectors": [
+            {"id": "salesforce", "label": "Salesforce", "status": "connected"},
+            {"id": "slack", "label": "Slack", "status": "local"},
+        ],
+    }
+
+
 def create_app(
     *,
     runner: Any | None = None,
@@ -366,6 +592,25 @@ def create_app(
     @app.get("/api/workspace")
     async def workspace() -> dict[str, Any]:
         return workspace_catalog()
+
+    @app.get("/api/dashboard")
+    async def dashboard(
+        geos: str = "",
+        boats: str = "",
+        sizes: str = "",
+        stages: str = "",
+        windows: str = "",
+    ) -> dict[str, Any]:
+        def split(raw: str) -> list[str]:
+            return [part.strip() for part in raw.split(",") if part.strip()]
+
+        return dashboard_payload(
+            geos=split(geos),
+            boats=split(boats),
+            sizes=split(sizes),
+            stages=split(stages),
+            windows=split(windows),
+        )
 
     @app.post("/api/session")
     async def new_session() -> dict[str, str]:

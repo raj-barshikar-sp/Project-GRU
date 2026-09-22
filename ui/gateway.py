@@ -119,12 +119,9 @@ def create_app(*, client: httpx.AsyncClient | None = None) -> FastAPI:
     @app.get("/api/dashboard")
     async def dashboard(request: Request, role: str = "bob") -> Response:
         selected = _role(role)
-        if selected != "bob":
-            raise HTTPException(
-                status_code=404,
-                detail="The dashboard is available for Bob only.",
-            )
-        params = {key: value for key, value in request.query_params.items() if key != "role"}
+        params = {
+            key: value for key, value in request.query_params.items() if key != "role"
+        }
         return await proxy("GET", selected, "/api/dashboard", params=params)
 
     @app.post("/api/session")

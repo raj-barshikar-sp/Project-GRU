@@ -2067,6 +2067,26 @@ body:has(#landing:not([hidden])) {
   pointer-events: auto;
 }
 
+.landing-brand {
+  grid-column: 1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--lx-fg);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.landing-brand img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
 .landing-links {
   grid-column: 2;
   display: flex;
@@ -2099,9 +2119,16 @@ body:has(#landing:not([hidden])) {
 
 .landing .role-picker select {
   min-height: 40px;
+  max-width: 280px;
+  min-width: 228px;
+  padding-right: 34px;
   border-color: color-mix(in srgb, #fff 16%, transparent);
   border-radius: 9px;
-  background: color-mix(in srgb, #fff 8%, transparent);
+  appearance: none;
+  background-color: color-mix(in srgb, #fff 8%, transparent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23f4f4f5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
   color: var(--lx-fg);
   font-size: 14px;
 }
@@ -2139,10 +2166,10 @@ body:has(#landing:not([hidden])) {
 
 .landing-hero h1 {
   margin: 0;
-  max-width: 12ch;
+  max-width: 16ch;
   color: var(--lx-fg);
-  font-size: clamp(2.65rem, 6.2vw, 4.1rem);
-  line-height: 1.04;
+  font-size: clamp(2.4rem, 5.4vw, 3.7rem);
+  line-height: 1.08;
   letter-spacing: -0.04em;
   font-weight: 700;
 }
@@ -2177,6 +2204,7 @@ body:has(#landing:not([hidden])) {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
+  white-space: nowrap;
   cursor: pointer;
   box-shadow: none;
   text-decoration: none;
@@ -2225,7 +2253,8 @@ body:has(#landing:not([hidden])) {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
+  min-height: 380px;
   margin: 0;
 }
 
@@ -2242,9 +2271,10 @@ body:has(#landing:not([hidden])) {
   position: relative;
   z-index: 1;
   width: auto;
-  height: auto;
-  max-width: min(320px, 100%);
-  max-height: 400px;
+  height: 380px;
+  max-width: min(360px, 100%);
+  object-fit: contain;
+  object-position: center bottom;
   filter: drop-shadow(0 28px 56px color-mix(in srgb, var(--lx-purple) 35%, transparent));
 }
 
@@ -2680,7 +2710,7 @@ body:has(#landing:not([hidden])) {
   }
 
   .landing-nav-inner {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     gap: 12px;
     padding: 12px 14px;
@@ -2688,21 +2718,46 @@ body:has(#landing:not([hidden])) {
     min-height: 0;
   }
 
-  .landing-links {
+  .landing-brand {
     grid-column: 1;
+    grid-row: 1;
+  }
+
+  .landing-brand span {
+    display: none;
+  }
+
+  .landing-links {
+    grid-column: 1 / -1;
     grid-row: 2;
     justify-content: center;
     gap: 10px 22px;
   }
 
   .landing-nav-end {
-    grid-column: 1;
+    grid-column: 2;
     grid-row: 1;
-    justify-self: end;
+    justify-self: stretch;
+    min-width: 0;
+  }
+
+  .landing .role-picker {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .landing .role-picker select {
-    max-width: 150px;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+
+  .landing-hero-art {
+    min-height: 280px;
+  }
+
+  .landing-bob {
+    height: 280px;
   }
 
   .landing-hero {
@@ -2764,6 +2819,46 @@ body:has(#landing:not([hidden])) {
 
   .landing-cap:nth-last-child(-n + 3) {
     border-bottom: 1px dashed var(--lx-line);
+  }
+}
+
+@media (max-width: 640px) {
+  .landing {
+    --landing-nav-h: 156px;
+  }
+
+  .landing-nav-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+  }
+
+  .landing-brand {
+    order: 1;
+  }
+
+  .landing-nav-end {
+    display: contents;
+  }
+
+  .btn-landing-nav {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .landing .role-picker {
+    order: 3;
+    flex: 1 1 100%;
+  }
+
+  .landing .role-picker select {
+    width: 100%;
+  }
+
+  .landing-links {
+    order: 4;
+    flex: 1 1 100%;
   }
 }
 
@@ -3645,6 +3740,10 @@ html.dash-html[data-theme="dark"] {
 
 .dash-card-head h2 {
   margin: 0;
+}
+
+.dash-chart {
+  overflow-x: auto;
 }
 
 .dash-chart svg {
