@@ -2093,7 +2093,21 @@ body:has(#landing:not([hidden])) {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 10px;
   flex-shrink: 0;
+}
+
+.landing .role-picker select {
+  min-height: 40px;
+  border-color: color-mix(in srgb, #fff 16%, transparent);
+  border-radius: 9px;
+  background: color-mix(in srgb, #fff 8%, transparent);
+  color: var(--lx-fg);
+  font-size: 14px;
+}
+
+.landing .role-picker select option {
+  color: #111;
 }
 
 .btn-landing-nav {
@@ -2227,8 +2241,10 @@ body:has(#landing:not([hidden])) {
 .landing-bob {
   position: relative;
   z-index: 1;
-  width: min(320px, 100%);
+  width: auto;
   height: auto;
+  max-width: min(320px, 100%);
+  max-height: 400px;
   filter: drop-shadow(0 28px 56px color-mix(in srgb, var(--lx-purple) 35%, transparent));
 }
 
@@ -2683,6 +2699,10 @@ body:has(#landing:not([hidden])) {
     grid-column: 1;
     grid-row: 1;
     justify-self: end;
+  }
+
+  .landing .role-picker select {
+    max-width: 150px;
   }
 
   .landing-hero {

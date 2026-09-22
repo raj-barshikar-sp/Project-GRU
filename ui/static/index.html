@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bob the Back Office Minion</title>
+    <title>Project GRU</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/static/assets/bob.png?v=2" type="image/png" />
     <script>
@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=121" />
+    <link rel="stylesheet" href="/static/styles.css?v=127" />
   </head>
   <body>
     <div id="landing" class="landing">
@@ -30,57 +30,40 @@
             <a href="#landing-faq">FAQ</a>
           </nav>
           <div class="landing-nav-end">
-            <a href="/dashboard" class="btn-landing btn-landing-nav">Get started</a>
+            <label class="role-picker">
+              <span class="sr-only">Active role</span>
+              <select id="role-select" aria-label="Active role">
+                <option value="bob">RevOps · Bob</option>
+                <option value="james">Marketing · James</option>
+                <option value="stuart">Sales Manager · Stuart</option>
+                <option value="henry">DSR · Henry</option>
+              </select>
+            </label>
+            <a href="/dashboard" class="btn-landing btn-landing-nav" data-start>Get started</a>
           </div>
         </div>
       </header>
       <main class="landing-main" id="landing-top">
         <section class="landing-hero">
           <div class="landing-hero-copy">
-            <h1>Bob the Back Office Minion</h1>
-            <p class="landing-sub">
-              One workspace for forecast, quote, hygiene, OTC, pricing, and reporting.
-              Open your book, filter by size, stage, and time, then send Bob a task.
+            <h1 id="hero-title">Project GRU</h1>
+            <p class="landing-sub" id="hero-sub">
+              One workspace for your team's daily jobs. Pick a role, set your filters, then send a task.
             </p>
             <div class="landing-actions">
-              <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+              <a href="/dashboard" class="btn-landing btn-landing-hero" data-start>Get started</a>
             </div>
           </div>
           <div class="landing-hero-art" id="landing-hero-art" aria-hidden="true">
-            <img class="landing-bob" src="/static/assets/bob.png?v=2" alt="" width="320" height="368" />
+            <img class="landing-bob" id="hero-art" src="/static/assets/bob.png?v=2" alt="" width="368" height="424" />
           </div>
         </section>
         <section class="landing-section" id="landing-capabilities" aria-labelledby="landing-capabilities-heading">
           <div class="landing-section-head">
-            <p class="landing-section-kicker">What Bob covers</p>
-            <h2 id="landing-capabilities-heading" class="landing-section-title">RevOps jobs in one place</h2>
+            <p class="landing-section-kicker" id="cap-kicker">What your minion covers</p>
+            <h2 id="landing-capabilities-heading" class="landing-section-title">Jobs in one place</h2>
           </div>
-          <div class="landing-cap-grid">
-            <article class="landing-cap">
-              <h3>Forecast</h3>
-              <p>Regional roll-ups, verbal vs landing, and coverage against plan.</p>
-            </article>
-            <article class="landing-cap">
-              <h3>Quoting</h3>
-              <p>Deviation checks, deal-desk style answers, and paste-ready notes.</p>
-            </article>
-            <article class="landing-cap">
-              <h3>Hygiene</h3>
-              <p>Stale opps, missing fields, and book cleanup priorities.</p>
-            </article>
-            <article class="landing-cap">
-              <h3>OTC &amp; pricing</h3>
-              <p>Order-to-cash friction and price exception context.</p>
-            </article>
-            <article class="landing-cap">
-              <h3>Reporting</h3>
-              <p>QBR packs and leadership summaries from the same filters.</p>
-            </article>
-            <article class="landing-cap">
-              <h3>Specialists</h3>
-              <p>Domain agents behind one briefing — you stay in the seller seat.</p>
-            </article>
-          </div>
+          <div class="landing-cap-grid" id="landing-cap-grid"></div>
         </section>
         <section class="landing-section" aria-labelledby="landing-features-heading">
           <div class="landing-section-head">
@@ -88,16 +71,16 @@
             <h2 id="landing-features-heading" class="landing-section-title">Three steps to an answer</h2>
           </div>
           <div class="landing-features-shell">
-            <div class="landing-features" aria-label="What Bob covers">
+            <div class="landing-features" aria-label="How it works">
               <article class="landing-card">
                 <span class="landing-card-step">1</span>
                 <h3>Task menu</h3>
-                <p>Start from a RevOps job — regional forecast, quote deviations, QBR pack — not a blank prompt.</p>
+                <p>Start from a real job in your role — not a blank prompt.</p>
               </article>
               <article class="landing-card">
                 <span class="landing-card-step">2</span>
                 <h3>Filters</h3>
-                <p>Opp size, SS stage, close window, geo, and boat ride along so Bob scopes the book correctly.</p>
+                <p>Size, stage, close window, geo, and owner ride along so the scope is right.</p>
               </article>
               <article class="landing-card">
                 <span class="landing-card-step">3</span>
@@ -114,13 +97,24 @@
           </div>
           <div class="landing-faq-list">
             <div class="landing-faq">
+              <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-roles" id="faq-roles-btn">
+                <span>Which assistant should I pick?</span>
+                <span class="landing-faq-chevron" aria-hidden="true"></span>
+              </button>
+              <div class="landing-faq-panel" id="faq-roles" role="region" aria-labelledby="faq-roles-btn">
+                <div class="landing-faq-panel-inner">
+                  <p>Pick your role from the menu up top — RevOps, Marketing, Sales Manager, or DSR. You can switch any time from the same menu inside the workspace.</p>
+                </div>
+              </div>
+            </div>
+            <div class="landing-faq">
               <button type="button" class="landing-faq-trigger" aria-expanded="false" aria-controls="faq-prompts" id="faq-prompts-btn">
                 <span>Do I need to write prompts from scratch?</span>
                 <span class="landing-faq-chevron" aria-hidden="true"></span>
               </button>
               <div class="landing-faq-panel" id="faq-prompts" role="region" aria-labelledby="faq-prompts-btn">
                 <div class="landing-faq-panel-inner">
-                  <p>Start from the task menu — Bob pre-fills a draft scoped to your filters.</p>
+                  <p>Start from the task menu — the workspace pre-fills a draft scoped to your filters.</p>
                 </div>
               </div>
             </div>
@@ -131,7 +125,7 @@
               </button>
               <div class="landing-faq-panel" id="faq-filters" role="region" aria-labelledby="faq-filters-btn">
                 <div class="landing-faq-panel-inner">
-                  <p>Geo, boat, opp, and report selections ride with every message in the workspace.</p>
+                  <p>Your selections ride with every message in the workspace, and each role gets the filters that fit its book.</p>
                 </div>
               </div>
             </div>
@@ -142,7 +136,7 @@
               </button>
               <div class="landing-faq-panel" id="faq-briefing" role="region" aria-labelledby="faq-briefing-btn">
                 <div class="landing-faq-panel-inner">
-                  <p>Whatever the specialist needs — a field checklist, forecast numbers, quote gaps, or a paste-ready note.</p>
+                  <p>Whatever the specialist needs — a field checklist, forecast numbers, campaign copy, or a paste-ready note.</p>
                 </div>
               </div>
             </div>
@@ -160,16 +154,117 @@
           </div>
         </section>
         <section class="landing-cta-band">
-          <h2>Ready to run your book through Bob?</h2>
-          <p>Open the dashboard, pick a task, and send.</p>
-          <a href="/dashboard" class="btn-landing btn-landing-hero">Get started</a>
+          <h2 id="cta-title">Ready to get started?</h2>
+          <p id="cta-sub">Open the workspace, pick a task, and send.</p>
+          <a href="/dashboard" class="btn-landing btn-landing-hero" data-start>Get started</a>
         </section>
       </main>
     </div>
     <script>
       (() => {
-        const faqs = document.querySelectorAll(".landing-faq");
-        faqs.forEach((item) => {
+        const ROLE_KEY = "gru-role";
+        const ROLES = {
+          bob: {
+            name: "Bob",
+            title: "Bob the Back Office Minion",
+            sub: "One workspace for forecast, quote, hygiene, OTC, pricing, and reporting. Open your book, filter by size, stage, and time, then send Bob a task.",
+            capsTitle: "RevOps jobs in one place",
+            start: "/dashboard",
+            art: ["bob.png?v=2", 368, 424],
+            caps: [
+              ["Forecast", "Regional roll-ups, verbal vs landing, and coverage against plan."],
+              ["Quoting", "Deviation checks, deal-desk style answers, and paste-ready notes."],
+              ["Hygiene", "Stale opps, missing fields, and book cleanup priorities."],
+              ["OTC &amp; pricing", "Order-to-cash friction and price exception context."],
+              ["Reporting", "QBR packs and leadership summaries from the same filters."],
+              ["Specialists", "Domain agents behind one briefing — you stay in the seller seat."],
+            ],
+          },
+          james: {
+            name: "James",
+            title: "James the Marketing Assistant",
+            sub: "One workspace for campaigns, ABM, content, brand, and marketing ops. Filter by region, campaign, and account, then send James a task.",
+            capsTitle: "Marketing jobs in one place",
+            start: "/chat",
+            art: ["james.png", 546, 969],
+            caps: [
+              ["Campaign design", "Ideation, briefs, decks, and competitive messaging."],
+              ["ABM", "Account prioritisation, briefs, gap maps, and persona messaging."],
+              ["Content", "Anchor assets, translations, and asset grids via Jasper."],
+              ["Brand", "Social sentiment, share of voice, and rapid response plays."],
+              ["Analysis", "Campaign performance reads and concrete improvement moves."],
+              ["Marketing ops", "SFDC campaigns, 6sense segments, and Marketo loads."],
+            ],
+          },
+          stuart: {
+            name: "Stuart",
+            title: "Stuart the Sales Manager Assistant",
+            sub: "One workspace for the team forecast, deal inspection, and rep coverage. Filter by book, rep, and quarter, then send Stuart a task.",
+            capsTitle: "Sales manager jobs in one place",
+            start: "/chat",
+            art: ["stuart.png", 360, 338],
+            caps: [
+              ["Forecasting", "Team roll-ups, category splits, and coverage against quota."],
+              ["Forecast inspection", "Deal-level checks on what is holding the number up."],
+              ["Rep participation", "Who is carrying the book and who needs coaching."],
+              ["Future pipeline", "Next-quarter build and where the gaps are."],
+              ["Policy &amp; knowledge", "Manager playbook answers without hunting a doc."],
+              ["Specialists", "Domain agents behind one briefing — you stay in the manager seat."],
+            ],
+          },
+          henry: {
+            name: "Henry",
+            title: "Henry the DSR Minion",
+            sub: "One workspace to prospect, plan, engage, and progress digital sales rooms. Filter by territory, owner, and account, then send Henry a task.",
+            capsTitle: "DSR jobs in one place",
+            start: "/chat",
+            art: ["henry.png", 256, 256],
+            caps: [
+              ["Prospect", "Account ranking, intel analysis, messaging, and whitespace."],
+              ["Plan", "Account 360, account and opportunity plans, DMU expansion."],
+              ["Engage", "Discovery prep, recap notes, follow-ups, and sales rooms."],
+              ["Negotiate", "Quotes, discount checks, proposals, and deal risk."],
+              ["Post-sale", "Handoff packets with scope, owners, and open risks."],
+              ["Enablement", "Rules of engagement, commission plans, product overview."],
+            ],
+          },
+        };
+
+        const select = document.getElementById("role-select");
+        const grid = document.getElementById("landing-cap-grid");
+
+        function apply(id) {
+          const role = ROLES[id] || ROLES.bob;
+          select.value = ROLES[id] ? id : "bob";
+          document.documentElement.dataset.role = select.value;
+          document.title = role.title;
+          document.getElementById("hero-title").textContent = role.title;
+          document.getElementById("hero-sub").textContent = role.sub;
+          document.getElementById("cap-kicker").textContent = `What ${role.name} covers`;
+          document.getElementById("landing-capabilities-heading").textContent = role.capsTitle;
+          document.getElementById("cta-title").textContent = `Ready to run your work through ${role.name}?`;
+          document.getElementById("cta-sub").textContent =
+            role.start === "/dashboard"
+              ? "Open the dashboard, pick a task, and send."
+              : "Open the workspace, pick a task, and send.";
+          const art = document.getElementById("hero-art");
+          const [file, width, height] = role.art;
+          art.src = `/static/assets/${file}`;
+          art.width = width;
+          art.height = height;
+          grid.innerHTML = role.caps
+            .map(([head, copy]) => `<article class="landing-cap"><h3>${head}</h3><p>${copy}</p></article>`)
+            .join("");
+          for (const link of document.querySelectorAll("[data-start]")) link.href = role.start;
+        }
+
+        apply(localStorage.getItem(ROLE_KEY) || "bob");
+        select.addEventListener("change", () => {
+          localStorage.setItem(ROLE_KEY, select.value);
+          apply(select.value);
+        });
+
+        document.querySelectorAll(".landing-faq").forEach((item) => {
           const trigger = item.querySelector(".landing-faq-trigger");
           if (!trigger) return;
           trigger.addEventListener("click", () => {
