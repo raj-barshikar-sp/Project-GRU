@@ -3161,6 +3161,7 @@ html.dash-html {
   --shadow-soft: 0 10px 28px rgba(0, 51, 161, 0.08);
 }
 
+html.in-workspace[data-theme="dark"],
 html.dash-html[data-theme="dark"] {
   --page: #0a0a0a;
   --surface: #171717;
@@ -3171,6 +3172,13 @@ html.dash-html[data-theme="dark"] {
   --hairline: #ffffff1a;
   --hover: #262626;
   --sidebar: #111111;
+  --white: #171717;
+  --paper: #171717;
+  --rail: #111111;
+  --rail-line: #ffffff1a;
+  --line: #ffffff1a;
+  --input-line: #ffffff1a;
+  --muted: #a1a1a1;
   --cobalt: #8fb0ff;
   --blue: #5aa6e8;
   --aqua: #54c0e8;
