@@ -1,11 +1,38 @@
-.venv/
-venv/
+# Secrets / local env
 .env
 .env.*
 !.env.example
+
+# Virtualenvs / uv
+.venv/
+venv/
+env/
+.uv/
+
+# Python / packaging
 __pycache__/
 *.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Tests / linters
 .pytest_cache/
-.DS_Store
-logs/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ADK and local runtime
 .adk/
+.deps/
+logs/
+output/
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp
