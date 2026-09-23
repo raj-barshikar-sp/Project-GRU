@@ -2178,7 +2178,8 @@ body:has(#landing:not([hidden])) {
 
 .landing-section,
 .landing #landing-features-heading,
-.landing #landing-faq-heading {
+.landing #landing-faq-heading,
+.landing-minion {
   scroll-margin-top: calc(var(--landing-nav-h) + 12px);
 }
 
@@ -2216,21 +2217,54 @@ body:has(#landing:not([hidden])) {
 .landing-brand {
   grid-column: 1;
   justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
   color: var(--lx-fg);
   font-size: 15px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-weight: 650;
+  letter-spacing: -0.03em;
   text-decoration: none;
 }
 
-.landing-brand img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
+.landing-brand:hover {
+  color: var(--lx-fg);
+}
+
+.landing-main > .landing-hero .landing-section-kicker {
+  margin: 0 0 14px;
+  text-align: left;
+}
+
+.landing-role-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.landing-role-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px dashed var(--lx-line);
+  color: var(--lx-muted);
+  font-size: 13px;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.landing-role-row a:hover {
+  color: var(--lx-fg);
+  background: color-mix(in srgb, var(--lx-line) 18%, transparent);
+}
+
+.landing-carousel-dot.is-active {
+  width: 22px;
+  border-radius: 99px;
+  background: var(--lx-fg);
+  transition: width 0.35s ease, background 0.2s ease;
 }
 
 .landing-links {
@@ -2265,16 +2299,9 @@ body:has(#landing:not([hidden])) {
 
 .landing .role-picker select {
   min-height: 40px;
-  max-width: 280px;
-  min-width: 228px;
-  padding-right: 34px;
   border-color: color-mix(in srgb, #fff 16%, transparent);
   border-radius: 9px;
-  appearance: none;
-  background-color: color-mix(in srgb, #fff 8%, transparent);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23f4f4f5' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
+  background: color-mix(in srgb, #fff 8%, transparent);
   color: var(--lx-fg);
   font-size: 14px;
 }
@@ -2310,14 +2337,20 @@ body:has(#landing:not([hidden])) {
   min-width: 0;
 }
 
-.landing-hero h1 {
+.landing-hero h1,
+.landing-minion-hero h2 {
   margin: 0;
-  max-width: 16ch;
+  max-width: 12ch;
   color: var(--lx-fg);
-  font-size: clamp(2.4rem, 5.4vw, 3.7rem);
-  line-height: 1.08;
+  font-size: clamp(2.65rem, 6.2vw, 4.1rem);
+  line-height: 1.04;
   letter-spacing: -0.04em;
   font-weight: 700;
+}
+
+.landing-minion-hero .landing-section-kicker {
+  margin: 0 0 12px;
+  text-align: left;
 }
 
 .landing-sub {
@@ -2350,7 +2383,6 @@ body:has(#landing:not([hidden])) {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  white-space: nowrap;
   cursor: pointer;
   box-shadow: none;
   text-decoration: none;
@@ -2399,8 +2431,7 @@ body:has(#landing:not([hidden])) {
   position: relative;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-end;
-  min-height: 380px;
+  align-items: center;
   margin: 0;
 }
 
@@ -2417,17 +2448,132 @@ body:has(#landing:not([hidden])) {
   position: relative;
   z-index: 1;
   width: auto;
-  height: 380px;
-  max-width: min(360px, 100%);
-  object-fit: contain;
-  object-position: center bottom;
+  height: auto;
+  max-width: min(320px, 100%);
+  max-height: 400px;
   filter: drop-shadow(0 28px 56px color-mix(in srgb, var(--lx-purple) 35%, transparent));
 }
 
-.landing-section {
+.landing-section:not(.landing-carousel) {
   margin-top: 0;
   padding-top: 8px;
   border-top: 1px dashed var(--lx-line);
+}
+
+.landing-minion .landing-hero-art {
+  width: 320px;
+  height: 400px;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.landing-minion .landing-bob {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.landing-carousel {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding: 28px 0 16px;
+  border-top: 1px dashed var(--lx-line);
+}
+
+.landing-carousel-frame {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) 56px;
+  align-items: center;
+  gap: 0;
+}
+
+.landing-carousel-viewport {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.landing-carousel-track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.85s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.landing-minion {
+  flex: 0 0 100%;
+  min-width: 0;
+  padding: 8px clamp(20px, 5vw, 72px) 16px;
+  box-sizing: border-box;
+}
+
+.landing-minion[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.landing-carousel-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px dashed var(--lx-line);
+  border-radius: 9px;
+  background: transparent;
+  color: var(--lx-fg);
+  cursor: pointer;
+  position: relative;
+}
+
+.landing-carousel-btn::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  width: 10px;
+  height: 10px;
+  border-top: 1.6px solid var(--lx-muted);
+  border-right: 1.6px solid var(--lx-muted);
+}
+
+.landing-carousel-prev::before {
+  left: 18px;
+  transform: rotate(-135deg);
+}
+
+.landing-carousel-next::before {
+  left: 14px;
+  transform: rotate(45deg);
+}
+
+.landing-carousel-btn:hover {
+  background: color-mix(in srgb, var(--lx-line) 12%, transparent);
+}
+
+.landing-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.landing-carousel-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--lx-muted) 45%, transparent);
+  cursor: pointer;
+}
+
+.landing-carousel-dot.is-active {
+  background: var(--lx-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-carousel-track {
+    transition: none;
+  }
 }
 
 .landing-section-head {
@@ -2841,170 +2987,6 @@ body:has(#landing:not([hidden])) {
   .composer {
     padding-left: 12px;
     padding-right: 12px;
-  }
-
-  .landing {
-    --landing-nav-h: 112px;
-  }
-
-  .landing-main {
-    padding: calc(var(--landing-nav-h) + 12px) 16px 48px;
-  }
-
-  .landing-nav {
-    padding: 18px 16px 0;
-  }
-
-  .landing-nav-inner {
-    grid-template-columns: auto 1fr;
-    grid-template-rows: auto auto;
-    gap: 12px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    min-height: 0;
-  }
-
-  .landing-brand {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .landing-brand span {
-    display: none;
-  }
-
-  .landing-links {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: center;
-    gap: 10px 22px;
-  }
-
-  .landing-nav-end {
-    grid-column: 2;
-    grid-row: 1;
-    justify-self: stretch;
-    min-width: 0;
-  }
-
-  .landing .role-picker {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  .landing .role-picker select {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-  }
-
-  .landing-hero-art {
-    min-height: 280px;
-  }
-
-  .landing-bob {
-    height: 280px;
-  }
-
-  .landing-hero {
-    grid-template-columns: 1fr;
-    padding: 16px 0 36px;
-    text-align: center;
-  }
-
-  .landing-hero-copy {
-    order: 2;
-  }
-
-  .landing-hero-art {
-    order: 1;
-    justify-content: center;
-  }
-
-  .landing-hero h1 {
-    max-width: none;
-    margin-inline: auto;
-  }
-
-  .landing-sub {
-    margin-inline: auto;
-  }
-
-  .landing-actions {
-    justify-content: center;
-  }
-
-  .landing-links a {
-    font-size: 13px;
-  }
-
-  .landing-features {
-    grid-template-columns: 1fr;
-  }
-
-  .landing-card {
-    border-right: 0;
-    border-bottom: 1px dashed var(--lx-line);
-  }
-
-  .landing-card:last-child {
-    border-bottom: 0;
-  }
-
-  .landing-cap-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .landing-cap {
-    border-right: 0;
-  }
-
-  .landing-cap:nth-child(3n) {
-    border-right: 0;
-  }
-
-  .landing-cap:nth-last-child(-n + 3) {
-    border-bottom: 1px dashed var(--lx-line);
-  }
-}
-
-@media (max-width: 640px) {
-  .landing {
-    --landing-nav-h: 156px;
-  }
-
-  .landing-nav-inner {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px 12px;
-  }
-
-  .landing-brand {
-    order: 1;
-  }
-
-  .landing-nav-end {
-    display: contents;
-  }
-
-  .btn-landing-nav {
-    order: 2;
-    margin-left: auto;
-  }
-
-  .landing .role-picker {
-    order: 3;
-    flex: 1 1 100%;
-  }
-
-  .landing .role-picker select {
-    width: 100%;
-  }
-
-  .landing-links {
-    order: 4;
-    flex: 1 1 100%;
   }
 }
 
