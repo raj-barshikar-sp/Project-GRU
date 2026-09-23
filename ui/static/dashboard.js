@@ -181,6 +181,78 @@ function bindSelect(select, key) {
   });
 }
 
+function closeCustomSelects(except) {
+  for (const node of document.querySelectorAll(".gru-select.is-open")) {
+    if (node === except) continue;
+    node.classList.remove("is-open");
+    const menu = node.querySelector(".gru-select-menu");
+    const button = node.querySelector(".gru-select-btn");
+    if (menu) menu.hidden = true;
+    button?.setAttribute("aria-expanded", "false");
+  }
+}
+
+function mountCustomSelect(select) {
+  if (!select || select.dataset.custom === "1") return;
+  select.dataset.custom = "1";
+  select.tabIndex = -1;
+  select.classList.add("gru-select-native");
+  const wrap = el("div", "gru-select");
+  select.parentNode.insertBefore(wrap, select);
+  wrap.append(select);
+  const button = el("button", "gru-select-btn");
+  button.type = "button";
+  button.setAttribute("aria-haspopup", "listbox");
+  button.setAttribute("aria-expanded", "false");
+  if (select.id) button.id = `${select.id}-btn`;
+  const value = el("span", "gru-select-value");
+  button.append(value);
+  const menu = el("div", "gru-select-menu");
+  menu.hidden = true;
+  menu.setAttribute("role", "listbox");
+  wrap.append(button, menu);
+
+  function sync() {
+    const chosen = select.selectedOptions[0];
+    value.textContent = chosen ? chosen.textContent : "";
+    menu.replaceChildren();
+    for (const option of select.options) {
+      const item = el("button", "gru-select-opt", option.textContent);
+      item.type = "button";
+      item.setAttribute("role", "option");
+      item.setAttribute("aria-selected", String(option.selected));
+      if (option.selected) item.classList.add("is-on");
+      item.addEventListener("click", () => {
+        if (select.value !== option.value) {
+          select.value = option.value;
+          select.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+        sync();
+        closeCustomSelects();
+      });
+      menu.append(item);
+    }
+  }
+
+  button.addEventListener("click", () => {
+    const open = menu.hidden;
+    closeCustomSelects(wrap);
+    menu.hidden = !open;
+    wrap.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", String(open));
+    if (open) menu.querySelector(".is-on")?.focus();
+  });
+  select.addEventListener("change", sync);
+  new MutationObserver(sync).observe(select, { childList: true });
+  select.closest("label")?.addEventListener("click", (event) => {
+    if (event.target.closest(".gru-select-btn, .gru-select-opt")) return;
+    event.preventDefault();
+    button.click();
+  });
+  select._syncMenu = sync;
+  sync();
+}
+
 function ensureFilters(payload) {
   const sizes = document.getElementById("filter-sizes");
   const stages = document.getElementById("filter-stages");
@@ -196,6 +268,7 @@ function ensureFilters(payload) {
     bindSelect(stages, "stages");
     bindSelect(windows, "windows");
     bindSelect(geosSelect, "geos");
+    for (const select of [sizes, stages, windows, geosSelect]) mountCustomSelect(select);
     filtersReady = true;
     return;
   }
@@ -203,6 +276,7 @@ function ensureFilters(payload) {
   stages.value = state.stages;
   windows.value = state.windows;
   geosSelect.value = state.geos;
+  for (const select of [sizes, stages, windows, geosSelect]) select._syncMenu?.();
 }
 
 function tip() {
@@ -224,6 +298,118 @@ function showTip(event, lines) {
 function hideTip() {
   const node = tip();
   if (node) node.hidden = true;
+}
+
+const VIZ_PALETTE = ["#0033A1", "#0071CE", "#54C0E8", "#CC27B0", "#93D500", "#415364"];
+const VIZ_CATALOG = [
+  { id: "stage", title: "Pipeline by stage", hint: "Amount by stage", x: "Stage", y: "Amount", span: 7, size: "lg" },
+  { id: "size", title: "Mix by size", hint: "Share of amount", span: 5, size: "md" },
+  { id: "calendar", title: "Close calendar", hint: "Amount by week", x: "Week", y: "Amount", span: 8, size: "lg" },
+  { id: "scatter", title: "Health vs amount", hint: "Each dot is a deal", x: "Health", y: "Amount", span: 4, size: "md" },
+  { id: "aging", title: "Days to close", hint: "Amount by timing", x: "Days to close", y: "Amount", span: 5, size: "sm" },
+  { id: "geo", title: "Pipeline by geo", hint: "Amount by geo", x: "Amount", y: "Geo", span: 7, size: "md" },
+  { id: "waterfall", title: "Working pipeline", hint: "Gross to working book", x: "Step", y: "Amount", span: 7, size: "md" },
+  { id: "funnel", title: "Stage funnel", hint: "Amount through stages", x: "Stage", y: "Amount", span: 5, size: "sm" },
+  { id: "topn", title: "Top accounts", hint: "Largest accounts", x: "Amount", y: "Account", span: 5, size: "md" },
+  { id: "heat", title: "Stage × size", hint: "Amount in each cell", x: "Size", y: "Stage", span: 7, size: "md" },
+  { id: "coverage", title: "Coverage vs plan", hint: "Pipeline against plan", needs: "quota", x: "Coverage", y: "Amount", span: 4, size: "sm" },
+  { id: "quotes", title: "Quote errors", hint: "Errors by account", needs: "errors", x: "Errors", y: "Account", span: 4, size: "md" },
+  { id: "verbal", title: "Verbal vs landing", hint: "Open book vs this week", needs: "verbal", x: "", y: "Amount", span: 4, size: "md" },
+];
+const DEFAULT_VIZ = {
+  bob: VIZ_CATALOG.map((item) => item.id),
+  james: ["stage", "size"],
+  stuart: ["stage", "size"],
+  henry: ["stage", "size"],
+};
+
+function vizKey() {
+  return `gru-viz-${activeRole}`;
+}
+
+function readEnabledViz() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(vizKey()) || "null");
+    if (Array.isArray(raw)) return raw.filter((id) => VIZ_CATALOG.some((item) => item.id === id));
+  } catch {
+    /* private mode */
+  }
+  return [...(DEFAULT_VIZ[activeRole] || DEFAULT_VIZ.bob)];
+}
+
+let enabledViz = readEnabledViz();
+let vizEditing = false;
+
+function saveEnabledViz(ids) {
+  enabledViz = ids;
+  try {
+    localStorage.setItem(vizKey(), JSON.stringify(ids));
+  } catch {
+    /* private mode */
+  }
+}
+
+function vizOn(id) {
+  return enabledViz.includes(id);
+}
+
+function vizAvailable(spec, payload) {
+  const opps = payload?.opps || [];
+  if (spec.needs === "quota") return Boolean(Number(payload?.kpis?.quota)) || activeRole === "bob";
+  if (spec.needs === "errors") return opps.some((row) => (row.errors || []).length);
+  if (spec.needs === "verbal") return payload?.kpis?.verbal != null || opps.some((row) => row.backup);
+  if (spec.id === "geo") return opps.some((row) => row.geo);
+  if (spec.id === "scatter") return opps.some((row) => Number(row.health) > 0);
+  return true;
+}
+
+function asOfDay(payload) {
+  const raw = payload?.as_of || new Date().toISOString().slice(0, 10);
+  return new Date(`${raw}T00:00:00`);
+}
+
+function parseDay(value) {
+  const raw = String(value || "").slice(0, 10);
+  if (!raw) return null;
+  const day = new Date(`${raw}T00:00:00`);
+  return Number.isNaN(day.getTime()) ? null : day;
+}
+
+function startOfWeek(day) {
+  const next = new Date(day);
+  next.setDate(next.getDate() - ((next.getDay() + 6) % 7));
+  next.setHours(0, 0, 0, 0);
+  return next;
+}
+
+function addDays(day, count) {
+  const next = new Date(day);
+  next.setDate(next.getDate() + count);
+  return next;
+}
+
+function dayKey(day) {
+  return day.toISOString().slice(0, 10);
+}
+
+function weekSeries(opps, origin, count) {
+  const start = startOfWeek(origin);
+  const buckets = [];
+  for (let i = 0; i < count; i += 1) {
+    const from = addDays(start, i * 7);
+    const to = addDays(from, 7);
+    const rows = opps.filter((opp) => {
+      const close = parseDay(opp.close_date);
+      return close && close >= from && close < to;
+    });
+    buckets.push({
+      id: dayKey(from),
+      label: from.toLocaleDateString(undefined, { month: "short", day: "numeric" }),
+      amount: rows.reduce((sum, row) => sum + (Number(row.amount) || 0), 0),
+      count: rows.length,
+    });
+  }
+  return buckets;
 }
 
 const RAIL_ORDER = ["tasks", "notes", "slack"];
@@ -336,56 +522,40 @@ function stageTick(row, slot) {
   return tick.length <= budget ? tick : `${tick.slice(0, Math.max(4, budget - 1))}…`;
 }
 
+function mute() {
+  return getComputedStyle(document.documentElement).getPropertyValue("--fg-muted").trim() || ink();
+}
+
+function axisText(svg, value, attrs) {
+  const node = svgEl("text", {
+    fill: mute(),
+    "font-size": 12,
+    "font-family": "Poppins, sans-serif",
+    ...attrs,
+  });
+  node.textContent = value;
+  return node;
+}
+
 function renderStageChart(rows) {
   const root = document.getElementById("chart-stage");
-  const list = rows || [];
-  const max = Math.max(1, ...list.map((row) => row.amount || 0));
-  const color = ink();
-  const colors = ["#0033A1", "#0071CE", "#54C0E8", "#CC27B0", "#93D500", "#415364"];
-  const n = Math.max(list.length, 1);
-  const width = 420;
-  const slot = width / n;
-  const barW = Math.min(56, Math.max(14, slot - 12));
-  root.replaceChildren();
-  const svg = svgEl("svg", {
-    viewBox: `0 0 ${width} 180`,
-    role: "img",
-    "aria-label": `${copy.stage_chart || "Amount by stage"}. Click a bar to filter.`,
-  });
-  list.forEach((row, index) => {
-    const x = slot * index + (slot - barW) / 2;
-    const barHeight = Math.round((row.amount / max) * 120);
-    const y = 148 - barHeight;
-    const active = state.stages === row.id;
-    const dim = Boolean(state.stages) && !active;
-    const bar = svgEl("rect", {
-      x,
-      y,
-      width: barW,
-      height: Math.max(barHeight, 2),
-      rx: 8,
-      fill: colors[index % colors.length] || "#0033A1",
-      class: `dash-chart-hit${active ? " is-on" : ""}${dim ? " is-dim" : ""}`,
-    });
-    bar.style.cursor = "pointer";
-    const tipLines = [row.label || row.id, `${row.count} ${copy.unit || "opps"}`, money(row.amount)];
-    bar.addEventListener("pointerenter", (event) => showTip(event, tipLines));
-    bar.addEventListener("pointermove", (event) => showTip(event, tipLines));
-    bar.addEventListener("pointerleave", hideTip);
-    bar.addEventListener("click", () => setFilter("stages", row.id));
-    svg.append(bar);
-    const tick = svgEl("text", {
-      x: x + barW / 2,
-      y: 168,
-      "text-anchor": "middle",
-      fill: color,
-      "font-size": n > 5 ? 10 : 12,
-      "font-family": "Poppins, sans-serif",
-    });
-    tick.textContent = stageTick(row, slot);
-    svg.append(tick);
-  });
-  root.append(svg);
+  if (!root) return;
+  vBars(
+    root,
+    (rows || []).map((row) => ({
+      ...row,
+      tick: stageTick(row, 72),
+      tip: [row.label || row.id, `${row.count} ${copy.unit || "opps"}`, money(row.amount)],
+      on: state.stages === row.id,
+      dim: Boolean(state.stages) && state.stages !== row.id,
+    })),
+    {
+      aria: `${copy.stage_chart || "Amount by stage"}. Click a bar to filter.`,
+      x: "Stage",
+      y: "Amount",
+      onClick: (row) => setFilter("stages", row.id),
+    }
+  );
 }
 
 function polar(cx, cy, r, angle) {
@@ -403,6 +573,7 @@ function donutSlice(cx, cy, r0, r1, start, end) {
 
 function renderSizeChart(rows) {
   const root = document.getElementById("chart-size");
+  if (!root) return;
   const total = rows.reduce((sum, row) => sum + row.amount, 0) || 1;
   const colors = ["#54C0E8", "#0071CE", "#0033A1"];
   const wrap = el("div", "dash-donut");
@@ -469,6 +640,501 @@ function renderSizeChart(rows) {
   });
   wrap.append(svg, legend);
   root.replaceChildren(wrap);
+}
+
+function bindTip(node, lines) {
+  node.addEventListener("pointerenter", (event) => showTip(event, lines));
+  node.addEventListener("pointermove", (event) => showTip(event, lines));
+  node.addEventListener("pointerleave", hideTip);
+}
+
+function vBars(root, rows, { onClick, aria, colorFor, x = "Category", y = "Amount" }) {
+  const list = rows || [];
+  const max = Math.max(1, ...list.map((row) => row.amount || 0));
+  const n = Math.max(list.length, 1);
+  const width = 360;
+  const padL = 64;
+  const padR = 14;
+  const padT = 36;
+  const plotH = 148;
+  const base = padT + plotH;
+  const height = base + (x ? 42 : 26);
+  const plotW = width - padL - padR;
+  const slot = plotW / n;
+  const barW = Math.min(n <= 3 ? 72 : 54, Math.max(18, slot * 0.78));
+  const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: "xMidYMid meet", role: "img", "aria-label": aria || `${y} by ${x}` });
+  svg.append(axisText(svg, y, { x: 4, y: 12, "text-anchor": "start" }));
+  svg.append(axisText(svg, money(max), { x: padL - 8, y: padT - 4, "text-anchor": "end" }));
+  svg.append(axisText(svg, "$0", { x: padL - 8, y: base - 2, "text-anchor": "end" }));
+  svg.append(svgEl("line", { x1: padL, y1: padT, x2: padL, y2: base, stroke: mute(), "stroke-width": 1 }));
+  svg.append(svgEl("line", { x1: padL, y1: base, x2: width - padR, y2: base, stroke: mute(), "stroke-width": 1 }));
+  list.forEach((row, index) => {
+    const cx = padL + slot * index + slot / 2;
+    const barHeight = Math.max(2, Math.round(((row.amount || 0) / max) * (plotH - 2)));
+    const bar = svgEl("rect", {
+      x: cx - barW / 2,
+      y: base - barHeight,
+      width: barW,
+      height: barHeight,
+      rx: 4,
+      fill: (colorFor && colorFor(row, index)) || VIZ_PALETTE[index % VIZ_PALETTE.length],
+      class: `dash-chart-hit${row.on ? " is-on" : ""}${row.dim ? " is-dim" : ""}`,
+    });
+    if (onClick) {
+      bar.style.cursor = "pointer";
+      bar.addEventListener("click", () => onClick(row));
+    }
+    bindTip(bar, row.tip || [row.label, money(row.amount)]);
+    svg.append(bar);
+    svg.append(axisText(svg, row.tick || stageTick(row, slot), { x: cx, y: base + 18, "text-anchor": "middle" }));
+  });
+  if (x) svg.append(axisText(svg, x, { x: padL + plotW / 2, y: height - 6, "text-anchor": "middle" }));
+  root.replaceChildren(svg);
+}
+
+function hBars(root, rows, { onClick, aria, x = "Amount" }) {
+  const list = rows || [];
+  const max = Math.max(1, ...list.map((row) => row.amount || 0));
+  const wrap = el("div", "dash-hbar");
+  wrap.setAttribute("role", "img");
+  wrap.setAttribute("aria-label", aria || "Chart");
+  list.forEach((row, index) => {
+    const item = el(onClick ? "button" : "div", "dash-hbar-row");
+    if (onClick) {
+      item.type = "button";
+      item.addEventListener("click", () => onClick(row));
+    } else {
+      item.disabled = true;
+    }
+    item.append(el("span", "dash-hbar-label", row.label));
+    const track = el("span", "dash-hbar-track");
+    const fill = el("span", "dash-hbar-fill");
+    fill.style.width = `${Math.max(8, Math.round(((row.amount || 0) / max) * 100))}%`;
+    fill.style.background = "#0033A1";
+    track.append(fill);
+    item.append(track);
+    item.append(el("span", "dash-hbar-val", row.value || money(row.amount)));
+    bindTip(item, row.tip || [row.label, x === "Errors" ? `${row.amount} errors` : money(row.amount)]);
+    wrap.append(item);
+  });
+  root.replaceChildren(wrap);
+}
+
+function renderCalendar(root, payload) {
+  const rows = weekSeries(payload.opps || [], asOfDay(payload), 6).map((row) => {
+    const day = parseDay(row.id);
+    const tick = day ? `${day.getMonth() + 1}/${day.getDate()}` : row.label;
+    return {
+      ...row,
+      tick,
+      tip: [row.label, `${row.count} ${copy.unit || "opps"}`, money(row.amount)],
+    };
+  });
+  vBars(root, rows, { aria: "Amount by close week", x: "Week", y: "Amount" });
+}
+
+function renderScatter(root, payload) {
+  const opps = payload.opps || [];
+  const maxAmt = Math.max(1, ...opps.map((row) => Number(row.amount) || 0));
+  const width = 320;
+  const height = 132;
+  const padL = 44;
+  const padR = 10;
+  const padT = 20;
+  const padB = 30;
+  const plotW = width - padL - padR;
+  const plotH = height - padT - padB;
+  const base = padT + plotH;
+  const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}`, role: "img", "aria-label": "Amount by health score" });
+  svg.append(axisText(svg, "Amount", { x: 2, y: 11, "text-anchor": "start" }));
+  svg.append(axisText(svg, money(maxAmt), { x: padL - 6, y: padT + 3, "text-anchor": "end" }));
+  svg.append(axisText(svg, "$0", { x: padL - 6, y: base, "text-anchor": "end" }));
+  svg.append(svgEl("line", { x1: padL, y1: padT, x2: padL, y2: base, stroke: mute(), "stroke-width": 1 }));
+  svg.append(svgEl("line", { x1: padL, y1: base, x2: width - padR, y2: base, stroke: mute(), "stroke-width": 1 }));
+  [0, 50, 100].forEach((mark) => {
+    const x = padL + (mark / 100) * plotW;
+    svg.append(axisText(svg, String(mark), { x, y: base + 13, "text-anchor": "middle" }));
+  });
+  svg.append(axisText(svg, "Health", { x: padL + plotW / 2, y: height - 3, "text-anchor": "middle" }));
+  opps.forEach((opp) => {
+    const health = Math.max(0, Math.min(100, Number(opp.health) || 0));
+    const amount = Number(opp.amount) || 0;
+    const cx = padL + (health / 100) * plotW;
+    const cy = base - (amount / maxAmt) * (plotH - 6);
+    const stages = payload.filters?.stages || [];
+    const stageIndex = Math.max(0, stages.findIndex((item) => item.id === opp.stage));
+    const dot = svgEl("circle", {
+      cx,
+      cy,
+      r: 4.5,
+      fill: VIZ_PALETTE[stageIndex % VIZ_PALETTE.length],
+      class: "dash-chart-hit",
+    });
+    dot.style.cursor = "pointer";
+    bindTip(dot, [opp.name || opp.account, opp.stage, `Health ${health}`, money(amount)]);
+    dot.addEventListener("click", () => {
+      location.href = chatHref({ scope: opp.name || opp.account });
+    });
+    svg.append(dot);
+  });
+  root.replaceChildren(svg);
+}
+
+function renderAging(root, payload) {
+  const today = asOfDay(payload);
+  const buckets = [
+    { id: "overdue", label: "Overdue", amount: 0, count: 0 },
+    { id: "w1", label: "0–7d", amount: 0, count: 0 },
+    { id: "w4", label: "8–30d", amount: 0, count: 0 },
+    { id: "q", label: "31–90d", amount: 0, count: 0 },
+    { id: "later", label: "90d+", amount: 0, count: 0 },
+  ];
+  for (const opp of payload.opps || []) {
+    const close = parseDay(opp.close_date);
+    if (!close) continue;
+    const days = Math.round((close - today) / 86400000);
+    const bucket = days < 0 ? buckets[0] : days <= 7 ? buckets[1] : days <= 30 ? buckets[2] : days <= 90 ? buckets[3] : buckets[4];
+    bucket.amount += Number(opp.amount) || 0;
+    bucket.count += 1;
+  }
+  vBars(root, buckets.map((row) => ({ ...row, tick: row.label, tip: [row.label, `${row.count} ${copy.unit || "opps"}`, money(row.amount)] })), {
+    aria: "Amount by days to close",
+    x: "Days to close",
+    y: "Amount",
+  });
+}
+
+function renderGeo(root, payload) {
+  const groups = new Map();
+  for (const opp of payload.opps || []) {
+    const id = opp.geo || "Unassigned";
+    const row = groups.get(id) || { id, label: id, amount: 0, count: 0 };
+    row.amount += Number(opp.amount) || 0;
+    row.count += 1;
+    groups.set(id, row);
+  }
+  const rows = [...groups.values()].sort((a, b) => b.amount - a.amount);
+  hBars(root, rows.map((row) => ({
+    ...row,
+    label: row.label === "Unassigned" ? row.label : row.label.replace(/\b\w/g, (ch) => ch.toUpperCase()),
+    tip: [row.label, `${row.count} ${copy.unit || "opps"}`, money(row.amount)],
+  })), {
+    aria: "Amount by geo",
+    x: "Amount",
+    onClick: (row) => setFilter("geos", row.id === "Unassigned" ? "" : row.id),
+  });
+}
+
+function renderWaterfall(root, payload) {
+  const opps = payload.opps || [];
+  const today = asOfDay(payload);
+  const gross = opps.reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
+  const backup = opps.filter((row) => row.backup).reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
+  const stale = opps
+    .filter((row) => {
+      const touched = parseDay(row.last_touch || row.close_date);
+      return touched && (today - touched) / 86400000 >= 30;
+    })
+    .reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
+  const working = Math.max(0, gross - backup - stale);
+  const rows = [
+    { id: "gross", label: "Gross", amount: gross, tick: "Gross" },
+    { id: "backup", label: "Backup", amount: backup, tick: "Backup" },
+    { id: "stale", label: "Stale 30d+", amount: stale, tick: "Stale" },
+    { id: "work", label: "Working", amount: working, tick: "Working" },
+  ].map((row) => ({ ...row, tip: [row.label, money(row.amount)] }));
+  vBars(root, rows, {
+    aria: "Working pipeline from gross amount",
+    x: "Step",
+    y: "Amount",
+    colorFor: (row, index) => (row.id === "work" ? "#0033A1" : row.id === "gross" ? "#0071CE" : VIZ_PALETTE[index % VIZ_PALETTE.length]),
+  });
+}
+
+function renderFunnel(root, payload) {
+  const rows = (payload.by_stage || []).filter((row) => row.count || row.amount);
+  const max = Math.max(1, ...rows.map((row) => row.amount || 0));
+  const wrap = el("div", "dash-funnel");
+  rows.forEach((row, index) => {
+    const step = el("button", "dash-funnel-step");
+    step.type = "button";
+    const width = 36 + Math.round((row.amount / max) * 64);
+    step.style.width = `${width}%`;
+    step.style.background = VIZ_PALETTE[index % VIZ_PALETTE.length];
+    step.textContent = `${stageTick(row, 80)} · ${row.count} · ${money(row.amount)}`;
+    bindTip(step, [row.label || row.id, `${row.count} ${copy.unit || "opps"}`, money(row.amount)]);
+    step.addEventListener("click", () => setFilter("stages", row.id));
+    wrap.append(step);
+  });
+  root.replaceChildren(wrap);
+}
+
+function renderTopN(root, payload) {
+  const groups = new Map();
+  for (const opp of payload.opps || []) {
+    const id = opp.name || opp.account || opp.id;
+    const row = groups.get(id) || { id, label: id, amount: 0, count: 0 };
+    row.amount += Number(opp.amount) || 0;
+    row.count += 1;
+    groups.set(id, row);
+  }
+  const rows = [...groups.values()].sort((a, b) => b.amount - a.amount).slice(0, 8);
+  hBars(root, rows.slice(0, 6), {
+    aria: "Amount by account",
+    x: "Amount",
+    onClick: (row) => {
+      location.href = chatHref({ scope: row.id });
+    },
+  });
+}
+
+function renderHeat(root, payload) {
+  const stages = payload.filters?.stages || payload.by_stage || [];
+  const sizes = payload.filters?.sizes || payload.by_size || [];
+  const cells = new Map();
+  let max = 1;
+  for (const opp of payload.opps || []) {
+    const key = `${opp.stage}|${opp.size}`;
+    const amount = (cells.get(key) || 0) + (Number(opp.amount) || 0);
+    cells.set(key, amount);
+    if (amount > max) max = amount;
+  }
+  const grid = el("div", "dash-heat");
+  grid.append(el("p", "dash-axis-note dash-axis-note-left", "Size →"));
+  const head = el("div", "dash-heat-row");
+  head.append(el("span", "dash-heat-lab", "Stage"));
+  for (const size of sizes) {
+    const label = sizeLabels[size.id] || size.label || size.id;
+    const short = label.replace("Under ", "<").replace("$500k–$1.5M", "$0.5–1.5M");
+    head.append(el("span", "dash-heat-lab", short));
+  }
+  grid.append(head);
+  for (const stage of stages) {
+    const row = el("div", "dash-heat-row");
+    row.append(el("span", "dash-heat-lab", stageTick(stage, 80)));
+    for (const size of sizes) {
+      const amount = cells.get(`${stage.id}|${size.id}`) || 0;
+      const cell = el("button", "dash-heat-cell");
+      cell.type = "button";
+      const t = amount / max;
+      cell.style.background = `color-mix(in srgb, #0033A1 ${Math.round(t * 86)}%, var(--page))`;
+      cell.style.color = t > 0.55 ? "#fff" : ink();
+      cell.textContent = amount ? money(amount) : "—";
+      bindTip(cell, [stage.label || stage.id, sizeLabels[size.id] || size.label, money(amount)]);
+      cell.addEventListener("click", () => {
+        state.stages = stage.id;
+        state.sizes = size.id;
+        refresh();
+      });
+      row.append(cell);
+    }
+    grid.append(row);
+  }
+  root.replaceChildren(grid);
+}
+
+function renderCoverage(root, payload) {
+  const pipeline = Number(payload.kpis?.pipeline) || 0;
+  const quota = Number(payload.kpis?.quota) || (activeRole === "bob" ? 4_500_000 : 0);
+  const cover = quota ? pipeline / quota : 0;
+  const max = Math.max(pipeline, quota * 3, 1);
+  const svg = svgEl("svg", { viewBox: "0 0 320 92", role: "img", "aria-label": "Pipeline amount against plan" });
+  svg.append(axisText(svg, "Amount", { x: 8, y: 14, "text-anchor": "start" }));
+  svg.append(svgEl("rect", { x: 8, y: 28, width: 304, height: 16, rx: 8, fill: surface() }));
+  svg.append(svgEl("rect", { x: 8, y: 28, width: Math.max(6, (pipeline / max) * 304), height: 16, rx: 8, fill: "#0033A1" }));
+  const mark = 8 + (quota / max) * 304;
+  svg.append(svgEl("rect", { x: mark - 1, y: 22, width: 2, height: 28, fill: "#CC27B0" }));
+  svg.append(axisText(svg, "Plan", { x: Math.min(292, Math.max(24, mark)), y: 64, "text-anchor": "middle" }));
+  svg.append(axisText(svg, `${cover.toFixed(1)}x · pipeline ${money(pipeline)} · plan ${money(quota)}`, { x: 8, y: 84, "text-anchor": "start" }));
+  root.replaceChildren(svg);
+}
+
+function renderQuotes(root, payload) {
+  const groups = new Map();
+  for (const opp of payload.opps || []) {
+    const errors = opp.errors || [];
+    if (!errors.length) continue;
+    const label = opp.account || opp.name || opp.id;
+    const row = groups.get(label) || { id: label, label, amount: 0, errors: [] };
+    row.amount += errors.length;
+    row.errors.push(...errors);
+    groups.set(label, row);
+  }
+  const rows = [...groups.values()]
+    .sort((a, b) => b.amount - a.amount)
+    .map((row) => ({
+      id: row.id,
+      label: row.label,
+      amount: row.amount,
+      value: String(row.amount),
+      tip: [row.label, `${row.amount} quote errors`, ...row.errors.slice(0, 3)],
+    }));
+  if (!rows.length) {
+    root.replaceChildren(el("p", "dash-muted", "No quote errors in this view."));
+    return;
+  }
+  hBars(root, rows, {
+    aria: "Quote errors by account",
+    x: "Errors",
+    onClick: (row) => {
+      location.href = chatHref({ scope: row.label, task: "quote_errors" });
+    },
+  });
+}
+
+function renderVerbal(root, payload) {
+  const verbal = Number(payload.kpis?.verbal);
+  const landing = Number(payload.kpis?.landing);
+  const inferredVerbal = (payload.opps || [])
+    .filter((row) => !row.backup)
+    .reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
+  const inferredLanding = (payload.opps || [])
+    .filter((row) => {
+      const close = parseDay(row.close_date);
+      if (!close || row.backup) return false;
+      const start = startOfWeek(asOfDay(payload));
+      return close >= start && close < addDays(start, 7);
+    })
+    .reduce((sum, row) => sum + (Number(row.amount) || 0), 0);
+  const rows = [
+    { id: "verbal", label: "Verbal / open", amount: Number.isFinite(verbal) ? verbal : inferredVerbal, tick: "Verbal" },
+    { id: "landing", label: "Landing this week", amount: Number.isFinite(landing) ? landing : inferredLanding, tick: "Landing" },
+  ].map((row) => ({ ...row, tip: [row.label, money(row.amount)] }));
+  vBars(root, rows, { aria: "Verbal call versus landing this week", x: "", y: "Amount" });
+}
+
+function vizTitle(spec) {
+  if (spec.id === "stage") return copy.stage_chart || spec.title;
+  if (spec.id === "size") return copy.size_chart || spec.title;
+  if (spec.id === "geo") return `Pipeline by ${(copy.filter_geo || "geo").toLowerCase()}`;
+  if (spec.id === "topn") return copy.table ? `Top ${copy.table.toLowerCase()}` : spec.title;
+  return spec.title;
+}
+
+function setVizEnabled(id, on) {
+  const next = VIZ_CATALOG.map((row) => row.id).filter((item) => (item === id ? on : enabledViz.includes(item)));
+  saveEnabledViz(next);
+}
+
+function renderVizCard(spec, payload) {
+  const card = el("article", "dash-card");
+  card.dataset.span = String(spec.span || 6);
+  card.dataset.size = spec.size || "md";
+  card.dataset.viz = spec.id;
+  if (!vizOn(spec.id)) card.classList.add("is-viz-off");
+  const head = el("div", "dash-card-head");
+  head.append(el("h2", "", vizTitle(spec)));
+  const chart = el("div", spec.id === "size" ? "dash-chart dash-chart-size" : "dash-chart");
+  chart.id = `chart-${spec.id}`;
+  card.append(head, chart);
+  if (vizEditing) {
+    const title = vizTitle(spec);
+    const toggle = el("button", "dash-viz-toggle", vizOn(spec.id) ? "−" : "+");
+    toggle.type = "button";
+    toggle.setAttribute("aria-label", vizOn(spec.id) ? `Hide ${title}` : `Show ${title}`);
+    toggle.addEventListener("click", () => {
+      const on = !vizOn(spec.id);
+      setVizEnabled(spec.id, on);
+      card.classList.toggle("is-viz-off", !on);
+      toggle.textContent = on ? "−" : "+";
+      toggle.setAttribute("aria-label", on ? `Hide ${title}` : `Show ${title}`);
+    });
+    card.append(toggle);
+  }
+  const draw = {
+    stage: () => renderStageChart(payload.by_stage),
+    size: () => renderSizeChart(payload.by_size),
+    calendar: () => renderCalendar(chart, payload),
+    scatter: () => renderScatter(chart, payload),
+    aging: () => renderAging(chart, payload),
+    geo: () => renderGeo(chart, payload),
+    waterfall: () => renderWaterfall(chart, payload),
+    funnel: () => renderFunnel(chart, payload),
+    topn: () => renderTopN(chart, payload),
+    heat: () => renderHeat(chart, payload),
+    coverage: () => renderCoverage(chart, payload),
+    quotes: () => renderQuotes(chart, payload),
+    verbal: () => renderVerbal(chart, payload),
+  };
+  if (spec.id === "stage" || spec.id === "size") {
+    // renderers look up nodes by id after the card is in the document
+    card.dataset.draw = spec.id;
+  } else if (draw[spec.id]) {
+    card._draw = () => draw[spec.id]();
+  }
+  return card;
+}
+
+function renderVizGrid(payload) {
+  const root = document.getElementById("dash-viz");
+  if (!root) return;
+  root.classList.toggle("is-editing", vizEditing);
+  const specs = VIZ_CATALOG.filter(
+    (spec) => spec.id !== "sparklines" && vizAvailable(spec, payload) && (vizEditing || vizOn(spec.id)),
+  );
+  root.replaceChildren();
+  if (!specs.length) {
+    root.append(el("p", "dash-viz-empty", "No charts selected. Open Edit visualizations to turn some on."));
+    return;
+  }
+  for (const spec of specs) root.append(renderVizCard(spec, payload));
+  if (document.getElementById("chart-stage")) renderStageChart(payload.by_stage);
+  if (document.getElementById("chart-size")) renderSizeChart(payload.by_size);
+  for (const spec of specs) {
+    const chart = document.getElementById(`chart-${spec.id}`);
+    if (!chart || spec.id === "stage" || spec.id === "size") continue;
+    const card = chart.closest(".dash-card");
+    if (card?._draw) card._draw();
+  }
+}
+
+function fillVizPicker(payload) {
+  const list = document.getElementById("viz-list");
+  if (!list) return;
+  list.replaceChildren();
+  for (const spec of VIZ_CATALOG) {
+    if (!vizAvailable(spec, payload || lastPayload || { opps: [], kpis: {} })) continue;
+    const item = el("li");
+    const label = el("label", "dash-viz-opt");
+    const box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = vizOn(spec.id);
+    box.addEventListener("change", () => {
+      const next = VIZ_CATALOG.map((row) => row.id).filter((id) => {
+        if (id === spec.id) return box.checked;
+        return enabledViz.includes(id);
+      });
+      saveEnabledViz(next);
+      if (lastPayload) {
+        renderKpis(lastPayload.kpis);
+        renderVizGrid(lastPayload);
+      }
+    });
+    label.append(box);
+    const copyBlock = el("span");
+    copyBlock.append(el("strong", "", vizTitle(spec)));
+    copyBlock.append(el("span", "", spec.hint));
+    label.append(copyBlock);
+    item.append(label);
+    list.append(item);
+  }
+}
+
+function setVizEditing(on) {
+  vizEditing = on;
+  const button = document.getElementById("dash-edit-viz");
+  button?.setAttribute("aria-expanded", String(on));
+  if (button) button.textContent = on ? "Done" : "Edit visualizations";
+  if (lastPayload) renderVizGrid(lastPayload);
+}
+
+function bootVizPicker() {
+  document.getElementById("dash-edit-viz")?.addEventListener("click", () => {
+    setVizEditing(!vizEditing);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && vizEditing) setVizEditing(false);
+  });
 }
 
 function renderOpps(opps) {
@@ -585,9 +1251,8 @@ async function refresh() {
   lastPayload = payload;
   applyCopy(payload);
   ensureFilters(payload);
+  renderVizGrid(payload);
   renderKpis(payload.kpis);
-  renderStageChart(payload.by_stage);
-  renderSizeChart(payload.by_size);
   renderOpps(payload.opps);
   renderTasks(payload.tasks);
   renderFeed("dash-notes", payload.notifications, "note");
@@ -617,8 +1282,8 @@ window.addEventListener("resize", () => {
 
 document.addEventListener("bob-theme", () => {
   if (!lastPayload) return;
-  renderStageChart(lastPayload.by_stage);
-  renderSizeChart(lastPayload.by_size);
+  renderVizGrid(lastPayload);
+  renderKpis(lastPayload.kpis);
   renderOpps(lastPayload.opps);
 });
 
@@ -645,6 +1310,14 @@ function bootDashSidebar() {
 async function boot() {
   applyAssistant();
   bootDashSidebar();
+  bootVizPicker();
+  mountCustomSelect(document.getElementById("role-select"));
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".gru-select")) closeCustomSelects();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeCustomSelects();
+  });
   document.getElementById("role-select")?.addEventListener("change", (event) => {
     const next = event.target.value;
     if (!VALID_ROLES.has(next) || next === activeRole) return;

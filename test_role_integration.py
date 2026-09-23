@@ -196,6 +196,9 @@ def test_shared_shell_contains_role_switching_contract() -> None:
     assert "function applyAssistant(" in dash_script
     assert "function applyCopy(" in dash_script
     assert "function chatHref(" in dash_script
+    assert "function renderVizGrid(" in dash_script
+    assert 'id="dash-edit-viz"' in dash
+    assert 'id="viz-dialog"' in dash
     assert "/dashboard?role=james" in home
     assert "/dashboard?role=stuart" in home
     assert "/dashboard?role=henry" in home
