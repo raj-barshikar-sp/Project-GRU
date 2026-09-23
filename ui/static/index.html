@@ -15,7 +15,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=133" />
+    <link rel="stylesheet" href="/static/styles.css?v=134" />
   </head>
   <body>
     <div id="landing" class="landing">
@@ -24,50 +24,48 @@
       </div>
       <header class="landing-nav">
         <div class="landing-nav-inner">
-          <a class="landing-brand" href="/">
-            <img src="/static/assets/logo.png" alt="" width="28" height="28" />
-            <span>Project GRU</span>
-          </a>
+          <a class="landing-brand" href="#landing-top">Project GRU</a>
           <nav class="landing-links" aria-label="Landing sections">
-            <a href="#landing-capabilities">Capabilities</a>
+            <a href="#landing-minions">Minions</a>
             <a href="#landing-features-heading">How it works</a>
             <a href="#landing-faq">FAQ</a>
           </nav>
           <div class="landing-nav-end">
-            <label class="role-picker">
-              <span class="sr-only">Active role</span>
-              <select id="role-select" aria-label="Active role">
-                <option value="bob">RevOps · Bob</option>
-                <option value="james">Marketing · James</option>
-                <option value="stuart">Sales Manager · Stuart</option>
-                <option value="henry">DSR · Henry</option>
-              </select>
-            </label>
-            <a href="/dashboard?role=bob" class="btn-landing btn-landing-nav" data-start>Get started</a>
+            <a href="/dashboard" class="btn-landing btn-landing-nav" data-start>Get started</a>
           </div>
         </div>
       </header>
       <main class="landing-main" id="landing-top">
         <section class="landing-hero">
           <div class="landing-hero-copy">
+            <p class="landing-section-kicker">One workspace, four roles</p>
             <h1 id="hero-title">Project GRU</h1>
             <p class="landing-sub" id="hero-sub">
-              One workspace for your team's daily jobs. Pick a role, set your filters, then send a task.
+              One workspace for your team's daily jobs. Meet the minions, pick a role, set your filters, then send a task.
             </p>
+            <ul class="landing-role-row">
+              <li><a href="#landing-minions">Bob · RevOps</a></li>
+              <li><a href="#landing-minions">James · Marketing</a></li>
+              <li><a href="#landing-minions">Stuart · Sales</a></li>
+              <li><a href="#landing-minions">Henry · DSR</a></li>
+            </ul>
             <div class="landing-actions">
-              <a href="/dashboard?role=bob" class="btn-landing btn-landing-hero" data-start>Get started</a>
+              <a href="#landing-minions" class="btn-landing btn-landing-hero">Meet the minions</a>
             </div>
           </div>
           <div class="landing-hero-art" id="landing-hero-art" aria-hidden="true">
-            <img class="landing-bob" id="hero-art" src="/static/assets/bob.png?v=2" alt="" width="368" height="424" />
+            <img class="landing-bob" id="hero-art" src="/static/Gru_from_DM4.png" alt="" width="368" height="520" />
           </div>
         </section>
-        <section class="landing-section" id="landing-capabilities" aria-labelledby="landing-capabilities-heading">
-          <div class="landing-section-head">
-            <p class="landing-section-kicker" id="cap-kicker">What your minion covers</p>
-            <h2 id="landing-capabilities-heading" class="landing-section-title">Jobs in one place</h2>
+        <section class="landing-section landing-carousel" id="landing-minions" aria-roledescription="carousel" aria-label="Minions">
+          <div class="landing-carousel-frame">
+            <button type="button" class="landing-carousel-btn landing-carousel-prev" aria-label="Previous minion"></button>
+            <div class="landing-carousel-viewport">
+              <div class="landing-carousel-track" id="landing-minions-track"></div>
+            </div>
+            <button type="button" class="landing-carousel-btn landing-carousel-next" aria-label="Next minion"></button>
           </div>
-          <div class="landing-cap-grid" id="landing-cap-grid"></div>
+          <div class="landing-carousel-dots" id="landing-minions-dots" role="tablist" aria-label="Choose a minion"></div>
         </section>
         <section class="landing-section" aria-labelledby="landing-features-heading">
           <div class="landing-section-head">
@@ -107,7 +105,7 @@
               </button>
               <div class="landing-faq-panel" id="faq-roles" role="region" aria-labelledby="faq-roles-btn">
                 <div class="landing-faq-panel-inner">
-                  <p>Pick your role from the menu up top — RevOps, Marketing, Sales Manager, or DSR. You can switch any time from the same menu inside the workspace.</p>
+                  <p>Open a minion below — RevOps, Marketing, Sales Manager, or DSR. You can switch any time from the menu inside the workspace.</p>
                 </div>
               </div>
             </div>
@@ -160,7 +158,7 @@
         <section class="landing-cta-band">
           <h2 id="cta-title">Ready to get started?</h2>
           <p id="cta-sub">Open the workspace, pick a task, and send.</p>
-          <a href="/dashboard?role=bob" class="btn-landing btn-landing-hero" data-start>Get started</a>
+          <a href="/dashboard" class="btn-landing btn-landing-hero" data-start id="cta-start">Get started</a>
         </section>
       </main>
     </div>
@@ -173,7 +171,7 @@
             title: "Bob the Back Office Minion",
             sub: "One workspace for forecast, quote, hygiene, OTC, pricing, and reporting. Open your book, filter by size, stage, and time, then send Bob a task.",
             capsTitle: "RevOps jobs in one place",
-            start: "/dashboard?role=bob",
+            start: "/dashboard",
             art: ["bob.png?v=2", 368, 424],
             caps: [
               ["Forecast", "Regional roll-ups, verbal vs landing, and coverage against plan."],
@@ -189,7 +187,7 @@
             title: "James the Marketing Assistant",
             sub: "One workspace for campaigns, ABM, content, brand, and marketing ops. Filter by region, campaign, and account, then send James a task.",
             capsTitle: "Marketing jobs in one place",
-            start: "/dashboard?role=james",
+            start: "/chat",
             art: ["james.png", 546, 969],
             caps: [
               ["Campaign design", "Ideation, briefs, decks, and competitive messaging."],
@@ -205,8 +203,8 @@
             title: "Stuart the Sales Manager Assistant",
             sub: "One workspace for the team forecast, deal inspection, and rep coverage. Filter by book, rep, and quarter, then send Stuart a task.",
             capsTitle: "Sales manager jobs in one place",
-            start: "/dashboard?role=stuart",
-            art: ["stuart.png?v=3", 341, 338],
+            start: "/chat",
+            art: ["stuart.png?v=2", 360, 338],
             caps: [
               ["Forecasting", "Team roll-ups, category splits, and coverage against quota."],
               ["Forecast inspection", "Deal-level checks on what is holding the number up."],
@@ -221,7 +219,7 @@
             title: "Henry the DSR Minion",
             sub: "One workspace to prospect, plan, engage, and progress digital sales rooms. Filter by territory, owner, and account, then send Henry a task.",
             capsTitle: "DSR jobs in one place",
-            start: "/dashboard?role=henry",
+            start: "/chat",
             art: ["henry.png", 256, 256],
             caps: [
               ["Prospect", "Account ranking, intel analysis, messaging, and whitespace."],
@@ -234,44 +232,137 @@
           },
         };
 
-        const select = document.getElementById("role-select");
-        const grid = document.getElementById("landing-cap-grid");
+        const ids = Object.keys(ROLES);
+        const track = document.getElementById("landing-minions-track");
+        const dots = document.getElementById("landing-minions-dots");
+        let index = Math.max(0, ids.indexOf(localStorage.getItem(ROLE_KEY) || "bob"));
+        let timer = 0;
+        let pos = ids.length + index;
+        let sliding = false;
+
+        function arm() {
+          clearInterval(timer);
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+          timer = setInterval(() => show(index + 1, 1), 10000);
+        }
 
         function apply(id) {
-          const roleId = ROLES[id] ? id : "bob";
-          const role = ROLES[roleId];
-          select.value = roleId;
-          document.documentElement.dataset.role = roleId;
-          document.title = role.title;
-          document.getElementById("hero-title").textContent = role.title;
-          document.getElementById("hero-sub").textContent = role.sub;
-          document.getElementById("cap-kicker").textContent = `What ${role.name} covers`;
-          document.getElementById("landing-capabilities-heading").textContent = role.capsTitle;
-          document.getElementById("cta-title").textContent = `Ready to run your work through ${role.name}?`;
-          document.getElementById("cta-sub").textContent = role.start.startsWith("/dashboard")
-            ? "Open the dashboard, pick a task, and send."
-            : "Open the workspace, pick a task, and send.";
-          const art = document.getElementById("hero-art");
-          const [file, width, height] = role.art;
-          art.src = `/static/assets/${file}`;
-          art.width = width;
-          art.height = height;
-          grid.innerHTML = role.caps
-            .map(([head, copy]) => `<article class="landing-cap"><h3>${head}</h3><p>${copy}</p></article>`)
-            .join("");
-          for (const link of document.querySelectorAll("[data-start]")) link.href = role.start;
-          const url = new URL(location.href);
-          if (url.searchParams.get("role") !== roleId) {
-            url.searchParams.set("role", roleId);
-            history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+          const role = ROLES[id] || ROLES.bob;
+          document.documentElement.dataset.role = ROLES[id] ? id : "bob";
+          document.title = "Project GRU";
+          document.getElementById("cta-start").href = role.start;
+          localStorage.setItem(ROLE_KEY, ROLES[id] ? id : "bob");
+        }
+
+        function place(offset, animate) {
+          track.style.transition = animate ? "" : "none";
+          track.style.transform = `translate3d(-${offset * 100}%, 0, 0)`;
+          if (!animate) track.getBoundingClientRect();
+        }
+
+        function mark(id) {
+          for (const slide of track.children) {
+            const on = slide.dataset.role === id;
+            slide.setAttribute("aria-hidden", on ? "false" : "true");
+          }
+          for (const dot of dots.children) {
+            const on = dot.dataset.role === id;
+            dot.classList.toggle("is-active", on);
+            dot.setAttribute("aria-selected", on ? "true" : "false");
           }
         }
 
-        apply(new URLSearchParams(location.search).get("role") || localStorage.getItem(ROLE_KEY) || "bob");
-        select.addEventListener("change", () => {
-          localStorage.setItem(ROLE_KEY, select.value);
-          apply(select.value);
+        function show(next, direction) {
+          if (sliding) return;
+          const count = ids.length;
+          const target = ((next % count) + count) % count;
+          let step = direction;
+          if (!step) {
+            const forward = (target - index + count) % count;
+            const backward = (index - target + count) % count;
+            step = forward <= backward ? forward : -backward;
+          }
+          const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          index = target;
+          mark(ids[index]);
+          apply(ids[index]);
+          arm();
+          if (!step || reduced) {
+            pos = count + index;
+            place(pos, false);
+            return;
+          }
+          sliding = true;
+          pos += step;
+          place(pos, true);
+          const onEnd = (event) => {
+            if (event.target !== track || event.propertyName !== "transform") return;
+            track.removeEventListener("transitionend", onEnd);
+            pos = count + index;
+            place(pos, false);
+            sliding = false;
+          };
+          track.addEventListener("transitionend", onEnd);
+        }
+
+        track.innerHTML = [...ids, ...ids, ...ids]
+          .map((id) => {
+            const role = ROLES[id];
+            const [file, width, height] = role.art;
+            const caps = role.caps
+              .map(([head, copy]) => `<article class="landing-cap"><h3>${head}</h3><p>${copy}</p></article>`)
+              .join("");
+            return `
+              <article class="landing-minion" data-role="${id}" aria-labelledby="minion-${id}-heading">
+                <div class="landing-hero landing-minion-hero">
+                  <div class="landing-hero-copy">
+                    <p class="landing-section-kicker">${role.name}</p>
+                    <h2 id="minion-${id}-heading">${role.title}</h2>
+                    <p class="landing-sub">${role.sub}</p>
+                    <div class="landing-actions">
+                      <a href="${role.start}" class="btn-landing btn-landing-hero" data-role="${id}">Get started</a>
+                    </div>
+                  </div>
+                  <div class="landing-hero-art" aria-hidden="true">
+                    <img class="landing-bob" src="/static/assets/${file}" alt="" width="${width}" height="${height}" />
+                  </div>
+                </div>
+                <div class="landing-section-head">
+                  <p class="landing-section-kicker">What ${role.name} covers</p>
+                  <h3 class="landing-section-title">${role.capsTitle}</h3>
+                </div>
+                <div class="landing-cap-grid">${caps}</div>
+              </article>`;
+          })
+          .join("");
+
+        dots.innerHTML = ids
+          .map(
+            (id) =>
+              `<button type="button" class="landing-carousel-dot" role="tab" data-role="${id}" aria-label="${ROLES[id].name}"></button>`,
+          )
+          .join("");
+
+        document.querySelector(".landing-carousel-prev").addEventListener("click", () => show(index - 1, -1));
+        document.querySelector(".landing-carousel-next").addEventListener("click", () => show(index + 1, 1));
+        for (const dot of dots.children) {
+          dot.addEventListener("click", () => show(ids.indexOf(dot.dataset.role), 0));
+        }
+        for (const link of track.querySelectorAll("[data-role]")) {
+          if (link.tagName !== "A") continue;
+          link.addEventListener("click", () => apply(link.dataset.role));
+        }
+        const carousel = document.getElementById("landing-minions");
+        carousel.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") show(index - 1, -1);
+          if (event.key === "ArrowRight") show(index + 1, 1);
         });
+        carousel.addEventListener("mouseenter", () => clearInterval(timer));
+        carousel.addEventListener("mouseleave", arm);
+        carousel.addEventListener("focusin", () => clearInterval(timer));
+        carousel.addEventListener("focusout", arm);
+
+        show(index);
 
         document.querySelectorAll(".landing-faq").forEach((item) => {
           const trigger = item.querySelector(".landing-faq-trigger");
