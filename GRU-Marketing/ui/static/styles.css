@@ -254,7 +254,7 @@ html[data-theme="dark"] .bar-sp-logo-dark {
   justify-self: center;
 }
 
-.bar-bob {
+.bar-james {
   display: block;
   width: auto;
   height: 34px;
@@ -800,7 +800,7 @@ html[data-theme="dark"] .sidebar {
   box-shadow: none;
 }
 
-.placeholder-bob {
+.placeholder-james {
   width: 88px;
   height: auto;
   margin-bottom: 8px;
@@ -2816,7 +2816,7 @@ body:has(#landing:not([hidden])) {
   pointer-events: none;
 }
 
-.landing-bob {
+.landing-james {
   position: relative;
   z-index: 1;
   width: min(320px, 100%);
@@ -3241,7 +3241,7 @@ body:has(#landing:not([hidden])) {
     font-size: 12px;
   }
 
-  .bar-bob {
+  .bar-james {
     height: 26px;
   }
 

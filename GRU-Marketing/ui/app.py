@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import os
 import uuid
 from collections.abc import AsyncIterator
 from pathlib import Path
@@ -50,14 +51,22 @@ USER_ID = "marketer"
 RUN_CONFIG = RunConfig(streaming_mode=StreamingMode.SSE)
 
 
+def _error_detail(exc: Exception) -> str:
+    """Detail to ride along on an error event, without changing the user copy.
+
+    The chat stream always shows a generic apology; this is the machine-facing
+    hint next to it. By default it is just the exception type, which is safe to
+    surface. Setting MKTG_DEBUG_ERRORS adds the message, turning a bare
+    "ValueError" into "ValueError: no session for id ..." when debugging a run.
+    """
+    if os.environ.get("MKTG_DEBUG_ERRORS"):
+        message = str(exc).strip()
+        return f"{type(exc).__name__}: {message}" if message else type(exc).__name__
+    return type(exc).__name__
+
+
 class ChatFilters(BaseModel):
     geos: list[str] = Field(default_factory=list)
-    boats: list[str] = Field(default_factory=list)
-    opps: list[str] = Field(default_factory=list)
-    report_types: list[str] = Field(default_factory=list)
-    sizes: list[str] = Field(default_factory=list)
-    stages: list[str] = Field(default_factory=list)
-    windows: list[str] = Field(default_factory=list)
     campaigns: list[str] = Field(default_factory=list)
     campaign_types: list[str] = Field(default_factory=list)
     asset_types: list[str] = Field(default_factory=list)
@@ -137,11 +146,11 @@ def _selection_from_filters(filters: ChatFilters | None) -> FilterSelection:
     if filters is None:
         return FilterSelection()
     return FilterSelection(
-        campaigns=filters.campaigns or filters.opps,
-        campaign_types=filters.campaign_types or filters.boats or filters.stages,
+        campaigns=filters.campaigns,
+        campaign_types=filters.campaign_types,
         asset_types=filters.asset_types,
         content=filters.content,
-        events=filters.events or filters.report_types,
+        events=filters.events,
         accounts=filters.accounts,
         geos=filters.geos,
     )
@@ -212,17 +221,16 @@ def create_app(
         nonlocal live_runner
         if live_runner is None:
             from dotenv import load_dotenv
-            from google.adk.runners import Runner
 
             # `adk web` reads .env for you; running uvicorn directly does not.
             load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
-            from root.app import build_app
+            # One builder for every entry point: the shared app carries the
+            # context cache and reply-contract plugin, and we only hand it the
+            # session service the UI keeps its context in.
+            from root.app import build_runner
 
-            live_runner = Runner(
-                app=build_app(APP_NAME),
-                session_service=sessions,
-            )
+            live_runner = build_runner(APP_NAME, session_service=sessions)
         return live_runner
 
     async def _ensure_session(session_id: str) -> str:
@@ -537,7 +545,7 @@ def create_app(
                     trace.log()
                 fail(
                     "I couldn't complete that request. Try again.",
-                    detail=type(exc).__name__,
+                    detail=_error_detail(exc),
                 )
                 return
 
@@ -573,7 +581,7 @@ def create_app(
         except Exception as exc:
             fail(
                 "I couldn't complete that request. Try again.",
-                detail=type(exc).__name__,
+                detail=_error_detail(exc),
             )
         finally:
             if not closed:
@@ -717,8 +725,8 @@ def create_app(
     @app.get("/api/dashboard")
     async def dashboard(
         geos: str = "",
-        sizes: str = "",
-        stages: str = "",
+        spend: str = "",
+        types: str = "",
         windows: str = "",
     ) -> dict:
         from ui.dashboard import dashboard_payload
@@ -728,8 +736,8 @@ def create_app(
 
         return dashboard_payload(
             geos=split(geos),
-            sizes=split(sizes),
-            stages=split(stages),
+            spend=split(spend),
+            types=split(types),
             windows=split(windows),
         )
 

@@ -1,11 +1,11 @@
 const state = {
-  sizes: "",
-  stages: "",
+  spend: "",
+  types: "",
   windows: "",
   geos: "",
 };
 
-const SIZE_LABELS = {
+const SPEND_LABELS = {
   smb: "Under $25k",
   mid: "$25k–$75k",
   enterprise: "$75k+",
@@ -45,8 +45,8 @@ function el(tag, className, text) {
 function dashScopeParams() {
   return {
     geo: state.geos || "",
-    sizes: state.sizes || "",
-    stages: state.stages || "",
+    spend: state.spend || "",
+    types: state.types || "",
     windows: state.windows || "",
   };
 }
@@ -59,12 +59,12 @@ function chatHref(item) {
   if (item.campaign) params.set("campaign", item.campaign);
   const geo = item.geo || dash.geo;
   if (geo) params.set("geo", geo);
-  const type = item.type || dash.stages;
+  const type = item.type || dash.types;
   if (type) params.set("type", type);
   if (item.account) params.set("account", item.account);
   if (item.event) params.set("event", item.event);
-  if (dash.sizes) params.set("sizes", dash.sizes);
-  if (dash.stages) params.set("stages", dash.stages);
+  if (dash.spend) params.set("spend", dash.spend);
+  if (dash.types) params.set("types", dash.types);
   if (dash.windows) params.set("windows", dash.windows);
   const qs = params.toString();
   return qs ? `/chat?${qs}` : "/chat";
@@ -115,7 +115,7 @@ function mutedInk() {
 
 function query() {
   const params = new URLSearchParams();
-  const map = { sizes: "sizes", stages: "stages", windows: "windows", geos: "geos" };
+  const map = { spend: "spend", types: "types", windows: "windows", geos: "geos" };
   for (const [key, param] of Object.entries(map)) {
     if (state[key]) params.set(param, state[key]);
   }
@@ -130,8 +130,8 @@ function setFilter(key, value) {
 }
 
 function clearDashFilters() {
-  state.sizes = "";
-  state.stages = "";
+  state.spend = "";
+  state.types = "";
   state.windows = "";
   state.geos = defaultGeo || "";
   syncDashUrl();
@@ -163,7 +163,7 @@ function bindSelect(select, key) {
 
 function syncDashUrl() {
   const params = new URLSearchParams();
-  for (const key of ["sizes", "stages", "windows", "geos"]) {
+  for (const key of ["spend", "types", "windows", "geos"]) {
     if (state[key]) params.set(key, state[key]);
   }
   const qs = params.toString();
@@ -201,24 +201,24 @@ function chartLabelFill() {
 }
 
 function ensureFilters(payload) {
-  const sizes = document.getElementById("filter-sizes");
-  const stages = document.getElementById("filter-stages");
+  const spend = document.getElementById("filter-spend");
+  const types = document.getElementById("filter-types");
   const windows = document.getElementById("filter-windows");
   const geos = document.getElementById("filter-geos");
   if (!filtersReady) {
-    fillSelect(sizes, payload.filters.sizes, "All spend", state.sizes);
-    fillSelect(stages, payload.filters.stages, "All types", state.stages);
+    fillSelect(spend, payload.filters.spend, "All spend", state.spend);
+    fillSelect(types, payload.filters.types, "All types", state.types);
     fillSelect(windows, payload.filters.windows, "All windows", state.windows);
     fillSelect(geos, payload.filters.geos || window.__geos || [], "All geos", state.geos);
-    bindSelect(sizes, "sizes");
-    bindSelect(stages, "stages");
+    bindSelect(spend, "spend");
+    bindSelect(types, "types");
     bindSelect(windows, "windows");
     bindSelect(geos, "geos");
     filtersReady = true;
     return;
   }
-  sizes.value = state.sizes;
-  stages.value = state.stages;
+  spend.value = state.spend;
+  types.value = state.types;
   windows.value = state.windows;
   geos.value = state.geos;
 }
@@ -275,10 +275,10 @@ function renderKpis(kpis) {
   const text = copy();
   const cards = [
     {
-      label: text.kpi_pipeline || "Spend",
-      value: money(kpis.pipeline),
+      label: text.kpi_pipeline || "Gap to target",
+      value: money(kpis.gap_usd),
       hint: text.kpi_pipeline_hint || "Days left in the quarter",
-      on: Boolean(state.sizes || state.stages),
+      on: Boolean(state.spend || state.types),
       run: () => {
         stashLaunch({ task: "campaign_performance" });
         location.href = chatHref({
@@ -289,10 +289,10 @@ function renderKpis(kpis) {
     },
     {
       label: text.kpi_open || "Campaigns",
-      value: String(kpis.open_opps),
+      value: String(kpis.open_campaigns),
       hint: text.kpi_open_hint || "Match these filters",
       on: false,
-      run: () => document.getElementById("opp-table")?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      run: () => document.getElementById("campaign-table")?.scrollIntoView({ behavior: "smooth", block: "start" }),
     },
     {
       label: text.kpi_week || "Ending this week",
@@ -334,11 +334,11 @@ function renderKpis(kpis) {
   revealDash(root.children);
 }
 
-function renderStageChart(rows) {
-  const root = document.getElementById("chart-stage");
-  const visible = rows.filter((row) => row.count > 0 || row.amount > 0);
+function renderTypeChart(rows) {
+  const root = document.getElementById("chart-type");
+  const visible = rows.filter((row) => row.count > 0 || row.spend > 0);
   const series = visible.length ? visible : rows;
-  const max = Math.max(1, ...series.map((row) => row.amount));
+  const max = Math.max(1, ...series.map((row) => row.spend));
   const colors = chartColors();
   const axis = chartLabelFill();
   const label = document.documentElement.dataset.theme === "dark" ? "#f4f7fb" : ink();
@@ -375,10 +375,10 @@ function renderStageChart(rows) {
   svg.append(maxLabel, zeroLabel);
   series.forEach((row, index) => {
     const x = left + index * slot + (slot - width) / 2;
-    const height = Math.round((row.amount / max) * 110);
+    const height = Math.round((row.spend / max) * 110);
     const y = 148 - height;
-    const active = state.stages === row.id;
-    const dim = Boolean(state.stages) && !active;
+    const active = state.types === row.id;
+    const dim = Boolean(state.types) && !active;
     const caption = row.label || row.id;
     const bar = svgEl("rect", {
       x,
@@ -392,11 +392,11 @@ function renderStageChart(rows) {
       class: `dash-chart-hit t-bar${active ? " is-on" : ""}${dim ? " is-dim" : ""}`,
     });
     bar.style.cursor = "pointer";
-    const tipLines = [caption, `${row.count} campaigns`, money(row.amount)];
+    const tipLines = [caption, `${row.count} campaigns`, money(row.spend)];
     bar.addEventListener("pointerenter", (event) => showTip(event, tipLines));
     bar.addEventListener("pointermove", (event) => showTip(event, tipLines));
     bar.addEventListener("pointerleave", hideTip);
-    bar.addEventListener("click", () => setFilter("stages", row.id));
+    bar.addEventListener("click", () => setFilter("types", row.id));
     const amt = svgEl("text", {
       x: x + width / 2,
       y: Math.max(14, y - 6),
@@ -406,7 +406,7 @@ function renderStageChart(rows) {
       "font-weight": 600,
       "font-family": "IBM Plex Mono, monospace",
     });
-    amt.textContent = money(row.amount);
+    amt.textContent = money(row.spend);
     amt.style.pointerEvents = "none";
     svg.append(bar, amt);
   });
@@ -414,12 +414,12 @@ function renderStageChart(rows) {
   series.forEach((row, index) => {
     const item = el("button", "dash-legend-item");
     item.type = "button";
-    if (state.stages === row.id) item.classList.add("is-on");
+    if (state.types === row.id) item.classList.add("is-on");
     const swatch = el("span", "dash-legend-swatch");
     swatch.style.background = chartFill(colors, row.id, rows);
     item.append(swatch);
     item.append(el("span", "", `${row.label || row.id} · ${row.count}`));
-    item.addEventListener("click", () => setFilter("stages", row.id));
+    item.addEventListener("click", () => setFilter("types", row.id));
     legend.append(item);
   });
   wrap.append(svg, legend);
@@ -453,10 +453,10 @@ function donutSlice(cx, cy, r0, r1, start, end) {
   return donutArc(cx, cy, r0, r1, start, end);
 }
 
-function renderSizeChart(rows) {
-  const root = document.getElementById("chart-size");
-  const live = rows.filter((row) => Number(row.amount) > 0);
-  const total = live.reduce((sum, row) => sum + Number(row.amount), 0) || 1;
+function renderSpendChart(rows) {
+  const root = document.getElementById("chart-spend");
+  const live = rows.filter((row) => Number(row.spend) > 0);
+  const total = live.reduce((sum, row) => sum + Number(row.spend), 0) || 1;
   const colors = chartColors();
   const wrap = el("div", "dash-donut");
   const svg = svgEl("svg", {
@@ -467,10 +467,10 @@ function renderSizeChart(rows) {
   let angle = -Math.PI / 2;
   const slices = svgEl("g", { class: "dash-donut-slices" });
   live.forEach((row) => {
-    const slice = (Number(row.amount) / total) * Math.PI * 2;
+    const slice = (Number(row.spend) / total) * Math.PI * 2;
     const next = angle + slice;
-    const active = state.sizes === row.id;
-    const dim = Boolean(state.sizes) && !active;
+    const active = state.spend === row.id;
+    const dim = Boolean(state.spend) && !active;
     const path = svgEl("path", {
       d: donutSlice(90, 90, 44, 72, angle, next),
       fill: chartFill(colors, row.id, rows),
@@ -479,11 +479,11 @@ function renderSizeChart(rows) {
       class: `dash-chart-hit${active ? " is-on" : ""}${dim ? " is-dim" : ""}`,
     });
     path.style.cursor = "pointer";
-    const lines = [row.label, `${row.count} campaigns`, money(row.amount), `${Math.round((row.amount / total) * 100)}%`];
+    const lines = [row.label, `${row.count} campaigns`, money(row.spend), `${Math.round((row.spend / total) * 100)}%`];
     path.addEventListener("pointerenter", (event) => showTip(event, lines));
     path.addEventListener("pointermove", (event) => showTip(event, lines));
     path.addEventListener("pointerleave", hideTip);
-    path.addEventListener("click", () => setFilter("sizes", row.id));
+    path.addEventListener("click", () => setFilter("spend", row.id));
     slices.append(path);
     angle = next;
   });
@@ -499,8 +499,8 @@ function renderSizeChart(rows) {
     "font-size": 11,
     "font-family": "Poppins, sans-serif",
   });
-  center.textContent = state.sizes
-    ? (rows.find((row) => row.id === state.sizes)?.label || SIZE_LABELS[state.sizes] || state.sizes)
+  center.textContent = state.spend
+    ? (rows.find((row) => row.id === state.spend)?.label || SPEND_LABELS[state.spend] || state.spend)
     : "All spend";
   const centerAmt = svgEl("text", {
     x: 90,
@@ -511,31 +511,31 @@ function renderSizeChart(rows) {
     "font-weight": 600,
     "font-family": "IBM Plex Mono, monospace",
   });
-  centerAmt.textContent = money(rows.reduce((sum, row) => sum + (state.sizes && row.id !== state.sizes ? 0 : row.amount), 0));
+  centerAmt.textContent = money(rows.reduce((sum, row) => sum + (state.spend && row.id !== state.spend ? 0 : row.spend), 0));
   svg.append(center, centerAmt);
   const legend = el("div", "dash-legend");
   rows.forEach((row, index) => {
     const item = el("button", "dash-legend-item");
     item.type = "button";
-    if (state.sizes === row.id) item.classList.add("is-on");
+    if (state.spend === row.id) item.classList.add("is-on");
     const swatch = el("span", "dash-legend-swatch");
     swatch.style.background = chartFill(colors, row.id, rows);
     item.append(swatch);
     item.append(el("span", "", `${row.label} · ${row.count}`));
-    item.addEventListener("click", () => setFilter("sizes", row.id));
+    item.addEventListener("click", () => setFilter("spend", row.id));
     legend.append(item);
   });
   wrap.append(svg, legend);
   root.replaceChildren(wrap);
 }
 
-function sortedOpps(opps) {
-  if (!tableSort.key) return opps;
+function sortedCampaigns(campaigns) {
+  if (!tableSort.key) return campaigns;
   const key = tableSort.key;
   const dir = tableSort.dir;
-  return [...opps].sort((a, b) => {
-    if (key === "close_date") {
-      return dir * String(a.close_date || "").localeCompare(String(b.close_date || ""));
+  return [...campaigns].sort((a, b) => {
+    if (key === "end_date") {
+      return dir * String(a.end_date || "").localeCompare(String(b.end_date || ""));
     }
     return dir * ((Number(a[key]) || 0) - (Number(b[key]) || 0));
   });
@@ -557,14 +557,14 @@ function setTableSort(key) {
     tableSort.dir = -1;
   }
   syncSortHeaders();
-  if (lastPayload) renderOpps(lastPayload.opps);
+  if (lastPayload) renderCampaigns(lastPayload.campaigns);
 }
 
-function renderOpps(opps) {
-  const body = document.querySelector("#opp-table tbody");
-  const count = document.getElementById("opp-count");
+function renderCampaigns(campaigns) {
+  const body = document.querySelector("#campaign-table tbody");
+  const count = document.getElementById("campaign-count");
   const text = copy();
-  const rows = sortedOpps(opps);
+  const rows = sortedCampaigns(campaigns);
   const nextCount = `${rows.length} in view`;
   if (window.JamesMotion?.swapText) window.JamesMotion.swapText(count, nextCount);
   else count.textContent = nextCount;
@@ -595,11 +595,11 @@ function renderOpps(opps) {
     nameCell.append(el("span", "dash-camp-name", opp.name || opp.theme || opp.id));
     if (opp.id) nameCell.append(el("span", "dash-camp-id", opp.id));
     row.append(nameCell);
-    row.append(el("td", "", opp.geo || opp.account));
-    row.append(el("td", "", opp.stage));
-    row.append(el("td", "num", money(opp.amount)));
+    row.append(el("td", "", opp.geo));
+    row.append(el("td", "", opp.type));
+    row.append(el("td", "num", money(opp.spend)));
     row.append(el("td", "num", String(opp.mqls ?? "—")));
-    row.append(el("td", "", opp.close_date));
+    row.append(el("td", "", opp.end_date));
     const health = el("td");
     const score = Number(opp.health) || 0;
     const label = score >= 70 ? "On track" : score >= 45 ? "Watch" : "Off";
@@ -613,8 +613,8 @@ function renderOpps(opps) {
       location.href = chatHref({
         task: "campaign_performance",
         campaign: opp.id,
-        geo: opp.geo || opp.account,
-        type: opp.stage,
+        geo: opp.geo,
+        type: opp.type,
       });
     };
     row.addEventListener("click", open);
@@ -773,9 +773,9 @@ async function refresh() {
   lastPayload = payload;
   ensureFilters(payload);
   renderKpis(payload.kpis);
-  renderStageChart(payload.by_stage);
-  renderSizeChart(payload.by_size);
-  renderOpps(payload.opps);
+  renderTypeChart(payload.by_type);
+  renderSpendChart(payload.by_spend);
+  renderCampaigns(payload.campaigns);
   renderTasks(payload.tasks);
   renderFeed("dash-notes", payload.notifications, "note");
   renderFeed("dash-slack", payload.slack, "slack");
@@ -804,8 +804,8 @@ document.querySelector(".dash-rail-tabs")?.addEventListener("click", (event) => 
 
 document.addEventListener("james-theme", () => {
   if (!lastPayload) return;
-  renderStageChart(lastPayload.by_stage);
-  renderSizeChart(lastPayload.by_size);
+  renderTypeChart(lastPayload.by_type);
+  renderSpendChart(lastPayload.by_spend);
 });
 
 function bootDashSidebar() {
@@ -837,8 +837,8 @@ async function boot() {
   const params = new URLSearchParams(location.search);
   if (params.get("geos")) state.geos = params.get("geos");
   else if (defaultGeo) state.geos = defaultGeo;
-  if (params.get("sizes")) state.sizes = params.get("sizes");
-  if (params.get("stages")) state.stages = params.get("stages");
+  if (params.get("spend")) state.spend = params.get("spend");
+  if (params.get("types")) state.types = params.get("types");
   if (params.get("windows")) state.windows = params.get("windows");
   syncDashUrl();
   await refresh();

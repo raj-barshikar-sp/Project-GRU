@@ -1,25 +1,27 @@
 """The two deck builders.
 
 Both are `SequentialAgent` chains with the same shape: analyse, then write the
-slide plan and render it. The order is fixed in code because a deck written
-before the analysis exists would be fiction.
+slide plan and render it. That shared shape lives in `agents/_shared/decks.py`;
+here we supply each deck's analyst, writer prompt and grounding tools. The order
+is fixed in code because a deck written before the analysis exists would be
+fiction.
 
-The two decks share their first step. `pipeline_health_agent` writes to
-`analysis_pipeline_health`, and both writers read it from there, so asking for
-the demand council deck after the pipeline deck does not repeat the work.
+Both decks run their own pipeline-health analyst as the first step and write to
+the same `analysis_pipeline_health` state key. The writers read the analysis
+back from that key. Within one turn the analyst still runs (a `SequentialAgent`
+executes every step), so the reuse is across turns: once a pipeline analysis is
+in session state, a later deck request can read it instead of recomputing.
 """
 
 from __future__ import annotations
 
-from google.adk.agents import LlmAgent, SequentialAgent
-from mktg_core.settings import DEFAULT_MODEL
+from agents._shared.decks import make_deck_pipeline
 from tools.analysis.analysis_tools import (
     get_campaign_performance,
     get_pipeline_coverage,
     get_stage_distribution,
     get_stalled_deals,
 )
-from tools.analysis.deck_tools import save_deck
 
 from ..prompts import (
     ANALYSIS_DEMAND_COUNCIL_DECK_DESCRIPTION,
@@ -31,41 +33,25 @@ from ..prompts import (
 )
 from .pipeline import make_pipeline_health_agent
 
-pipeline_deck_writer = LlmAgent(
-    model=DEFAULT_MODEL,
-    name="analysis_pipeline_deck_writer",
-    description=ANALYSIS_PIPELINE_DECK_WRITER_DESCRIPTION,
-    instruction=ANALYSIS_PIPELINE_DECK_WRITER_INSTRUCTION,
-    tools=[save_deck, get_pipeline_coverage, get_stage_distribution,
-           get_stalled_deals],
-    output_key="analysis_pipeline_deck_summary",
-)
-
-pipeline_deck = SequentialAgent(
+pipeline_deck = make_deck_pipeline(
     name="analysis_pipeline_deck",
     description=ANALYSIS_PIPELINE_DECK_DESCRIPTION,
-    sub_agents=[
-        make_pipeline_health_agent("analysis_pipeline_deck_analyst"),
-        pipeline_deck_writer,
-    ],
+    analyst=make_pipeline_health_agent("analysis_pipeline_deck_analyst"),
+    writer_name="analysis_pipeline_deck_writer",
+    writer_description=ANALYSIS_PIPELINE_DECK_WRITER_DESCRIPTION,
+    writer_instruction=ANALYSIS_PIPELINE_DECK_WRITER_INSTRUCTION,
+    writer_output_key="analysis_pipeline_deck_summary",
+    writer_tools=[get_pipeline_coverage, get_stage_distribution, get_stalled_deals],
 )
 
 
-demand_council_writer = LlmAgent(
-    model=DEFAULT_MODEL,
-    name="analysis_demand_council_writer",
-    description=ANALYSIS_DEMAND_COUNCIL_WRITER_DESCRIPTION,
-    instruction=ANALYSIS_DEMAND_COUNCIL_WRITER_INSTRUCTION,
-    tools=[save_deck, get_campaign_performance, get_pipeline_coverage,
-           get_stalled_deals],
-    output_key="analysis_demand_council_summary",
-)
-
-demand_council_deck = SequentialAgent(
+demand_council_deck = make_deck_pipeline(
     name="analysis_demand_council_deck",
     description=ANALYSIS_DEMAND_COUNCIL_DECK_DESCRIPTION,
-    sub_agents=[
-        make_pipeline_health_agent("analysis_demand_council_analyst"),
-        demand_council_writer,
-    ],
+    analyst=make_pipeline_health_agent("analysis_demand_council_analyst"),
+    writer_name="analysis_demand_council_writer",
+    writer_description=ANALYSIS_DEMAND_COUNCIL_WRITER_DESCRIPTION,
+    writer_instruction=ANALYSIS_DEMAND_COUNCIL_WRITER_INSTRUCTION,
+    writer_output_key="analysis_demand_council_summary",
+    writer_tools=[get_campaign_performance, get_pipeline_coverage, get_stalled_deals],
 )

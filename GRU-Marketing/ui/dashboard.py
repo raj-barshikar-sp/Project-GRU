@@ -1,4 +1,4 @@
-"""Marketing book for the RevOps dashboard chrome."""
+"""Marketing campaign book for the dashboard."""
 
 from __future__ import annotations
 
@@ -14,8 +14,8 @@ from mktg_core.metrics.pipeline import coverage_by_region
 from mktg_core.profile import current_user
 from ui.catalog import TASK_MENU, TASK_NEXT
 
-# Spend bands a demand-gen manager actually uses, not sales opp size.
-SIZE_FILTERS = (
+# Spend bands a demand-gen manager actually uses.
+SPEND_FILTERS = (
     {"id": "smb", "label": "Under $25k", "min": 0, "max": 24_999},
     {"id": "mid", "label": "$25k–$75k", "min": 25_000, "max": 74_999},
     {"id": "enterprise", "label": "$75k+", "min": 75_000, "max": None},
@@ -78,8 +78,8 @@ IMPACT = {
 }
 
 
-def _size_id(amount: int) -> str:
-    for bucket in SIZE_FILTERS:
+def _spend_band_id(amount: int) -> str:
+    for bucket in SPEND_FILTERS:
         ceiling = bucket["max"]
         if amount >= int(bucket["min"]) and (ceiling is None or amount <= int(ceiling)):
             return str(bucket["id"])
@@ -99,7 +99,7 @@ def _quarter(day: date) -> tuple[int, int]:
 
 
 def _in_time_window(row: dict[str, Any], window: str, today: date) -> bool:
-    close = date.fromisoformat(str(row["close_date"])[:10])
+    close = date.fromisoformat(str(row["end_date"])[:10])
     if window == "this_week":
         start = today - timedelta(days=today.weekday())
         return start <= close < start + timedelta(days=7)
@@ -135,14 +135,13 @@ def _campaign_rows() -> list[dict[str, Any]]:
         rows.append(
             {
                 "id": campaign.id,
-                "account": campaign.region.value,
                 "name": campaign.name,
                 "theme": _theme(campaign.name),
-                "stage": campaign.type.value,
-                "amount": amount,
-                "size": _size_id(amount),
+                "type": campaign.type.value,
+                "spend": amount,
+                "spend_band": _spend_band_id(amount),
                 "geo": campaign.region.value,
-                "close_date": close.isoformat(),
+                "end_date": close.isoformat(),
                 "health": _health(amount, int(campaign.mqls), int(campaign.mqls_one_week_ago)),
                 "mqls": int(campaign.mqls),
                 "opps_created": int(campaign.opps_created),
@@ -153,8 +152,8 @@ def _campaign_rows() -> list[dict[str, Any]]:
     return rows
 
 
-def _stage_filters(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
-    seen = {row["stage"] for row in rows}
+def _type_filters(rows: list[dict[str, Any]]) -> list[dict[str, str]]:
+    seen = {row["type"] for row in rows}
     ordered = [item for item in TYPE_ORDER if item in seen]
     ordered.extend(sorted(seen - set(ordered)))
     return [
@@ -199,14 +198,14 @@ def _money(amount: int) -> str:
 
 def _cost_per_mql(row: dict[str, Any]) -> int:
     mqls = int(row.get("mqls") or 0)
-    spend = int(row.get("amount") or 0)
+    spend = int(row.get("spend") or 0)
     if mqls <= 0:
         return spend
     return round(spend / mqls)
 
 
 def _book_cpmql(rows: list[dict[str, Any]]) -> int:
-    spend = sum(int(row.get("amount") or 0) for row in rows)
+    spend = sum(int(row.get("spend") or 0) for row in rows)
     mqls = sum(int(row.get("mqls") or 0) for row in rows)
     if mqls <= 0:
         return spend
@@ -214,12 +213,12 @@ def _book_cpmql(rows: list[dict[str, Any]]) -> int:
 
 
 def _days_to_end(row: dict[str, Any], today: date) -> int:
-    close = date.fromisoformat(str(row["close_date"])[:10])
+    close = date.fromisoformat(str(row["end_date"])[:10])
     return (close - today).days
 
 
 def _end_label(row: dict[str, Any], today: date) -> str:
-    close = date.fromisoformat(str(row["close_date"])[:10])
+    close = date.fromisoformat(str(row["end_date"])[:10])
     stamp = close.strftime("%-d %b")
     days = (close - today).days
     if days >= 0:
@@ -229,14 +228,14 @@ def _end_label(row: dict[str, Any], today: date) -> str:
 
 def _detail(row: dict[str, Any], today: date) -> str:
     return (
-        f"{row['id']} · {row['geo']} · {row['stage']} · "
-        f"{_money(int(row['amount']))} spend · {row['mqls']} MQLs · "
+        f"{row['id']} · {row['geo']} · {row['type']} · "
+        f"{_money(int(row['spend']))} spend · {row['mqls']} MQLs · "
         f"${_cost_per_mql(row):,}/MQL · {_end_label(row, today)}"
     )
 
 
 def _book_detail(rows: list[dict[str, Any]], geos: list[str]) -> str:
-    spend = sum(int(row.get("amount") or 0) for row in rows)
+    spend = sum(int(row.get("spend") or 0) for row in rows)
     mqls = sum(int(row.get("mqls") or 0) for row in rows)
     geo = geos[0] if len(geos) == 1 else "all geos"
     return f"{len(rows)} campaigns · {geo} · {_money(spend)} spend · {mqls} MQLs"
@@ -276,13 +275,13 @@ def _prompt(
     if row:
         name = str(row["name"])
         cid = str(row["id"])
-        spend = _money(int(row["amount"]))
+        spend = _money(int(row["spend"]))
         mqls = int(row["mqls"])
         opps = int(row["opps_created"])
         cpm = _cost_per_mql(row)
         clock = _end_label(row, day)
         facts = (
-            f"{name} ({cid}, {row['geo']}) is a {row['stage']} play with "
+            f"{name} ({cid}, {row['geo']}) is a {row['type']} play with "
             f"{spend} spend, {mqls} MQLs, {opps} opps, ${cpm:,} per MQL, "
             f"and {clock}."
         )
@@ -336,7 +335,7 @@ def _prompt(
                 "of the accounts this campaign is converting, so we can "
                 "feed Marketo and protect pipeline after {clock}."
             )
-    spend = sum(int(item.get("amount") or 0) for item in book)
+    spend = sum(int(item.get("spend") or 0) for item in book)
     mqls = sum(int(item.get("mqls") or 0) for item in book)
     book_line = (
         f"This view has {len(book)} campaigns in {geo} with "
@@ -403,7 +402,7 @@ def _job(
     if row:
         payload["campaign"] = str(row["id"])
         payload["geo"] = str(row["geo"])
-        payload["type"] = str(row["stage"])
+        payload["type"] = str(row["type"])
     if geo:
         payload["geo"] = geo
     if event:
@@ -453,7 +452,7 @@ def _task_bar(
 
     wrapping = [row for row in rows if _in_time_window(row, "this_week", today)]
     pits = [row for row in rows if row["backup"]]
-    field = [row for row in rows if row["stage"] in {"Field Event", "Tradeshow"}]
+    field = [row for row in rows if row["type"] in {"Field Event", "Tradeshow"}]
     winners = sorted(rows, key=lambda item: item["mqls"], reverse=True)
     if wrapping:
         add("campaign_performance", "Today", wrapping[0])
@@ -515,7 +514,7 @@ def _alerts(
             tone=badge["tone"],
             prompt=_prompt("budget_shift", row, rows=rows, today=today, geos=geos),
             title=(
-                f"{row['name']} is {_money(int(row['amount']))} for "
+                f"{row['name']} is {_money(int(row['spend']))} for "
                 f"{row['opps_created']} opps (${_cost_per_mql(row):,}/MQL). "
                 "Move spend before the quarter closes."
             ),
@@ -649,17 +648,17 @@ def _row_in_view(
     row: dict[str, Any],
     *,
     geos: list[str],
-    sizes: list[str],
-    stages: list[str],
+    spend: list[str],
+    types: list[str],
     windows: list[str],
     today: date,
     skip: str = "",
 ) -> bool:
     if skip != "geo" and geos and row["geo"] not in geos:
         return False
-    if skip != "size" and sizes and row["size"] not in sizes:
+    if skip != "spend" and spend and row["spend_band"] not in spend:
         return False
-    if skip != "stage" and stages and row["stage"] not in stages:
+    if skip != "type" and types and row["type"] not in types:
         return False
     if skip != "window" and windows and not any(
         _in_time_window(row, window, today) for window in windows
@@ -671,84 +670,84 @@ def _row_in_view(
 def dashboard_payload(
     *,
     geos: list[str] | None = None,
-    sizes: list[str] | None = None,
-    stages: list[str] | None = None,
+    spend: list[str] | None = None,
+    types: list[str] | None = None,
     windows: list[str] | None = None,
     today: date | None = None,
 ) -> dict[str, Any]:
     today = today or AS_OF
     geos = [item for item in (geos or []) if item]
-    sizes = [item for item in (sizes or []) if item]
-    stages = [item for item in (stages or []) if item]
+    spend_bands = [item for item in (spend or []) if item]
+    types = [item for item in (types or []) if item]
     windows = [item for item in (windows or []) if item]
     book = _campaign_rows()
     visible = [
         row
         for row in book
         if _row_in_view(
-            row, geos=geos, sizes=sizes, stages=stages, windows=windows, today=today
+            row, geos=geos, spend=spend_bands, types=types, windows=windows, today=today
         )
     ]
-    size_rows = [
+    spend_rows = [
         row
         for row in book
         if _row_in_view(
             row,
             geos=geos,
-            sizes=sizes,
-            stages=stages,
+            spend=spend_bands,
+            types=types,
             windows=windows,
             today=today,
-            skip="size",
+            skip="spend",
         )
     ]
-    stage_rows = [
+    type_rows = [
         row
         for row in book
         if _row_in_view(
             row,
             geos=geos,
-            sizes=sizes,
-            stages=stages,
+            spend=spend_bands,
+            types=types,
             windows=windows,
             today=today,
-            skip="stage",
+            skip="type",
         )
     ]
-    stage_filters = _stage_filters(book)
-    by_stage = {
+    type_filters = _type_filters(book)
+    by_type = {
         item["id"]: {
             "id": item["id"],
             "label": item["label"],
             "count": 0,
-            "amount": 0,
+            "spend": 0,
         }
-        for item in stage_filters
+        for item in type_filters
     }
-    by_size = {
+    by_spend = {
         item["id"]: {
             "id": item["id"],
             "label": item["label"],
             "count": 0,
-            "amount": 0,
+            "spend": 0,
         }
-        for item in SIZE_FILTERS
+        for item in SPEND_FILTERS
     }
-    for row in stage_rows:
-        stage = by_stage.get(row["stage"])
-        if stage:
-            stage["count"] += 1
-            stage["amount"] += row["amount"]
-    for row in size_rows:
-        size = by_size.get(row["size"])
-        if size:
-            size["count"] += 1
-            size["amount"] += row["amount"]
+    for row in type_rows:
+        bucket = by_type.get(row["type"])
+        if bucket:
+            bucket["count"] += 1
+            bucket["spend"] += row["spend"]
+    for row in spend_rows:
+        bucket = by_spend.get(row["spend_band"])
+        if bucket:
+            bucket["count"] += 1
+            bucket["spend"] += row["spend"]
     coverage = _coverage_row(geos)
     alerts = _alerts(visible, today, coverage=coverage, geos=geos)
     slack = _slack()
     days_left = max(0, (_quarter_end(today) - today).days)
-    spend = sum(int(row["amount"]) for row in visible)
+    total_spend = sum(int(row["spend"]) for row in visible)
     me = current_user()
     return {
         "as_of": today.isoformat(),
@@ -758,7 +757,7 @@ def dashboard_payload(
             "title": "Campaigns",
             "kpi_pipeline": "Gap to target",
             "kpi_pipeline_hint": (
-                f"vs {_money_short(spend)} in view · {days_left} days left in the quarter"
+                f"vs {_money_short(total_spend)} in view · {days_left} days left in the quarter"
             ),
             "kpi_open": "Campaigns",
             "kpi_open_hint": "Match these filters",
@@ -770,10 +769,10 @@ def dashboard_payload(
             "unit": "campaigns",
         },
         "filters": {
-            "sizes": [
-                {"id": item["id"], "label": item["label"]} for item in SIZE_FILTERS
+            "spend": [
+                {"id": item["id"], "label": item["label"]} for item in SPEND_FILTERS
             ],
-            "stages": stage_filters,
+            "types": type_filters,
             "windows": [dict(item) for item in TIME_FILTERS],
             "geos": [
                 {"id": "AMER", "label": "AMER"},
@@ -782,9 +781,9 @@ def dashboard_payload(
             ],
         },
         "kpis": {
-            "pipeline": int(coverage.get("Gap to target (USD)") or 0),
-            "spend": spend,
-            "open_opps": len(visible),
+            "gap_usd": int(coverage.get("Gap to target (USD)") or 0),
+            "spend": total_spend,
+            "open_campaigns": len(visible),
             "closing_week": len(
                 [row for row in visible if _in_time_window(row, "this_week", today)]
             ),
@@ -792,9 +791,9 @@ def dashboard_payload(
             "days_left": days_left,
             "coverage": coverage.get("Coverage", ""),
         },
-        "by_stage": list(by_stage.values()),
-        "by_size": list(by_size.values()),
-        "opps": visible,
+        "by_type": list(by_type.values()),
+        "by_spend": list(by_spend.values()),
+        "campaigns": visible,
         "tasks": _task_bar(visible, today, geos=geos),
         "notifications": alerts,
         "slack": slack,

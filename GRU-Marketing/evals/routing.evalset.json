@@ -298,6 +298,20 @@
       "note": "Geographic and unworked-account framing points at events over ABM. A defensible ABM answer would not be a hard failure."
     },
     {
+      "id": "amb-13",
+      "prompt": "How do we position against CyberArk and win the displacement?",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null,
+      "note": "Competitive displacement is campaign design's battlecard lane, not ABM messaging and not brand share of voice. expect_agent is null because the battlecard specialist is a remote agent that may be absent without credentials."
+    },
+    {
+      "id": "amb-14",
+      "prompt": "Give me a competitive battlecard for our next campaign",
+      "expect_orchestrator": "campaign_design_orchestrator",
+      "expect_agent": null,
+      "note": "'Battlecard' plus 'campaign' is design, not campaign performance analysis. Kept agent-agnostic so it holds whether or not the remote battlecard resolves."
+    },
+    {
       "id": "abm-01",
       "prompt": "Run account intel and then gap and value mapping for ACC-001.",
       "expect_agents": [

@@ -28,8 +28,8 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=204" />
-    <link rel="stylesheet" href="/static/transitions.css?v=204" />
+    <link rel="stylesheet" href="/static/styles.css?v=208" />
+    <link rel="stylesheet" href="/static/transitions.css?v=208" />
   </head>
   <body class="in-workspace dash-body">
     <div class="shell dash-shell" id="dashboard">
@@ -75,7 +75,7 @@
           </button>
         </div>
         <div class="bar-brand">
-          <img class="bar-bob" src="/static/james.png?v=2" alt="" width="19" height="34" />
+          <img class="bar-james" src="/static/james.png?v=2" alt="" width="19" height="34" />
           <div class="bar-brand-copy">
             <span class="bar-fullname">James the Marketing Minion</span>
           </div>
@@ -103,11 +103,11 @@
           <form class="dash-filters" aria-label="Campaign filters">
             <label class="dash-field">
               <span>Spend</span>
-              <select id="filter-sizes" name="size"></select>
+              <select id="filter-spend" name="spend"></select>
             </label>
             <label class="dash-field">
               <span>Type</span>
-              <select id="filter-stages" name="stage"></select>
+              <select id="filter-types" name="type"></select>
             </label>
             <label class="dash-field">
               <span>Time</span>
@@ -137,31 +137,31 @@
                   <h2>Spend by type</h2>
                   <p class="dash-muted">Click a bar to filter</p>
                 </div>
-                <div class="dash-chart" id="chart-stage"></div>
+                <div class="dash-chart" id="chart-type"></div>
               </article>
               <article class="dash-card">
                 <div class="dash-card-head">
                   <h2>Mix by spend</h2>
                   <p class="dash-muted">Click a slice to filter</p>
                 </div>
-                <div class="dash-chart dash-chart-size" id="chart-size"></div>
+                <div class="dash-chart dash-chart-size" id="chart-spend"></div>
               </article>
             </section>
             <section class="dash-card dash-table-card">
               <div class="dash-card-head">
                 <h2>Campaigns</h2>
-                <p class="dash-muted"><span class="t-text-swap" id="opp-count"></span></p>
+                <p class="dash-muted"><span class="t-text-swap" id="campaign-count"></span></p>
               </div>
               <div class="dash-table-wrap">
-                <table class="dash-table" id="opp-table">
+                <table class="dash-table" id="campaign-table">
                   <thead>
                     <tr>
                       <th>Campaign</th>
                       <th>Geo</th>
                       <th>Type</th>
-                      <th><button type="button" class="dash-sort" data-sort="amount">Spend</button></th>
+                      <th><button type="button" class="dash-sort" data-sort="spend">Spend</button></th>
                       <th><button type="button" class="dash-sort" data-sort="mqls">MQLs</button></th>
-                      <th><button type="button" class="dash-sort" data-sort="close_date">End</button></th>
+                      <th><button type="button" class="dash-sort" data-sort="end_date">End</button></th>
                       <th><button type="button" class="dash-sort" data-sort="health">Health</button></th>
                     </tr>
                   </thead>
@@ -199,8 +199,8 @@
     <div class="dash-tip t-tt" id="dash-tip" data-show="false" hidden>
       <span class="t-tt-text" id="dash-tip-text"></span>
     </div>
-    <script src="/static/transitions.js?v=204"></script>
-    <script src="/static/theme.js?v=204"></script>
-    <script src="/static/dashboard.js?v=204"></script>
+    <script src="/static/transitions.js?v=208"></script>
+    <script src="/static/theme.js?v=208"></script>
+    <script src="/static/dashboard.js?v=208"></script>
   </body>
 </html>

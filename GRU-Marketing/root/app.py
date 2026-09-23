@@ -16,7 +16,8 @@ from __future__ import annotations
 from google.adk.agents.context_cache_config import ContextCacheConfig
 from google.adk.apps import App
 from google.adk.plugins.global_instruction_plugin import GlobalInstructionPlugin
-from google.adk.runners import InMemoryRunner
+from google.adk.runners import InMemoryRunner, Runner
+from google.adk.sessions import BaseSessionService
 
 from .agent import REPLY_CONTRACT, marketing_orchestrator
 
@@ -38,6 +39,21 @@ def build_app(name: str = "marketing_agents") -> App:
     )
 
 
-def build_runner(name: str = "marketing_agents") -> InMemoryRunner:
-    """In-memory sessions are right for the POC: nothing needs to outlive a run."""
-    return InMemoryRunner(app=build_app(name))
+def build_runner(
+    name: str = "marketing_agents",
+    *,
+    session_service: BaseSessionService | None = None,
+) -> Runner:
+    """Build the runner from the shared app so every entry point gets the same
+    context cache and reply-contract plugin instead of wiring its own.
+
+    In-memory sessions are the POC default: nothing needs to outlive a run, and
+    a process restart starting from a clean slate is acceptable here. That does
+    mean chats and session context are lost on restart; pass a persistent
+    ``session_service`` to swap in a durable backend without duplicating any of
+    the app wiring above.
+    """
+    app = build_app(name)
+    if session_service is None:
+        return InMemoryRunner(app=app)
+    return Runner(app=app, session_service=session_service)

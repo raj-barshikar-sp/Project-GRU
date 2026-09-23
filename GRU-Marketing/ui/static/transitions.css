@@ -553,7 +553,7 @@ html[data-theme="dark"] {
 }
 
 .placeholder.t-stagger.is-hiding,
-.placeholder.t-stagger.is-hiding .placeholder-bob {
+.placeholder.t-stagger.is-hiding .placeholder-james {
   opacity: 0;
   pointer-events: none;
   transition: opacity 220ms ease;
@@ -1000,7 +1000,7 @@ html:active-view-transition-type(theme)::view-transition-group(theme-toggle) {
   from { opacity: 0; }
 }
 
-.placeholder.t-stagger .placeholder-bob {
+.placeholder.t-stagger .placeholder-james {
   display: block;
 }
 

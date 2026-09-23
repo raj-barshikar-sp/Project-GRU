@@ -1,0 +1,17 @@
+---
+description: The James marketing workspace is the browser UI. Keep it marketing-native.
+alwaysApply: true
+---
+
+# James is the marketing workspace
+
+The browser UI is the James marketing workspace: landing, dashboard, chat. Keep it marketing-native and consistent across those pages.
+
+Do not revive the older Marketing Minion shell: dual rails, workbench, projects, compare, starters, motion.js, composer task chips, or marketing-only dialogs.
+
+- `/api/chat` streams from this repo's marketing orchestrator.
+- Brand is James: `/static/james.png`, `askJames`.
+
+Filters are marketing names in HTML, JS, and Python together: campaigns, campaign types, asset types, content, events, accounts, geo, spend, time. Do not reintroduce sales chrome (opps, boats, deal desk, OTC, opp size, pipeline stage) in the UI.
+
+Pages: `/` landing, `/dashboard` (and `/app`) dashboard, `/chat` workspace.

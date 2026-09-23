@@ -1,4 +1,4 @@
-"""Parse Marketing answers into the RevOps briefing payload."""
+"""Parse Marketing answers into the workspace briefing payload."""
 
 from __future__ import annotations
 
@@ -7,9 +7,12 @@ from pathlib import Path
 
 from mktg_core.rendering.artifact import OUTPUT_DIR
 
-# "## Heading" at the start of a line. "###" is deliberately excluded: it is a
-# sub-heading inside a pane, most often the title above a fenced block.
-_HEADING_RE = re.compile(r"^##[ \t]+(?P<title>\S.*?)[ \t]*$", re.MULTILINE)
+# "## Heading" at the start of a line. "###" is deliberately excluded (the
+# negative lookahead): it is a sub-heading inside a pane, most often the title
+# above a fenced block. The space after "##" is optional so a slightly malformed
+# "##Summary" still parses as a heading instead of dropping the whole reply to
+# plain text.
+_HEADING_RE = re.compile(r"^##(?!#)[ \t]*(?P<title>\S.*?)[ \t]*$", re.MULTILINE)
 
 # Fenced blocks are copied verbatim and can legitimately contain "## " lines, so
 # headings found inside one must not split the reply.

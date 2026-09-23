@@ -13,9 +13,9 @@ const newChat = document.getElementById("new-chat");
 const attachInput = document.getElementById("attach");
 const attachBtn = document.getElementById("attach-btn");
 const attachChips = document.getElementById("attach-chips");
-const filterOrg = document.getElementById("filter-org");
-const filterOpps = document.getElementById("filter-opps");
-const filterReports = document.getElementById("filter-reports");
+const filterCampaignTypes = document.getElementById("filter-campaign-types");
+const filterCampaigns = document.getElementById("filter-campaigns");
+const filterAssetTypes = document.getElementById("filter-asset-types");
 const filterContent = document.getElementById("filter-content");
 const workspaceEl = document.getElementById("workspace");
 const toggleSidebarBtn = document.getElementById("toggle-sidebar");
@@ -115,8 +115,8 @@ function selectedValues(name) {
 let launchGeo = "";
 let launchAccounts = [];
 let launchEvents = [];
-let launchSizes = "";
-let launchStages = "";
+let launchSpend = "";
+let launchType = "";
 let launchWindows = "";
 let lastTaskId = "";
 let sentTaskId = "";
@@ -129,13 +129,7 @@ function currentFilters() {
     campaign_types: selectedValues("campaign_type"),
     asset_types: selectedValues("asset_type"),
     content: selectedValues("content"),
-    opps: selectedValues("campaign"),
-    boats: selectedValues("campaign_type"),
     geos: launchGeo ? [launchGeo] : [],
-    report_types: launchEvents,
-    sizes: launchSizes ? [launchSizes] : [],
-    stages: launchStages ? [launchStages] : [],
-    windows: launchWindows ? [launchWindows] : [],
     events: launchEvents,
     accounts: launchAccounts,
   };
@@ -270,7 +264,7 @@ function composeDraft(taskId) {
   const task = findTask(taskId);
   if (!task) return "";
   const filters = currentFilters();
-  const campaigns = workspace?.filters?.campaigns || workspace?.filters?.opps || [];
+  const campaigns = workspace?.filters?.campaigns || [];
   const campaignMap = Object.fromEntries(campaigns.map((item) => [item.id, item]));
   const contentMap = Object.fromEntries(
     (workspace?.filters?.content || []).map((item) => [item.id, item])
@@ -288,7 +282,7 @@ function composeDraft(taskId) {
   );
   const accounts = workspace?.filters?.accounts || [];
   const accountMap = Object.fromEntries(accounts.map((item) => [item.id, item]));
-  const events = workspace?.filters?.events || workspace?.filters?.report_types || [];
+  const events = workspace?.filters?.events || [];
   const eventMap = Object.fromEntries(events.map((item) => [item.id, item]));
   const account = joinNames(
     filters.accounts.map((id) => accountMap[id]?.label).filter(Boolean)
@@ -362,8 +356,8 @@ function syncChatUrl() {
   );
   if (type) next.set("type", type.value);
   if (launchGeo) next.set("geo", launchGeo);
-  if (launchSizes) next.set("sizes", launchSizes);
-  if (launchStages) next.set("stages", launchStages);
+  if (launchSpend) next.set("spend", launchSpend);
+  if (launchType) next.set("types", launchType);
   if (launchWindows) next.set("windows", launchWindows);
   if (launchAccounts[0]) next.set("account", launchAccounts[0]);
   if (launchEvents[0]) next.set("event", launchEvents[0]);
@@ -403,20 +397,20 @@ function renderSelection() {
       },
     });
   }
-  if (launchSizes) {
+  if (launchSpend) {
     wanted.push({
-      label: `Size · ${launchSizes}`,
+      label: `Spend · ${launchSpend}`,
       onClear: () => {
-        launchSizes = "";
+        launchSpend = "";
         renderSelection();
       },
     });
   }
-  if (launchStages) {
+  if (launchType) {
     wanted.push({
-      label: `Type · ${launchStages}`,
+      label: `Type · ${launchType}`,
       onClear: () => {
-        launchStages = "";
+        launchType = "";
         renderSelection();
       },
     });
@@ -489,7 +483,7 @@ function clearTaskSelection() {
 }
 
 function hasSelections() {
-  if (activeTask || launchGeo || launchSizes || launchStages || launchWindows) return true;
+  if (activeTask || launchGeo || launchSpend || launchType || launchWindows) return true;
   if (launchAccounts.length || launchEvents.length) return true;
   if (document.querySelector("#filters-dialog .checks input:checked")) return true;
   for (const select of document.querySelectorAll("#filters-dialog select")) {
@@ -506,8 +500,8 @@ function clearAllSelections() {
     select.value = "";
   }
   launchGeo = "";
-  launchSizes = "";
-  launchStages = "";
+  launchSpend = "";
+  launchType = "";
   launchWindows = "";
   launchAccounts = [];
   launchEvents = [];
@@ -692,7 +686,7 @@ function dashboardLaunchParams() {
   // reload those params are the chat we are already in, not a new launch.
   if (returningToChat()) return false;
   const params = new URLSearchParams(location.search);
-  return ["task", "campaign", "geo", "account", "event", "type", "scope", "sizes", "stages", "windows"].some(
+  return ["task", "campaign", "geo", "account", "event", "type", "scope", "spend", "types", "windows"].some(
     (key) => (params.get(key) || "").trim()
   );
 }
@@ -703,13 +697,13 @@ function applyDashboardLaunch() {
   const campaignId = (params.get("campaign") || "").trim();
   const scope = (params.get("scope") || "").trim();
   const geo = (params.get("geo") || "").trim();
-  const type = (params.get("type") || params.get("stages") || "").trim();
+  const type = (params.get("type") || params.get("types") || "").trim();
   const accountId = (params.get("account") || "").trim();
   const eventId = (params.get("event") || "").trim();
-  const sizes = (params.get("sizes") || "").trim();
-  const stages = (params.get("stages") || "").trim();
+  const spend = (params.get("spend") || "").trim();
+  const typeScope = (params.get("types") || "").trim();
   const windows = (params.get("windows") || "").trim();
-  const campaigns = workspace?.filters?.campaigns || workspace?.filters?.opps || [];
+  const campaigns = workspace?.filters?.campaigns || [];
   const tickCampaign = (id) => {
     const input = document.querySelector(
       `#filters-dialog input[name="campaign"][value="${CSS.escape(id)}"]`
@@ -721,7 +715,7 @@ function applyDashboardLaunch() {
     const hit = campaigns.find(
       (item) =>
         item.id === scope ||
-        String(item.label || item.account || "").toLowerCase() === scope.toLowerCase()
+        String(item.label || "").toLowerCase() === scope.toLowerCase()
     );
     if (hit) tickCampaign(hit.id);
   }
@@ -732,8 +726,8 @@ function applyDashboardLaunch() {
     if (typeInput) typeInput.checked = true;
   }
   launchGeo = geo;
-  launchSizes = sizes;
-  launchStages = stages;
+  launchSpend = spend;
+  launchType = typeScope;
   launchWindows = windows;
   launchAccounts = accountId ? [accountId] : [];
   launchEvents = eventId ? [eventId] : [];
@@ -1178,7 +1172,7 @@ function extractMetrics(...parts) {
 function selectedCampaign() {
   const id = selectedValues("campaign")[0];
   if (!id) return null;
-  const rows = workspace?.filters?.campaigns || workspace?.filters?.opps || [];
+  const rows = workspace?.filters?.campaigns || [];
   return rows.find((row) => row.id === id) || null;
 }
 
@@ -1193,7 +1187,7 @@ function briefingHeader() {
   if (!campaign) return null;
   const head = el("header", "briefing-head");
   const titleRow = el("div", "briefing-title-row");
-  titleRow.append(el("h2", "briefing-title", campaign.label || campaign.account || ""));
+  titleRow.append(el("h2", "briefing-title", campaign.label || ""));
   const score = Number(campaign.health);
   if (Number.isFinite(score) && score > 0) {
     const label = score >= 70 ? "On track" : score >= 45 ? "Watch" : "Off";
@@ -1203,8 +1197,8 @@ function briefingHeader() {
   }
   head.append(titleRow);
   const bits = [
-    campaign.region || campaign.territory,
-    campaign.type || campaign.owner,
+    campaign.region,
+    campaign.type,
     campaign.spend != null && campaign.spend !== "" ? `spend ${formatSpend(campaign.spend)}` : "",
   ].filter(Boolean);
   if (bits.length) head.append(el("p", "briefing-meta", bits.join(" · ")));
@@ -1466,7 +1460,7 @@ function renderBriefing(payload, options = {}) {
         const line = el("p", "action-text");
         appendRich(line, action.action);
         body.append(line);
-        const genericOwner = /^(you|revops|deal desk|otc)$/i.test((action.owner || "").trim());
+        const genericOwner = /^(you|me|marketing|demand gen)$/i.test((action.owner || "").trim());
         const bits = [
           action.owner && !genericOwner && `owner: ${action.owner}`,
           action.due && `when: ${action.due}`,
@@ -1649,7 +1643,7 @@ function placeholderNode() {
   const img = document.createElement("img");
   img.src = "/static/james.png?v=2";
   img.alt = "";
-  img.className = "placeholder-bob";
+  img.className = "placeholder-james";
   const actions = el("div", "placeholder-actions t-stagger-line t-stagger-line--3");
   actions.append(
     placeholderChoice("open-tasks-empty", "Start here", "Choose a task", "Opens the task menu"),
@@ -3266,8 +3260,8 @@ function scopeHintLine() {
   const task = activeTask ? findTask(activeTask) : null;
   if (task) bits.push(task.label);
   if (launchGeo) bits.push(launchGeo);
-  if (launchStages) bits.push(launchStages);
-  if (launchSizes) bits.push(launchSizes);
+  if (launchType) bits.push(launchType);
+  if (launchSpend) bits.push(launchSpend);
   if (launchWindows) bits.push(launchWindows);
   const campaign = document.querySelector(
     '#filters-dialog input[name="campaign"]:checked:not(:disabled)'
@@ -3279,7 +3273,7 @@ function scopeHintLine() {
   const type = document.querySelector(
     '#filters-dialog input[name="campaign_type"]:checked:not(:disabled)'
   );
-  if (type && !launchStages) {
+  if (type && !launchType) {
     const row = type.closest(".check");
     bits.push((row?.textContent || type.value).replace(/\s+/g, " ").trim());
   }
@@ -3410,7 +3404,7 @@ async function readSse(response, onEvent, signal) {
         if (!line) continue;
         const parsed = JSON.parse(line);
         if (parsed.type !== "delta") {
-          console.log("[bob.sse]", parsed.type, parsed);
+          console.log("[james.sse]", parsed.type, parsed);
         }
         onEvent(parsed);
       }
@@ -4255,9 +4249,9 @@ async function boot() {
   renderTasks(workspace.tasks);
   bootComposerDropzone();
   renderHistory();
-  addChecks(filterOpps, workspace.filters.campaigns || workspace.filters.opps, "campaign");
-  addChecks(filterOrg, workspace.filters.campaign_types || workspace.filters.boats, "campaign_type");
-  addChecks(filterReports, workspace.filters.asset_types, "asset_type");
+  addChecks(filterCampaigns, workspace.filters.campaigns, "campaign");
+  addChecks(filterCampaignTypes, workspace.filters.campaign_types, "campaign_type");
+  addChecks(filterAssetTypes, workspace.filters.asset_types, "asset_type");
   addChecks(filterContent, workspace.filters.content, "content");
   syncFilterAvailability();
   applyDashboardLaunch();
@@ -4269,9 +4263,9 @@ async function boot() {
     renderSelection();
     offerFilterRefresh();
   };
-  filterOrg?.addEventListener("change", refreshDraft);
-  filterOpps?.addEventListener("change", refreshDraft);
-  filterReports?.addEventListener("change", refreshDraft);
+  filterCampaignTypes?.addEventListener("change", refreshDraft);
+  filterCampaigns?.addEventListener("change", refreshDraft);
+  filterAssetTypes?.addEventListener("change", refreshDraft);
   filterContent?.addEventListener("change", refreshDraft);
   document.getElementById("clear-selections")?.addEventListener("click", () => {
     clearAllSelections();

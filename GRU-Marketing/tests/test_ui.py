@@ -206,7 +206,7 @@ def test_typed_replies_parse_receipt_question_cannot_and_split_artifacts() -> No
     assert drifted["insights"] == ["A number."]
 
 
-def test_parse_reply_builds_revops_style_briefing() -> None:
+def test_parse_reply_builds_briefing() -> None:
     parsed = parse_reply(BRIEFING)
     assert parsed["kind"] == "briefing"
     assert parsed["summary"] == "EMEA is the coverage gap this week."
@@ -356,7 +356,7 @@ def test_generated_content_files_join_the_content_list(tmp_path, monkeypatch) ->
 
 
 def test_parse_reply_keeps_non_briefing_headings_plain() -> None:
-    """The RevOps wrapper only structures its canonical briefing contract."""
+    """The stream wrapper only structures its canonical briefing contract."""
     reply = (
         "## Summary\nMunich is the pick.\n\n"
         "## Why Munich\n- 10 unworked accounts.\n\n"
@@ -378,6 +378,27 @@ def test_parse_reply_drops_a_padded_empty_section() -> None:
     parsed = parse_reply("## Summary\nDone.\n\n## Artifacts\nNone.")
     assert parsed["kind"] == "briefing"
     assert parsed["artifacts"] == []
+
+
+def test_parse_reply_tolerates_a_missing_space_after_the_hashes() -> None:
+    """A slightly malformed '##Summary' should still degrade to a briefing.
+
+    The heading normalisation keeps a specialist's structured answer from
+    falling all the way back to plain text over one missing space.
+    """
+    parsed = parse_reply("##Summary\nSpend is up.\n\n##Key Insights\n- Paid Social leads.")
+    assert parsed["kind"] == "briefing"
+    assert parsed["summary"] == "Spend is up."
+    assert parsed["insights"] == ["Paid Social leads."]
+
+
+def test_parse_reply_still_excludes_triple_hash_subheadings() -> None:
+    """'###' is a pane sub-title, not a top-level heading, even after the
+
+    no-space tolerance above; a '### '-only reply must stay plain.
+    """
+    reply = "### Note\nJust a sub-heading, no summary pane here."
+    assert parse_reply(reply) == {"kind": "plain", "text": reply}
 
 
 def test_a_briefing_may_omit_the_sections_it_has_nothing_for() -> None:
@@ -410,6 +431,39 @@ def test_custom_headings_are_not_mistaken_for_a_briefing() -> None:
     """Only the canonical set renders as a briefing; anything else stays plain."""
     reply = "## Summary\nMunich.\n\n## Why Munich\n- 10 accounts."
     assert parse_reply(reply) == {"kind": "plain", "text": reply}
+
+
+def test_marketing_requests_pass_the_scope_gate() -> None:
+    from ui.scope import is_in_scope
+
+    assert is_in_scope("How is our pipeline looking?")
+    # Off-topic chat is refused locally without a model call.
+    assert not is_in_scope("What movie should I watch tonight?")
+
+
+def test_a_ticked_filter_makes_a_bare_request_in_scope() -> None:
+    """The selected campaign/account is the subject even when the text is thin."""
+    from ui.scope import is_in_scope
+
+    assert not is_in_scope("tell me more about it")
+    assert is_in_scope("tell me more about it", has_filters=True)
+
+
+def test_a_short_follow_up_stays_in_scope_only_after_an_in_scope_turn() -> None:
+    from ui.scope import is_in_scope
+
+    # No marketing vocabulary of its own, so it only rides on the prior turn.
+    assert is_in_scope("what about the other one?", previous_turn_in_scope=True)
+    assert not is_in_scope("what about the other one?", previous_turn_in_scope=False)
+
+
+def test_small_talk_gets_a_canned_reply_but_marketing_wins_a_tie() -> None:
+    from ui.scope import GREETING_REPLY, THANKS_REPLY, social_reply
+
+    assert social_reply("Hello, James!") == GREETING_REPLY
+    assert social_reply("thanks") == THANKS_REPLY
+    # A greeting bolted onto real work is not small talk.
+    assert social_reply("hi, how is our pipeline looking?") is None
 
 
 def test_status_names_specialists_and_hides_unknown_authors() -> None:
@@ -517,7 +571,7 @@ def test_landing_links_to_workspace() -> None:
     assert b'id="composer-drop"' in workspace.content
     assert b"data-theme-toggle" in workspace.content
     assert b'id="filters-dialog"' in workspace.content
-    assert b'id="filter-org"' in workspace.content
+    assert b'id="filter-campaign-types"' in workspace.content
     assert b">List of Campaigns</h3>" in workspace.content
     assert b">Campaign Types</h3>" in workspace.content
     assert b">List of Asset Types</h3>" in workspace.content
@@ -526,8 +580,8 @@ def test_landing_links_to_workspace() -> None:
     assert b"Opp size" not in workspace.content
     assert b"Rep opps" not in workspace.content
     assert b"Geo / GVP / AVP / Boats" not in workspace.content
-    assert b'id="filter-opps"' in workspace.content
-    assert b'id="filter-reports"' in workspace.content
+    assert b'id="filter-campaigns"' in workspace.content
+    assert b'id="filter-asset-types"' in workspace.content
     assert b'id="open-tasks"' in workspace.content
     assert b'id="open-tasks-empty"' in workspace.content
     assert b'id="open-filters-empty"' in workspace.content
@@ -672,7 +726,7 @@ def test_transitions_dev_hooks_are_served() -> None:
 
 
 def test_sending_a_message_keeps_the_filters_but_releases_the_task() -> None:
-    """The RevOps client sends the composed draft plus current filter ticks."""
+    """The client sends the composed draft plus current filter ticks."""
     client = _client([])
     script = client.get("/static/app.js").text
     send_path = script.split("async function askJames")[1].split("async function ")[0]
@@ -964,7 +1018,7 @@ def test_the_thinking_panel_keeps_the_time_it_took() -> None:
     assert '.reasoning[data-done="true"]:not(.is-open)' in sheet
 
 
-def test_revops_wrapper_uses_a_simple_prompt_and_copyable_reply() -> None:
+def test_stream_wrapper_uses_a_simple_prompt_and_copyable_reply() -> None:
     client = _client([])
     script = client.get("/static/app.js").text
     assert "function addReplyCopy(parent, text, options = {})" in script
@@ -975,7 +1029,7 @@ def test_revops_wrapper_uses_a_simple_prompt_and_copyable_reply() -> None:
     assert "function currentFilters()" in script
     assert 'campaigns: selectedValues("campaign")' in script
 
-def test_revops_briefing_renders_fixed_cards_and_copyable_artifacts() -> None:
+def test_briefing_renders_fixed_cards_and_copyable_artifacts() -> None:
     client = _client([])
     script = client.get("/static/app.js").text
     for heading in ("Summary", "Key insights", "Recommended actions"):
@@ -1016,7 +1070,7 @@ def test_quote_emails_render_as_copy_cards() -> None:
     assert client.get("/static/assets/mesh.svg").status_code == 200
 
 
-def test_plain_replies_use_the_revops_stream_wrapper() -> None:
+def test_plain_replies_use_the_stream_wrapper() -> None:
     client = _client([])
     script = client.get("/static/app.js").text
     assert 'streamEl = el("div", "stream t-stream")' in script
@@ -1068,15 +1122,10 @@ def test_workspace_and_session_endpoints() -> None:
         group["id"] for group in workspace["tasks"]
     ]
     assert any(item["id"].startswith("ACC-") for item in workspace["filters"]["accounts"])
-    assert any(item["id"].startswith("CMP-") for item in workspace["filters"]["opps"])
-    assert all("spend" in item and "health" in item for item in workspace["filters"]["opps"])
+    assert any(item["id"].startswith("CMP-") for item in workspace["filters"]["campaigns"])
     assert all("spend" in item and "health" in item for item in workspace["filters"]["campaigns"])
     assert all("start_date" in item and "end_date" in item for item in workspace["filters"]["campaigns"])
     assert any(item["id"] in {"AMER", "EMEA", "APJ"} for item in workspace["filters"]["geos"])
-    assert any(item["id"] == "Webinar" for item in workspace["filters"]["boats"])
-    assert any(item["id"] == "smb" for item in workspace["filters"]["sizes"])
-    assert any(item["id"] == "Webinar" for item in workspace["filters"]["stages"])
-    assert any(item["id"] == "this_week" for item in workspace["filters"]["windows"])
     assert any(item["id"] == "Webinar" for item in workspace["filters"]["campaign_types"])
     assert any(item["id"] == "Whitepaper" for item in workspace["filters"]["asset_types"])
     assert any(item["id"].startswith("AS-") for item in workspace["filters"]["content"])
@@ -2093,7 +2142,7 @@ def test_cleanup_workspace_shell_is_served() -> None:
     assert 'id="dashboard"' in dash
     assert 'id="nav-artifacts"' in dash
     assert 'href="/chat?view=artifacts"' in dash
-    assert 'id="chart-stage"' in dash
+    assert 'id="chart-type"' in dash
     assert 'id="filter-geos"' in dash
     assert "Spend" in dash
     assert '<span class="bar-fullname">James the Marketing Minion</span>' in dash
@@ -2102,7 +2151,7 @@ def test_cleanup_workspace_shell_is_served() -> None:
     assert client.get("/app").text == dash
     payload = client.get("/api/dashboard").json()
     assert "kpis" in payload
-    assert "opps" in payload
+    assert "campaigns" in payload
     assert payload["filters"]["geos"]
     assert payload["defaults"]["geo"] == "EMEA"
     assert payload["copy"]["kpi_pipeline"] == "Gap to target"
@@ -2113,15 +2162,15 @@ def test_cleanup_workspace_shell_is_served() -> None:
     assert "days left in the quarter" in payload["copy"]["kpi_pipeline_hint"]
     assert "in view" in payload["copy"]["kpi_pipeline_hint"]
     assert payload["kpis"]["spend"] >= 0
-    mixed_sizes = payload["by_size"]
-    sized = client.get("/api/dashboard?sizes=mid").json()
-    assert sized["kpis"]["open_opps"] <= payload["kpis"]["open_opps"]
-    assert [row["id"] for row in sized["by_size"]] == [row["id"] for row in mixed_sizes]
-    assert sized["by_size"] == mixed_sizes
+    mixed_spend = payload["by_spend"]
+    sized = client.get("/api/dashboard?spend=mid").json()
+    assert sized["kpis"]["open_campaigns"] <= payload["kpis"]["open_campaigns"]
+    assert [row["id"] for row in sized["by_spend"]] == [row["id"] for row in mixed_spend]
+    assert sized["by_spend"] == mixed_spend
     assert "function chartFill(colors, id, catalog)" in client.get("/static/dashboard.js").text
     assert payload["kpis"]["closing_week"] >= 1
     assert payload["kpis"]["days_left"] >= 0
-    assert any(item["id"] == "smb" for item in payload["filters"]["sizes"])
+    assert any(item["id"] == "smb" for item in payload["filters"]["spend"])
     assert any(item.get("campaign") for item in payload["notifications"])
     assert any(item["id"] == "abm_account_selection" for item in payload["tasks"])
     assert any(item.get("next_task") for item in payload["tasks"])
@@ -2154,7 +2203,7 @@ def test_cleanup_workspace_shell_is_served() -> None:
     assert 'const label = score >= 70 ? "On track" : score >= 45 ? "Watch" : "Off";' in dash_script
     assert "function stashLaunch(item)" in dash_script
     assert "function dashScopeParams()" in dash_script
-    assert 'params.set("sizes"' in dash_script
+    assert 'params.set("spend"' in dash_script
     assert 'params.set("windows"' in dash_script
     assert 'due: "Continue"' in dash_script
     assert "gru-last-job" in chat_script
@@ -2180,7 +2229,7 @@ def test_cleanup_workspace_shell_is_served() -> None:
     assert "function fillPlaceholderJobs()" not in chat_script
     assert "continueLastJobButton" not in chat_script
     assert "params.get(\"campaign\")" in chat_script
-    assert "params.get(\"sizes\")" in chat_script
+    assert "params.get(\"spend\")" in chat_script
     assert "params.get(\"windows\")" in chat_script
     assert "function scopeHintLine()" in chat_script
     assert "function retryTurn(turn)" in chat_script

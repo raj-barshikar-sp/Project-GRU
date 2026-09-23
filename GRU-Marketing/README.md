@@ -1,9 +1,9 @@
 # GRU Marketing
 
 A proof of concept: seven marketing orchestrators under one Google ADK root,
-with a marketer-facing workspace branded as **James**. The browser shell
-follows the RevOps workspace (landing, dashboard, chat). Chat still hits this
-repo's marketing FastAPI app and root router — not RevOps specialists.
+with a marketer-facing workspace branded as **James**. The browser shell is
+the James marketing workspace (landing, dashboard, chat). Chat hits this
+repo's marketing FastAPI app and root router.
 
 All seven domain orchestrators run in one process on a shared sample dataset.
 
@@ -21,10 +21,11 @@ Open http://127.0.0.1:8080.
 | `/dashboard` and `/app` | Dashboard (book of programs) |
 | `/chat` | Chat workspace |
 
-The chrome uses RevOps filter names: geo, boat, opp, report, size, stage, time.
-Python maps those onto marketing data (`ui/catalog.py`, `ui/dashboard.py`,
-`ChatFilters` in `ui/app.py`). `/api/chat` streams from the marketing
-orchestrator. Named chat collections live in the sidebar.
+The chrome uses marketing filter names: campaigns, campaign types, asset types,
+content, events, accounts, geo, spend, time
+(`ui/catalog.py`, `ui/dashboard.py`, `ChatFilters` in `ui/app.py`). `/api/chat`
+streams from the marketing orchestrator. Named chat collections live in the
+sidebar.
 
 ## Why this shape
 
@@ -129,7 +130,7 @@ The tests need no model and no network. They are the ones that catch the
 failures that are silent rather than loud: a state key the template engine
 will not substitute, a write tool that has crept into a read-only
 orchestrator, a calculation that drifted from the fixtures, or UI markup that
-no longer matches the RevOps pages we serve.
+no longer matches the pages we serve.
 
 ```bash
 uv run pytest
@@ -185,7 +186,7 @@ tools/                       ADK tools, one folder per agent
 dummy_data/                  one shared sample dataset
 root/                        the top-level router
 ui/                          James workspace (python -m ui)
-  catalog.py                 marketing rows + RevOps filter mapping
+  catalog.py                 marketing rows + filter catalog
   dashboard.py               dashboard payloads
   app.py                     FastAPI, ChatFilters, /api/chat
 evals/routing.evalset.json

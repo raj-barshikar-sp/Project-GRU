@@ -81,22 +81,42 @@ def build_battlecard_agent(
     return agent
 
 
-def _build_or_none():
-    """Build at import, but never take the whole app down over credentials.
+_RESOLVED = None
+_ATTEMPTED = False
 
-    The marketing app imports all seven orchestrators at startup. Resolving the
-    remote agent needs Application Default Credentials and a reachable registry;
-    if those are missing (local dev, CI without secrets), skip the sub-agent
-    rather than crash the import.
+
+def get_battlecard_agent(*, force: bool = False):
+    """Resolve the remote battlecard agent, caching the result.
+
+    Resolution needs Application Default Credentials and a reachable registry.
+    The marketing app imports all seven orchestrators at startup, so a failure
+    here must never crash the import; a missing agent just drops the specialist.
+
+    A one-shot attempt at import used to disable the battlecard for the whole
+    process, so credentials that appeared later (or a transient registry blip)
+    were never picked up. This resolver caches a success and remembers a
+    failure, but a caller can retry a prior failure with ``force=True`` without
+    restarting the process.
     """
+    global _RESOLVED, _ATTEMPTED
+    if _RESOLVED is not None and not force:
+        return _RESOLVED
+    if _ATTEMPTED and not force:
+        return None
+    _ATTEMPTED = True
     try:
-        return build_battlecard_agent()
+        _RESOLVED = build_battlecard_agent()
     except Exception as exc:  # noqa: BLE001 - import must not fail
         logger.warning(
             "BattleCard remote agent unavailable, skipping it as a sub-agent: %s",
             exc,
         )
-        return None
+        _RESOLVED = None
+    return _RESOLVED
 
 
-battlecard_agent = _build_or_none()
+# Eager attempt at import keeps the existing wiring contract (the orchestrator
+# reads this to decide its tool list and prompt). Callers that want to pick up
+# credentials configured after startup can call get_battlecard_agent(force=True)
+# and rebuild the campaign design orchestrator.
+battlecard_agent = get_battlecard_agent()
