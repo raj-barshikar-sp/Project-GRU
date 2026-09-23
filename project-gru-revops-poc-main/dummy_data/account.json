@@ -40,5 +40,41 @@
     "account_id": "ACC-7788",
     "owner": "Sam Rivera",
     "geo": "east"
+  },
+  {
+    "account": "Northwind Logistics",
+    "account_id": "ACC-9011",
+    "owner": "Avery Cole",
+    "geo": "west"
+  },
+  {
+    "account": "Harborline Bank",
+    "account_id": "ACC-9012",
+    "owner": "Casey Nguyen",
+    "geo": "east"
+  },
+  {
+    "account": "Pinnacle Retail",
+    "account_id": "ACC-9013",
+    "owner": "Jordan Patel",
+    "geo": "south"
+  },
+  {
+    "account": "Atlas Energy",
+    "account_id": "ACC-9014",
+    "owner": "Sam Rivera",
+    "geo": "west"
+  },
+  {
+    "account": "Cedar Health",
+    "account_id": "ACC-9015",
+    "owner": "Casey Nguyen",
+    "geo": "central"
+  },
+  {
+    "account": "Vanta Freight",
+    "account_id": "ACC-9016",
+    "owner": "Avery Cole",
+    "geo": "south"
   }
 ]

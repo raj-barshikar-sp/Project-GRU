@@ -37,6 +37,20 @@ _CLOSE_DATES = {
     "OPP-570": "2026-09-25",
     "OPP-611": "2026-10-08",
     "OPP-788": "2026-09-30",
+    "OPP-901": "2026-10-02",
+    "OPP-902": "2026-09-24",
+    "OPP-903": "2026-10-16",
+    "OPP-904": "2026-11-06",
+    "OPP-905": "2026-09-23",
+    "OPP-906": "2026-10-09",
+    "OPP-907": "2026-10-23",
+    "OPP-908": "2026-08-28",
+    "OPP-909": "2026-12-11",
+    "OPP-910": "2026-10-30",
+    "OPP-911": "2026-11-19",
+    "OPP-912": "2026-10-06",
+    "OPP-913": "2026-09-26",
+    "OPP-914": "2026-12-18",
 }
 
 _DUMMY_ARTIFACTS = (
@@ -349,12 +363,21 @@ def dashboard_payload(
             or any(row["account"] == item["account"] for row in visible)
         ]
     pipeline = sum(row["amount"] for row in visible if not row["backup"])
+    verbal = pipeline
+    landing = sum(
+        row["amount"]
+        for row in visible
+        if not row["backup"] and _in_time_window(row, "this_week", today)
+    )
+    quota = 4_500_000
+    geos = sorted({row["geo"] for row in book if row["geo"]})
     return {
         "as_of": today.isoformat(),
         "filters": {
             "sizes": [dict(item) for item in SIZE_FILTERS],
             "stages": [dict(item) for item in STAGE_FILTERS],
             "windows": [dict(item) for item in TIME_FILTERS],
+            "geos": [{"id": item, "label": item.title()} for item in geos],
         },
         "copy": {
             "kicker": "SailPoint · RevOps",
@@ -392,6 +415,10 @@ def dashboard_payload(
                 [row for row in visible if _in_time_window(row, "this_week", today)]
             ),
             "slack_work": len(slack),
+            "quota": quota,
+            "coverage": round(pipeline / quota, 2) if quota else 0,
+            "verbal": verbal,
+            "landing": landing,
         },
         "by_stage": list(by_stage.values()),
         "by_size": list(by_size.values()),

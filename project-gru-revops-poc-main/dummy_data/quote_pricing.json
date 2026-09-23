@@ -80,5 +80,156 @@
     "errors": [
       "Currency is USD; contract requires EUR"
     ]
+  },
+  {
+    "quote_id": "Q-901",
+    "opp_id": "OPP-901",
+    "account": "Northwind Logistics",
+    "list_price": 2100000,
+    "quoted_price": 1850000,
+    "floor_price": 1848000,
+    "bundle_id": "B-STOREOPS",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-902",
+    "opp_id": "OPP-902",
+    "account": "Harborline Bank",
+    "list_price": 980000,
+    "quoted_price": 920000,
+    "floor_price": 901600,
+    "bundle_id": "B-PORTAL",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-903",
+    "opp_id": "OPP-903",
+    "account": "Pinnacle Retail",
+    "list_price": 2400000,
+    "quoted_price": 2100000,
+    "floor_price": 2112000,
+    "bundle_id": "B-STOREOPS",
+    "errors": [
+      "Quoted $12k below the 12% floor"
+    ]
+  },
+  {
+    "quote_id": "Q-904",
+    "opp_id": "OPP-904",
+    "account": "Atlas Energy",
+    "list_price": 520000,
+    "quoted_price": 480000,
+    "floor_price": 478400,
+    "bundle_id": "B-DIAG",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-905",
+    "opp_id": "OPP-905",
+    "account": "Cedar Health",
+    "list_price": 3900000,
+    "quoted_price": 3600000,
+    "floor_price": 3588000,
+    "bundle_id": "B-CARE",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-906",
+    "opp_id": "OPP-906",
+    "account": "Vanta Freight",
+    "list_price": 700000,
+    "quoted_price": 640000,
+    "floor_price": 644000,
+    "bundle_id": "B-QTC",
+    "errors": [
+      "Credit check expired"
+    ]
+  },
+  {
+    "quote_id": "Q-907",
+    "opp_id": "OPP-907",
+    "account": "7-Eleven",
+    "list_price": 1680000,
+    "quoted_price": 1500000,
+    "floor_price": 1478400,
+    "bundle_id": "B-STOREOPS",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-908",
+    "opp_id": "OPP-908",
+    "account": "GlobalTech",
+    "list_price": 310000,
+    "quoted_price": 275000,
+    "floor_price": 272800,
+    "bundle_id": "B-PORTAL",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-909",
+    "opp_id": "OPP-909",
+    "account": "Meridian Health",
+    "list_price": 960000,
+    "quoted_price": 890000,
+    "floor_price": 883200,
+    "bundle_id": "B-CARE",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-910",
+    "opp_id": "OPP-910",
+    "account": "NovaPay",
+    "list_price": 1400000,
+    "quoted_price": 1250000,
+    "floor_price": 1400000,
+    "bundle_id": "B-DIAG",
+    "errors": [
+      "SKU not on approved price list",
+      "Quoted below a 0% floor"
+    ]
+  },
+  {
+    "quote_id": "Q-911",
+    "opp_id": "OPP-911",
+    "account": "BrightLeaf Foods",
+    "list_price": 2450000,
+    "quoted_price": 2200000,
+    "floor_price": 2156000,
+    "bundle_id": "B-TPI",
+    "errors": []
+  },
+  {
+    "quote_id": "Q-912",
+    "opp_id": "OPP-912",
+    "account": "Helix Robotics",
+    "list_price": 590000,
+    "quoted_price": 540000,
+    "floor_price": 542800,
+    "bundle_id": "B-GTM",
+    "errors": [
+      "Currency is USD; contract requires EUR"
+    ]
+  },
+  {
+    "quote_id": "Q-913",
+    "opp_id": "OPP-913",
+    "account": "Acme Corp",
+    "list_price": 1900000,
+    "quoted_price": 1750000,
+    "floor_price": 1748000,
+    "bundle_id": "B-QTC",
+    "errors": [
+      "Site license missing Dayton plant code"
+    ]
+  },
+  {
+    "quote_id": "Q-914",
+    "opp_id": "OPP-914",
+    "account": "Northwind Logistics",
+    "list_price": 340000,
+    "quoted_price": 300000,
+    "floor_price": 299200,
+    "bundle_id": "B-STOREOPS",
+    "errors": []
   }
 ]

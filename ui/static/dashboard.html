@@ -28,7 +28,7 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=134" />
+    <link rel="stylesheet" href="/static/styles.css?v=152" />
   </head>
   <body class="in-workspace dash-body">
     <div class="shell dash-shell" id="dashboard">
@@ -124,28 +124,14 @@
               <select id="filter-geos" name="geo"></select>
             </label>
             <button type="button" class="dash-clear" id="dash-clear">Clear</button>
+            <button type="button" class="dash-edit-viz" id="dash-edit-viz">Edit visualizations</button>
           </form>
         </section>
 
         <div class="dash-layout">
           <div class="dash-primary dash-live" id="dash-live">
             <section class="dash-kpis" id="dash-kpis" aria-label="Pipeline snapshot"></section>
-            <section class="dash-grid">
-              <article class="dash-card">
-                <div class="dash-card-head">
-                  <h2 id="chart-stage-title">Pipeline by stage</h2>
-                  <p class="dash-muted">Click a bar to filter</p>
-                </div>
-                <div class="dash-chart" id="chart-stage"></div>
-              </article>
-              <article class="dash-card">
-                <div class="dash-card-head">
-                  <h2 id="chart-size-title">Mix by opp size</h2>
-                  <p class="dash-muted">Click a slice to filter</p>
-                </div>
-                <div class="dash-chart dash-chart-size" id="chart-size"></div>
-              </article>
-            </section>
+            <section class="dash-grid" id="dash-viz" aria-label="Dashboard charts"></section>
             <section class="dash-card dash-table-card">
               <div class="dash-card-head">
                 <h2 id="table-title">Opportunities</h2>
@@ -198,7 +184,16 @@
       </div>
     </div>
     <div class="dash-tip" id="dash-tip" hidden></div>
-    <script src="/static/theme.js?v=137"></script>
-    <script src="/static/dashboard.js?v=137"></script>
+    <div class="dash-viz-scrim" id="viz-scrim" hidden></div>
+    <div class="dash-viz-dialog" id="viz-dialog" hidden role="dialog" aria-modal="true" aria-labelledby="viz-dialog-title">
+      <div class="dash-viz-dialog-head">
+        <h2 id="viz-dialog-title">Edit visualizations</h2>
+        <button type="button" class="dash-viz-done" id="viz-done">Done</button>
+      </div>
+      <p class="dash-muted" id="viz-dialog-copy">Choose which charts stay on this dashboard.</p>
+      <ul class="dash-viz-list" id="viz-list"></ul>
+    </div>
+    <script src="/static/theme.js?v=148"></script>
+    <script src="/static/dashboard.js?v=152"></script>
   </body>
 </html>
