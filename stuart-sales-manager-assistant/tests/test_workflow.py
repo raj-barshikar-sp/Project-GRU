@@ -9,7 +9,7 @@ from google.adk.agents.invocation_context import InvocationContext
 from google.adk.sessions.session import Session
 from google.genai import types
 
-from agents.orchestrator.workflow import StuartWorkflow
+from agents.orchestrator.workflow import StuartWorkflow, chitchat_reply
 
 
 def _ctx(query: str) -> InvocationContext:
@@ -51,6 +51,23 @@ async def _collect(workflow: StuartWorkflow, query: str) -> str:
     return "\n".join(text)
 
 
+def test_hi_skips_the_planner() -> None:
+    workflow = _workflow()
+    calls = []
+
+    async def fake(agent, ctx, request):  # noqa: ANN001
+        calls.append(agent.name)
+        return [], {"agents": [], "direct_reply": "should not run"}, ""
+
+    workflow._run_child = fake  # type: ignore[method-assign]
+    assert asyncio.run(_collect(workflow, "hi")) == "Hi — what should we review?"
+    assert asyncio.run(_collect(workflow, "thanks!")) == (
+        "Anytime. What should we look at next?"
+    )
+    assert calls == []
+    assert chitchat_reply("hi, how's my forecast") is None
+
+
 def test_planner_direct_reply_is_the_chat_response() -> None:
     workflow = _workflow()
     calls = []
@@ -60,7 +77,9 @@ def test_planner_direct_reply_is_the_chat_response() -> None:
         return [], {"agents": [], "direct_reply": "Morning — what are we reviewing?"}, ""
 
     workflow._run_child = fake  # type: ignore[method-assign]
-    assert asyncio.run(_collect(workflow, "hi")) == "Morning — what are we reviewing?"
+    assert asyncio.run(_collect(workflow, "what can you do?")) == (
+        "Morning — what are we reviewing?"
+    )
     assert calls == ["route_planner"]
 
 

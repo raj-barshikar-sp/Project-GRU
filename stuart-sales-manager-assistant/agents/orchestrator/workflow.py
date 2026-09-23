@@ -5,6 +5,7 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import re
 import time
 from collections.abc import AsyncGenerator
 from typing import Any
@@ -34,6 +35,29 @@ def _event_text(event: Event) -> str:
 def _user_text(ctx: InvocationContext) -> str:
     parts = (ctx.user_content.parts if ctx.user_content else None) or []
     return "\n".join(part.text for part in parts if getattr(part, "text", None))
+
+
+_CHITCHAT = re.compile(
+    r"""^(?:hi+|hello|hey+|yo|howdy|gm|
+        good\s*(?:morning|afternoon|evening)|
+        thanks?(?:\s+you)?|thx|ty|cheers|
+        how(?:'s|\s+are)\s+you(?:\s+doing)?|
+        what'?s\s+up)
+        (?:\s+(?:there|stuart|team|again))*
+        [\s!.?,]*$""",
+    re.IGNORECASE | re.VERBOSE,
+)
+_THANKS = re.compile(r"thank|thx|^ty\b|cheers", re.IGNORECASE)
+
+
+def chitchat_reply(text: str) -> str | None:
+    """Answer greetings locally so Gemini is never called for 'hi'."""
+    visible = text.split("\n\nWorking filters:", 1)[0].strip()
+    if not visible or len(visible) > 60 or not _CHITCHAT.match(visible):
+        return None
+    if _THANKS.search(visible):
+        return "Anytime. What should we look at next?"
+    return "Hi — what should we review?"
 
 
 def _parse_payload(events: list[Event]) -> Any:
@@ -170,6 +194,12 @@ class StuartWorkflow(BaseAgent):
             state.setdefault(key, "")
         seed_context_from_text(state, query)
         log_activity("turn.start", invocation=ctx.invocation_id, query=preview(query))
+
+        cheap = chitchat_reply(query)
+        if cheap:
+            log_activity("route.chitchat", specialists=[])
+            yield _final_event(self.name, ctx, cheap)
+            return
 
         planner_events, raw_plan, planner_error = await self._run_child(
             self.planner_agent,
