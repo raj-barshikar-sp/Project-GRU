@@ -529,7 +529,7 @@ function mute() {
 function axisText(svg, value, attrs) {
   const node = svgEl("text", {
     fill: mute(),
-    "font-size": 11,
+    "font-size": 12,
     "font-family": "Poppins, sans-serif",
     ...attrs,
   });
@@ -652,18 +652,18 @@ function vBars(root, rows, { onClick, aria, colorFor, x = "Category", y = "Amoun
   const list = rows || [];
   const max = Math.max(1, ...list.map((row) => row.amount || 0));
   const n = Math.max(list.length, 1);
-  const width = 400;
-  const padL = 58;
-  const padR = 8;
-  const padT = 26;
-  const plotH = 72;
+  const width = 360;
+  const padL = 64;
+  const padR = 14;
+  const padT = 36;
+  const plotH = 148;
   const base = padT + plotH;
-  const height = base + (x ? 36 : 16);
+  const height = base + (x ? 42 : 26);
   const plotW = width - padL - padR;
   const slot = plotW / n;
-  const barW = Math.min(n <= 3 ? 44 : 32, Math.max(12, slot * 0.58));
+  const barW = Math.min(n <= 3 ? 72 : 54, Math.max(18, slot * 0.78));
   const svg = svgEl("svg", { viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: "xMidYMid meet", role: "img", "aria-label": aria || `${y} by ${x}` });
-  svg.append(axisText(svg, y, { x: 2, y: 11, "text-anchor": "start" }));
+  svg.append(axisText(svg, y, { x: 4, y: 12, "text-anchor": "start" }));
   svg.append(axisText(svg, money(max), { x: padL - 8, y: padT - 4, "text-anchor": "end" }));
   svg.append(axisText(svg, "$0", { x: padL - 8, y: base - 2, "text-anchor": "end" }));
   svg.append(svgEl("line", { x1: padL, y1: padT, x2: padL, y2: base, stroke: mute(), "stroke-width": 1 }));
@@ -686,9 +686,9 @@ function vBars(root, rows, { onClick, aria, colorFor, x = "Category", y = "Amoun
     }
     bindTip(bar, row.tip || [row.label, money(row.amount)]);
     svg.append(bar);
-    svg.append(axisText(svg, row.tick || stageTick(row, slot), { x: cx, y: base + 13, "text-anchor": "middle" }));
+    svg.append(axisText(svg, row.tick || stageTick(row, slot), { x: cx, y: base + 18, "text-anchor": "middle" }));
   });
-  if (x) svg.append(axisText(svg, x, { x: padL + plotW / 2, y: height - 4, "text-anchor": "middle" }));
+  if (x) svg.append(axisText(svg, x, { x: padL + plotW / 2, y: height - 6, "text-anchor": "middle" }));
   root.replaceChildren(svg);
 }
 
