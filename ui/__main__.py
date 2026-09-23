@@ -24,10 +24,10 @@ WORKERS = (
     ),
     (
         "James",
-        ROOT / "GRU-Marketing",
+        ROOT,
         8092,
-        "ui.app:app",
-        (ROOT / "GRU-Marketing", ROOT / "GRU-Marketing" / "packages"),
+        "ui.james_app:app",
+        (ROOT, ROOT / "GRU-Marketing", ROOT / "GRU-Marketing" / "packages"),
     ),
     (
         "Stuart",

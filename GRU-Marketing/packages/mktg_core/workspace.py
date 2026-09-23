@@ -21,6 +21,15 @@ _EMPTY_FOR_AS = re.compile(r"\s+for\s+(?=as\b)", re.I)
 _EMPTY_PARENS = re.compile(r"\s*\(\s*\)")
 _BROKEN_ASK = re.compile(r"\bhow did perform\b|\bimprove  performance\b", re.I)
 
+
+def _health(spend: int, mqls: int, mqls_week_ago: int) -> int:
+    if mqls <= 0:
+        return 32
+    cost = spend / mqls
+    trend = mqls - mqls_week_ago
+    score = 88 - min(50, int(cost / 40)) + min(12, trend)
+    return max(18, min(96, score))
+
 TASK_MENU: tuple[dict, ...] = (
     {
         "id": "campaign_design",
@@ -643,7 +652,6 @@ def workspace_catalog() -> dict:
         assets.setdefault(item["id"], item)
     campaign_types = sorted({row.type.value for row in campaigns})
     asset_types = sorted({row["type"] for row in assets.values()})
-    from ui.dashboard import _health
 
     tasks = [
         {

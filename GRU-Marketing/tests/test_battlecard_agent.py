@@ -23,7 +23,7 @@ from agents.campaign_design.remote_agents import (
     load_agent_card,
 )
 from agents.campaign_design.remote_agents.battlecard_agent import REGISTRY_LOCATION
-from ui.progress import status_for_author
+from mktg_core.progress import status_for_author
 
 
 def _has_real_agent_id() -> bool:
