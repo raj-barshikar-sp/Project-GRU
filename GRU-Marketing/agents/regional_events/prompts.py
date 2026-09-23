@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from agents._shared.prompts import PASS_THROUGH_RULE
+
 NUMBERS_RULE = (
     "Every number and account name you state must come from a tool result. "
     "Never invent an account, a city or a figure, and never estimate one."
@@ -57,7 +59,7 @@ and say what you are doing.
 
 If the request is not about field events, say so briefly so it can be routed
 elsewhere.
-""".strip()
+""".strip() + "\n\n" + PASS_THROUGH_RULE
 
 EVENTS_ORCHESTRATOR_DESCRIPTION = (
     "Regional field event marketing. Recommends event locations and "

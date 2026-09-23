@@ -13,6 +13,7 @@ import os
 
 import pytest
 from google.adk.agents.remote_a2a_agent import RemoteA2aAgent
+from google.adk.tools.agent_tool import AgentTool
 
 from agents.campaign_design import campaign_design_orchestrator
 from agents.campaign_design.remote_agents import (
@@ -22,7 +23,7 @@ from agents.campaign_design.remote_agents import (
     load_agent_card,
 )
 from agents.campaign_design.remote_agents.battlecard_agent import REGISTRY_LOCATION
-from ui.progress import status_for_author
+from mktg_core.progress import status_for_author
 
 
 def _has_real_agent_id() -> bool:
@@ -53,8 +54,19 @@ def test_resource_name_targets_us_west1_not_global():
 
 # --- the swap: remote battlecard replaces the local specialist ------------
 
+def _wired_specialist_names() -> set[str]:
+    # Specialists are now AgentTools on the orchestrator, not sub_agents: an
+    # explicit call returns to the coordinator so ideation can feed the brief
+    # and deck in one request instead of ending at the first transfer.
+    return {
+        tool.agent.name
+        for tool in campaign_design_orchestrator.tools
+        if isinstance(tool, AgentTool)
+    }
+
+
 def test_local_competitive_messaging_agent_is_gone():
-    names = {a.name for a in campaign_design_orchestrator.sub_agents}
+    names = _wired_specialist_names()
 
     assert "campaign_competitive_messaging" not in names
     # The remaining in-process specialists are always present.
@@ -72,7 +84,12 @@ def test_battlecard_agent_is_wired_when_it_resolves():
 
     assert isinstance(battlecard_agent, RemoteA2aAgent)
     assert battlecard_agent.name == "campaign_battlecard"
-    assert battlecard_agent in campaign_design_orchestrator.sub_agents
+    wired = {
+        tool.agent
+        for tool in campaign_design_orchestrator.tools
+        if isinstance(tool, AgentTool)
+    }
+    assert battlecard_agent in wired
 
 
 def test_progress_panel_has_copy_for_the_battlecard_author():

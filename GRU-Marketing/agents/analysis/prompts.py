@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from agents._shared.prompts import PASS_THROUGH_RULE
+
 NUMBERS_RULE = """
 Every number you state must come from a tool result. The tools do the
 arithmetic; you explain it. Never calculate, estimate or extrapolate a figure
@@ -73,7 +75,7 @@ Choosing between the near neighbours:
 If a request is genuinely ambiguous, ask one short clarifying question rather
 than guessing. If it turns out not to be an analysis request at all, say so
 briefly so it can be routed elsewhere.
-""".strip()
+""".strip() + "\n\n" + PASS_THROUGH_RULE
 
 ANALYSIS_ORCHESTRATOR_DESCRIPTION = (
     "Marketing analysis and reporting. Covers campaign performance, "

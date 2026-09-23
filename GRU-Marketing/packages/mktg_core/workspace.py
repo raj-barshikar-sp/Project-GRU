@@ -21,6 +21,15 @@ _EMPTY_FOR_AS = re.compile(r"\s+for\s+(?=as\b)", re.I)
 _EMPTY_PARENS = re.compile(r"\s*\(\s*\)")
 _BROKEN_ASK = re.compile(r"\bhow did perform\b|\bimprove  performance\b", re.I)
 
+
+def _health(spend: int, mqls: int, mqls_week_ago: int) -> int:
+    if mqls <= 0:
+        return 32
+    cost = spend / mqls
+    trend = mqls - mqls_week_ago
+    score = 88 - min(50, int(cost / 40)) + min(12, trend)
+    return max(18, min(96, score))
+
 TASK_MENU: tuple[dict, ...] = (
     {
         "id": "campaign_design",
@@ -643,18 +652,7 @@ def workspace_catalog() -> dict:
         assets.setdefault(item["id"], item)
     campaign_types = sorted({row.type.value for row in campaigns})
     asset_types = sorted({row["type"] for row in assets.values()})
-    from ui.dashboard import SIZE_FILTERS, TIME_FILTERS, TYPE_ORDER, TYPE_SHORT, _health
 
-    stage_filters = [
-        {"id": item, "label": TYPE_SHORT.get(item, item)}
-        for item in TYPE_ORDER
-        if item in campaign_types
-    ]
-    stage_filters.extend(
-        {"id": item, "label": TYPE_SHORT.get(item, item)}
-        for item in campaign_types
-        if item not in TYPE_ORDER
-    )
     tasks = [
         {
             "id": group["id"],
@@ -686,43 +684,6 @@ def workspace_catalog() -> dict:
                 {"id": "AMER", "label": "AMER"},
                 {"id": "EMEA", "label": "EMEA"},
                 {"id": "APJ", "label": "APJ"},
-            ],
-            "boats": [
-                {"id": campaign_type, "label": campaign_type}
-                for campaign_type in campaign_types
-            ],
-            "sizes": [
-                {"id": item["id"], "label": item["label"]} for item in SIZE_FILTERS
-            ],
-            "stages": stage_filters,
-            "windows": [
-                {"id": item["id"], "label": item["label"]} for item in TIME_FILTERS
-            ],
-            "opps": [
-                {
-                    "id": row.id,
-                    "label": row.name,
-                    "account": row.name,
-                    "region": row.region.value,
-                    "territory": row.region.value,
-                    "type": row.type.value,
-                    "owner": row.type.value,
-                    "spend": int(row.spend_usd),
-                    "health": _health(
-                        int(row.spend_usd),
-                        int(row.mqls),
-                        int(row.mqls_one_week_ago),
-                    ),
-                }
-                for row in campaigns
-            ],
-            "report_types": [
-                {
-                    "id": row.id,
-                    "label": f"{row.name} ({row.city})",
-                    "region": row.region.value,
-                }
-                for row in events
             ],
             "campaigns": [
                 {

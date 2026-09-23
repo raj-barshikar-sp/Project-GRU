@@ -2,7 +2,20 @@
 
 from __future__ import annotations
 
-CAMPAIGN_DESIGN_ORCHESTRATOR_INSTRUCTION = """
+from agents._shared.prompts import PASS_THROUGH_RULE
+
+# The battlecard specialist is a remote A2A agent that may not resolve without
+# credentials. Its routing line and the "position against a competitor" clause
+# are only included when the agent is actually available, so the orchestrator
+# never advertises a specialist it cannot call.
+_BATTLECARD_ROUTING_LINE = """
+- campaign_battlecard: remote specialist that generates comprehensive
+  competitive battlecards for SailPoint against a named competitor. Use for
+  "battlecard", "position against CyberArk", displacement or why-we-win
+  messaging.
+""".strip()
+
+_CAMPAIGN_DESIGN_ORCHESTRATOR_INSTRUCTION_TEMPLATE = """
 You lead campaign design and strategy. Route to the right specialist.
 
 - campaign_ideation: brainstorm campaign themes from pipeline gaps, performance
@@ -13,23 +26,37 @@ You lead campaign design and strategy. Route to the right specialist.
   Use for "generate a PPT", "campaign slides", "PowerPoint for the selected
   campaign", or a deck of the brief. NOT for the weekly pipeline review or
   demand council decks.
-- campaign_battlecard: remote specialist that generates comprehensive
-  competitive battlecards for SailPoint against a named competitor. Use for
-  "battlecard", "position against CyberArk", displacement or why-we-win
-  messaging.
-
+{battlecard_line}
 "campaign brief" is design. "campaign performance" is analysis elsewhere.
 """.strip()
 
-CAMPAIGN_DESIGN_ORCHESTRATOR_DESCRIPTION = (
-    "Campaign design and strategy. Comes up with campaign ideas, writes "
-    "campaign briefs, builds a PowerPoint of a campaign brief, and builds "
-    "competitive messaging. Use for designing or planning a NEW campaign, "
-    "for requests to ideate, write a brief, generate a PPT for a selected "
-    "campaign, or position against a competitor. NOT for analysing how "
-    "existing campaigns performed, NOT for the weekly pipeline or demand "
-    "council decks, and NOT for creating the campaign record in Salesforce."
-)
+
+def campaign_design_orchestrator_instruction(has_battlecard: bool) -> str:
+    """Router instruction, with the battlecard line only when it is available."""
+    battlecard_line = _BATTLECARD_ROUTING_LINE + "\n" if has_battlecard else ""
+    body = _CAMPAIGN_DESIGN_ORCHESTRATOR_INSTRUCTION_TEMPLATE.format(
+        battlecard_line=battlecard_line
+    )
+    return body + "\n\n" + PASS_THROUGH_RULE
+
+
+def campaign_design_orchestrator_description(has_battlecard: bool) -> str:
+    """Team description, advertising competitive messaging only when available."""
+    competitive_clause = (
+        ", and builds competitive messaging" if has_battlecard else ""
+    )
+    position_clause = (
+        ", or position against a competitor" if has_battlecard else ""
+    )
+    return (
+        "Campaign design and strategy. Comes up with campaign ideas, writes "
+        "campaign briefs, builds a PowerPoint of a campaign brief"
+        f"{competitive_clause}. Use for designing or planning a NEW campaign, "
+        "for requests to ideate, write a brief, generate a PPT for a selected "
+        f"campaign{position_clause}. NOT for analysing how existing campaigns "
+        "performed, NOT for the weekly pipeline or demand council decks, and "
+        "NOT for creating the campaign record in Salesforce."
+    )
 
 CAMPAIGN_IDEATION_DESCRIPTION = (
     "Brainstorms and scores campaign themes from pipeline gaps, campaign "

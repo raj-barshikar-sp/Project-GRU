@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from google.adk.agents import LlmAgent
 from google.adk.tools.agent_tool import AgentTool
-from mktg_core.settings import DEFAULT_MODEL, thinking_planner
+from mktg_core.settings import ROUTER_MODEL, router_generate_config, thinking_planner
 from agents.abm import abm_orchestrator
 from agents.analysis import analysis_orchestrator
 from agents.brand import brand_orchestrator
@@ -23,7 +23,21 @@ from agents.content_generation import content_orchestrator
 from agents.marketing_ops import marketing_ops_orchestrator
 from agents.regional_events import regional_events_orchestrator
 
-INSTRUCTION = """
+TEAM_ORCHESTRATORS = (
+    analysis_orchestrator,
+    regional_events_orchestrator,
+    marketing_ops_orchestrator,
+    campaign_design_orchestrator,
+    abm_orchestrator,
+    content_orchestrator,
+    brand_orchestrator,
+)
+
+SEVEN_TEAMS = "\n".join(
+    f"- {agent.name}: {agent.description}" for agent in TEAM_ORCHESTRATORS
+)
+
+INSTRUCTION = f"""
 You are the front door and coordinator for the marketing agents system. You do
 not do marketing work yourself. Every user turn starts with you. Break the
 request into domain tasks, call the relevant team tools, and return a grounded
@@ -31,20 +45,7 @@ answer assembled only from their results.
 
 The seven teams:
 
-- analysis_orchestrator: how marketing and pipeline are performing. Campaign
-  results, recommendations, pipeline coverage, content influence, and the
-  pipeline and demand council decks.
-- events_orchestrator: field events. Where to run one, who to invite, briefs on
-  attending accounts, and what the room is worth in pipeline.
-- mops_orchestrator: executing operations. Creating Salesforce campaigns,
-  building 6sense segments, deploying to Marketo, loading lead lists.
-- campaign_design_orchestrator: designing new campaigns. Ideas, briefs,
-  a PowerPoint of a campaign brief, competitive messaging.
-- abm_orchestrator: account-based marketing. Top accounts, account
-  intelligence, account messaging and plays.
-- content_orchestrator: writing and translating content and asset grids.
-- brand_orchestrator: social sentiment, share of voice, news monitoring, rapid
-  response.
+{SEVEN_TEAMS}
 
 The distinctions that are easy to get wrong:
 
@@ -64,7 +65,7 @@ The distinctions that are easy to get wrong:
 
 How to coordinate:
 
-1. For every marketing request, call at least one team tool before answering.
+1. For every request related to marketing, call at least one team tool before answering.
    Never answer from your own knowledge.
 2. Decompose requests that span several teams into separate tasks. Call every
    team needed to complete every part the user asked for; do not stop after the
@@ -173,18 +174,10 @@ What to do instead.
 A one-line thanks or greeting may stay plain prose with no headings.
 """.strip()
 
-TEAM_ORCHESTRATORS = (
-    analysis_orchestrator,
-    regional_events_orchestrator,
-    marketing_ops_orchestrator,
-    campaign_design_orchestrator,
-    abm_orchestrator,
-    content_orchestrator,
-    brand_orchestrator,
-)
-
 marketing_orchestrator = LlmAgent(
-    model=DEFAULT_MODEL,
+    # ROUTER_MODEL lets a demo point the front door at a stronger model without
+    # touching the specialists; it defaults to the shared model.
+    model=ROUTER_MODEL,
     name="marketing_orchestrator",
     description=(
         "The main entry point for the marketing agents system. Routes any "
@@ -194,6 +187,9 @@ marketing_orchestrator = LlmAgent(
     # The chat UI shows the router's thinking while the teams work, which is
     # the only visible sign of progress on a multi-team request.
     planner=thinking_planner(),
+    # Temperature 0 so the same request routes the same way across runs, which
+    # is the behaviour the routing evalset checks.
+    generate_content_config=router_generate_config(),
     # AgentTool calls return to this coordinator, unlike sub-agent transfers,
     # which leave the session focused on the last specialist that answered.
     tools=[AgentTool(agent) for agent in TEAM_ORCHESTRATORS],

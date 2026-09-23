@@ -323,14 +323,27 @@ def test_only_marketing_ops_can_write():
 
 
 def test_coordinators_only_hold_agent_tools():
-    """Coordinators may invoke agents but must hold no business/data tools."""
-    assert marketing_orchestrator.tools
-    assert all(isinstance(tool, AgentTool) for tool in marketing_orchestrator.tools)
-    abm = by_name("abm_orchestrator")
-    assert abm.tools
-    assert all(isinstance(tool, AgentTool) for tool in abm.tools)
-    assert not (by_name("analysis_orchestrator").tools or [])
-    assert not (by_name("events_orchestrator").tools or [])
+    """Coordinators may invoke agents but must hold no business/data tools.
+
+    Every read-only team now calls its specialists as AgentTools rather than
+    transferring to them, so an explicit call returns to the coordinator and a
+    single request can run several specialists. Marketing Ops is the exception:
+    it holds the write tools directly and is checked in the write-tool tests.
+    """
+    read_only_coordinators = [
+        marketing_orchestrator,
+        by_name("abm_orchestrator"),
+        by_name("analysis_orchestrator"),
+        by_name("events_orchestrator"),
+        by_name("brand_orchestrator"),
+        by_name("content_orchestrator"),
+        by_name("campaign_design_orchestrator"),
+    ]
+    for coordinator in read_only_coordinators:
+        assert coordinator.tools, f"{coordinator.name} exposes no specialist tools"
+        assert all(
+            isinstance(tool, AgentTool) for tool in coordinator.tools
+        ), f"{coordinator.name} holds a non-agent (business/data) tool"
 
 
 # --- chain shapes ---------------------------------------------------------

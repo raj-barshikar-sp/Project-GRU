@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from agents._shared.prompts import PASS_THROUGH_RULE
+
 BRAND_ORCHESTRATOR_INSTRUCTION = """
 You lead brand and social listening. Route to the right specialist.
 
@@ -11,7 +13,7 @@ You lead brand and social listening. Route to the right specialist.
 - brand_rapid_response: reactive campaign packages from trigger events.
 
 Paid social performance is analysis, not brand. Social sentiment is brand.
-""".strip()
+""".strip() + "\n\n" + PASS_THROUGH_RULE
 
 BRAND_ORCHESTRATOR_DESCRIPTION = (
     "Brand and social. Monitors social media sentiment and drafts responses, "

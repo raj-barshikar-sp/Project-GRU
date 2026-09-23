@@ -7,4 +7,4 @@ alwaysApply: true
 
 Read and follow `.cursor/skills/ponytail/SKILL.md` on every change in this repository: agents, tools, catalog, FastAPI, tests, and UI.
 
-UI is the RevOps `main` workspace with James branding. Marketing orchestrator stays. Map geo/boat/opp/report in Python. Do not revive the old Marketing Minion shell.
+UI is the James marketing workspace: landing, dashboard, chat. Marketing orchestrator stays. Filters are marketing names (campaigns, campaign types, asset types, content, events, accounts, geo, spend, time) in HTML, JS, and Python. Do not revive the old Marketing Minion shell.

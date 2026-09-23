@@ -30,8 +30,8 @@ output/
 !SailPoint-PowerPointTemplate-202600707.potx
 !packages/mktg_core/rendering/templates/*.potx
 
-# Local clone of the RevOps minion, not part of this repo.
-.revops_src/
+# Local clone of the reference UI, not part of this repo.
+.ui_src/
 
 # ADK local state
 .adk/

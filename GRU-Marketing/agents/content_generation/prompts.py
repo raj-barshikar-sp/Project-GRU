@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from agents._shared.prompts import PASS_THROUGH_RULE
+
 CONTENT_ORCHESTRATOR_INSTRUCTION = """
 You lead content generation. Route to the right specialist.
 
@@ -12,7 +14,7 @@ You lead content generation. Route to the right specialist.
   competitive content packages.
 
 "Write content" is here. "Which content is performing" is analysis elsewhere.
-""".strip()
+""".strip() + "\n\n" + PASS_THROUGH_RULE
 
 CONTENT_ORCHESTRATOR_DESCRIPTION = (
     "Content generation. Writes anchor assets, translates existing assets "
