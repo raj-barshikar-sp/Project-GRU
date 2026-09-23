@@ -43,34 +43,36 @@ html[data-theme="dark"] {
   --cobalt: #8fb0ff;
   --blue: #5aa6e8;
   --magenta: #c77dbe;
-  --white: #151922;
-  --dark-gray: #9aa0ab;
-  --light-gray: #243044;
+  --aqua: #54c0e8;
+  --white: #171717;
+  --dark-gray: #a1a1a1;
+  --light-gray: #262626;
   --ink: var(--cobalt);
-  --muted: #9aa0ab;
-  --line: #2a3140;
-  --paper: #1c2433;
-  --page: #0b1220;
-  --fg: #e8edf4;
-  --fg-soft: #c5ced9;
-  --fg-muted: #9aa7b6;
-  --surface: #121a2b;
-  --heading: #8fb0ff;
-  --btn: #1a5cff;
-  --btn-hover: #54c0e8;
-  --sidebar: #0e1626;
-  --rail: #0e1626;
-  --rail-line: #243044;
-  --hairline: #2a3140;
-  --input-line: #2a3140;
-  --hover: color-mix(in srgb, var(--blue) 18%, var(--rail));
-  --user-bubble: #fde8f3;
-  --paste-bubble: color-mix(in srgb, var(--aqua) 26%, var(--surface));
-  --selection: color-mix(in srgb, var(--cobalt) 38%, transparent);
-  --icon-muted: #8b909a;
-  --caret: #f1f2f4;
-  --shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --muted: #a1a1a1;
+  --line: #ffffff1a;
+  --paper: #171717;
+  --page: #0a0a0a;
+  --fg: #fafafa;
+  --fg-soft: #e5e5e5;
+  --fg-muted: #a1a1a1;
+  --surface: #171717;
+  --heading: #fafafa;
+  --btn: #5aa6e8;
+  --btn-hover: #8fb0ff;
+  --sidebar: #111111;
+  --rail: #111111;
+  --rail-line: #ffffff1a;
+  --hairline: #ffffff1a;
+  --input-line: #ffffff1a;
+  --hover: #262626;
+  --user-bubble: #262626;
+  --chat-user: #262626;
+  --paste-bubble: #262626;
+  --selection: color-mix(in srgb, var(--cobalt) 28%, transparent);
+  --icon-muted: #a1a1a1;
+  --caret: #fafafa;
+  --shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -3291,51 +3293,57 @@ html[data-theme="dark"] .theme-icon-moon {
 html[data-theme="dark"] .bar-btn,
 html[data-theme="dark"] .app-dialog-btn,
 html[data-theme="dark"] .dash-clear {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--blue) 22%, #152033) 0%, #121a2b 100%);
-  border: 1px solid color-mix(in srgb, var(--aqua) 34%, transparent);
-  color: #e4edff;
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--cobalt) 18%, transparent), 0 8px 18px rgba(0, 51, 161, 0.28);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  color: var(--fg);
+  box-shadow: none;
 }
 
 html[data-theme="dark"] .bar-btn:hover,
 html[data-theme="dark"] .app-dialog-btn:hover,
 html[data-theme="dark"] .dash-clear:hover {
-  background: linear-gradient(180deg, color-mix(in srgb, var(--aqua) 28%, #1a2740) 0%, #162033 100%);
-  border-color: var(--aqua);
-  color: #fff;
-  box-shadow: 0 0 18px color-mix(in srgb, var(--aqua) 32%, transparent);
+  background: var(--hover);
+  border-color: var(--hairline);
+  color: var(--fg);
+  box-shadow: none;
 }
 
-html[data-theme="dark"] .bar-logo {
-  background: color-mix(in srgb, var(--cobalt) 16%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--aqua) 28%, transparent);
-}
-
+html[data-theme="dark"] .bar-logo,
 html[data-theme="dark"] .bar-logo:hover,
 html[data-theme="dark"] .bar-logo[aria-expanded="false"] {
-  background: color-mix(in srgb, var(--aqua) 22%, #152033);
-  box-shadow: 0 0 16px color-mix(in srgb, var(--aqua) 28%, transparent);
+  background: transparent;
+  box-shadow: none;
+}
+
+html[data-theme="dark"] .bar-logo:hover {
+  background: var(--hover);
 }
 
 html[data-theme="dark"] .sidebar-nav-item:hover,
 html[data-theme="dark"] .sidebar-nav-item.is-active {
-  background: linear-gradient(90deg, color-mix(in srgb, var(--blue) 34%, transparent), color-mix(in srgb, var(--aqua) 12%, transparent));
-  color: #eaf3ff;
+  background: var(--hover);
+  color: var(--fg);
+}
+
+html[data-theme="dark"] .bubble.user {
+  color: var(--fg);
 }
 
 html[data-theme="dark"] .icon-btn-send {
-  background: linear-gradient(180deg, #4aa8ff 0%, #1a5cff 55%, #0033a1 100%);
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--aqua) 40%, transparent), 0 8px 18px rgba(26, 92, 255, 0.42);
+  background: var(--blue);
+  color: #0a0a0a;
+  box-shadow: none;
 }
 
 html[data-theme="dark"] .icon-btn-send:hover:not(:disabled) {
-  background: linear-gradient(180deg, #7ad4f5 0%, #54c0e8 50%, #0071ce 100%);
-  box-shadow: 0 0 22px color-mix(in srgb, var(--aqua) 45%, transparent);
+  background: var(--btn-hover);
+  box-shadow: none;
 }
 
 html[data-theme="dark"] .icon-btn-send:disabled,
 html[data-theme="dark"] #send.icon-btn:disabled {
-  background: #243044;
+  background: var(--hover);
+  color: var(--fg-muted);
   box-shadow: none;
 }
 
