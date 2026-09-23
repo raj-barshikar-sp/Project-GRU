@@ -11,6 +11,36 @@ const SIZE_LABELS = {
   enterprise: "$1.5M+",
 };
 
+const ROLE_KEY = "gru-role";
+const VALID_ROLES = new Set(["bob", "james", "stuart", "henry"]);
+const ROLE_TITLES = {
+  bob: "Bob the Back Office Minion",
+  james: "James the Marketing Assistant",
+  stuart: "Stuart the Sales Manager Assistant",
+  henry: "Henry the DSR Minion",
+};
+const ROLE_AVATARS = {
+  bob: "/static/assets/bob.png?v=2",
+  james: "/static/assets/james.png",
+  stuart: "/static/assets/stuart.png?v=3",
+  henry: "/static/assets/henry.png",
+};
+
+function readRole() {
+  try {
+    const fromUrl = new URLSearchParams(location.search).get("role");
+    if (VALID_ROLES.has(fromUrl)) return fromUrl;
+    const saved = localStorage.getItem(ROLE_KEY);
+    if (VALID_ROLES.has(saved)) return saved;
+  } catch {
+    /* private mode */
+  }
+  return "bob";
+}
+
+let activeRole = readRole();
+let sizeLabels = { ...SIZE_LABELS };
+let copy = {};
 let filtersReady = false;
 let lastPayload = null;
 let booted = false;
@@ -56,8 +86,72 @@ function query() {
   for (const [key, param] of Object.entries(map)) {
     if (state[key]) params.set(param, state[key]);
   }
-  const qs = params.toString();
-  return qs ? `/api/dashboard?${qs}` : "/api/dashboard";
+  params.set("role", activeRole);
+  return `/api/dashboard?${params.toString()}`;
+}
+
+function chatHref(extra = {}) {
+  const params = new URLSearchParams({ role: activeRole, ...extra });
+  return `/chat?${params.toString()}`;
+}
+
+function applyAssistant() {
+  const title = ROLE_TITLES[activeRole] || ROLE_TITLES.bob;
+  const avatar = ROLE_AVATARS[activeRole] || ROLE_AVATARS.bob;
+  const titleEl = document.getElementById("assistant-title");
+  if (titleEl) titleEl.textContent = title;
+  const avatarEl = document.getElementById("assistant-avatar");
+  if (avatarEl) avatarEl.src = avatar;
+  document.title = `${title.split(" ")[0]} — dashboard`;
+  const pngIcon = document.querySelector('link[rel="icon"][type="image/png"]');
+  if (pngIcon) pngIcon.href = avatar;
+  const roleSelect = document.getElementById("role-select");
+  if (roleSelect) roleSelect.value = activeRole;
+  document.documentElement.dataset.role = activeRole;
+  const chat = document.getElementById("nav-chat");
+  const dash = document.getElementById("nav-dashboard");
+  const library = document.getElementById("nav-library");
+  if (chat) chat.href = chatHref();
+  if (dash) dash.href = `/dashboard?role=${activeRole}`;
+  if (library) library.href = chatHref({ view: "library" });
+  try {
+    localStorage.setItem(ROLE_KEY, activeRole);
+  } catch {
+    /* private mode */
+  }
+  const url = new URL(location.href);
+  if (url.searchParams.get("role") !== activeRole) {
+    url.searchParams.set("role", activeRole);
+    history.replaceState(null, "", `${url.pathname}${url.search}${url.hash}`);
+  }
+}
+
+function applyCopy(payload) {
+  copy = payload.copy || {};
+  sizeLabels = {};
+  for (const item of payload.filters?.sizes || []) sizeLabels[item.id] = item.label;
+  const set = (id, value) => {
+    const node = document.getElementById(id);
+    if (node && value) node.textContent = value;
+  };
+  set("dash-kicker", copy.kicker);
+  set("dash-title", copy.title);
+  set("chart-stage-title", copy.stage_chart);
+  set("chart-size-title", copy.size_chart);
+  set("table-title", copy.table);
+  set("filter-size-label", copy.filter_size);
+  set("filter-stage-label", copy.filter_stage);
+  set("filter-time-label", copy.filter_time);
+  set("filter-geo-label", copy.filter_geo);
+  set("col-id", copy.col_id);
+  set("col-name", copy.col_name);
+  set("col-stage", copy.col_stage);
+  set("col-size", copy.col_size);
+  set("col-amount", copy.col_amount);
+  set("col-close", copy.col_close);
+  set("col-health", copy.col_health);
+  const timeField = document.getElementById("filter-time-field");
+  if (timeField) timeField.hidden = !(payload.filters?.windows || []).length;
 }
 
 function setFilter(key, value) {
@@ -91,23 +185,24 @@ function ensureFilters(payload) {
   const sizes = document.getElementById("filter-sizes");
   const stages = document.getElementById("filter-stages");
   const windows = document.getElementById("filter-windows");
-  const geos = document.getElementById("filter-geos");
+  const geosSelect = document.getElementById("filter-geos");
+  const geos = payload.filters?.geos?.length ? payload.filters.geos : window.__geos || [];
   if (!filtersReady) {
     fillSelect(sizes, payload.filters.sizes, "All sizes", state.sizes);
     fillSelect(stages, payload.filters.stages, "All stages", state.stages);
     fillSelect(windows, payload.filters.windows, "All windows", state.windows);
-    fillSelect(geos, window.__geos || [], "All geos", state.geos);
+    fillSelect(geosSelect, geos, copy.filter_geo ? `All ${copy.filter_geo.toLowerCase()}` : "All geos", state.geos);
     bindSelect(sizes, "sizes");
     bindSelect(stages, "stages");
     bindSelect(windows, "windows");
-    bindSelect(geos, "geos");
+    bindSelect(geosSelect, "geos");
     filtersReady = true;
     return;
   }
   sizes.value = state.sizes;
   stages.value = state.stages;
   windows.value = state.windows;
-  geos.value = state.geos;
+  geosSelect.value = state.geos;
 }
 
 function tip() {
@@ -164,11 +259,14 @@ function showRail(id) {
 
 function renderKpis(kpis) {
   const root = document.getElementById("dash-kpis");
+  const windows = lastPayload?.filters?.windows || [];
+  const hasWindow = (id) => windows.some((item) => item.id === id);
+  const weekId = [copy.kpi_week_filter, "this_week", "stale"].find((id) => id && hasWindow(id)) || "";
   const cards = [
     {
-      label: "Pipeline",
+      label: copy.kpi_pipeline || "Pipeline",
       value: money(kpis.pipeline),
-      hint: "Click to clear size & stage",
+      hint: copy.kpi_pipeline_hint || "Click to clear size & stage",
       on: Boolean(state.sizes || state.stages),
       run: () => {
         state.sizes = "";
@@ -177,23 +275,25 @@ function renderKpis(kpis) {
       },
     },
     {
-      label: "Open opps",
+      label: copy.kpi_open || "Open opps",
       value: String(kpis.open_opps),
-      hint: "Jump to the book",
+      hint: copy.kpi_open_hint || "Jump to the book",
       on: false,
       run: () => document.getElementById("opp-table")?.scrollIntoView({ behavior: "smooth", block: "start" }),
     },
     {
-      label: "Close this week",
+      label: copy.kpi_week || "Close this week",
       value: String(kpis.closing_week),
-      hint: "Click to filter this week",
-      on: state.windows === "this_week",
-      run: () => setFilter("windows", "this_week"),
+      hint: copy.kpi_week_hint || "Click to filter this week",
+      on: Boolean(weekId) && state.windows === weekId,
+      run: () => {
+        if (weekId) setFilter("windows", weekId);
+      },
     },
     {
-      label: "Work Slack",
+      label: copy.kpi_slack || "Work Slack",
       value: String(kpis.slack_work),
-      hint: "Open the Slack feed",
+      hint: copy.kpi_slack_hint || "Open the Slack feed",
       on: false,
       run: () => showRail("slack"),
     },
@@ -211,50 +311,79 @@ function renderKpis(kpis) {
   }
 }
 
+function stageTick(row, slot) {
+  const id = String(row.id || "").trim();
+  const label = String(row.label || id).trim();
+  const code = (id.match(/^ss\d{2,3}$/i) || label.match(/\bss\d{2,3}\b/i) || [])[0];
+  if (code) return code.toUpperCase();
+  const words = label.split(/\s+/).filter(Boolean);
+  let tick = label;
+  if (words.length > 1) {
+    tick = words[0].toLowerCase() === "paid" ? words[words.length - 1] : words[0];
+  }
+  const aliases = {
+    syndication: "Synd.",
+    tradeshow: "Show",
+    webinar: "Webinar",
+    nurture: "Nurture",
+    field: "Field",
+    search: "Search",
+    social: "Social",
+  };
+  const alias = aliases[tick.toLowerCase().replace(/\.$/, "")];
+  if (alias) return alias;
+  const budget = Math.max(6, Math.floor(slot / 7));
+  return tick.length <= budget ? tick : `${tick.slice(0, Math.max(4, budget - 1))}…`;
+}
+
 function renderStageChart(rows) {
   const root = document.getElementById("chart-stage");
-  const max = Math.max(1, ...rows.map((row) => row.amount));
+  const list = rows || [];
+  const max = Math.max(1, ...list.map((row) => row.amount || 0));
   const color = ink();
-  const colors = ["#0033A1", "#0071CE", "#54C0E8", "#CC27B0"];
+  const colors = ["#0033A1", "#0071CE", "#54C0E8", "#CC27B0", "#93D500", "#415364"];
+  const n = Math.max(list.length, 1);
+  const width = 420;
+  const slot = width / n;
+  const barW = Math.min(56, Math.max(14, slot - 12));
   root.replaceChildren();
   const svg = svgEl("svg", {
-    viewBox: "0 0 420 180",
+    viewBox: `0 0 ${width} 180`,
     role: "img",
-    "aria-label": "Pipeline amount by SS stage. Click a bar to filter.",
+    "aria-label": `${copy.stage_chart || "Amount by stage"}. Click a bar to filter.`,
   });
-  rows.forEach((row, index) => {
-    const x = 28 + index * 100;
-    const height = Math.round((row.amount / max) * 120);
-    const y = 148 - height;
+  list.forEach((row, index) => {
+    const x = slot * index + (slot - barW) / 2;
+    const barHeight = Math.round((row.amount / max) * 120);
+    const y = 148 - barHeight;
     const active = state.stages === row.id;
     const dim = Boolean(state.stages) && !active;
     const bar = svgEl("rect", {
       x,
       y,
-      width: 56,
-      height: Math.max(height, 2),
+      width: barW,
+      height: Math.max(barHeight, 2),
       rx: 8,
-      fill: colors[index] || "#0033A1",
+      fill: colors[index % colors.length] || "#0033A1",
       class: `dash-chart-hit${active ? " is-on" : ""}${dim ? " is-dim" : ""}`,
     });
     bar.style.cursor = "pointer";
-    bar.addEventListener("pointerenter", (event) => {
-      showTip(event, [`${row.id}`, `${row.count} opps`, money(row.amount)]);
-    });
-    bar.addEventListener("pointermove", (event) => showTip(event, [`${row.id}`, `${row.count} opps`, money(row.amount)]));
+    const tipLines = [row.label || row.id, `${row.count} ${copy.unit || "opps"}`, money(row.amount)];
+    bar.addEventListener("pointerenter", (event) => showTip(event, tipLines));
+    bar.addEventListener("pointermove", (event) => showTip(event, tipLines));
     bar.addEventListener("pointerleave", hideTip);
     bar.addEventListener("click", () => setFilter("stages", row.id));
     svg.append(bar);
-    const label = svgEl("text", {
-      x: x + 28,
+    const tick = svgEl("text", {
+      x: x + barW / 2,
       y: 168,
       "text-anchor": "middle",
       fill: color,
-      "font-size": 12,
+      "font-size": n > 5 ? 10 : 12,
       "font-family": "Poppins, sans-serif",
     });
-    label.textContent = `${row.id} · ${row.count}`;
-    svg.append(label);
+    tick.textContent = stageTick(row, slot);
+    svg.append(tick);
   });
   root.append(svg);
 }
@@ -295,7 +424,7 @@ function renderSizeChart(rows) {
         class: `dash-chart-hit${active ? " is-on" : ""}${dim ? " is-dim" : ""}`,
       });
       path.style.cursor = "pointer";
-      const lines = [row.label, `${row.count} opps`, money(row.amount), `${Math.round((row.amount / total) * 100)}%`];
+      const lines = [row.label, `${row.count} ${copy.unit || "opps"}`, money(row.amount), `${Math.round((row.amount / total) * 100)}%`];
       path.addEventListener("pointerenter", (event) => showTip(event, lines));
       path.addEventListener("pointermove", (event) => showTip(event, lines));
       path.addEventListener("pointerleave", hideTip);
@@ -314,7 +443,7 @@ function renderSizeChart(rows) {
     "font-size": 11,
     "font-family": "Poppins, sans-serif",
   });
-  center.textContent = state.sizes ? SIZE_LABELS[state.sizes] || state.sizes : "All sizes";
+  center.textContent = state.sizes ? sizeLabels[state.sizes] || state.sizes : copy.filter_size || "All sizes";
   const centerAmt = svgEl("text", {
     x: 90,
     y: 106,
@@ -351,7 +480,7 @@ function renderOpps(opps) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 7;
-    cell.textContent = "No opportunities match these filters.";
+    cell.textContent = copy.empty || "No opportunities match these filters.";
     row.append(cell);
     body.append(row);
     return;
@@ -359,12 +488,12 @@ function renderOpps(opps) {
   for (const opp of opps) {
     const row = document.createElement("tr");
     row.tabIndex = 0;
-    row.title = `Open ${opp.account} in chat`;
+    row.title = `Open ${opp.name || opp.account} in chat`;
     const cells = [
       opp.id,
-      opp.account,
+      opp.name || opp.account,
       opp.stage,
-      SIZE_LABELS[opp.size] || opp.size,
+      sizeLabels[opp.size] || opp.size,
       money(opp.amount),
       opp.close_date,
     ];
@@ -381,7 +510,7 @@ function renderOpps(opps) {
     row.append(health);
     if (opp.backup) row.classList.add("is-backup");
     const open = () => {
-      location.href = `/chat?scope=${encodeURIComponent(opp.account)}`;
+      location.href = chatHref({ scope: opp.name || opp.account });
     };
     row.addEventListener("click", open);
     row.addEventListener("keydown", (event) => {
@@ -409,7 +538,7 @@ function renderTasks(tasks) {
   const rows = [...(tasks || [])].sort((a, b) => taskWhen(a) - taskWhen(b));
   for (const task of rows) {
     const card = el("a", "dash-task");
-    card.href = `/chat?task=${encodeURIComponent(task.id)}&scope=${encodeURIComponent(task.scope)}`;
+    card.href = chatHref({ task: task.id, scope: task.scope || "" });
     card.append(el("strong", "dash-task-due", task.due));
     card.append(el("span", "dash-task-label", task.label));
     card.append(el("span", "dash-muted", task.scope));
@@ -449,8 +578,12 @@ function flashLive() {
 async function refresh() {
   if (booted) flashLive();
   hideTip();
-  const payload = await fetch(query()).then((res) => res.json());
+  const payload = await fetch(query()).then((res) => {
+    if (!res.ok) throw new Error("Dashboard is unavailable");
+    return res.json();
+  });
   lastPayload = payload;
+  applyCopy(payload);
   ensureFilters(payload);
   renderKpis(payload.kpis);
   renderStageChart(payload.by_stage);
@@ -510,9 +643,25 @@ function bootDashSidebar() {
 }
 
 async function boot() {
+  applyAssistant();
   bootDashSidebar();
-  const workspace = await fetch("/api/workspace").then((res) => res.json());
+  document.getElementById("role-select")?.addEventListener("change", (event) => {
+    const next = event.target.value;
+    if (!VALID_ROLES.has(next) || next === activeRole) return;
+    try {
+      localStorage.setItem(ROLE_KEY, next);
+    } catch {
+      /* private mode */
+    }
+    location.href = `/dashboard?role=${next}`;
+  });
+  const workspace = await fetch(`/api/workspace?role=${activeRole}`).then((res) => res.json());
   window.__geos = workspace.filters?.geos || [];
+  if (workspace?.assistant?.title) {
+    const titleEl = document.getElementById("assistant-title");
+    if (titleEl) titleEl.textContent = workspace.assistant.title;
+    document.title = `${workspace.assistant.name || ROLE_TITLES[activeRole]} — dashboard`;
+  }
   await refresh();
   placeRailThumb("tasks");
 }

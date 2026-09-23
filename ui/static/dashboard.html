@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bob — dashboard</title>
+    <title>Project GRU — dashboard</title>
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/static/assets/bob.png?v=2" type="image/png" />
     <script>
@@ -28,25 +28,25 @@
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/static/styles.css?v=124" />
+    <link rel="stylesheet" href="/static/styles.css?v=134" />
   </head>
   <body class="in-workspace dash-body">
     <div class="shell dash-shell" id="dashboard">
       <aside class="sidebar" id="sidebar" aria-label="Workspace">
         <nav class="sidebar-nav">
-          <a class="sidebar-nav-item" href="/chat">
+          <a class="sidebar-nav-item" href="/chat?role=bob" id="nav-chat">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
             </svg>
             Chat
           </a>
-          <a class="sidebar-nav-item is-active" href="/dashboard">
+          <a class="sidebar-nav-item is-active" href="/dashboard?role=bob" id="nav-dashboard">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z" />
             </svg>
             Dashboard
           </a>
-          <a class="sidebar-nav-item" href="/chat?view=library">
+          <a class="sidebar-nav-item" href="/chat?view=library&role=bob" id="nav-library">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
               <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
@@ -72,12 +72,21 @@
           </button>
         </div>
         <div class="bar-brand">
-          <img class="bar-bob" src="/static/assets/bob.png?v=2" alt="" width="40" height="46" />
+          <img id="assistant-avatar" class="bar-bob" src="/static/assets/bob.png?v=2" alt="" width="40" height="46" />
           <div class="bar-brand-copy">
-            <span class="bar-fullname">Bob the Back Office Minion</span>
+            <span id="assistant-title" class="bar-fullname">Bob the Back Office Minion</span>
           </div>
         </div>
         <div class="bar-cluster bar-end">
+          <label class="role-picker">
+            <span class="sr-only">Active role</span>
+            <select id="role-select" aria-label="Active role">
+              <option value="bob">RevOps · Bob</option>
+              <option value="james">Marketing · James</option>
+              <option value="stuart">Sales Manager · Stuart</option>
+              <option value="henry">DSR · Henry</option>
+            </select>
+          </label>
           <button type="button" class="bar-btn bar-btn-icon theme-toggle" data-theme-toggle aria-label="Switch to dark mode">
             <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3 7 7 0 1 0 21 14.5Z"></path>
@@ -94,24 +103,24 @@
       <div class="dash-main">
         <section class="dash-toolbar">
           <div class="dash-toolbar-copy">
-            <p class="dash-kicker">SailPoint · RevOps</p>
-            <h1>Pipeline</h1>
+            <p class="dash-kicker" id="dash-kicker">SailPoint · RevOps</p>
+            <h1 id="dash-title">Pipeline</h1>
           </div>
           <form class="dash-filters" aria-label="Pipeline filters">
             <label class="dash-field">
-              <span>Opp size</span>
+              <span id="filter-size-label">Opp size</span>
               <select id="filter-sizes" name="size"></select>
             </label>
             <label class="dash-field">
-              <span>SS stage</span>
+              <span id="filter-stage-label">SS stage</span>
               <select id="filter-stages" name="stage"></select>
             </label>
-            <label class="dash-field">
-              <span>Time</span>
+            <label class="dash-field" id="filter-time-field">
+              <span id="filter-time-label">Time</span>
               <select id="filter-windows" name="time"></select>
             </label>
             <label class="dash-field">
-              <span>Geo</span>
+              <span id="filter-geo-label">Geo</span>
               <select id="filter-geos" name="geo"></select>
             </label>
             <button type="button" class="dash-clear" id="dash-clear">Clear</button>
@@ -124,14 +133,14 @@
             <section class="dash-grid">
               <article class="dash-card">
                 <div class="dash-card-head">
-                  <h2>Pipeline by stage</h2>
+                  <h2 id="chart-stage-title">Pipeline by stage</h2>
                   <p class="dash-muted">Click a bar to filter</p>
                 </div>
                 <div class="dash-chart" id="chart-stage"></div>
               </article>
               <article class="dash-card">
                 <div class="dash-card-head">
-                  <h2>Mix by opp size</h2>
+                  <h2 id="chart-size-title">Mix by opp size</h2>
                   <p class="dash-muted">Click a slice to filter</p>
                 </div>
                 <div class="dash-chart dash-chart-size" id="chart-size"></div>
@@ -139,20 +148,20 @@
             </section>
             <section class="dash-card dash-table-card">
               <div class="dash-card-head">
-                <h2>Opportunities</h2>
+                <h2 id="table-title">Opportunities</h2>
                 <p class="dash-muted" id="opp-count"></p>
               </div>
               <div class="dash-table-wrap">
                 <table class="dash-table" id="opp-table">
                   <thead>
                     <tr>
-                      <th>Opp</th>
-                      <th>Account</th>
-                      <th>Stage</th>
-                      <th>Size</th>
-                      <th>Amount</th>
-                      <th>Close</th>
-                      <th>Health</th>
+                      <th id="col-id">Opp</th>
+                      <th id="col-name">Account</th>
+                      <th id="col-stage">Stage</th>
+                      <th id="col-size">Size</th>
+                      <th id="col-amount">Amount</th>
+                      <th id="col-close">Close</th>
+                      <th id="col-health">Health</th>
                     </tr>
                   </thead>
                   <tbody></tbody>
@@ -189,7 +198,7 @@
       </div>
     </div>
     <div class="dash-tip" id="dash-tip" hidden></div>
-    <script src="/static/theme.js?v=124"></script>
-    <script src="/static/dashboard.js?v=124"></script>
+    <script src="/static/theme.js?v=137"></script>
+    <script src="/static/dashboard.js?v=137"></script>
   </body>
 </html>

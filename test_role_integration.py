@@ -137,6 +137,11 @@ def test_gateway_routes_each_role_and_streams_chat() -> None:
                 200,
                 json={"assistant": {"name": role}, "tasks": [], "filters": {}},
             )
+        if request.url.path == "/api/dashboard":
+            return httpx.Response(
+                200,
+                json={"copy": {"title": role}, "kpis": {"pipeline": 1, "open_opps": 1, "closing_week": 0, "slack_work": 0}, "filters": {"sizes": [], "stages": [], "windows": [], "geos": []}, "by_stage": [], "by_size": [], "opps": [], "tasks": [], "notifications": [], "slack": []},
+            )
         if request.url.path == "/api/chat":
             return httpx.Response(
                 200,
@@ -159,6 +164,9 @@ def test_gateway_routes_each_role_and_streams_chat() -> None:
         ):
             response = client.get("/api/workspace", params={"role": role})
             assert response.json()["assistant"]["name"] == name
+            dash = client.get("/api/dashboard", params={"role": role})
+            assert dash.status_code == 200
+            assert dash.json()["copy"]["title"] == name
         response = client.post("/api/chat", json={"role": "james", "message": "Hi"})
         assert response.status_code == 200
         assert response.headers["x-session-id"] == "session-1"
@@ -168,10 +176,48 @@ def test_gateway_routes_each_role_and_streams_chat() -> None:
 def test_shared_shell_contains_role_switching_contract() -> None:
     with TestClient(create_gateway()) as client:
         chat = client.get("/chat").text
+        dash = client.get("/dashboard").text
         script = client.get("/static/app.js").text
+        dash_script = client.get("/static/dashboard.js").text
         artifacts = client.get("/static/artifacts.js").text
+        home = client.get("/").text
     assert 'id="role-select"' in chat
+    assert 'id="role-select"' in dash
     assert '<option value="henry">DSR · Henry</option>' in chat
     assert "role: activeRole" in script
-    assert "`gru-chats-${activeRole}`" in script
+    assert "function chatsKey(" in script
+    assert "function loadRole(" in script
+    assert "function mapFilterName(" in script
+    assert "syncRoleInUrl" in script
+    assert "ROLE_AVATARS" in script
+    assert "img.src = roleAvatar()" in script
+    assert 'getElementById("assistant-avatar")' in script
     assert "`gru-artifacts-${activeRole}`" in artifacts
+    assert "function applyAssistant(" in dash_script
+    assert "function applyCopy(" in dash_script
+    assert "function chatHref(" in dash_script
+    assert "/dashboard?role=james" in home
+    assert "/dashboard?role=stuart" in home
+    assert "/dashboard?role=henry" in home
+    assert "/dashboard?role=bob" in home
+
+
+def test_stuart_and_henry_expose_dashboard_payloads() -> None:
+    stuart = TestClient(
+        create_stuart(
+            runner=FakeRunner(),
+            session_service=InMemorySessionService(),
+        )
+    )
+    stuart_dash = stuart.get("/api/dashboard").json()
+    assert stuart_dash["copy"]["title"] == "Team forecast"
+    assert "kpis" in stuart_dash
+    assert "opps" in stuart_dash
+    assert "filters" in stuart_dash
+
+    henry = TestClient(create_henry(orchestrator=FakeHenry()))
+    henry_dash = henry.get("/api/dashboard").json()
+    assert henry_dash["copy"]["title"] == "Account book"
+    assert henry_dash["copy"]["kpi_week_filter"] == "stale"
+    assert "kpis" in henry_dash
+    assert "opps" in henry_dash
